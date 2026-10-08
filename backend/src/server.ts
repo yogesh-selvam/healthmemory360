@@ -239,8 +239,9 @@ app.get('/api/alerts', auth, async (req: AuthRequest, r) => {
   const alerts: any[] = [];
   if (nextAppointment) alerts.push({ type: 'appointment', severity: 'info', title: 'Upcoming check-up', message: `${nextAppointment.doctor || 'Healthcare provider'} • ${new Date(nextAppointment.appointmentDate).toLocaleDateString()}`, date: nextAppointment.appointmentDate });
   if (latestRecord?.recordDate) {
-    const days = Math.floor((Date.now() - new Date(latestRecord.recordDate).getTime()) / 86400000);
-    if (days >= 180) alerts.push({ type: 'checkup', severity: 'warning', title: 'Routine check-up reminder', message: `Your latest stored medical record is ${days} days old. Consider scheduling a routine review if appropriate for you.`, date: latestRecord.recordDate });
+const days = Math.floor(
+  (Date.now() - new Date(latestRecord.recordDate as Date).getTime()) / 86400000
+);    if (days >= 180) alerts.push({ type: 'checkup', severity: 'warning', title: 'Routine check-up reminder', message: `Your latest stored medical record is ${days} days old. Consider scheduling a routine review if appropriate for you.`, date: latestRecord.recordDate });
   }
   for (const reminder of reminders) {
     const reminderDate = new Date(reminder.reminderDate);
@@ -419,7 +420,7 @@ app.post('/api/reminders/from-record/:id', auth, async (req: AuthRequest, r) => 
   }
   if (!followDate) return r.status(400).json({ message: 'No follow-up date or interval was found in this record.' });
   const reminderDate = new Date(followDate.getTime() - 7 * 86400000);
-  const reminder = await Reminder.create({ userId: uid(req), title: `Follow-up: ${record.title}`, note: `${label}. Source: ${record.title} (${new Date(record.recordDate).toLocaleDateString()}).`, reminderDate, source: 'record-derived', status: 'pending' });
+  const reminder = await Reminder.create({ userId: uid(req), title: `Follow-up: ${record.title}`, note: `${label}. Source: ${record.title} (${new Date(record.recordDate as Date).toLocaleDateString()}).`, reminderDate, source: 'record-derived', status: 'pending' });
   await Notification.create({ userId: uid(req), type: 'reminder', title: 'Smart reminder created', message: `${reminder.title} is planned for ${reminderDate.toLocaleDateString()}.`, actionUrl: '/app/reminders', metadata: { recordId: String(record._id), reminderId: String(reminder._id) } });
   r.status(201).json({ reminder, followUpDate: followDate, label });
 });
