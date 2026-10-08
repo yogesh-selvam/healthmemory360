@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-50">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HealthMemory 360 — Patient Health Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "navy-dark": "#0B1324",
+            "navy-surface": "#0F172A",
+            "vital-teal": "#14B8A6",
+            "vital-teal-dark": "#0D9488",
+            "vital-teal-light": "#CCFBF1",
+            "ai-purple": "#8B5CF6",
+            "ai-purple-light": "#F5F3FF",
+            "ai-purple-border": "#DDD6FE",
+            "mint-wellness": "#10B981",
+            "mint-surface": "#ECFDF5",
+            "slate-border": "#E2E8F0",
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Manrope', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F1F5F9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94A3B8;
+    }
+  </style>
+</head>
+<body class="h-full font-sans text-slate-800 antialiased bg-slate-50 selection:bg-teal-500/20 selection:text-teal-900">
+  <div class="min-h-full flex flex-col lg:flex-row">
+    
+    <!-- LEFT NAVIGATION SIDEBAR -->
+    <aside class="fixed inset-y-0 left-0 z-50 w-72 bg-white border-r border-slate-200 flex flex-col justify-between shadow-[1px_0_4px_rgba(0,0,0,0.02)]">
+      <div class="flex flex-col flex-1 overflow-y-auto">
+        <!-- Brand Header -->
+        <div class="h-20 px-6 flex items-center gap-3 border-b border-slate-100">
+          <div class="h-10 w-10 rounded-xl bg-gradient-to-tr from-slate-900 via-teal-800 to-vital-teal flex items-center justify-center text-white shadow-md shadow-teal-900/10">
+            <!-- Health icon SVG -->
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07l14.14-14.14" stroke-opacity="0.3"/>
+              <circle cx="12" cy="12" r="9" stroke-width="2"/>
+              <path d="M12 7v10M7 12h10" stroke-width="2.2"/>
+            </svg>
+          </div>
+          <div>
+            <div class="flex items-center gap-1.5">
+              <span class="font-display font-bold text-lg text-slate-900 tracking-tight leading-none">HealthMemory</span>
+              <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-teal-50 text-vital-teal uppercase tracking-wider border border-teal-200/60">360</span>
+            </div>
+            <p class="text-[11px] text-slate-400 font-medium tracking-wide mt-0.5">Unified Clinical Record</p>
+          </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="px-4 py-6 space-y-6">
+          <div>
+            <p class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-400">Core Overview</p>
+            <nav class="space-y-1">
+              <!-- Active: Dashboard -->
+              <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-slate-900 text-white font-medium text-sm shadow-sm transition-all group">
+                <svg class="w-5 h-5 text-vital-teal transition-transform group-hover:scale-105" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="7" height="9" x="3" y="3" rx="1"/>
+                  <rect width="7" height="5" x="14" y="3" rx="1"/>
+                  <rect width="7" height="9" x="14" y="12" rx="1"/>
+                  <rect width="7" height="5" x="3" y="16" rx="1"/>
+                </svg>
+                <span>Dashboard</span>
+              </a>
+
+              <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-medium text-sm transition-colors group">
+                <svg class="w-5 h-5 text-slate-400 group-hover:text-slate-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/>
+                  <path d="M12 11v6M9 14h6"/>
+                </svg>
+                <span>Medical Records</span>
+                <span class="ml-auto text-xs font-semibold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 group-hover:bg-slate-200">18</span>
+              </a>
+
+              <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-medium text-sm transition-colors group">
+                <svg class="w-5 h-5 text-slate-400 group-hover:text-slate-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 12h4l3 8 4-16 3 8h4"/>
+                </svg>
+                <span>Health Timeline</span>
+              </a>
+
+              <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-medium text-sm transition-colors group">
+                <svg class="w-5 h-5 text-slate-400 group-hover:text-slate-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m16 3 4 4-4 4"/>
+                  <path d="M20 7H4"/>
+                  <path d="m8 21-4-4 4-4"/>
+                  <path d="M4 17h16"/>
+                </svg>
+                <span>Report Comparison</span>
+              </a>
+
+              <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-600 hover:text-ai-purple hover:bg-purple-50/70 font-medium text-sm transition-colors group">
+                <svg class="w-5 h-5 text-ai-purple group-hover:rotate-6 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/>
+                </svg>
+                <span class="font-semibold text-slate-900 group-hover:text-ai-purple">Ask HealthMemory</span>
+                <span class="ml-auto text-[10px] font-bold px-1.5 py-0.5 rounded bg-purple-100 text-ai-purple uppercase">AI</span>
+              </a>
+            </nav>

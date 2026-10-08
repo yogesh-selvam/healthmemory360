@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HealthMemory 360 - Patient Dashboard</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#0F172A",
+            "teal-accent": "#14B8A6",
+            "teal-dark": "#0D9488",
+            "teal-subtle": "#F0FDFA",
+            "ai-purple": "#8B5CF6",
+            "ai-purple-surface": "#F5F3FF",
+            "ai-purple-border": "#DDD6FE",
+            "mint-wellness": "#10B981",
+            "mint-surface": "#ECFDF5",
+            "slate-body": "#334155",
+            "slate-subtext": "#64748B",
+            "border-subtle": "#E2E8F0",
+            "canvas-light": "#F8FAFC",
+            "surface-white": "#FFFFFF",
+            "status-warning": "#F59E0B"
+          },
+          fontFamily: {
+            sans: ["Inter", "sans-serif"],
+            display: ["Manrope", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    body {
+      font-family: 'Inter', sans-serif;
+      overscroll-behavior: none;
+    }
+    .font-display {
+      font-family: 'Manrope', sans-serif;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F1F5F9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 9999px;
+    }
+  </style>
+<meta content="web_dashboard" name="shell-type"/></head>
+<body class="bg-canvas-light text-slate-body antialiased flex min-h-screen">
+<!-- Left Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-screen w-72 bg-surface-white border-r border-border-subtle z-50 flex flex-col justify-between select-none">
+<div class="flex flex-col">
+<!-- Logo Header with Clinical Cross Mark -->
+<div class="h-20 flex items-center px-6 border-b border-border-subtle/60 gap-3">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-accent to-secondary flex items-center justify-center text-white shadow-sm ring-2 ring-teal-accent/20">
+<span class="material-symbols-outlined text-[24px]">local_hospital</span>
+</div>
+<div class="flex flex-col">
+<span class="font-display font-bold text-lg text-slate-900 tracking-tight leading-tight">HealthMemory <span class="text-teal-accent">360</span></span>
+<span class="text-[11px] font-medium text-slate-subtext tracking-wider uppercase">Longitudinal Health</span>
+</div>
+</div>
+<!-- Main Navigation -->
+<div class="px-4 pt-5">
+<p class="px-3 pb-2 text-[11px] font-bold text-slate-400 tracking-wider uppercase">Clinical Overview</p>
+<nav class="flex flex-col gap-1">
+<!-- Active Dashboard Pill -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl bg-slate-900 text-white font-medium text-sm shadow-sm transition-all group" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-teal-accent group-hover:scale-125 transition-transform"></span>
+<span class="material-symbols-outlined text-[20px] text-teal-accent">grid_view</span>
+<span class="flex-1">Dashboard</span>
+<span class="text-[10px] font-semibold bg-slate-800 text-slate-300 px-2 py-0.5 rounded-md">Live</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-medium text-sm transition-colors" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+<span class="material-symbols-outlined text-[20px] text-slate-400">folder_shared</span>
+<span>Medical Records</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-medium text-sm transition-colors" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+<span class="material-symbols-outlined text-[20px] text-slate-400">timeline</span>
+<span>Health Timeline</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-medium text-sm transition-colors" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+<span class="material-symbols-outlined text-[20px] text-slate-400">compare_arrows</span>
+<span>Report Comparison</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-medium text-sm transition-colors" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+<span class="material-symbols-outlined text-[20px] text-slate-400">vital_signs</span>
+<span>Physical Health</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-medium text-sm transition-colors" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+<span class="material-symbols-outlined text-[20px] text-slate-400">directions_run</span>
+<span>Fitness</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-medium text-sm transition-colors" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+<span class="material-symbols-outlined text-[20px] text-slate-400">psychology</span>
+<span>Mental Wellness</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-medium text-sm transition-colors" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+<span class="material-symbols-outlined text-[20px] text-slate-400">restaurant</span>
+<span>Nutrition</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-medium text-sm transition-colors" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+<span class="material-symbols-outlined text-[20px] text-slate-400">assignment</span>
+<span>Doctor Brief</span>
+</a>
+</nav>
+</div>
+</div>
+<!-- Bottom Settings / Preferences -->
+<div class="p-4 border-t border-border-subtle bg-slate-50/70">
+<p class="px-3 pb-2 text-[11px] font-bold text-slate-400 tracking-wider uppercase">Settings &amp; Access</p>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-white text-sm font-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px] text-slate-400">account_circle</span>
+<span>Profile</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-white text-sm font-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px] text-slate-400">shield_lock</span>
+<span>Privacy &amp; Security</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-white text-sm font-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px] text-slate-400">settings</span>
+<span>Preferences</span>
+</a>
+</nav>
+</div>
+</aside>
+<!-- Main Content Wrap -->
+<div class="pl-72 flex-1 flex flex-col min-h-screen">
+<!-- Top Bar -->
+<header class="sticky top-0 h-20 bg-surface-white/95 backdrop-blur-md border-b border-border-subtle z-40 px-8 flex items-center justify-between">
+<!-- Search with ⌘K shortcut -->
+<div class="relative w-full max-w-lg">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3.5 text-slate-400 text-[20px] pointer-events-none">search</span>
+<input class="w-full h-11 pl-11 pr-14 bg-slate-100/70 hover:bg-slate-100 text-slate-900 placeholder:text-slate-400 text-sm rounded-xl border border-transparent focus:border-teal-accent focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-accent/20 transition-all" placeholder="Search records, biomarkers, medications..." type="text"/>
+<kbd class="absolute right-3.5 px-2 py-0.5 text-[11px] font-semibold text-slate-500 bg-white border border-slate-200 rounded shadow-sm">⌘K</kbd>
+</div>
+</div>
+<!-- Right Header Actions -->
+<div class="flex items-center gap-4">
+<!-- Distinct 'Ask HealthMemory' Action Pill -->
+<a class="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-ai-purple-surface border border-ai-purple-border text-ai-purple hover:bg-ai-purple hover:text-white transition-all text-xs font-semibold shadow-xs" href="#">
+<span class="material-symbols-outlined text-[16px]">spark</span>
+<span>Ask HealthMemory</span>
+</a>
+<!-- Notification Bell -->
+<button class="relative p-2.5 rounded-xl text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition-colors" type="button">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-red-500 ring-2 ring-white"></span>
+</button>
+<div class="h-6 w-px bg-border-subtle"></div>
+<!-- Alex Morgan Avatar + Caption -->
+<div class="flex items-center gap-3 cursor-pointer p-1 rounded-xl hover:bg-slate-50 transition-colors">
+<img alt="Alex Morgan" class="w-10 h-10 rounded-full object-cover ring-2 ring-teal-accent/30 shadow-xs" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUbmr_rpFPZ6ytLhagmZveMZEVNxwcGQfXA3ifdFaK5ltw_u6PjDkyl5tcRRmd9odkIW4Xr0WPSiX_UQd1_y4bjj66gy64vMvMa0LeV7ep9G_tHh51RAeEMwV4OIpr1fCDD6Fa6NORiyiOGm7jvqgMOD6KbKUFtiFTsnXgAwu-iqwlhlvEJIaT4g3B6VChUM4KNjR2Ddyj83dd2wKfbHoTv8jTVOVlMM8qvTy5Hg"/>
+<div class="flex flex-col text-left">
+<span class="font-display font-semibold text-sm text-slate-900 leading-tight">Alex Morgan</span>
+<span class="text-[11px] font-medium text-slate-subtext">Patient Portal</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Body Container -->
+<main class="flex-1 p-8 max-w-7xl w-full mx-auto space-y-6"><div class="flex flex-col w-full">
+<!-- Confidential Record Top Utility Banner -->
+<div class="mb-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 p-4 rounded-xl bg-surface-container-low shadow-sm">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-variant flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[20px]">verified_user</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Confidential Patient Health Record</p>
+<p class="font-caption text-caption text-slate-subtext">Self-managed health ledger verified via FHIR R4 connectivity. Non-diagnostic administrative overview.</p>
+</div>
+</div>
+<div class="flex items-center gap-2 self-stretch md:self-auto justify-end">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-mint-surface text-mint-wellness font-caption text-caption">
+<span class="w-1.5 h-1.5 rounded-full bg-mint-wellness animate-pulse"></span>
+        Epic MyChart Linked
+      </span>
+<span class="font-caption text-caption text-slate-subtext px-2">Synced 42m ago</span>
+</div>
+</div>
+<!-- Primary Page Header with Asymmetric Action Cluster -->
+<div class="mb-8 flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+<div>
+<div class="flex items-center gap-2 mb-1.5">
+<span class="font-caption text-caption uppercase tracking-wider text-teal-accent">Clinical Ledger #HM-49210-ALX</span>
+<span class="font-caption text-caption text-slate-subtext">•</span>
+<span class="font-caption text-caption text-slate-subtext">Tier: Platinum Synced</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Profile &amp; Health Identity</h1>
+<p class="font-body-md text-body-md text-slate-subtext mt-1 max-w-2xl">
+        Comprehensive master demographics, core clinical phenotype, care team authorization nodes, and cryptographic identity summary.
+      </p>
+</div>
+<!-- Master Action Strip -->
+<div class="flex flex-wrap items-center gap-2.5">
+<button class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md shadow-sm transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+<span>Update Demographics</span>
+</button>
+<button class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md shadow-sm transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">badge</span>
+<span>Download Medical ID (PDF)</span>
+</button>
+<button class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-teal-accent hover:bg-teal-dark text-surface-white font-label-md text-label-md shadow-md transition-all group" type="button">
+<span class="material-symbols-outlined text-[18px] group-hover:scale-110 transition-transform">lock_clock</span>
+<span>Share Encrypted Summary</span>
+</button>
+</div>
+</div>
+<!-- Main Bento Mosaic Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Column Left: Master Identity & Phenotype (7 cols) -->
+<div class="lg:col-span-7 flex flex-col gap-6">
+<!-- Patient Master Demographics Card -->
+<div class="p-6 rounded-xl bg-surface-white shadow-sm flex flex-col gap-6">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img class="w-16 h-16 rounded-2xl object-cover shadow-sm" data-alt="Close up clinical portrait of Alex Morgan, a healthy 24 year old individual with thoughtful warm expression, soft natural indoor clinic lighting, minimal slate-subtle backdrop, high resolution editorial medical aesthetics" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC604AEiX2q4trerHlU87toYt-TLSKt1mYgITjsr8Ds7oH-egyv5ciX5H_6a9H6WsrWRCBA-izOHK1W8sJ9Vm-e4F8YylcDHheHbjnt4C0L46C8mFUwC4NYtBRd6y_XAtIXQRRIfcmlt6YSG6YT1XSx2uBUKJJKrhitgMhY5hE7wGvNuT-j-4a0HuizzJxJfnzEa575CwtUiHU4P414R8FFBQ6W3FQeJzF_zqO6gA"/>
+<div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-mint-wellness flex items-center justify-center text-white" title="Identity Verified">
+<span class="material-symbols-outlined text-[13px]">check</span>
+</div>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h2 class="font-headline-md text-headline-md text-on-surface">Alex Morgan</h2>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface font-caption text-caption">Adult</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-subtext">MRN: <span class="font-mono text-on-surface">884-291-03A</span> • State ID: <span class="text-on-surface">CA-D4498112</span></p>
+</div>
+</div>
+<div class="flex items-center gap-2 self-start sm:self-center">
+<span class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-mint-surface text-mint-wellness font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+              Organ Donor
+            </span>
+</div>
+</div>
+<!-- Demographics Grid Matrix -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 rounded-xl bg-surface-container-low">
+<div class="flex flex-col gap-1">
+<span class="font-caption text-caption uppercase text-slate-subtext">Age / DOB</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">24 yrs</span>
+<span class="font-caption text-caption text-slate-subtext">May 14, 2002</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-caption text-caption uppercase text-slate-subtext">Biological Sex</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Male</span>
+<span class="font-caption text-caption text-slate-subtext">Cisgender (XY)</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-caption text-caption uppercase text-slate-subtext">Blood Phenotype</span>
+<span class="font-headline-sm text-headline-sm text-teal-accent">O Pos (Rh+)</span>
+<span class="font-caption text-caption text-slate-subtext">Universal Red Cell</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-caption text-caption uppercase text-slate-subtext">Language</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">English</span>
+<span class="font-caption text-caption text-slate-subtext">Primary / Written</span>
+</div>
+</div>
+<!-- Address & Identification Subsection -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+<div class="p-4 rounded-xl bg-surface">
+<div class="flex items-center gap-2 mb-2 text-slate-subtext">
+<span class="material-symbols-outlined text-[18px]">home_pin</span>
+<span class="font-label-sm text-label-sm uppercase">Legal Domicile</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-semibold">482 Potrero Ave, Apt 4B</p>
+<p class="font-body-sm text-body-sm text-slate-subtext">San Francisco, CA 94110 • United States</p>
+<p class="font-caption text-caption text-slate-subtext mt-2">County of San Francisco • Timezone: PST</p>
+</div>
+<div class="p-4 rounded-xl bg-surface">
+<div class="flex items-center gap-2 mb-2 text-slate-subtext">
+<span class="material-symbols-outlined text-[18px]">contact_phone</span>
+<span class="font-label-sm text-label-sm uppercase">Direct Communication</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-semibold">+1 (415) 882-9304</p>
+<p class="font-body-sm text-body-sm text-slate-subtext">alex.morgan@healthmemory.me</p>
+<span class="inline-flex items-center gap-1 mt-2 text-mint-wellness font-caption text-caption">
+<span class="material-symbols-outlined text-[14px]">format_image_left</span>
+              2FA Authentication Enabled
+            </span>
+</div>
+</div>
+</div>
+<!-- Clinical Baseline & Phenotype Strip -->
+<div class="p-6 rounded-xl bg-surface-white shadow-sm flex flex-col gap-5">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-caption text-caption uppercase tracking-wider text-teal-accent">Anthropometric Metrics</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Clinical Baseline &amp; Vitals</h3>
+</div>
+<span class="font-caption text-caption text-slate-subtext">Last exam: Feb 12, 2025</span>
+</div>
+<!-- Metrics Bento Row -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<!-- Resting HR -->
+<div class="p-4 rounded-xl bg-surface flex flex-col justify-between">
+<div class="flex items-center justify-between text-slate-subtext">
+<span class="font-caption text-caption">Resting HR</span>
+<span class="material-symbols-outlined text-[16px] text-teal-accent">ecg</span>
+</div>
+<div class="my-2">
+<span class="font-metric-display text-metric-display text-on-surface">64</span>
+<span class="font-metric-unit text-metric-unit text-slate-subtext">bpm</span>
+</div>
+<span class="font-caption text-caption text-mint-wellness">Athletic Baseline</span>
+</div>
+<!-- Resting BP -->
+<div class="p-4 rounded-xl bg-surface flex flex-col justify-between">
+<div class="flex items-center justify-between text-slate-subtext">
+<span class="font-caption text-caption">Baseline BP</span>
+<span class="material-symbols-outlined text-[16px] text-teal-accent">speed</span>
+</div>
+<div class="my-2">
+<span class="font-metric-display text-metric-display text-on-surface">120<span class="text-slate-subtext font-light">/</span>80</span>
+<span class="font-metric-unit text-metric-unit text-slate-subtext">mmHg</span>
+</div>
+<span class="font-caption text-caption text-mint-wellness">Optimal Normotensive</span>
+</div>
+<!-- Height & Weight -->
+<div class="p-4 rounded-xl bg-surface flex flex-col justify-between">
+<div class="flex items-center justify-between text-slate-subtext">
+<span class="font-caption text-caption">Stature &amp; Mass</span>
+<span class="material-symbols-outlined text-[16px] text-teal-accent">straighten</span>
+</div>
+<div class="my-2">
+<span class="font-headline-sm text-headline-sm text-on-surface">178 cm</span>
+<div class="font-body-sm text-body-sm text-slate-subtext">72.0 kg (158.7 lbs)</div>
+</div>
+<span class="font-caption text-caption text-slate-subtext">Calibrated Scale</span>
+</div>
+<!-- BMI -->
+<div class="p-4 rounded-xl bg-surface flex flex-col justify-between">
+<div class="flex items-center justify-between text-slate-subtext">
+<span class="font-caption text-caption">BMI Index</span>
+<span class="material-symbols-outlined text-[16px] text-mint-wellness">monitor_weight</span>
+</div>
+<div class="my-2">
+<span class="font-metric-display text-metric-display text-on-surface">22.7</span>
+<span class="font-metric-unit text-metric-unit text-slate-subtext">kg/m²</span>
+</div>
+<span class="font-caption text-caption text-mint-wellness">Normal Range (18.5-24.9)</span>
+</div>
+</div>
+<!-- Inline Visual Scale for BMI -->
+<div class="p-4 rounded-xl bg-surface-container-low flex flex-col gap-2">
+<div class="flex justify-between items-center text-slate-subtext font-caption text-caption">
+<span>Underweight &lt;18.5</span>
+<span class="text-on-surface font-semibold">Normal 18.5 - 24.9</span>
+<span>Overweight 25.0 - 29.9</span>
+<span>Obese ≥30.0</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container flex overflow-hidden">
+<div class="h-full bg-slate-subtext/30" style="width: 20%;"></div>
+<div class="h-full bg-teal-accent" style="width: 45%;"></div>
+<div class="h-full bg-status-warning/40" style="width: 20%;"></div>
+<div class="h-full bg-status-urgent/40" style="width: 15%;"></div>
+</div>
+<div class="flex justify-between items-center text-slate-subtext font-caption text-caption">
+<span class="flex items-center gap-1 text-teal-dark font-medium">
+<span class="material-symbols-outlined text-[14px]">arrow_drop_up</span>
+              Alex's Position: 22.7 (Centered in Healthy Zone)
+            </span>
+<span>Delta: -0.4 kg past 6 mo</span>
+</div>
+</div>
+</div>
+<!-- Chronic Considerations & Surgical History -->
+<div class="p-6 rounded-xl bg-surface-white shadow-sm flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-teal-accent text-[20px]">history_edu</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Surgical &amp; Chronic Considerations</h3>
+</div>
+<span class="font-caption text-caption text-slate-subtext">2 documented events</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- Event 1: Appendectomy -->
+<div class="p-4 rounded-xl bg-surface flex flex-col justify-between gap-3">
+<div class="flex items-start justify-between">
+<div>
+<span class="inline-flex px-2 py-0.5 rounded-full bg-surface-container text-on-surface font-caption text-caption mb-1">Surgical / Resolved</span>
+<h4 class="font-label-md text-label-md text-on-surface">Appendectomy (Laparoscopic)</h4>
+</div>
+<span class="material-symbols-outlined text-teal-accent text-[20px]">medical_services</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-subtext">
+              Uncomplicated appendectomy performed under general anesthesia. Clean margins, complete healing.
+            </p>
+<div class="flex items-center justify-between pt-2 text-slate-subtext font-caption text-caption">
+<span>Date: Oct 2018</span>
+<span>UCSF Benioff Center</span>
+</div>
+</div>
+<!-- Event 2: Rhinitis -->
+<div class="p-4 rounded-xl bg-surface flex flex-col justify-between gap-3">
+<div class="flex items-start justify-between">
+<div>
+<span class="inline-flex px-2 py-0.5 rounded-full bg-ai-purple-surface text-ai-purple font-caption text-caption mb-1">Active / Episodic</span>
+<h4 class="font-label-md text-label-md text-on-surface">Mild Seasonal Allergic Rhinitis</h4>
+</div>
+<span class="material-symbols-outlined text-ai-purple text-[20px]">psychiatry</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-subtext">
+              Tree and grass pollen sensitivity during spring months. Managed with OTC second-gen antihistamines PRN.
+            </p>
+<div class="flex items-center justify-between pt-2 text-slate-subtext font-caption text-caption">
+<span>Onset: Childhood</span>
+<span>Self-managed</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Column Right: Care Network, Allergies & FHIR Sources (5 cols) -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<!-- Active Allergies & Clinical Alerts (High Visual Prominence) -->
+<div class="p-6 rounded-xl bg-surface-white shadow-sm flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-status-warning text-[22px]">warning</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Allergies &amp; Clinical Alerts</h3>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-status-urgent-surface text-status-urgent font-caption text-caption font-semibold">
+            2 Hypersensitivities
+          </span>
+</div>
+<!-- Allergy Item 1: Penicillin (Moderate) -->
+<div class="p-4 rounded-xl bg-status-urgent-surface flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-status-urgent"></span>
+<span class="font-label-md text-label-md text-on-surface font-bold">Penicillin (Beta-Lactam)</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-white text-status-urgent font-caption text-caption font-semibold uppercase">Moderate Alert</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-body">
+            Manifestation: Diffuse urticaria and erythematous maculopapular rash. No documented anaphylaxis or laryngeal edema.
+          </p>
+<div class="flex items-center justify-between pt-1 font-caption text-caption text-slate-subtext">
+<span>Reported: Age 9</span>
+<span>Avoid: Amoxicillin, Ampicillin</span>
+</div>
+</div>
+<!-- Allergy Item 2: Peanuts (Mild) -->
+<div class="p-4 rounded-xl bg-surface flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-status-warning"></span>
+<span class="font-label-md text-label-md text-on-surface font-bold">Peanuts (Arachis hypogaea)</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-white text-status-warning font-caption text-caption font-semibold uppercase">Mild Sensitivity</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-body">
+            Manifestation: Mild gastrointestinal sensitivity and cramping upon direct consumption. No respiratory distress.
+          </p>
+<div class="flex items-center justify-between pt-1 font-caption text-caption text-slate-subtext">
+<span>Reported: 2017</span>
+<span>Patient avoids whole nuts</span>
+</div>
+</div>
+<!-- NKDA baseline reminder -->
+<div class="p-3 rounded-lg bg-mint-surface flex items-center justify-between text-mint-wellness font-caption text-caption">
+<span class="flex items-center gap-1.5 font-medium">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+            NKDA: No Other Known Drug Allergies
+          </span>
+<span class="text-slate-subtext">Re-verified Jan 2025</span>
+</div>
+</div>
+<!-- Emergency & Care Network Card -->
+<div class="p-6 rounded-xl bg-surface-white shadow-sm flex flex-col gap-5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-teal-accent text-[20px]">health_and_safety</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Emergency &amp; Care Network</h3>
+</div>
+<span class="font-caption text-caption text-slate-subtext">Authorized Nodes</span>
+</div>
+<!-- Primary Care Physician -->
+<div class="p-4 rounded-xl bg-surface flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption uppercase text-slate-subtext">Primary Care Physician</span>
+<span class="px-2 py-0.5 rounded-full bg-teal-subtle text-teal-dark font-caption text-caption">Attending</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-on-surface font-headline-sm text-headline-sm">
+              MV
+            </div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Dr. Marcus Vance, MD</p>
+<p class="font-body-sm text-body-sm text-slate-subtext">Internal Medicine • Sutter Health / California Pacific Medical</p>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-3 pt-2 text-slate-subtext font-caption text-caption">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">call</span>
+              (415) 600-6000
+            </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">domain</span>
+              Pacific Campus, Ste 320
+            </span>
+</div>
+</div>
+<!-- Emergency Contact -->
+<div class="p-4 rounded-xl bg-surface flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption uppercase text-slate-subtext">Designated Emergency Contact</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface font-caption text-caption">Priority 1</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[20px]">family_restroom</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Jordan Morgan</p>
+<p class="font-body-sm text-body-sm text-slate-subtext">Sibling • Full Medical Proxy &amp; Decision Maker</p>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-label-md text-label-md text-teal-accent font-semibold">(555) 234-5678</span>
+<button class="px-3 py-1 rounded bg-surface-white text-on-surface hover:bg-surface-container font-caption text-caption shadow-xs" type="button">
+              Direct Dial
+            </button>
+</div>
+</div>
+<!-- Insurance / Coverage Ledger -->
+<div class="p-4 rounded-xl bg-surface flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption uppercase text-slate-subtext">Active Policy</span>
+<span class="inline-flex items-center gap-1 text-mint-wellness font-caption text-caption">
+<span class="w-1.5 h-1.5 rounded-full bg-mint-wellness"></span>
+              Active Coverage
+            </span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Blue Shield California Platinum PPO</p>
+<p class="font-body-sm text-body-sm text-slate-subtext">Group #: <span class="text-on-surface font-mono">CA-90412</span> • Rx BIN: <span class="text-on-surface font-mono">004336</span></p>
+</div>
+<div class="p-3 rounded-lg bg-surface-white flex items-center justify-between">
+<div>
+<span class="font-caption text-caption text-slate-subtext block">Member ID</span>
+<span class="font-mono text-on-surface font-semibold text-body-sm">#BS-99482103</span>
+</div>
+<span class="material-symbols-outlined text-slate-subtext text-[18px]">credit_card</span>
+</div>
+</div>
+</div>
+<!-- Verified Source Records & FHIR Links -->
+<div class="p-6 rounded-xl bg-surface-white shadow-sm flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-ai-purple text-[20px]">token</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Verified Clinical Sources</h3>
+</div>
+<span class="font-caption text-caption text-mint-wellness font-medium">3 Linked</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-subtext">
+          Cryptographically notarized data nodes synchronized with laboratory HL7/FHIR interfaces.
+        </p>
+<div class="flex flex-col gap-2.5">
+<!-- Source 1: Quest -->
+<div class="p-3 rounded-lg bg-surface flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-mint-surface text-mint-wellness flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">biotech</span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-on-surface block">Quest Diagnostics</span>
+<span class="font-caption text-caption text-slate-subtext">Comprehensive Metabolic, Lipid Panel (2024)</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-white text-mint-wellness font-caption text-caption">Verified</span>
+</div>
+<!-- Source 2: LabCorp -->
+<div class="p-3 rounded-lg bg-surface flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-mint-surface text-mint-wellness flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">science</span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-on-surface block">LabCorp Clinical Network</span>
+<span class="font-caption text-caption text-slate-subtext">CBC with Differential, Vitamin D (2024)</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-white text-mint-wellness font-caption text-caption">Verified</span>
+</div>
+<!-- Source 3: Epic MyChart -->
+<div class="p-3 rounded-lg bg-surface flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-ai-purple-surface text-ai-purple flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">lan</span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-on-surface block">Epic MyChart FHIR Link</span>
+<span class="font-caption text-caption text-slate-subtext">Sutter Health Care Continuity API</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-white text-ai-purple font-caption text-caption">Live R4</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Privacy Audit & Export Protocol Bar -->
+<div class="mt-8 p-6 rounded-xl bg-surface-white shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[20px]">fingerprint</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">Zero-Knowledge Patient Identity Guarantee</h4>
+<p class="font-caption text-caption text-slate-subtext">Demographic fields are hashed locally before transport. Access logs are immutable on your device partition.</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="font-mono text-caption text-slate-subtext">SHA-256: 7f8b9...c31d</span>
+<button class="px-4 py-2 rounded-lg bg-surface hover:bg-surface-container text-on-surface font-label-sm text-label-sm transition-colors" type="button">
+        Audit Ledger
+      </button>
+</div>
+</div>
+</div>
+<script>
+  // Simple interactive feedback for action buttons
+  document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const originalText = btn.innerHTML;
+        if (btn.innerText.includes('Share Encrypted')) {
+          btn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">sync</span> Generating Token...';
+          setTimeout(() => {
+            btn.innerHTML = '<span class="material-symbols-outlined text-[18px]">check</span> Token Generated';
+            setTimeout(() => { btn.innerHTML = originalText; }, 2500);
+          }, 800);
+        } else if (btn.innerText.includes('Download Medical ID')) {
+          btn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-pulse">downloading</span> Preparing PDF...';
+          setTimeout(() => {
+            btn.innerHTML = '<span class="material-symbols-outlined text-[18px]">task_alt</span> Download Complete';
+            setTimeout(() => { btn.innerHTML = originalText; }, 2500);
+          }, 1000);
+        }
+      });
+    });
+  });
+</script></main>
+</div>
+<script src="/stitch-runtime.js"></script></body></html>

@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HealthMemory 360 - Patient Dashboard</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#0F172A",
+            "teal-accent": "#14B8A6",
+            "teal-dark": "#0D9488",
+            "teal-subtle": "#F0FDFA",
+            "ai-purple": "#8B5CF6",
+            "ai-purple-surface": "#F5F3FF",
+            "ai-purple-border": "#DDD6FE",
+            "mint-wellness": "#10B981",
+            "mint-surface": "#ECFDF5",
+            "slate-body": "#334155",
+            "slate-subtext": "#64748B",
+            "border-subtle": "#E2E8F0",
+            "canvas-light": "#F8FAFC",
+            "surface-white": "#FFFFFF",
+            "status-warning": "#F59E0B"
+          },
+          fontFamily: {
+            sans: ["Inter", "sans-serif"],
+            display: ["Manrope", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    body {
+      font-family: 'Inter', sans-serif;
+      overscroll-behavior: none;
+    }
+    .font-display {
+      font-family: 'Manrope', sans-serif;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F1F5F9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 9999px;
+    }
+  </style>
+<meta content="web_dashboard" name="shell-type"/></head>
+<body class="bg-canvas-light text-slate-body antialiased flex min-h-screen">
+<!-- Left Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-screen w-72 bg-surface-white border-r border-border-subtle z-50 flex flex-col justify-between select-none">
+<div class="flex flex-col">
+<!-- Logo Header with Clinical Cross Mark -->
+<div class="h-20 flex items-center px-6 border-b border-border-subtle/60 gap-3">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-accent to-secondary flex items-center justify-center text-white shadow-sm ring-2 ring-teal-accent/20">
+<span class="material-symbols-outlined text-[24px]">local_hospital</span>
+</div>
+<div class="flex flex-col">
+<span class="font-display font-bold text-lg text-slate-900 tracking-tight leading-tight">HealthMemory <span class="text-teal-accent">360</span></span>
+<span class="text-[11px] font-medium text-slate-subtext tracking-wider uppercase">Longitudinal Health</span>
+</div>
+</div>
+<!-- Main Navigation -->
+<div class="px-4 pt-5">
+<p class="px-3 pb-2 text-[11px] font-bold text-slate-400 tracking-wider uppercase">Clinical Overview</p>
+<nav class="flex flex-col gap-1">
+<!-- Active Dashboard Pill -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl bg-slate-900 text-white font-medium text-sm shadow-sm transition-all group" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-teal-accent group-hover:scale-125 transition-transform"></span>
+<span class="material-symbols-outlined text-[20px] text-teal-accent">grid_view</span>
+<span class="flex-1">Dashboard</span>
+<span class="text-[10px] font-semibold bg-slate-800 text-slate-300 px-2 py-0.5 rounded-md">Live</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-medium text-sm transition-colors" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+<span class="material-symbols-outlined text-[20px] text-slate-400">folder_shared</span>
+<span>Medical Records</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-medium text-sm transition-colors" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+<span class="material-symbols-outlined text-[20px] text-slate-400">timeline</span>
+<span>Health Timeline</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-medium text-sm transition-colors" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+<span class="material-symbols-outlined text-[20px] text-slate-400">compare_arrows</span>
+<span>Report Comparison</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-medium text-sm transition-colors" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+<span class="material-symbols-outlined text-[20px] text-slate-400">vital_signs</span>
+<span>Physical Health</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-medium text-sm transition-colors" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+<span class="material-symbols-outlined text-[20px] text-slate-400">directions_run</span>
+<span>Fitness</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-medium text-sm transition-colors" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+<span class="material-symbols-outlined text-[20px] text-slate-400">psychology</span>
+<span>Mental Wellness</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-medium text-sm transition-colors" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+<span class="material-symbols-outlined text-[20px] text-slate-400">restaurant</span>
+<span>Nutrition</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-medium text-sm transition-colors" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+<span class="material-symbols-outlined text-[20px] text-slate-400">assignment</span>
+<span>Doctor Brief</span>
+</a>
+</nav>
+</div>
+</div>
+<!-- Bottom Settings / Preferences -->
+<div class="p-4 border-t border-border-subtle bg-slate-50/70">
+<p class="px-3 pb-2 text-[11px] font-bold text-slate-400 tracking-wider uppercase">Settings &amp; Access</p>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-white text-sm font-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px] text-slate-400">account_circle</span>
+<span>Profile</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-white text-sm font-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px] text-slate-400">shield_lock</span>
+<span>Privacy &amp; Security</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-white text-sm font-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px] text-slate-400">settings</span>
+<span>Preferences</span>
+</a>
+</nav>
+</div>
+</aside>
+<!-- Main Content Wrap -->
+<div class="pl-72 flex-1 flex flex-col min-h-screen">
+<!-- Top Bar -->
+<header class="sticky top-0 h-20 bg-surface-white/95 backdrop-blur-md border-b border-border-subtle z-40 px-8 flex items-center justify-between">
+<!-- Search with ⌘K shortcut -->
+<div class="relative w-full max-w-lg">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3.5 text-slate-400 text-[20px] pointer-events-none">search</span>
+<input class="w-full h-11 pl-11 pr-14 bg-slate-100/70 hover:bg-slate-100 text-slate-900 placeholder:text-slate-400 text-sm rounded-xl border border-transparent focus:border-teal-accent focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-accent/20 transition-all" placeholder="Search records, biomarkers, medications..." type="text"/>
+<kbd class="absolute right-3.5 px-2 py-0.5 text-[11px] font-semibold text-slate-500 bg-white border border-slate-200 rounded shadow-sm">⌘K</kbd>
+</div>
+</div>
+<!-- Right Header Actions -->
+<div class="flex items-center gap-4">
+<!-- Distinct 'Ask HealthMemory' Action Pill -->
+<a class="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-ai-purple-surface border border-ai-purple-border text-ai-purple hover:bg-ai-purple hover:text-white transition-all text-xs font-semibold shadow-xs" href="#">
+<span class="material-symbols-outlined text-[16px]">spark</span>
+<span>Ask HealthMemory</span>
+</a>
+<!-- Notification Bell -->
+<button class="relative p-2.5 rounded-xl text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition-colors" type="button">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-red-500 ring-2 ring-white"></span>
+</button>
+<div class="h-6 w-px bg-border-subtle"></div>
+<!-- Alex Morgan Avatar + Caption -->
+<div class="flex items-center gap-3 cursor-pointer p-1 rounded-xl hover:bg-slate-50 transition-colors">
+<img alt="Alex Morgan" class="w-10 h-10 rounded-full object-cover ring-2 ring-teal-accent/30 shadow-xs" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUbmr_rpFPZ6ytLhagmZveMZEVNxwcGQfXA3ifdFaK5ltw_u6PjDkyl5tcRRmd9odkIW4Xr0WPSiX_UQd1_y4bjj66gy64vMvMa0LeV7ep9G_tHh51RAeEMwV4OIpr1fCDD6Fa6NORiyiOGm7jvqgMOD6KbKUFtiFTsnXgAwu-iqwlhlvEJIaT4g3B6VChUM4KNjR2Ddyj83dd2wKfbHoTv8jTVOVlMM8qvTy5Hg"/>
+<div class="flex flex-col text-left">
+<span class="font-display font-semibold text-sm text-slate-900 leading-tight">Alex Morgan</span>
+<span class="text-[11px] font-medium text-slate-subtext">Patient Portal</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Body Container -->
+<main class="flex-1 p-8 max-w-7xl w-full mx-auto space-y-6"><div class="flex flex-col w-full">
+<!-- Page Context & Status Strip -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-lg mb-space-2xl">
+<div class="flex flex-col gap-space-xs max-w-3xl">
+<div class="flex items-center gap-space-sm mb-space-xs">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-ai-purple-surface text-on-tertiary-container font-caption text-caption uppercase tracking-wider">
+<span class="material-symbols-outlined text-[14px]">tune</span>
+          Pipeline Orchestrator
+        </span>
+<span class="text-slate-subtext font-caption text-caption">FHIR v4.0.1 Protocol</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Care Preferences &amp; Connected Integrations</h1>
+<p class="font-body-md text-body-md text-slate-subtext">Configure automated diagnostic pipelines, wearable telemetry sync, and clinical reporting preferences.</p>
+</div>
+<!-- Global Quick Actions -->
+<div class="flex items-center gap-space-sm">
+<button class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-surface-white hover:bg-surface-container-low text-slate-body font-label-md text-label-md shadow-sm transition-all" onclick="syncAllIntegrations(this)">
+<span class="material-symbols-outlined text-[18px] text-teal-accent" id="sync-icon">sync</span>
+<span>Sync All Feeds</span>
+</button>
+<button class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-secondary text-on-secondary font-label-md text-label-md hover:opacity-90 shadow-sm transition-all">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span>Add Integration</span>
+</button>
+</div>
+</div>
+<!-- Main Bento Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Left Column: Connected Devices & Diagnostics (7 cols) -->
+<div class="lg:col-span-7 flex flex-col gap-space-lg">
+<!-- Section Header -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed">
+<span class="material-symbols-outlined text-[18px]">hub</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Connected Devices &amp; Diagnostic Portals</h2>
+<p class="font-caption text-caption text-slate-subtext">5 pipelines registered · 4 active telemetry nodes</p>
+</div>
+</div>
+<span class="font-caption text-caption text-teal-accent font-semibold px-2 py-0.5 rounded-full bg-teal-subtle">All Endpoints Secure</span>
+</div>
+<!-- Card: Apple HealthKit -->
+<div class="p-space-lg rounded-xl bg-surface-white shadow-sm flex flex-col gap-space-md hover:shadow-md transition-shadow relative overflow-hidden group">
+<div class="flex items-start justify-between gap-space-md">
+<div class="flex items-start gap-3.5">
+<div class="w-12 h-12 rounded-xl bg-status-urgent-surface flex items-center justify-center text-status-urgent shadow-xs">
+<span class="material-symbols-outlined text-[26px]">favorite</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Apple HealthKit</h3>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-mint-surface text-mint-wellness font-caption text-caption font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-mint-wellness animate-pulse"></span>
+                  Live Sync Active
+                </span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-subtext">Continuous background sync · iPhone 15 Pro &amp; Watch Ultra 2</p>
+</div>
+</div>
+<span class="font-caption text-caption text-slate-subtext px-2 py-1 rounded-md bg-surface-container-low">Last sync: 12m ago</span>
+</div>
+<!-- Telemetry Streams -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
+<div class="p-2.5 rounded-lg bg-surface-container-lowest flex flex-col">
+<span class="font-caption text-caption text-slate-subtext">Activity</span>
+<span class="font-label-md text-label-md text-on-surface">Steps (8,412)</span>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-lowest flex flex-col">
+<span class="font-caption text-caption text-slate-subtext">Resting Pulse</span>
+<span class="font-label-md text-label-md text-on-surface">54 bpm</span>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-lowest flex flex-col">
+<span class="font-caption text-caption text-slate-subtext">Cardio Output</span>
+<span class="font-label-md text-label-md text-on-surface">48.2 VO2 Max</span>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-lowest flex flex-col">
+<span class="font-caption text-caption text-slate-subtext">Rest Cycle</span>
+<span class="font-label-md text-label-md text-on-surface">REM / Deep Stages</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-2">
+<div class="flex items-center gap-1.5 text-slate-subtext font-caption text-caption">
+<span class="material-symbols-outlined text-[15px] text-teal-accent">verified_user</span>
+<span>AES-256 Client-Side Enclave</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-slate-body font-label-sm text-label-sm transition-colors">Configure Data Streams</button>
+<button class="px-3 py-1.5 rounded-lg bg-status-urgent-surface text-status-urgent hover:bg-status-urgent/10 font-label-sm text-label-sm transition-colors">Disconnect</button>
+</div>
+</div>
+</div>
+<!-- Card: Oura Ring Gen 3 -->
+<div class="p-space-lg rounded-xl bg-surface-white shadow-sm flex flex-col gap-space-md hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between gap-space-md">
+<div class="flex items-start gap-3.5">
+<div class="w-12 h-12 rounded-xl bg-primary-container flex items-center justify-center text-teal-glow shadow-xs">
+<span class="material-symbols-outlined text-[24px]">bedtime</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Oura Ring Gen 3</h3>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-mint-surface text-mint-wellness font-caption text-caption font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-mint-wellness"></span>
+                  Connected
+                </span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-subtext">Sleep architecture, Heart Rate Variability (HRV), Readiness Index</p>
+</div>
+</div>
+<span class="font-caption text-caption text-slate-subtext px-2 py-1 rounded-md bg-surface-container-low">Last sync: 7h ago</span>
+</div>
+<div class="flex items-center justify-between bg-surface-container-lowest p-3 rounded-lg">
+<div class="flex items-center gap-4">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-slate-subtext">Sleep Score</span>
+<span class="font-headline-sm text-headline-sm text-teal-dark font-bold">88 <span class="font-caption text-caption text-slate-subtext">Optimal</span></span>
+</div>
+<div class="h-6 w-px bg-surface-container"></div>
+<div class="flex flex-col">
+<span class="font-caption text-caption text-slate-subtext">Average HRV</span>
+<span class="font-headline-sm text-headline-sm text-teal-dark font-bold">64 <span class="font-caption text-caption text-slate-subtext">ms</span></span>
+</div>
+<div class="h-6 w-px bg-surface-container"></div>
+<div class="flex flex-col">
+<span class="font-caption text-caption text-slate-subtext">Skin Temp Delta</span>
+<span class="font-headline-sm text-headline-sm text-teal-dark font-bold">-0.2°<span class="font-caption text-caption text-slate-subtext">F</span></span>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-slate-body font-label-sm text-label-sm transition-colors">Sync Now</button>
+</div>
+</div>
+<!-- Card: Withings Scale & BPM -->
+<div class="p-space-lg rounded-xl bg-surface-white shadow-sm flex flex-col gap-space-md hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between gap-space-md">
+<div class="flex items-start gap-3.5">
+<div class="w-12 h-12 rounded-xl bg-surface-variant flex items-center justify-center text-on-surface shadow-xs">
+<span class="material-symbols-outlined text-[24px]">monitor_heart</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Withings BPM &amp; Body+ Scale</h3>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-mint-surface text-mint-wellness font-caption text-caption font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-mint-wellness"></span>
+                  Active
+                </span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-subtext">Daily blood pressure telemetry &amp; bio-impedance composition</p>
+</div>
+</div>
+<span class="font-caption text-caption text-slate-subtext px-2 py-1 rounded-md bg-surface-container-low">Today 7:15 AM</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-slate-body bg-surface-container-lowest p-3 rounded-lg">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-teal-accent text-[20px]">scale</span>
+<span>Recorded <strong>164.8 lbs</strong> (14.2% Body Fat) · Blood Pressure <strong>118/78 mmHg</strong></span>
+</div>
+<span class="font-caption text-caption text-mint-wellness font-semibold">Normalized Baseline</span>
+</div>
+</div>
+<!-- Section Sub-Header: Clinical Laboratory Integrations -->
+<div class="pt-2">
+<h3 class="font-label-md text-label-md text-slate-subtext uppercase tracking-wider mb-2">Hospital &amp; Laboratory Hubs (SMART on FHIR)</h3>
+<!-- Grid of Lab Portals -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- LabCorp Card -->
+<div class="p-space-md rounded-xl bg-surface-white shadow-sm flex flex-col justify-between gap-3">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-lg bg-teal-subtle text-teal-dark flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">science</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">LabCorp Portal</h4>
+<span class="font-caption text-caption text-mint-wellness font-semibold">Connected via SMART on FHIR</span>
+</div>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-slate-subtext">Auto-fetches new diagnostic panels (CBC, Lipid, Metabolic, Endocrine).</p>
+<div class="flex items-center justify-between pt-1">
+<span class="font-caption text-caption text-slate-subtext">Next scan: 04:00 AM</span>
+<button class="px-2.5 py-1 rounded bg-surface-container-low hover:bg-surface-container text-slate-body font-label-sm text-label-sm transition-colors">Manage Auth</button>
+</div>
+</div>
+<!-- Quest Diagnostics Card -->
+<div class="p-space-md rounded-xl bg-surface-white shadow-sm flex flex-col justify-between gap-3 bg-gradient-to-br from-surface-white via-surface-white to-surface-container-low">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-lg bg-surface-container text-slate-body flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">biotech</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Quest Diagnostics</h4>
+<span class="font-caption text-caption text-status-warning font-semibold">Ready to Connect</span>
+</div>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-slate-subtext">Direct patient bridge for routine bloodwork and specialized pathology panels.</p>
+<div class="flex items-center justify-end pt-1">
+<button class="w-full inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-secondary text-on-secondary font-label-sm text-label-sm hover:opacity-95 transition-opacity shadow-xs">
+<span class="material-symbols-outlined text-[16px]">link</span>
+<span>+ Link Account</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Clinical Units, AI Directives & Storage (5 cols) -->
+<div class="lg:col-span-5 flex flex-col gap-space-lg">
+<!-- Section 2: Clinical Units & Measurement System -->
+<div class="p-space-lg rounded-xl bg-surface-white shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed">
+<span class="material-symbols-outlined text-[18px]">straighten</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Clinical Units &amp; Standards</h2>
+<p class="font-caption text-caption text-slate-subtext">Global measurement ontology settings</p>
+</div>
+</div>
+<!-- Unit System Choice -->
+<div class="flex flex-col gap-space-xs pt-1">
+<label class="font-label-md text-label-md text-on-surface">Primary System</label>
+<div class="grid grid-cols-2 gap-2 bg-surface-container-low p-1 rounded-xl">
+<button class="py-2 px-3 rounded-lg font-label-sm text-label-sm transition-all bg-surface-white text-on-surface shadow-xs font-semibold text-center" onclick="selectSystem(this)">
+              US Standard (lbs, in)
+            </button>
+<button class="py-2 px-3 rounded-lg font-label-sm text-label-sm transition-all text-slate-subtext hover:text-on-surface text-center" onclick="selectSystem(this)">
+              Metric (kg, cm)
+            </button>
+</div>
+</div>
+<!-- Glycemic & Lipids Units -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-on-surface">Glycemic &amp; Lipid Concentration</label>
+<span class="font-caption text-caption text-teal-accent">Standardized</span>
+</div>
+<div class="grid grid-cols-2 gap-2 bg-surface-container-low p-1 rounded-xl">
+<button class="py-2 px-3 rounded-lg font-label-sm text-label-sm transition-all bg-surface-white text-teal-dark shadow-xs font-semibold flex items-center justify-center gap-1.5" onclick="selectConcentration(this)">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span>mg/dL (Selected)</span>
+</button>
+<button class="py-2 px-3 rounded-lg font-label-sm text-label-sm transition-all text-slate-subtext hover:text-on-surface flex items-center justify-center" onclick="selectConcentration(this)">
+<span>mmol/L</span>
+</button>
+</div>
+</div>
+<!-- Reference Interval Standard -->
+<div class="flex flex-col gap-1.5 bg-surface-container-lowest p-3.5 rounded-xl">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Reference Interval Baseline</span>
+<span class="font-caption text-caption px-2 py-0.5 rounded bg-surface-container text-slate-body font-mono">LOINC 2.76</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-subtext">Using US Clinical Standard intervals calibrated by age (38), assigned sex, and longitudinal median.</p>
+</div>
+</div>
+<!-- Section 3: AI Assistant & Notification Directives -->
+<div class="p-space-lg rounded-xl bg-surface-white shadow-sm flex flex-col gap-space-md relative overflow-hidden">
+<!-- Subtle AI Purple glow accent -->
+<div class="absolute -top-16 -right-16 w-36 h-36 bg-ai-purple/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-ai-purple-surface flex items-center justify-center text-ai-purple">
+<span class="material-symbols-outlined text-[18px]">psychology</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">AI Assistant &amp; Clinical Reasoning</h2>
+<p class="font-caption text-caption text-slate-subtext">Directives governing automatic synthesis</p>
+</div>
+</div>
+<!-- Interactive Directives Toggles -->
+<div class="flex flex-col gap-space-sm pt-1">
+<!-- Toggle 1 -->
+<div class="flex items-start justify-between gap-space-md p-3 rounded-xl bg-surface-container-lowest hover:bg-surface-container-low/70 transition-colors cursor-pointer" onclick="toggleSwitch('toggle-biomarker')">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Biomarker Delta Proactive Alerts</span>
+<span class="font-body-sm text-body-sm text-slate-subtext">Trigger synthesized briefing when any lab marker changes &gt;10% between comparative tests.</span>
+</div>
+<div class="relative inline-flex items-center cursor-pointer shrink-0 mt-1">
+<input checked="" class="sr-only peer" id="toggle-biomarker" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-teal-accent"></div>
+</div>
+</div>
+<!-- Toggle 2 -->
+<div class="flex items-start justify-between gap-space-md p-3 rounded-xl bg-surface-container-lowest hover:bg-surface-container-low/70 transition-colors cursor-pointer" onclick="toggleSwitch('toggle-previsit')">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Pre-Visit Brief Generation Prompt</span>
+<span class="font-body-sm text-body-sm text-slate-subtext">Auto-compile 1-page clinical brief 3 days before scheduled specialist or PCP consultations.</span>
+</div>
+<div class="relative inline-flex items-center cursor-pointer shrink-0 mt-1">
+<input checked="" class="sr-only peer" id="toggle-previsit" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-teal-accent"></div>
+</div>
+</div>
+</div>
+<!-- Tone Directive Selector -->
+<div class="flex flex-col gap-space-xs pt-1">
+<label class="font-label-md text-label-md text-on-surface">AI Synthesis Tone &amp; Complexity</label>
+<div class="grid grid-cols-2 gap-2">
+<div class="p-3 rounded-xl bg-ai-purple-surface/60 cursor-pointer flex flex-col gap-1 ring-1 ring-ai-purple transition-all" id="tone-clinical" onclick="selectTone('clinical')">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-ai-purple font-bold">Clinical / Evidence</span>
+<span class="material-symbols-outlined text-[16px] text-ai-purple" id="icon-clinical">check_circle</span>
+</div>
+<span class="font-caption text-caption text-slate-subtext">Includes medical taxonomy, specific delta ratios, LOINC codes, and p-values.</span>
+</div>
+<div class="p-3 rounded-xl bg-surface-container-lowest hover:bg-surface-container-low cursor-pointer flex flex-col gap-1 transition-all" id="tone-simplified" onclick="selectTone('simplified')">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-slate-body font-semibold">Simplified / Plain</span>
+<span class="material-symbols-outlined text-[16px] text-transparent" id="icon-simplified">check_circle</span>
+</div>
+<span class="font-caption text-caption text-slate-subtext">Everyday vocabulary, intuitive comparisons, and conversational summaries.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 4: Backup & Offline Vault -->
+<div class="p-space-lg rounded-xl bg-surface-white shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-surface-variant flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[18px]">encrypted</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Backup &amp; Offline Vault</h2>
+<p class="font-caption text-caption text-slate-subtext">Zero-knowledge local cache &amp; record redundancy</p>
+</div>
+</div>
+<!-- Local Cache Toggle -->
+<div class="flex items-center justify-between gap-space-md bg-surface-container-lowest p-3.5 rounded-xl">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md text-on-surface">Encrypted Local Browser Cache</span>
+<span class="material-symbols-outlined text-[14px] text-teal-accent">lock</span>
+</div>
+<span class="font-caption text-caption text-slate-subtext">Permits viewing past lab sheets when offline via IndexedDB encryption.</span>
+</div>
+<div class="relative inline-flex items-center cursor-pointer shrink-0">
+<input checked="" class="sr-only peer" id="toggle-cache" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-teal-accent"></div>
+</div>
+</div>
+<!-- Storage Progress & Detail -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center text-body-sm font-body-sm">
+<span class="text-slate-subtext">Storage Consumption</span>
+<span class="font-semibold text-on-surface font-mono">42.8 MB / 5.0 GB</span>
+</div>
+<!-- Bar Track -->
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-teal-accent rounded-full transition-all duration-500" style="width: 8.5%;"></div>
+</div>
+<div class="flex items-center justify-between text-caption font-caption text-slate-subtext pt-1">
+<span>Indexed records: 124 documents</span>
+<button class="text-status-urgent hover:underline" onclick="purgeCache()">Purge Local Cache</button>
+</div>
+</div>
+<!-- Vault Export Action -->
+<div class="pt-2 flex items-center justify-between">
+<span class="font-caption text-caption text-slate-subtext">Last cloud backup: 44 mins ago</span>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-sm text-label-sm transition-colors">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>Export Encrypted Vault</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Global Notification Toast (Hidden by default, triggered on save/sync) -->
+<div class="fixed bottom-6 right-6 flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-on-primary shadow-xl opacity-0 translate-y-4 pointer-events-none transition-all duration-300 z-50" id="toast">
+<span class="material-symbols-outlined text-teal-accent text-[20px]">check_circle</span>
+<span class="font-body-sm text-body-sm" id="toast-text">Preferences updated successfully.</span>
+</div>
+</div>
+<script>
+  function toggleSwitch(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.checked = !el.checked;
+      showToast('Preference updated.');
+    }
+  }
+
+  function selectTone(tone) {
+    const clinicalCard = document.getElementById('tone-clinical');
+    const simplifiedCard = document.getElementById('tone-simplified');
+    const iconClin = document.getElementById('icon-clinical');
+    const iconSimp = document.getElementById('icon-simplified');
+
+    if (tone === 'clinical') {
+      clinicalCard.className = 'p-3 rounded-xl bg-ai-purple-surface/60 cursor-pointer flex flex-col gap-1 ring-1 ring-ai-purple transition-all';
+      simplifiedCard.className = 'p-3 rounded-xl bg-surface-container-lowest hover:bg-surface-container-low cursor-pointer flex flex-col gap-1 transition-all';
+      iconClin.className = 'material-symbols-outlined text-[16px] text-ai-purple';
+      iconSimp.className = 'material-symbols-outlined text-[16px] text-transparent';
+      showToast('AI Tone set to Clinical / Evidence-based.');
+    } else {
+      simplifiedCard.className = 'p-3 rounded-xl bg-ai-purple-surface/60 cursor-pointer flex flex-col gap-1 ring-1 ring-ai-purple transition-all';
+      clinicalCard.className = 'p-3 rounded-xl bg-surface-container-lowest hover:bg-surface-container-low cursor-pointer flex flex-col gap-1 transition-all';
+      iconSimp.className = 'material-symbols-outlined text-[16px] text-ai-purple';
+      iconClin.className = 'material-symbols-outlined text-[16px] text-transparent';
+      showToast('AI Tone set to Simplified / Layperson.');
+    }
+  }
+
+  function selectSystem(btn) {
+    const container = btn.parentElement;
+    const buttons = container.querySelectorAll('button');
+    buttons.forEach(b => {
+      b.className = 'py-2 px-3 rounded-lg font-label-sm text-label-sm transition-all text-slate-subtext hover:text-on-surface text-center';
+    });
+    btn.className = 'py-2 px-3 rounded-lg font-label-sm text-label-sm transition-all bg-surface-white text-on-surface shadow-xs font-semibold text-center';
+    showToast('Measurement system updated.');
+  }
+
+  function selectConcentration(btn) {
+    const container = btn.parentElement;
+    const buttons = container.querySelectorAll('button');
+    buttons.forEach(b => {
+      b.className = 'py-2 px-3 rounded-lg font-label-sm text-label-sm transition-all text-slate-subtext hover:text-on-surface flex items-center justify-center';
+      b.innerHTML = '<span>mmol/L</span>';
+    });
+    btn.className = 'py-2 px-3 rounded-lg font-label-sm text-label-sm transition-all bg-surface-white text-teal-dark shadow-xs font-semibold flex items-center justify-center gap-1.5';
+    btn.innerHTML = '<span class="material-symbols-outlined text-[14px]">check_circle</span><span>mg/dL (Selected)</span>';
+    showToast('Concentration metric set to mg/dL.');
+  }
+
+  function syncAllIntegrations(btn) {
+    const icon = document.getElementById('sync-icon');
+    icon.classList.add('animate-spin');
+    showToast('Connecting to diagnostic gateways & telemetry feeds...');
+    setTimeout(() => {
+      icon.classList.remove('animate-spin');
+      showToast('All 5 pipelines synchronized successfully.');
+    }, 1400);
+  }
+
+  function purgeCache() {
+    if (confirm('Clear local encrypted IndexedDB cache? Medical data remains safe in secure cloud.')) {
+      showToast('Local browser cache cleared.');
+    }
+  }
+
+  function showToast(msg) {
+    const toast = document.getElementById('toast');
+    const toastText = document.getElementById('toast-text');
+    toastText.textContent = msg;
+    toast.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+    setTimeout(() => {
+      toast.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+    }, 2800);
+  }
+</script></main>
+</div>
+<script src="/stitch-runtime.js"></script></body></html>

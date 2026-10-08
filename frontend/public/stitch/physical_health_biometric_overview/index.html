@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"on-secondary":"#ffffff","surface-dim":"#cbdbf5","mint-surface":"#ECFDF5","teal-accent":"#14B8A6","secondary-fixed":"#89f5e7","on-background":"#0b1c30","status-urgent-surface":"#FEF2F2","surface-container-lowest":"#ffffff","outline-variant":"#c6c6cd","on-surface":"#0b1c30","surface-container":"#e5eeff","outline":"#76777d","error":"#ba1a1a","inverse-primary":"#bec6e0","on-primary":"#ffffff","border-dark":"#1E293B","secondary":"#006a61","border-subtle":"#E2E8F0","on-primary-fixed-variant":"#3f465c","primary":"#000000","secondary-container":"#86f2e4","on-tertiary-container":"#9466ff","tertiary":"#000000","on-error-container":"#93000a","on-tertiary-fixed-variant":"#5516be","ai-purple-border":"#DDD6FE","slate-body":"#334155","primary-fixed":"#dae2fd","surface-bright":"#f8f9ff","on-primary-fixed":"#131b2e","primary-fixed-dim":"#bec6e0","on-secondary-fixed-variant":"#005049","on-secondary-container":"#006f66","ai-purple":"#8B5CF6","inverse-surface":"#213145","canvas-light":"#F8FAFC","tertiary-container":"#23005c","surface-tint":"#565e74","tertiary-fixed":"#e9ddff","inverse-on-surface":"#eaf1ff","on-tertiary":"#ffffff","ai-purple-surface":"#F5F3FF","teal-glow":"#2DD4BF","secondary-fixed-dim":"#6bd8cb","error-container":"#ffdad6","slate-subtext":"#64748B","surface-variant":"#d3e4fe","on-primary-container":"#7c839b","status-urgent-border":"#FECACA","status-urgent":"#EF4444","on-error":"#ffffff","surface-white":"#FFFFFF","mint-border":"#A7F3D0","surface-container-low":"#eff4ff","tertiary-fixed-dim":"#d0bcff","on-secondary-fixed":"#00201d","surface-container-highest":"#d3e4fe","background":"#f8f9ff","status-warning":"#F59E0B","mint-wellness":"#10B981","surface-dark":"#0B1324","surface-container-high":"#dce9ff","surface":"#f8f9ff","on-tertiary-fixed":"#23005c","on-surface-variant":"#45464d","primary-container":"#131b2e"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"gutter-sm":"1rem","space-lg":"1.5rem","margin-desktop":"3rem","gutter":"1.5rem","space-md":"1rem","space-2xl":"3rem","margin":"2rem","margin-mobile":"1rem","space-sm":"0.5rem","gutter-lg":"2rem","space-xs":"0.25rem","space-xl":"2rem"},"fontFamily":{"metric-display-sm":["Manrope"],"display-lg":["Manrope"],"display-lg-mobile":["Manrope"],"headline-md":["Manrope"],"metric-display":["Manrope"],"body-md":["Inter"],"headline-lg":["Manrope"],"headline-lg-mobile":["Manrope"],"caption":["Inter"],"metric-unit":["Inter"],"label-md":["Inter"],"body-lg":["Inter"],"label-sm":["Inter"],"headline-sm":["Manrope"],"body-sm":["Inter"]},"fontSize":{"metric-display-sm":["1.5rem",{"lineHeight":"1.75rem","letterSpacing":"-0.02em","fontWeight":"700"}],"display-lg":["3rem",{"lineHeight":"3.5rem","letterSpacing":"-0.025em","fontWeight":"700"}],"display-lg-mobile":["2.25rem",{"lineHeight":"2.75rem","letterSpacing":"-0.02em","fontWeight":"700"}],"headline-md":["1.5rem",{"lineHeight":"2rem","letterSpacing":"-0.015em","fontWeight":"600"}],"metric-display":["2.25rem",{"lineHeight":"2.5rem","letterSpacing":"-0.03em","fontWeight":"700"}],"body-md":["1rem",{"lineHeight":"1.5rem","letterSpacing":"0em","fontWeight":"400"}],"headline-lg":["2rem",{"lineHeight":"2.5rem","letterSpacing":"-0.02em","fontWeight":"700"}],"headline-lg-mobile":["1.625rem",{"lineHeight":"2.125rem","letterSpacing":"-0.015em","fontWeight":"700"}],"caption":["0.6875rem",{"lineHeight":"0.875rem","letterSpacing":"0.03em","fontWeight":"500"}],"metric-unit":["0.875rem",{"lineHeight":"1.25rem","letterSpacing":"0em","fontWeight":"500"}],"label-md":["0.875rem",{"lineHeight":"1.25rem","letterSpacing":"0.01em","fontWeight":"600"}],"body-lg":["1.125rem",{"lineHeight":"1.75rem","letterSpacing":"-0.01em","fontWeight":"400"}],"label-sm":["0.75rem",{"lineHeight":"1rem","letterSpacing":"0.02em","fontWeight":"600"}],"headline-sm":["1.125rem",{"lineHeight":"1.625rem","letterSpacing":"-0.01em","fontWeight":"600"}],"body-sm":["0.875rem",{"lineHeight":"1.25rem","letterSpacing":"0em","fontWeight":"400"}]}}}};</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest border-r border-border-subtle z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.02)]"><div class="flex flex-col"><div class="h-20 px-space-lg flex items-center gap-space-sm border-b border-border-subtle"><div class="w-10 h-10 rounded-xl bg-teal-accent/10 flex items-center justify-center text-teal-accent"><span class="material-symbols-outlined text-[24px]">vital_signs</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight">HealthMemory</span><span class="font-caption text-caption text-teal-accent uppercase tracking-wider font-semibold">360 Clinical OS</span></div></div><div class="px-space-md py-space-sm"><div class="px-space-sm py-space-xs"><span class="font-caption text-caption text-slate-subtext uppercase tracking-wider font-semibold">Clinical Core</span></div><nav class="flex flex-col gap-space-xs" data-active-classes="bg-teal-accent/10 text-teal-accent font-semibold rounded-lg"><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-slate-body hover:bg-surface-container-low hover:text-on-surface transition-colors font-label-md text-label-md" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span>Dashboard</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-slate-body hover:bg-surface-container-low hover:text-on-surface transition-colors font-label-md text-label-md" data-path="medical-records" href="#"><span class="material-symbols-outlined text-[20px]">folder_managed</span><span>Medical Records</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-slate-body hover:bg-surface-container-low hover:text-on-surface transition-colors font-label-md text-label-md" data-path="health-timeline" href="#"><span class="material-symbols-outlined text-[20px]">timeline</span><span>Health Timeline</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-slate-body hover:bg-surface-container-low hover:text-on-surface transition-colors font-label-md text-label-md" data-path="report-comparison" href="#"><span class="material-symbols-outlined text-[20px]">compare</span><span>Report Comparison</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-slate-body hover:bg-surface-container-low hover:text-on-surface transition-colors font-label-md text-label-md" data-path="doctor-brief" href="#"><span class="material-symbols-outlined text-[20px]">clinical_notes</span><span>Doctor Brief</span></a></nav><div class="px-space-sm pt-space-md pb-space-xs"><span class="font-caption text-caption text-slate-subtext uppercase tracking-wider font-semibold">Biomarkers &amp; Care</span></div><nav class="flex flex-col gap-space-xs" data-active-classes="bg-teal-accent/10 text-teal-accent font-semibold rounded-lg"><a aria-current="page" class="flex items-center gap-space-sm px-space-sm py-space-xs transition-colors bg-teal-accent/10 text-teal-accent font-semibold rounded-lg" data-path="physical-health" href="#"><span class="material-symbols-outlined text-[20px]">ecg_heart</span><span>Physical Health</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-slate-body hover:bg-surface-container-low hover:text-on-surface transition-colors font-label-md text-label-md" data-path="fitness" href="#"><span class="material-symbols-outlined text-[20px]">exercise</span><span>Fitness</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-slate-body hover:bg-surface-container-low hover:text-on-surface transition-colors font-label-md text-label-md" data-path="mental-wellness" href="#"><span class="material-symbols-outlined text-[20px]">psychology</span><span>Mental Wellness</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-slate-body hover:bg-surface-container-low hover:text-on-surface transition-colors font-label-md text-label-md" data-path="nutrition" href="#"><span class="material-symbols-outlined text-[20px]">nutrition</span><span>Nutrition</span></a></nav></div></div><div class="p-space-md border-t border-border-subtle bg-surface-white"><div class="px-space-sm pb-space-xs"><span class="font-caption text-caption text-slate-subtext uppercase tracking-wider font-semibold">System</span></div><nav class="flex flex-col gap-space-xs" data-active-classes="bg-surface-container text-on-surface font-semibold rounded-lg"><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-slate-body hover:bg-surface-container-low hover:text-on-surface transition-colors font-label-md text-label-md" data-path="profile" href="#"><span class="material-symbols-outlined text-[18px]">badge</span><span>Profile</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-slate-body hover:bg-surface-container-low hover:text-on-surface transition-colors font-label-md text-label-md" data-path="privacy-security" href="#"><span class="material-symbols-outlined text-[18px]">shield_lock</span><span>Privacy &amp; Security</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-slate-body hover:bg-surface-container-low hover:text-on-surface transition-colors font-label-md text-label-md" data-path="preferences" href="#"><span class="material-symbols-outlined text-[18px]">tune</span><span>Preferences</span></a></nav></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-20 bg-surface-white/95 backdrop-blur-md border-b border-border-subtle z-40 flex items-center justify-between px-space-lg shadow-[0_1px_4px_rgba(15,23,42,0.03)]"><div class="flex items-center flex-1 max-w-xl"><div class="relative w-full"><span class="material-symbols-outlined absolute left-space-md top-1/2 -translate-y-1/2 text-slate-subtext text-[20px]">search</span><input class="w-full h-11 pl-11 pr-space-md bg-canvas-light border border-border-subtle rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-slate-subtext focus:outline-none focus:border-teal-accent transition-colors" placeholder="Search records, biomarkers, medications... [⌘K]" type="text"/><div class="absolute right-space-sm top-1/2 -translate-y-1/2 flex items-center pointer-events-none"><kbd class="px-1.5 py-0.5 rounded bg-surface-white border border-border-subtle text-slate-subtext font-caption text-caption">⌘K</kbd></div></div></div><div class="flex items-center gap-space-md ml-space-lg"><button class="flex items-center gap-space-xs px-space-md py-2 rounded-full bg-ai-purple-surface border border-ai-purple-border text-ai-purple font-label-sm text-label-sm hover:bg-ai-purple/10 transition-colors shadow-[0_0_12px_rgba(139,92,246,0.12)]"><span class="material-symbols-outlined text-[16px]">auto_awesome</span><span>Ask HealthMemory</span></button><button class="relative p-2 rounded-lg text-slate-body hover:bg-surface-container-low hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-status-urgent ring-2 ring-surface-white"></span></button><div class="h-8 w-px bg-border-subtle"></div><div class="flex items-center gap-space-sm pl-space-xs"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col text-left"><span class="font-label-sm text-label-sm text-on-surface font-semibold leading-tight">Alex Morgan</span><span class="font-caption text-caption text-slate-subtext leading-tight">Patient Portal • #HM-8842</span></div></div></div></header><main class="relative pt-20 w-full min-h-screen bg-canvas-light px-space-lg py-space-lg"><div class="flex flex-col w-full">
+<!-- Dynamic Top Bar & Controls -->
+<div class="flex flex-col xl:flex-row xl:items-end justify-between gap-space-lg mb-space-lg">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-sm text-teal-accent">
+<span class="material-symbols-outlined text-[20px]">monitor_heart</span>
+<span class="font-caption text-caption tracking-wider uppercase font-semibold">Biometrics &amp; Physiological Architecture</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Physical Health</h1>
+<p class="font-body-md text-body-md text-slate-subtext">Recorded biometric values and longitudinal physiological biomarkers for Alex Morgan (24 yrs).</p>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm">
+<!-- Time Range Selector Tabs -->
+<div class="flex items-center p-1 bg-surface-container-low rounded-xl">
+<button class="px-3.5 py-1.5 rounded-lg font-label-sm text-label-sm text-slate-subtext hover:text-on-surface transition-colors" type="button">7D</button>
+<button class="px-3.5 py-1.5 rounded-lg font-label-sm text-label-sm bg-surface-white text-on-surface shadow-sm font-semibold transition-all" type="button">30D</button>
+<button class="px-3.5 py-1.5 rounded-lg font-label-sm text-label-sm text-slate-subtext hover:text-on-surface transition-colors" type="button">6M</button>
+<button class="px-3.5 py-1.5 rounded-lg font-label-sm text-label-sm text-slate-subtext hover:text-on-surface transition-colors" type="button">1Y</button>
+<button class="px-3.5 py-1.5 rounded-lg font-label-sm text-label-sm text-slate-subtext hover:text-on-surface transition-colors" type="button">All Time</button>
+</div>
+<!-- Action Buttons -->
+<button class="flex items-center gap-space-xs px-space-md py-2.5 rounded-lg bg-surface-white hover:bg-surface-container-low text-on-surface font-label-md text-label-md transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px] text-slate-subtext">file_download</span>
+<span>Export Biometrics CSV</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-lg py-2.5 rounded-lg bg-teal-accent hover:bg-secondary text-on-secondary font-label-md text-label-md transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>Log Vital</span>
+</button>
+</div>
+</div>
+<!-- Non-Diagnostic Clinical Boundary Callout Banner -->
+<div class="flex items-start gap-space-md p-space-md rounded-xl bg-surface-white shadow-sm mb-space-xl">
+<div class="w-9 h-9 rounded-lg bg-teal-accent/10 flex items-center justify-center text-teal-accent shrink-0">
+<span class="material-symbols-outlined text-[20px]">verified</span>
+</div>
+<div class="flex flex-col lg:flex-row lg:items-center justify-between w-full gap-space-sm">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Non-Diagnostic Verification Protocol</span>
+<p class="font-body-sm text-body-sm text-slate-subtext">
+          Recorded biometric values. HealthMemory 360 visualizes trends from linked devices and verified clinical reports for patient insight and collaborative doctor consultation.
+        </p>
+</div>
+<div class="flex items-center gap-space-xs text-slate-subtext shrink-0">
+<span class="w-2 h-2 rounded-full bg-mint-wellness animate-pulse"></span>
+<span class="font-caption text-caption uppercase tracking-wider font-semibold">Continuous Engine Sync</span>
+</div>
+</div>
+</div>
+<!-- 4-Column KPI Biomarker Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-lg mb-space-xl">
+<!-- KPI 1: Weight & BMI -->
+<div class="flex flex-col justify-between p-space-lg rounded-2xl bg-surface-white shadow-sm transition-all hover:shadow-md">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-sm text-label-sm text-slate-subtext uppercase tracking-wider">Weight &amp; BMI</span>
+<span class="material-symbols-outlined text-[20px] text-teal-accent">scale</span>
+</div>
+<div class="flex items-baseline gap-space-xs mb-1">
+<span class="font-metric-display text-metric-display text-on-surface tracking-tight">72.0</span>
+<span class="font-metric-unit text-metric-unit text-slate-subtext">kg</span>
+</div>
+<div class="flex items-center gap-space-xs mb-space-md">
+<span class="px-2 py-0.5 rounded-full bg-mint-surface text-mint-wellness font-caption text-caption font-semibold">BMI 24.8 Normal</span>
+<span class="font-caption text-caption text-slate-subtext">-1.2 kg in 30d</span>
+</div>
+</div>
+<div class="pt-space-sm bg-canvas-light/60 p-space-sm rounded-lg flex flex-col gap-1">
+<div class="flex justify-between items-center text-slate-subtext font-caption text-caption">
+<span>Body Fat: <strong class="text-on-surface">16.4%</strong></span>
+<span>Muscle: <strong class="text-on-surface">58.2 kg</strong></span>
+</div>
+<div class="flex items-center gap-1 text-slate-subtext font-caption text-caption truncate mt-1">
+<span class="material-symbols-outlined text-[14px] text-teal-accent">bluetooth_connected</span>
+<span>Withings Body+ • 7:15 AM Today</span>
+</div>
+</div>
+</div>
+<!-- KPI 2: Blood Pressure & Resting HR -->
+<div class="flex flex-col justify-between p-space-lg rounded-2xl bg-surface-white shadow-sm transition-all hover:shadow-md">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-sm text-label-sm text-slate-subtext uppercase tracking-wider">Blood Pressure</span>
+<span class="material-symbols-outlined text-[20px] text-teal-accent">favorite</span>
+</div>
+<div class="flex items-baseline gap-space-xs mb-1">
+<span class="font-metric-display text-metric-display text-on-surface tracking-tight">128/82</span>
+<span class="font-metric-unit text-metric-unit text-slate-subtext">mmHg</span>
+</div>
+<div class="flex items-center gap-space-xs mb-space-md">
+<span class="px-2 py-0.5 rounded-full bg-mint-surface text-mint-wellness font-caption text-caption font-semibold">Normotensive</span>
+<span class="font-caption text-caption text-slate-subtext">Resting: 64 bpm</span>
+</div>
+</div>
+<div class="pt-space-sm bg-canvas-light/60 p-space-sm rounded-lg flex flex-col gap-1">
+<div class="flex justify-between items-center text-slate-subtext font-caption text-caption">
+<span>30-Day Mean: <strong class="text-on-surface">126/80 mmHg</strong></span>
+</div>
+<div class="flex items-center gap-1 text-slate-subtext font-caption text-caption truncate mt-1">
+<span class="material-symbols-outlined text-[14px] text-teal-accent">sensors</span>
+<span>Omron Evolv Synced • 2d ago</span>
+</div>
+</div>
+</div>
+<!-- KPI 3: Fasting Blood Glucose -->
+<div class="flex flex-col justify-between p-space-lg rounded-2xl bg-surface-white shadow-sm transition-all hover:shadow-md">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-sm text-label-sm text-slate-subtext uppercase tracking-wider">Fasting Glucose</span>
+<span class="material-symbols-outlined text-[20px] text-status-warning">bloodtype</span>
+</div>
+<div class="flex items-baseline gap-space-xs mb-1">
+<span class="font-metric-display text-metric-display text-on-surface tracking-tight">108</span>
+<span class="font-metric-unit text-metric-unit text-slate-subtext">mg/dL</span>
+</div>
+<div class="flex items-center gap-space-xs mb-space-md">
+<span class="px-2 py-0.5 rounded-full bg-status-urgent-surface text-status-warning font-caption text-caption font-semibold">Borderline High</span>
+<span class="font-caption text-caption text-mint-wellness font-semibold">-10 vs Jun</span>
+</div>
+</div>
+<div class="pt-space-sm bg-canvas-light/60 p-space-sm rounded-lg flex flex-col gap-1">
+<div class="flex justify-between items-center text-slate-subtext font-caption text-caption">
+<span>Target Range: <strong class="text-on-surface">70–99 mg/dL</strong></span>
+</div>
+<div class="flex items-center gap-1 text-slate-subtext font-caption text-caption truncate mt-1">
+<span class="material-symbols-outlined text-[14px] text-teal-accent">biotech</span>
+<span>LabCorp Draw &amp; Dexcom G7</span>
+</div>
+</div>
+</div>
+<!-- KPI 4: Total Cholesterol & Lipid Panel -->
+<div class="flex flex-col justify-between p-space-lg rounded-2xl bg-surface-white shadow-sm transition-all hover:shadow-md">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-sm text-label-sm text-slate-subtext uppercase tracking-wider">Lipid Profile</span>
+<span class="material-symbols-outlined text-[20px] text-ai-purple">water_drop</span>
+</div>
+<div class="flex items-baseline gap-space-xs mb-1">
+<span class="font-metric-display text-metric-display text-on-surface tracking-tight">212</span>
+<span class="font-metric-unit text-metric-unit text-slate-subtext">mg/dL</span>
+</div>
+<div class="flex items-center gap-space-xs mb-space-md">
+<span class="px-2 py-0.5 rounded-full bg-mint-surface text-mint-wellness font-caption text-caption font-semibold">Improving Trajectory</span>
+<span class="font-caption text-caption text-slate-subtext">-18 mg/dL</span>
+</div>
+</div>
+<div class="pt-space-sm bg-canvas-light/60 p-space-sm rounded-lg flex flex-col gap-1">
+<div class="flex justify-between items-center text-slate-subtext font-caption text-caption">
+<span>LDL 126 • HDL 62 • Trig 132</span>
+</div>
+<div class="flex items-center gap-1 text-slate-subtext font-caption text-caption truncate mt-1">
+<span class="material-symbols-outlined text-[14px] text-teal-accent">medication</span>
+<span>Atorvastatin 20mg adherent</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Content 2-Column Grid (2/3 and 1/3) -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-xl">
+<!-- Left Area (2/3) -->
+<div class="lg:col-span-2 flex flex-col gap-space-xl">
+<!-- Interactive Longitudinal Chart Container -->
+<div class="p-space-xl rounded-2xl bg-surface-white shadow-sm flex flex-col gap-space-lg">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
+<div class="flex flex-col">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Longitudinal Biomarker Trajectory</h2>
+<span class="font-caption text-caption text-slate-subtext">Six-month physiological trend progression (Jun 2025 - Aug 2026)</span>
+</div>
+<!-- Chart Metric Toggles -->
+<div class="flex flex-wrap items-center gap-1.5 p-1 bg-surface-container-low rounded-xl">
+<button class="px-3 py-1 rounded-lg font-label-sm text-label-sm bg-teal-accent text-on-secondary shadow-sm font-semibold transition-all" type="button">Glucose</button>
+<button class="px-3 py-1 rounded-lg font-label-sm text-label-sm text-slate-subtext hover:text-on-surface transition-colors" type="button">Systolic BP</button>
+<button class="px-3 py-1 rounded-lg font-label-sm text-label-sm text-slate-subtext hover:text-on-surface transition-colors" type="button">Weight</button>
+<button class="px-3 py-1 rounded-lg font-label-sm text-label-sm text-slate-subtext hover:text-on-surface transition-colors" type="button">Cholesterol</button>
+</div>
+</div>
+<!-- SVG Longitudinal Chart -->
+<div class="relative w-full h-72 pt-space-sm">
+<svg class="w-full h-full overflow-visible" fill="none" preserveaspectratio="none" viewbox="0 0 760 240">
+<!-- Grid Lines -->
+<line class="text-surface-container" stroke="currentColor" stroke-dasharray="3 3" x1="40" x2="740" y1="20" y2="20"></line>
+<line class="text-surface-container" stroke="currentColor" stroke-dasharray="3 3" x1="40" x2="740" y1="80" y2="80"></line>
+<line class="text-surface-container" stroke="currentColor" stroke-dasharray="3 3" x1="40" x2="740" y1="140" y2="140"></line>
+<line class="text-surface-container" stroke="currentColor" x1="40" x2="740" y1="200" y2="200"></line>
+<!-- Optimal Clinical Target Corridor Shading (70 - 99 mg/dL Zone) -->
+<rect class="text-mint-surface/80" fill="currentColor" height="60" rx="4" width="700" x="40" y="130"></rect>
+<text class="text-mint-wellness font-caption text-caption font-semibold" fill="currentColor" x="50" y="146">Optimal Target Corridor (70–99 mg/dL)</text>
+<!-- Y Axis Labels -->
+<text class="text-slate-subtext font-caption text-caption" fill="currentColor" x="10" y="24">140</text>
+<text class="text-slate-subtext font-caption text-caption" fill="currentColor" x="10" y="84">120</text>
+<text class="text-slate-subtext font-caption text-caption" fill="currentColor" x="10" y="144">100</text>
+<text class="text-slate-subtext font-caption text-caption" fill="currentColor" x="10" y="204">80</text>
+<!-- Gradient Area beneath Trendline -->
+<defs>
+<lineargradient id="vitalTealGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#14B8A6" stop-opacity="0.25"></stop>
+<stop offset="100%" stop-color="#14B8A6" stop-opacity="0.0"></stop>
+</lineargradient>
+</defs>
+<path d="M 60 48 Q 180 62 300 86 T 520 120 T 720 138 L 720 200 L 60 200 Z" fill="url(#vitalTealGradient)"></path>
+<!-- Trend Curve -->
+<path d="M 60 48 Q 180 62 300 86 T 520 120 T 720 138" stroke="#14B8A6" stroke-linecap="round" stroke-width="3"></path>
+<!-- Historical Data Points -->
+<!-- June Baseline: 126 mg/dL -->
+<circle cx="60" cy="48" fill="#FFFFFF" r="5" stroke="#14B8A6" stroke-width="2.5"></circle>
+<!-- July: 120 mg/dL -->
+<circle cx="200" cy="65" fill="#FFFFFF" r="4" stroke="#14B8A6" stroke-width="2"></circle>
+<!-- August: 116 mg/dL -->
+<circle cx="340" cy="94" fill="#FFFFFF" r="4" stroke="#14B8A6" stroke-width="2"></circle>
+<!-- September: 112 mg/dL -->
+<circle cx="480" cy="116" fill="#FFFFFF" r="4" stroke="#14B8A6" stroke-width="2"></circle>
+<!-- Current (August 2026): 108 mg/dL -->
+<circle cx="720" cy="138" fill="#14B8A6" r="6" stroke="#FFFFFF" stroke-width="2"></circle>
+<!-- Active Data Marker Callout -->
+<g transform="translate(640, 78)">
+<rect fill="#0B1324" height="42" rx="8" width="105"></rect>
+<text class="font-caption text-caption font-bold" fill="#89f5e7" x="10" y="18">108 mg/dL</text>
+<text class="font-caption text-caption" fill="#E2E8F0" x="10" y="32">Aug 2026 • Verified</text>
+</g>
+<!-- X Axis Timeline Labels -->
+<text class="text-slate-subtext font-caption text-caption" fill="currentColor" text-anchor="middle" x="60" y="222">Jun 25</text>
+<text class="text-slate-subtext font-caption text-caption" fill="currentColor" text-anchor="middle" x="200" y="222">Jul 25</text>
+<text class="text-slate-subtext font-caption text-caption" fill="currentColor" text-anchor="middle" x="340" y="222">Sep 25</text>
+<text class="text-slate-subtext font-caption text-caption" fill="currentColor" text-anchor="middle" x="480" y="222">Nov 25</text>
+<text class="text-slate-subtext font-caption text-caption" fill="currentColor" text-anchor="middle" x="600" y="222">May 26</text>
+<text class="text-on-surface font-caption text-caption font-bold" fill="currentColor" text-anchor="middle" x="720" y="222">Aug 26</text>
+</svg>
+</div>
+<div class="flex flex-wrap items-center justify-between pt-space-sm bg-surface-container-low/50 p-space-md rounded-xl text-slate-subtext font-caption text-caption">
+<div class="flex items-center gap-space-lg">
+<span class="flex items-center gap-1.5"><span class="w-3 h-0.5 bg-teal-accent inline-block"></span> Biomarker Mean Trend</span>
+<span class="flex items-center gap-1.5"><span class="w-3 h-3 bg-mint-surface border border-mint-wellness inline-block rounded-sm"></span> Verified Normal Band</span>
+</div>
+<span class="text-on-surface font-semibold">Decoupled clinical rate: -3.2% per bi-monthly cycle</span>
+</div>
+</div>
+<!-- Detailed Log Table -->
+<div class="p-space-xl rounded-2xl bg-surface-white shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Recent Physical Health Measurements</h2>
+<span class="font-caption text-caption text-slate-subtext">Synchronized logs cross-referenced with medical record indices</span>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-low text-slate-subtext font-caption text-caption font-semibold">5 Validated Entries</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-low/70 text-slate-subtext font-label-sm text-label-sm">
+<th class="py-3 px-space-md rounded-l-lg">Metric</th>
+<th class="py-3 px-space-md">Recorded Value</th>
+<th class="py-3 px-space-md">Reference Range</th>
+<th class="py-3 px-space-md">Delta Variance</th>
+<th class="py-3 px-space-md">Capture Device / Source</th>
+<th class="py-3 px-space-md rounded-r-lg">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-body-sm font-body-sm">
+<!-- Row 1: Glucose -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3.5 px-space-md font-semibold text-on-surface">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-status-warning"></span>
+<span>Fasting Blood Glucose</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md font-bold text-on-surface">108 <span class="font-normal text-slate-subtext text-xs">mg/dL</span></td>
+<td class="py-3.5 px-space-md text-slate-subtext">70 – 99 mg/dL</td>
+<td class="py-3.5 px-space-md text-mint-wellness font-semibold">-10 mg/dL</td>
+<td class="py-3.5 px-space-md text-slate-subtext">LabCorp Blood Draw</td>
+<td class="py-3.5 px-space-md">
+<span class="px-2 py-0.5 rounded-full bg-status-urgent-surface text-status-warning font-caption text-caption font-semibold">Borderline High</span>
+</td>
+</tr>
+<!-- Row 2: Blood Pressure -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3.5 px-space-md font-semibold text-on-surface">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-mint-wellness"></span>
+<span>Blood Pressure</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md font-bold text-on-surface">128/82 <span class="font-normal text-slate-subtext text-xs">mmHg</span></td>
+<td class="py-3.5 px-space-md text-slate-subtext">&lt; 120/80 mmHg</td>
+<td class="py-3.5 px-space-md text-slate-subtext font-semibold">+2 / +2 mmHg</td>
+<td class="py-3.5 px-space-md text-slate-subtext">Omron Evolv Cuff</td>
+<td class="py-3.5 px-space-md">
+<span class="px-2 py-0.5 rounded-full bg-mint-surface text-mint-wellness font-caption text-caption font-semibold">Normotensive</span>
+</td>
+</tr>
+<!-- Row 3: Weight -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3.5 px-space-md font-semibold text-on-surface">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-teal-accent"></span>
+<span>Body Weight</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md font-bold text-on-surface">72.0 <span class="font-normal text-slate-subtext text-xs">kg</span></td>
+<td class="py-3.5 px-space-md text-slate-subtext">68.0 – 76.0 kg</td>
+<td class="py-3.5 px-space-md text-mint-wellness font-semibold">-1.2 kg</td>
+<td class="py-3.5 px-space-md text-slate-subtext">Withings Body+</td>
+<td class="py-3.5 px-space-md">
+<span class="px-2 py-0.5 rounded-full bg-mint-surface text-mint-wellness font-caption text-caption font-semibold">Healthy BMI</span>
+</td>
+</tr>
+<!-- Row 4: SpO2 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3.5 px-space-md font-semibold text-on-surface">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-mint-wellness"></span>
+<span>SpO2 Blood Oxygen</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md font-bold text-on-surface">98 <span class="font-normal text-slate-subtext text-xs">%</span></td>
+<td class="py-3.5 px-space-md text-slate-subtext">95 – 100 %</td>
+<td class="py-3.5 px-space-md text-slate-subtext font-semibold">0% (Stable)</td>
+<td class="py-3.5 px-space-md text-slate-subtext">Apple HealthKit</td>
+<td class="py-3.5 px-space-md">
+<span class="px-2 py-0.5 rounded-full bg-mint-surface text-mint-wellness font-caption text-caption font-semibold">Optimal</span>
+</td>
+</tr>
+<!-- Row 5: Body Temperature -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3.5 px-space-md font-semibold text-on-surface">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-mint-wellness"></span>
+<span>Body Temperature</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md font-bold text-on-surface">98.4 <span class="font-normal text-slate-subtext text-xs">°F</span></td>
+<td class="py-3.5 px-space-md text-slate-subtext">97.8 – 99.1 °F</td>
+<td class="py-3.5 px-space-md text-slate-subtext font-semibold">-0.1 °F</td>
+<td class="py-3.5 px-space-md text-slate-subtext">Withings Thermo</td>
+<td class="py-3.5 px-space-md">
+<span class="px-2 py-0.5 rounded-full bg-mint-surface text-mint-wellness font-caption text-caption font-semibold">Afebrile</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Right Area (1/3) -->
+<div class="flex flex-col gap-space-xl">
+<!-- Clinical Trajectory AI Summary Card -->
+<div class="p-space-xl rounded-2xl bg-surface-white shadow-sm flex flex-col justify-between">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs px-2.5 py-1 rounded-full bg-ai-purple-surface text-ai-purple">
+<span class="material-symbols-outlined text-[16px]">auto_awesome</span>
+<span class="font-caption text-caption font-bold uppercase tracking-wider">AI Clinical Trajectory</span>
+</div>
+<span class="font-caption text-caption text-slate-subtext">v3.4 Engine</span>
+</div>
+<div class="flex flex-col gap-space-sm">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Metabolic Trajectory Review</h3>
+<p class="font-body-sm text-body-sm text-slate-body leading-relaxed">
+              Alex, your metabolic markers indicate a consistent positive trajectory over the last 60 days following cardiovascular lifestyle changes.
+            </p>
+<p class="font-body-sm text-body-sm text-slate-body leading-relaxed">
+              Consider reviewing the continued glucose variance with <strong>Dr. Marcus Vance</strong> during your upcoming comprehensive clinical consultation.
+            </p>
+</div>
+<!-- Citation Chips -->
+<div class="flex flex-wrap gap-1.5 pt-space-xs">
+<span class="px-2 py-1 rounded bg-surface-container-low text-slate-subtext font-caption text-caption flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">attachment</span> LabCorp Panel #882
+            </span>
+<span class="px-2 py-1 rounded bg-surface-container-low text-slate-subtext font-caption text-caption flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">attachment</span> Dexcom 14d CGM Mean
+            </span>
+</div>
+</div>
+<div class="pt-space-lg">
+<button class="w-full flex items-center justify-center gap-space-xs py-3 rounded-lg bg-surface-dark hover:bg-slate-body text-surface-white font-label-md text-label-md transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">clinical_notes</span>
+<span>View in Doctor Brief</span>
+</button>
+</div>
+</div>
+<!-- Connected Diagnostic Devices -->
+<div class="p-space-xl rounded-2xl bg-surface-white shadow-sm flex flex-col gap-space-lg">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Connected Devices</h3>
+<span class="font-caption text-caption text-slate-subtext">IoT Hardware &amp; Diagnostic Telemetry</span>
+</div>
+<button class="text-teal-accent hover:text-secondary font-label-sm text-label-sm font-semibold transition-colors" type="button">
+            + Manage
+          </button>
+</div>
+<div class="flex flex-col gap-space-md">
+<!-- Device 1: Apple HealthKit -->
+<div class="flex items-center justify-between p-space-md rounded-xl bg-surface-container-low/50">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-white flex items-center justify-center text-on-surface shadow-sm">
+<span class="material-symbols-outlined text-[20px]">watch</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Apple HealthKit</span>
+<span class="font-caption text-caption text-slate-subtext">Active Sync • 12m ago</span>
+</div>
+</div>
+<span class="w-2.5 h-2.5 rounded-full bg-mint-wellness"></span>
+</div>
+<!-- Device 2: Omron Cuff -->
+<div class="flex items-center justify-between p-space-md rounded-xl bg-surface-container-low/50">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-white flex items-center justify-center text-on-surface shadow-sm">
+<span class="material-symbols-outlined text-[20px]">vital_signs</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Omron Evolv Cuff</span>
+<span class="font-caption text-caption text-slate-subtext">Active Sync • 2d ago</span>
+</div>
+</div>
+<span class="w-2.5 h-2.5 rounded-full bg-mint-wellness"></span>
+</div>
+<!-- Device 3: Withings Scale -->
+<div class="flex items-center justify-between p-space-md rounded-xl bg-surface-container-low/50">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-white flex items-center justify-center text-on-surface shadow-sm">
+<span class="material-symbols-outlined text-[20px]">scale</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Withings Body+</span>
+<span class="font-caption text-caption text-slate-subtext">Active Sync • Today 7:15 AM</span>
+</div>
+</div>
+<span class="w-2.5 h-2.5 rounded-full bg-mint-wellness"></span>
+</div>
+<!-- Device 4: LabCorp Diagnostics -->
+<div class="flex items-center justify-between p-space-md rounded-xl bg-surface-container-low/50">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-white flex items-center justify-center text-teal-accent shadow-sm">
+<span class="material-symbols-outlined text-[20px]">local_hospital</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">LabCorp Clinical Link</span>
+<span class="font-caption text-caption text-slate-subtext">FHIR Verified • Aug 12</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-white text-teal-accent font-caption text-caption font-semibold shadow-sm">Linked</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></main></div><script src="/stitch-runtime.js"></script></body></html>

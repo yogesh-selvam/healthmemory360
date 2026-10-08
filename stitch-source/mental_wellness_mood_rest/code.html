@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HealthMemory 360 - Patient Dashboard</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#0F172A",
+            "teal-accent": "#14B8A6",
+            "teal-dark": "#0D9488",
+            "teal-subtle": "#F0FDFA",
+            "ai-purple": "#8B5CF6",
+            "ai-purple-surface": "#F5F3FF",
+            "ai-purple-border": "#DDD6FE",
+            "mint-wellness": "#10B981",
+            "mint-surface": "#ECFDF5",
+            "slate-body": "#334155",
+            "slate-subtext": "#64748B",
+            "border-subtle": "#E2E8F0",
+            "canvas-light": "#F8FAFC",
+            "surface-white": "#FFFFFF",
+            "status-warning": "#F59E0B"
+          },
+          fontFamily: {
+            sans: ["Inter", "sans-serif"],
+            display: ["Manrope", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    body {
+      font-family: 'Inter', sans-serif;
+      overscroll-behavior: none;
+    }
+    .font-display {
+      font-family: 'Manrope', sans-serif;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F1F5F9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 9999px;
+    }
+  </style>
+<meta content="web_dashboard" name="shell-type"/></head>
+<body class="bg-canvas-light text-slate-body antialiased flex min-h-screen">
+<!-- Left Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-screen w-72 bg-surface-white border-r border-border-subtle z-50 flex flex-col justify-between select-none">
+<div class="flex flex-col">
+<!-- Logo Header with Clinical Cross Mark -->
+<div class="h-20 flex items-center px-6 border-b border-border-subtle/60 gap-3">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-accent to-secondary flex items-center justify-center text-white shadow-sm ring-2 ring-teal-accent/20">
+<span class="material-symbols-outlined text-[24px]">local_hospital</span>
+</div>
+<div class="flex flex-col">
+<span class="font-display font-bold text-lg text-slate-900 tracking-tight leading-tight">HealthMemory <span class="text-teal-accent">360</span></span>
+<span class="text-[11px] font-medium text-slate-subtext tracking-wider uppercase">Longitudinal Health</span>
+</div>
+</div>
+<!-- Main Navigation -->
+<div class="px-4 pt-5">
+<p class="px-3 pb-2 text-[11px] font-bold text-slate-400 tracking-wider uppercase">Clinical Overview</p>
+<nav class="flex flex-col gap-1">
+<!-- Active Dashboard Pill -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl bg-slate-900 text-white font-medium text-sm shadow-sm transition-all group" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-teal-accent group-hover:scale-125 transition-transform"></span>
+<span class="material-symbols-outlined text-[20px] text-teal-accent">grid_view</span>
+<span class="flex-1">Dashboard</span>
+<span class="text-[10px] font-semibold bg-slate-800 text-slate-300 px-2 py-0.5 rounded-md">Live</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-medium text-sm transition-colors" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+<span class="material-symbols-outlined text-[20px] text-slate-400">folder_shared</span>
+<span>Medical Records</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-medium text-sm transition-colors" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+<span class="material-symbols-outlined text-[20px] text-slate-400">timeline</span>
+<span>Health Timeline</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-medium text-sm transition-colors" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+<span class="material-symbols-outlined text-[20px] text-slate-400">compare_arrows</span>
+<span>Report Comparison</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-medium text-sm transition-colors" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+<span class="material-symbols-outlined text-[20px] text-slate-400">vital_signs</span>
+<span>Physical Health</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-medium text-sm transition-colors" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+<span class="material-symbols-outlined text-[20px] text-slate-400">directions_run</span>
+<span>Fitness</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-medium text-sm transition-colors" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+<span class="material-symbols-outlined text-[20px] text-slate-400">psychology</span>
+<span>Mental Wellness</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-medium text-sm transition-colors" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+<span class="material-symbols-outlined text-[20px] text-slate-400">restaurant</span>
+<span>Nutrition</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-medium text-sm transition-colors" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+<span class="material-symbols-outlined text-[20px] text-slate-400">assignment</span>
+<span>Doctor Brief</span>
+</a>
+</nav>
+</div>
+</div>
+<!-- Bottom Settings / Preferences -->
+<div class="p-4 border-t border-border-subtle bg-slate-50/70">
+<p class="px-3 pb-2 text-[11px] font-bold text-slate-400 tracking-wider uppercase">Settings &amp; Access</p>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-white text-sm font-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px] text-slate-400">account_circle</span>
+<span>Profile</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-white text-sm font-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px] text-slate-400">shield_lock</span>
+<span>Privacy &amp; Security</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-white text-sm font-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px] text-slate-400">settings</span>
+<span>Preferences</span>
+</a>
+</nav>
+</div>
+</aside>
+<!-- Main Content Wrap -->
+<div class="pl-72 flex-1 flex flex-col min-h-screen">
+<!-- Top Bar -->
+<header class="sticky top-0 h-20 bg-surface-white/95 backdrop-blur-md border-b border-border-subtle z-40 px-8 flex items-center justify-between">
+<!-- Search with ⌘K shortcut -->
+<div class="relative w-full max-w-lg">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3.5 text-slate-400 text-[20px] pointer-events-none">search</span>
+<input class="w-full h-11 pl-11 pr-14 bg-slate-100/70 hover:bg-slate-100 text-slate-900 placeholder:text-slate-400 text-sm rounded-xl border border-transparent focus:border-teal-accent focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-accent/20 transition-all" placeholder="Search records, biomarkers, medications..." type="text"/>
+<kbd class="absolute right-3.5 px-2 py-0.5 text-[11px] font-semibold text-slate-500 bg-white border border-slate-200 rounded shadow-sm">⌘K</kbd>
+</div>
+</div>
+<!-- Right Header Actions -->
+<div class="flex items-center gap-4">
+<!-- Distinct 'Ask HealthMemory' Action Pill -->
+<a class="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-ai-purple-surface border border-ai-purple-border text-ai-purple hover:bg-ai-purple hover:text-white transition-all text-xs font-semibold shadow-xs" href="#">
+<span class="material-symbols-outlined text-[16px]">spark</span>
+<span>Ask HealthMemory</span>
+</a>
+<!-- Notification Bell -->
+<button class="relative p-2.5 rounded-xl text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition-colors" type="button">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-red-500 ring-2 ring-white"></span>
+</button>
+<div class="h-6 w-px bg-border-subtle"></div>
+<!-- Alex Morgan Avatar + Caption -->
+<div class="flex items-center gap-3 cursor-pointer p-1 rounded-xl hover:bg-slate-50 transition-colors">
+<img alt="Alex Morgan" class="w-10 h-10 rounded-full object-cover ring-2 ring-teal-accent/30 shadow-xs" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUbmr_rpFPZ6ytLhagmZveMZEVNxwcGQfXA3ifdFaK5ltw_u6PjDkyl5tcRRmd9odkIW4Xr0WPSiX_UQd1_y4bjj66gy64vMvMa0LeV7ep9G_tHh51RAeEMwV4OIpr1fCDD6Fa6NORiyiOGm7jvqgMOD6KbKUFtiFTsnXgAwu-iqwlhlvEJIaT4g3B6VChUM4KNjR2Ddyj83dd2wKfbHoTv8jTVOVlMM8qvTy5Hg"/>
+<div class="flex flex-col text-left">
+<span class="font-display font-semibold text-sm text-slate-900 leading-tight">Alex Morgan</span>
+<span class="text-[11px] font-medium text-slate-subtext">Patient Portal</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Body Container -->
+<main class="flex-1 p-8 max-w-7xl w-full mx-auto space-y-6"><div class="flex flex-col w-full space-y-8">
+<!-- Top Title & Interval Navigation Bar -->
+<section class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-mint-surface text-mint-wellness">
+<span class="material-symbols-outlined text-[16px]">psychology</span>
+</span>
+<span class="font-caption text-caption text-slate-subtext tracking-wider uppercase font-semibold">Subjective Biomarker Synthesis</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Mental Wellness &amp; Rest</h1>
+<p class="font-body-md text-body-md text-slate-subtext max-w-2xl">
+        Track subjective mood, stress resilience, sleep quality, and daily energy in harmony with your physiological data.
+      </p>
+</div>
+<!-- Interval Controls & Check-in Primary Action -->
+<div class="flex flex-wrap items-center gap-3">
+<div class="flex items-center bg-surface-white rounded-xl shadow-sm px-2 py-1 gap-1 text-slate-body">
+<button aria-label="Previous week" class="p-2 hover:bg-canvas-light text-slate-subtext hover:text-primary rounded-lg transition-colors flex items-center justify-center" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<span class="font-label-md text-label-md px-3 font-semibold text-primary">This Week (Aug 10 – 16, 2026)</span>
+<button aria-label="Next week" class="p-2 hover:bg-canvas-light text-slate-subtext hover:text-primary rounded-lg transition-colors flex items-center justify-center" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+<button class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-teal-accent text-surface-white font-label-md text-label-md shadow-sm hover:opacity-95 transition-all" id="openCheckinModal" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>Check-in Today</span>
+</button>
+</div>
+</section>
+<!-- Hero: Daily Check-in Snapshot Card -->
+<section class="relative bg-surface-white rounded-xl shadow-sm p-6 lg:p-8 overflow-hidden">
+<!-- Subtle gradient backdrop highlight -->
+<div class="absolute -right-20 -top-20 w-80 h-80 bg-teal-subtle rounded-full blur-3xl pointer-events-none opacity-60"></div>
+<div class="absolute -left-20 -bottom-20 w-72 h-72 bg-ai-purple-surface rounded-full blur-3xl pointer-events-none opacity-50"></div>
+<div class="relative z-10 flex flex-col gap-6">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div>
+<span class="font-caption text-caption text-slate-subtext uppercase tracking-wider font-semibold">Today · Friday, Aug 14, 2026</span>
+<h2 class="font-headline-md text-headline-md text-primary mt-0.5">How are you feeling right now, Alex?</h2>
+</div>
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-mint-surface text-mint-wellness font-caption text-caption font-semibold">
+<span class="w-2 h-2 rounded-full bg-mint-wellness animate-pulse"></span>
+<span>Logged 2 hrs ago</span>
+</div>
+</div>
+<!-- 5 Mood Pickers -->
+<div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
+<!-- Great -->
+<button class="mood-btn flex flex-col items-center justify-center p-4 rounded-xl bg-canvas-light text-slate-body hover:bg-surface-white shadow-xs transition-all text-center group" type="button">
+<span class="text-3xl mb-1 transform group-hover:scale-110 transition-transform">😊</span>
+<span class="font-label-md text-label-md font-semibold text-primary">Great</span>
+<span class="font-caption text-caption text-slate-subtext mt-0.5">Vibrant &amp; Clear</span>
+</button>
+<!-- Good (Active) -->
+<button class="mood-btn flex flex-col items-center justify-center p-4 rounded-xl bg-surface-dark text-on-primary shadow-md transition-all text-center ring-2 ring-teal-accent" type="button">
+<span class="text-3xl mb-1">🙂</span>
+<span class="font-label-md text-label-md font-semibold text-surface-white">Good</span>
+<span class="font-caption text-caption text-teal-accent mt-0.5">Calm &amp; Focused</span>
+</button>
+<!-- Okay -->
+<button class="mood-btn flex flex-col items-center justify-center p-4 rounded-xl bg-canvas-light text-slate-body hover:bg-surface-white shadow-xs transition-all text-center group" type="button">
+<span class="text-3xl mb-1 transform group-hover:scale-110 transition-transform">😐</span>
+<span class="font-label-md text-label-md font-semibold text-primary">Okay</span>
+<span class="font-caption text-caption text-slate-subtext mt-0.5">Steady Baseline</span>
+</button>
+<!-- Difficult -->
+<button class="mood-btn flex flex-col items-center justify-center p-4 rounded-xl bg-canvas-light text-slate-body hover:bg-surface-white shadow-xs transition-all text-center group" type="button">
+<span class="text-3xl mb-1 transform group-hover:scale-110 transition-transform">😟</span>
+<span class="font-label-md text-label-md font-semibold text-primary">Difficult</span>
+<span class="font-caption text-caption text-slate-subtext mt-0.5">Heavy / Tense</span>
+</button>
+<!-- Very Difficult -->
+<button class="mood-btn flex flex-col items-center justify-center p-4 rounded-xl bg-canvas-light text-slate-body hover:bg-surface-white shadow-xs transition-all text-center group" type="button">
+<span class="text-3xl mb-1 transform group-hover:scale-110 transition-transform">😔</span>
+<span class="font-label-md text-label-md font-semibold text-primary">Very Difficult</span>
+<span class="font-caption text-caption text-slate-subtext mt-0.5">Overwhelmed</span>
+</button>
+</div>
+<!-- Micro Dimensions / Biometric Metrics Linked -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+<!-- Stress -->
+<div class="p-4 rounded-xl bg-canvas-light flex flex-col justify-between space-y-3">
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption uppercase tracking-wider text-slate-subtext font-semibold">Stress Perception</span>
+<span class="px-2 py-0.5 rounded-full bg-mint-surface text-mint-wellness font-caption text-caption font-bold">Level 2 / 5</span>
+</div>
+<div class="space-y-1.5">
+<div class="flex justify-between items-center text-primary font-label-md text-label-md">
+<span class="font-semibold">Low / Manageable</span>
+<span class="material-symbols-outlined text-mint-wellness text-[18px]">verified_user</span>
+</div>
+<!-- Visual Segment Scale -->
+<div class="flex gap-1.5 h-1.5 w-full">
+<div class="flex-1 rounded-full bg-mint-wellness"></div>
+<div class="flex-1 rounded-full bg-mint-wellness"></div>
+<div class="flex-1 rounded-full bg-slate-subtext/20"></div>
+<div class="flex-1 rounded-full bg-slate-subtext/20"></div>
+<div class="flex-1 rounded-full bg-slate-subtext/20"></div>
+</div>
+</div>
+</div>
+<!-- Energy -->
+<div class="p-4 rounded-xl bg-canvas-light flex flex-col justify-between space-y-3">
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption uppercase tracking-wider text-slate-subtext font-semibold">Physiological Energy</span>
+<span class="px-2 py-0.5 rounded-full bg-teal-subtle text-teal-accent font-caption text-caption font-bold">⚡ High</span>
+</div>
+<div class="space-y-1.5">
+<div class="flex justify-between items-center text-primary font-label-md text-label-md">
+<span class="font-semibold">Morning Workout Complete</span>
+<span class="material-symbols-outlined text-teal-accent text-[18px]">bolt</span>
+</div>
+<p class="font-caption text-caption text-slate-subtext">HRV: 64ms (Above 30-day baseline)</p>
+</div>
+</div>
+<!-- Sleep Restfulness -->
+<div class="p-4 rounded-xl bg-canvas-light flex flex-col justify-between space-y-3">
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption uppercase tracking-wider text-slate-subtext font-semibold">Sleep Restfulness</span>
+<span class="px-2 py-0.5 rounded-full bg-ai-purple-surface text-ai-purple font-caption text-caption font-bold">Oura Synced</span>
+</div>
+<div class="space-y-1.5">
+<div class="flex justify-between items-center text-primary font-label-md text-label-md">
+<span class="font-semibold">🌙 7h 12m — Restful</span>
+<span class="material-symbols-outlined text-ai-purple text-[18px]">bedtime</span>
+</div>
+<p class="font-caption text-caption text-slate-subtext">Resting Heart Rate: 52 bpm</p>
+</div>
+</div>
+</div>
+<!-- Reflection Quote Note Bar -->
+<div class="flex items-start gap-3 p-3.5 rounded-xl bg-teal-subtle text-slate-body">
+<span class="material-symbols-outlined text-teal-accent text-[20px] shrink-0 mt-0.5">format_quote</span>
+<p class="font-body-sm text-body-sm flex-1 text-slate-body">
+<span class="font-semibold text-primary">Daily Reflection:</span> “Felt steady today after morning walk and balanced breakfast. Work focus was smooth without mid-afternoon brain fog.”
+        </p>
+<button class="text-teal-accent hover:text-teal-dark font-caption text-caption font-semibold shrink-0" type="button">Edit note</button>
+</div>
+</div>
+</section>
+<!-- Main Asymmetric 2-Column Core -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- LEFT 8 COLUMNS: Longitudinal Matrix, Energy Arc, & Journal Stream -->
+<div class="lg:col-span-8 space-y-8 min-w-0">
+<!-- 7-Day Mood & Resilience Strip -->
+<section class="bg-surface-white rounded-xl shadow-sm p-6 space-y-6">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary">7-Day Resilience &amp; Sleep Matrix</h3>
+<p class="font-body-sm text-body-sm text-slate-subtext">Cross-referencing reported sentiment with sleep architecture and daily physical load.</p>
+</div>
+<div class="flex items-center gap-3 text-slate-subtext">
+<span class="flex items-center gap-1 font-caption text-caption"><span class="w-2.5 h-2.5 rounded-full bg-mint-wellness inline-block"></span> Great/Good</span>
+<span class="flex items-center gap-1 font-caption text-caption"><span class="w-2.5 h-2.5 rounded-full bg-status-warning inline-block"></span> Neutral</span>
+<span class="flex items-center gap-1 font-caption text-caption"><span class="w-2.5 h-2.5 rounded-full bg-status-urgent inline-block"></span> Stress High</span>
+</div>
+</div>
+<!-- Matrix Strip: Mon to Sun -->
+<div class="grid grid-cols-7 gap-2">
+<!-- Mon -->
+<div class="flex flex-col items-center p-3 rounded-xl bg-canvas-light space-y-2 text-center">
+<span class="font-caption text-caption uppercase text-slate-subtext font-semibold">Mon 10</span>
+<span class="text-2xl">😊</span>
+<div class="w-full bg-surface-container rounded-full h-8 flex flex-col justify-end p-0.5 overflow-hidden">
+<div class="bg-teal-accent rounded-full w-full" style="height: 85%;"></div>
+</div>
+<span class="font-caption text-caption font-semibold text-primary">7.8h</span>
+<span class="inline-block px-1.5 py-0.5 rounded text-[10px] font-medium bg-mint-surface text-mint-wellness truncate max-w-full">Rest</span>
+</div>
+<!-- Tue -->
+<div class="flex flex-col items-center p-3 rounded-xl bg-canvas-light space-y-2 text-center">
+<span class="font-caption text-caption uppercase text-slate-subtext font-semibold">Tue 11</span>
+<span class="text-2xl">😐</span>
+<div class="w-full bg-surface-container rounded-full h-8 flex flex-col justify-end p-0.5 overflow-hidden">
+<div class="bg-status-warning rounded-full w-full" style="height: 60%;"></div>
+</div>
+<span class="font-caption text-caption font-semibold text-primary">5.9h</span>
+<span class="inline-block px-1.5 py-0.5 rounded text-[10px] font-medium bg-surface-container text-slate-body truncate max-w-full">Work</span>
+</div>
+<!-- Wed -->
+<div class="flex flex-col items-center p-3 rounded-xl bg-canvas-light space-y-2 text-center">
+<span class="font-caption text-caption uppercase text-slate-subtext font-semibold">Wed 12</span>
+<span class="text-2xl">🙂</span>
+<div class="w-full bg-surface-container rounded-full h-8 flex flex-col justify-end p-0.5 overflow-hidden">
+<div class="bg-teal-accent rounded-full w-full" style="height: 75%;"></div>
+</div>
+<span class="font-caption text-caption font-semibold text-primary">7.2h</span>
+<span class="inline-block px-1.5 py-0.5 rounded text-[10px] font-medium bg-ai-purple-surface text-ai-purple truncate max-w-full">Med 15m</span>
+</div>
+<!-- Thu -->
+<div class="flex flex-col items-center p-3 rounded-xl bg-canvas-light space-y-2 text-center">
+<span class="font-caption text-caption uppercase text-slate-subtext font-semibold">Thu 13</span>
+<span class="text-2xl">😊</span>
+<div class="w-full bg-surface-container rounded-full h-8 flex flex-col justify-end p-0.5 overflow-hidden">
+<div class="bg-teal-accent rounded-full w-full" style="height: 80%;"></div>
+</div>
+<span class="font-caption text-caption font-semibold text-primary">7.5h</span>
+<span class="inline-block px-1.5 py-0.5 rounded text-[10px] font-medium bg-mint-surface text-mint-wellness truncate max-w-full">Cardio</span>
+</div>
+<!-- Fri (Today) -->
+<div class="flex flex-col items-center p-3 rounded-xl bg-surface-dark text-on-primary space-y-2 text-center ring-2 ring-teal-accent shadow-sm">
+<span class="font-caption text-caption uppercase text-teal-accent font-bold">Fri 14</span>
+<span class="text-2xl">🙂</span>
+<div class="w-full bg-slate-subtext/30 rounded-full h-8 flex flex-col justify-end p-0.5 overflow-hidden">
+<div class="bg-teal-accent rounded-full w-full" style="height: 78%;"></div>
+</div>
+<span class="font-caption text-caption font-semibold text-surface-white">7.2h</span>
+<span class="inline-block px-1.5 py-0.5 rounded text-[10px] font-medium bg-teal-accent/20 text-teal-accent truncate max-w-full">Walk</span>
+</div>
+<!-- Sat -->
+<div class="flex flex-col items-center p-3 rounded-xl bg-canvas-light/60 space-y-2 text-center opacity-70">
+<span class="font-caption text-caption uppercase text-slate-subtext font-semibold">Sat 15</span>
+<span class="text-2xl opacity-40">·</span>
+<div class="w-full bg-surface-container rounded-full h-8 flex flex-col justify-end p-0.5">
+<div class="border-b-2 border-dashed border-slate-subtext/40 w-full mb-2"></div>
+</div>
+<span class="font-caption text-caption text-slate-subtext">—</span>
+<span class="inline-block px-1 py-0.5 rounded text-[10px] text-slate-subtext">Sched</span>
+</div>
+<!-- Sun -->
+<div class="flex flex-col items-center p-3 rounded-xl bg-canvas-light/60 space-y-2 text-center opacity-70">
+<span class="font-caption text-caption uppercase text-slate-subtext font-semibold">Sun 16</span>
+<span class="text-2xl opacity-40">·</span>
+<div class="w-full bg-surface-container rounded-full h-8 flex flex-col justify-end p-0.5">
+<div class="border-b-2 border-dashed border-slate-subtext/40 w-full mb-2"></div>
+</div>
+<span class="font-caption text-caption text-slate-subtext">—</span>
+<span class="inline-block px-1 py-0.5 rounded text-[10px] text-slate-subtext">Sched</span>
+</div>
+</div>
+<!-- Biometric Correlation Insight Card -->
+<div class="flex items-start gap-3.5 p-4 rounded-xl bg-ai-purple-surface">
+<div class="w-8 h-8 rounded-lg bg-ai-purple text-surface-white flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">auto_awesome</span>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md font-semibold text-on-tertiary-fixed-variant">Sleep &amp; Mood Correlation</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-white text-ai-purple font-caption text-caption font-semibold">Confidence 94%</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-body">
+              On days with <strong class="text-primary font-semibold">&gt;7h sleep</strong>, recorded mood averaged <strong class="text-primary font-semibold">Good or Great</strong> with <span class="text-mint-wellness font-semibold">40% lower reported stress</span> compared to short-sleep cycles (&lt;6h).
+            </p>
+</div>
+</div>
+</section>
+<!-- Energy Rhythm Diurnal Arc -->
+<section class="bg-surface-white rounded-xl shadow-sm p-6 space-y-4">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Diurnal Energy Rhythm</h3>
+<p class="font-body-sm text-body-sm text-slate-subtext">Circadian rhythm projection based on resting heart rate, sleep duration, and self-reports.</p>
+</div>
+<div class="flex items-center gap-3 font-caption text-caption text-slate-subtext">
+<span class="flex items-center gap-1"><span class="w-3 h-0.5 bg-teal-accent inline-block"></span> Model Baseline</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-ai-purple inline-block"></span> Current Reading</span>
+</div>
+</div>
+<!-- Inline Visual Curve (SVG) -->
+<div class="relative w-full h-44 bg-canvas-light rounded-xl p-4 flex flex-col justify-between">
+<svg class="w-full h-28 overflow-visible" fill="none" preserveaspectratio="none" viewbox="0 0 700 120">
+<!-- Shaded optimal focus area 10am to 2pm -->
+<rect fill="#14B8A6" fill-opacity="0.08" height="100" rx="8" width="175" x="233" y="10"></rect>
+<text fill="#0D9488" font-family="Inter" font-size="10" font-weight="600" text-anchor="middle" x="320" y="24">PEAK CLARITY WINDOW (10AM - 2PM)</text>
+<!-- Base expected circadian line -->
+<path d="M 0 100 C 120 95, 180 30, 320 25 C 440 20, 520 85, 700 110" stroke="#CBD5E1" stroke-dasharray="4 4" stroke-width="2"></path>
+<!-- Actual daily energy curve -->
+<path d="M 0 105 C 100 100, 200 40, 310 32 C 400 25, 480 70, 700 100" stroke="#14B8A6" stroke-linecap="round" stroke-width="3"></path>
+<!-- Friday 2:00 PM Marker Point -->
+<circle cx="420" cy="52" fill="#8B5CF6" r="6" stroke="#FFFFFF" stroke-width="2"></circle>
+<line stroke="#8B5CF6" stroke-dasharray="2 2" stroke-width="1.5" x1="420" x2="420" y1="58" y2="120"></line>
+</svg>
+<!-- Timeline X-Axis Labels -->
+<div class="flex justify-between items-center font-caption text-caption text-slate-subtext pt-2">
+<span>6:00 AM (Awake)</span>
+<span>10:00 AM</span>
+<span class="font-semibold text-primary">2:00 PM (Now)</span>
+<span>6:00 PM</span>
+<span>10:00 PM (Wind Down)</span>
+</div>
+</div>
+</section>
+<!-- Wellness Reflection Journal & Mindful Logs -->
+<section class="bg-surface-white rounded-xl shadow-sm p-6 space-y-5">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Wellness Reflections &amp; Logs</h3>
+<p class="font-body-sm text-body-sm text-slate-subtext">Qualitative reflections connecting thoughts with clinical biomarkers.</p>
+</div>
+<button class="text-teal-accent hover:text-teal-dark font-label-md text-label-md font-semibold inline-flex items-center gap-1" type="button">
+<span>View All (28)</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+<div class="space-y-4">
+<!-- Item 1: Aug 14 -->
+<div class="p-4 rounded-xl bg-canvas-light hover:bg-canvas-light/80 transition-colors space-y-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-mint-wellness"></span>
+<span class="font-label-md text-label-md font-semibold text-primary">Aug 14 · Evening Reflection</span>
+</div>
+<span class="font-caption text-caption text-slate-subtext">8:45 PM</span>
+</div>
+<p class="font-body-md text-body-md text-slate-body">
+              “Productive day, evening walk helped unwind before bedtime. Feeling grounded and ready for sleep.”
+            </p>
+<div class="flex flex-wrap items-center gap-2 pt-1">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-white text-slate-body font-caption text-caption shadow-xs">#Outdoor</span>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-white text-slate-body font-caption text-caption shadow-xs">#Walking</span>
+<span class="px-2.5 py-0.5 rounded-full bg-mint-surface text-mint-wellness font-caption text-caption">#LowStress</span>
+</div>
+</div>
+<!-- Item 2: Aug 11 -->
+<div class="p-4 rounded-xl bg-canvas-light hover:bg-canvas-light/80 transition-colors space-y-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-status-warning"></span>
+<span class="font-label-md text-label-md font-semibold text-primary">Aug 11 · Midday Check-in</span>
+</div>
+<span class="font-caption text-caption text-slate-subtext">1:15 PM</span>
+</div>
+<p class="font-body-md text-body-md text-slate-body">
+              “Mild afternoon fatigue after back-to-back design reviews. Hydrated with electrolytes and took a 10-minute stretch break in the sunlight.”
+            </p>
+<div class="flex flex-wrap items-center gap-2 pt-1">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-white text-slate-body font-caption text-caption shadow-xs">#Hydration</span>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-white text-slate-body font-caption text-caption shadow-xs">#WorkFocus</span>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container text-slate-body font-caption text-caption">#MiddayReset</span>
+</div>
+</div>
+<!-- Item 3: Aug 08 -->
+<div class="p-4 rounded-xl bg-canvas-light hover:bg-canvas-light/80 transition-colors space-y-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-teal-accent"></span>
+<span class="font-label-md text-label-md font-semibold text-primary">Aug 08 · Post-Doctor Visit</span>
+</div>
+<span class="font-caption text-caption text-slate-subtext">3:30 PM</span>
+</div>
+<p class="font-body-md text-body-md text-slate-body">
+              “Felt reassured after reviewing 14-month biomarker trajectory with Dr. Vance. Lipid markers trending steadily toward goal range.”
+            </p>
+<div class="flex flex-wrap items-center gap-2 pt-1">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-white text-slate-body font-caption text-caption shadow-xs">#ClinicVisit</span>
+<span class="px-2.5 py-0.5 rounded-full bg-ai-purple-surface text-ai-purple font-caption text-caption">#Reassured</span>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-white text-slate-body font-caption text-caption shadow-xs">#DoctorBrief</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- RIGHT 4 COLUMNS: Sleep Bio-Architecture, Audio Resets & Safety Boundary -->
+<div class="lg:col-span-4 space-y-6">
+<!-- Mindful Ambient Visual Widget -->
+<div class="relative h-44 rounded-xl overflow-hidden shadow-sm flex flex-col justify-end p-5 text-surface-white">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A tranquil minimalist Japanese pebble zen garden bathed in soft morning daylight with diffused green bamboo shadows and clean calm restorative lines" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCPYHKA1sth4a2bSIiObYluFMlZWE4cxJvPorq0woUENX8w1N2G8fLnLcPsjyZlro5tmfXuqKwz8hwsiqF0wysjOBl-h6x9oJ52Ldhw4PA3xkiOqj2TPhVhXDZatU4pGrEXXmgOdix0w6e_pjY0DqbkF-UOaGJisgFv87nH_OsjZMmKT2QCpR2K04AIiJj9P2j2AleZi97FM4yLOvFT93RGYaisJkqRhPB0z9En3g')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/30 to-transparent"></div>
+<div class="relative z-10 space-y-1">
+<span class="font-caption text-caption text-mint-surface uppercase tracking-wider font-semibold">Mindful Horizon</span>
+<p class="font-headline-sm text-headline-sm font-bold text-surface-white leading-snug">Presence &amp; Restorative Pacing</p>
+<p class="font-caption text-caption text-surface-container font-light">Self-regulation supports autonomic balance.</p>
+</div>
+</div>
+<!-- Sleep Architecture (Oura Sync Card) -->
+<section class="bg-surface-white rounded-xl shadow-sm p-6 space-y-5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-teal-accent text-[22px]">dark_mode</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Sleep Architecture</h3>
+</div>
+<span class="font-caption text-caption text-slate-subtext font-medium">Oura Ring 4</span>
+</div>
+<!-- Metric Big Numbers -->
+<div class="grid grid-cols-2 gap-3">
+<div class="p-3.5 rounded-xl bg-canvas-light space-y-1">
+<span class="font-caption text-caption text-slate-subtext font-semibold uppercase">Sleep Efficiency</span>
+<div class="flex items-baseline gap-1">
+<span class="font-metric-display-sm text-metric-display-sm text-primary">89</span>
+<span class="font-metric-unit text-metric-unit text-slate-subtext">%</span>
+</div>
+<span class="font-caption text-caption text-mint-wellness font-semibold">+3% vs last week</span>
+</div>
+<div class="p-3.5 rounded-xl bg-canvas-light space-y-1">
+<span class="font-caption text-caption text-slate-subtext font-semibold uppercase">Readiness</span>
+<div class="flex items-baseline gap-1">
+<span class="font-metric-display-sm text-metric-display-sm text-primary">84</span>
+<span class="font-metric-unit text-metric-unit text-slate-subtext">/100</span>
+</div>
+<span class="font-caption text-caption text-teal-accent font-semibold">Optimal</span>
+</div>
+</div>
+<!-- Stage Bars -->
+<div class="space-y-3 pt-1">
+<!-- Deep Sleep -->
+<div class="space-y-1">
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-slate-body font-medium">Deep Sleep</span>
+<span class="text-primary font-semibold">1h 22m (19%)</span>
+</div>
+<div class="w-full bg-canvas-light rounded-full h-2 overflow-hidden">
+<div class="bg-primary rounded-full h-2" style="width: 68%;"></div>
+</div>
+</div>
+<!-- REM Sleep -->
+<div class="space-y-1">
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-slate-body font-medium">REM Stage</span>
+<span class="text-primary font-semibold">1h 44m (24%)</span>
+</div>
+<div class="w-full bg-canvas-light rounded-full h-2 overflow-hidden">
+<div class="bg-ai-purple rounded-full h-2" style="width: 82%;"></div>
+</div>
+</div>
+<!-- Light Sleep -->
+<div class="space-y-1">
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-slate-body font-medium">Light Sleep</span>
+<span class="text-primary font-semibold">4h 06m (57%)</span>
+</div>
+<div class="w-full bg-canvas-light rounded-full h-2 overflow-hidden">
+<div class="bg-teal-accent rounded-full h-2" style="width: 90%;"></div>
+</div>
+</div>
+</div>
+<div class="pt-2">
+<a class="text-teal-accent hover:text-teal-dark font-label-md text-label-md font-semibold inline-flex items-center gap-1" href="#">
+<span>Explore full sleep breakdown</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</div>
+</section>
+<!-- Guided Decompression Audio Tools -->
+<section class="bg-surface-white rounded-xl shadow-sm p-6 space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-ai-purple text-[22px]">self_improvement</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Guided Decompression</h3>
+</div>
+<span class="font-caption text-caption text-ai-purple font-semibold bg-ai-purple-surface px-2 py-0.5 rounded-full">Audio</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-subtext">Immediate micro-practices to regulate parasympathetic tone during stress peaks.</p>
+<div class="space-y-3">
+<!-- Practice 1 -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-canvas-light hover:bg-teal-subtle transition-colors group cursor-pointer">
+<div class="flex items-center gap-3">
+<button aria-label="Play 3-min Box Breathing" class="w-10 h-10 rounded-full bg-surface-white text-teal-accent group-hover:bg-teal-accent group-hover:text-surface-white flex items-center justify-center shadow-xs transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">play_arrow</span>
+</button>
+<div>
+<p class="font-label-md text-label-md text-primary font-semibold group-hover:text-teal-dark">3-min Box Breathing</p>
+<p class="font-caption text-caption text-slate-subtext">4s In · 4s Hold · 4s Out · 4s Hold</p>
+</div>
+</div>
+<span class="font-caption text-caption font-semibold text-slate-subtext">3:00</span>
+</div>
+<!-- Practice 2 -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-canvas-light hover:bg-ai-purple-surface transition-colors group cursor-pointer">
+<div class="flex items-center gap-3">
+<button aria-label="Play 5-min Mindful Reset" class="w-10 h-10 rounded-full bg-surface-white text-ai-purple group-hover:bg-ai-purple group-hover:text-surface-white flex items-center justify-center shadow-xs transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">play_arrow</span>
+</button>
+<div>
+<p class="font-label-md text-label-md text-primary font-semibold group-hover:text-on-tertiary-fixed-variant">5-min Mindful Somatic Reset</p>
+<p class="font-caption text-caption text-slate-subtext">Body scan for cognitive de-escalation</p>
+</div>
+</div>
+<span class="font-caption text-caption font-semibold text-slate-subtext">5:00</span>
+</div>
+</div>
+</section>
+<!-- STRICT HEALTHCARE BOUNDARY & CRISIS SUPPORT -->
+<section class="bg-surface-white rounded-xl shadow-sm p-6 space-y-4">
+<div class="flex items-center gap-2 text-slate-subtext">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span class="font-caption text-caption uppercase tracking-wider font-bold">Clinical Care Boundary</span>
+</div>
+<p class="font-caption text-caption text-slate-subtext leading-relaxed">
+          HealthMemory 360 tracks self-reported wellness and physiologic signals. It <strong class="text-primary font-semibold">does not diagnose depression, anxiety, or clinical psychiatric conditions</strong>.
+        </p>
+<!-- Crisis Hotlink Card -->
+<div class="p-4 rounded-xl bg-status-urgent-surface space-y-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-status-urgent text-[20px]">emergency</span>
+<span class="font-label-md text-label-md font-bold text-status-urgent">Immediate Crisis Support</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-body">
+            If you or someone you know is in distress, free and confidential support is available 24/7.
+          </p>
+<div class="pt-1">
+<a class="inline-flex items-center gap-2 font-label-md text-label-md font-bold text-status-urgent hover:underline" href="tel:988">
+<span>Call or Text 988 (Lifeline)</span>
+<span class="material-symbols-outlined text-[16px]">call</span>
+</a>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Interactive Quick Check-in Drawer/Modal (Hidden by default, triggered via JS) -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-primary/40 backdrop-blur-sm hidden" id="checkinModal">
+<div class="bg-surface-white rounded-xl shadow-xl w-full max-w-lg p-6 space-y-5 animate-in fade-in zoom-in-95 duration-200">
+<div class="flex items-center justify-between">
+<div class="space-y-0.5">
+<h3 class="font-headline-sm text-headline-sm text-primary">New Wellness Check-in</h3>
+<p class="font-caption text-caption text-slate-subtext">Logged to Alex Morgan's Longitudinal Record</p>
+</div>
+<button aria-label="Close dialog" class="p-2 rounded-lg text-slate-subtext hover:text-primary hover:bg-canvas-light transition-colors" id="closeCheckinModal" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="space-y-4">
+<div>
+<label class="font-label-sm text-label-sm text-primary block mb-1.5 font-semibold">Current Mood Tone</label>
+<div class="grid grid-cols-5 gap-2">
+<button class="p-3 rounded-lg bg-canvas-light hover:bg-surface-container text-center text-xl transition-colors" type="button">😊</button>
+<button class="p-3 rounded-lg bg-teal-accent text-surface-white text-center text-xl shadow-xs" type="button">🙂</button>
+<button class="p-3 rounded-lg bg-canvas-light hover:bg-surface-container text-center text-xl transition-colors" type="button">😐</button>
+<button class="p-3 rounded-lg bg-canvas-light hover:bg-surface-container text-center text-xl transition-colors" type="button">😟</button>
+<button class="p-3 rounded-lg bg-canvas-light hover:bg-surface-container text-center text-xl transition-colors" type="button">😔</button>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-1">
+<label class="font-label-sm text-label-sm text-primary font-semibold">Stress Perception (1-5)</label>
+<span class="font-caption text-caption font-semibold text-mint-wellness">Level 2 (Manageable)</span>
+</div>
+<input class="w-full accent-teal-accent cursor-pointer" max="5" min="1" type="range" value="2"/>
+</div>
+<div>
+<label class="font-label-sm text-label-sm text-primary block mb-1 font-semibold">Reflective Note</label>
+<textarea class="w-full p-3 rounded-xl bg-canvas-light text-slate-body font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-teal-accent transition-all resize-none" placeholder="What factors shaped your physical and mental balance today?" rows="3"></textarea>
+</div>
+</div>
+<div class="flex items-center justify-end gap-3 pt-2">
+<button class="px-4 py-2 rounded-xl text-slate-subtext hover:text-primary font-label-md text-label-md" id="cancelCheckinModal" type="button">Cancel</button>
+<button class="px-5 py-2.5 rounded-xl bg-teal-accent text-surface-white font-label-md text-label-md shadow-sm hover:opacity-95" id="saveCheckinModal" type="button">Save to Timeline</button>
+</div>
+</div>
+</div>
+<script>
+    // Micro-interactions for Modal & Mood toggle
+    const openBtn = document.getElementById('openCheckinModal');
+    const closeBtn = document.getElementById('closeCheckinModal');
+    const cancelBtn = document.getElementById('cancelCheckinModal');
+    const saveBtn = document.getElementById('saveCheckinModal');
+    const modal = document.getElementById('checkinModal');
+
+    function toggleModal(show) {
+      if (!modal) return;
+      if (show) {
+        modal.classList.remove('hidden');
+      } else {
+        modal.classList.add('hidden');
+      }
+    }
+
+    if (openBtn) openBtn.addEventListener('click', () => toggleModal(true));
+    if (closeBtn) closeBtn.addEventListener('click', () => toggleModal(false));
+    if (cancelBtn) cancelBtn.addEventListener('click', () => toggleModal(false));
+    if (saveBtn) saveBtn.addEventListener('click', () => toggleModal(false));
+
+    // Mood Selector in Hero
+    const heroMoodBtns = document.querySelectorAll('.mood-btn');
+    heroMoodBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        heroMoodBtns.forEach(b => {
+          b.className = 'mood-btn flex flex-col items-center justify-center p-4 rounded-xl bg-canvas-light text-slate-body hover:bg-surface-white shadow-xs transition-all text-center group';
+          const subText = b.querySelector('.font-caption');
+          if (subText) subText.className = 'font-caption text-caption text-slate-subtext mt-0.5';
+          const titleText = b.querySelector('.font-label-md');
+          if (titleText) titleText.className = 'font-label-md text-label-md font-semibold text-primary';
+        });
+        this.className = 'mood-btn flex flex-col items-center justify-center p-4 rounded-xl bg-surface-dark text-on-primary shadow-md transition-all text-center ring-2 ring-teal-accent';
+        const sub = this.querySelector('.font-caption');
+        if (sub) sub.className = 'font-caption text-caption text-teal-accent mt-0.5';
+        const title = this.querySelector('.font-label-md');
+        if (title) title.className = 'font-label-md text-label-md font-semibold text-surface-white';
+      });
+    });
+  </script>
+</div></main>
+</div>
+</body></html>

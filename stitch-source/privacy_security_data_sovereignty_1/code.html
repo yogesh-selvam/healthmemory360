@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"border-dark":"#1E293B","inverse-primary":"#bec6e0","surface-variant":"#d3e4fe","on-secondary-fixed":"#00201d","on-secondary-fixed-variant":"#005049","secondary":"#006a61","slate-subtext":"#64748B","surface-dim":"#cbdbf5","on-primary-container":"#7c839b","surface":"#f8f9ff","error":"#ba1a1a","surface-white":"#FFFFFF","surface-container-lowest":"#ffffff","tertiary-container":"#23005c","border-subtle":"#E2E8F0","slate-body":"#334155","on-tertiary-container":"#9466ff","surface-container":"#e5eeff","on-primary":"#ffffff","on-background":"#0b1c30","inverse-surface":"#213145","outline":"#76777d","mint-wellness":"#10B981","primary-fixed-dim":"#bec6e0","canvas-light":"#F8FAFC","tertiary-fixed":"#e9ddff","on-tertiary-fixed":"#23005c","on-surface-variant":"#45464d","on-error":"#ffffff","ai-purple-surface":"#F5F3FF","secondary-fixed-dim":"#6bd8cb","secondary-container":"#86f2e4","on-secondary":"#ffffff","ai-purple":"#8B5CF6","surface-dark":"#0B1324","inverse-on-surface":"#eaf1ff","status-urgent-surface":"#FEF2F2","on-primary-fixed-variant":"#3f465c","mint-border":"#A7F3D0","surface-container-highest":"#d3e4fe","surface-container-high":"#dce9ff","surface-tint":"#565e74","on-primary-fixed":"#131b2e","on-surface":"#0b1c30","tertiary":"#000000","on-tertiary":"#ffffff","primary-fixed":"#dae2fd","background":"#f8f9ff","surface-bright":"#f8f9ff","ai-purple-border":"#DDD6FE","status-warning":"#F59E0B","teal-glow":"#2DD4BF","mint-surface":"#ECFDF5","status-urgent-border":"#FECACA","on-secondary-container":"#006f66","teal-accent":"#14B8A6","tertiary-fixed-dim":"#d0bcff","error-container":"#ffdad6","on-error-container":"#93000a","secondary-fixed":"#89f5e7","status-urgent":"#EF4444","on-tertiary-fixed-variant":"#5516be","outline-variant":"#c6c6cd","primary-container":"#131b2e","surface-container-low":"#eff4ff","primary":"#000000"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"margin-mobile":"1rem","space-2xl":"3rem","space-xl":"2rem","space-md":"1rem","gutter-sm":"1rem","space-sm":"0.5rem","space-lg":"1.5rem","margin":"2rem","gutter":"1.5rem","space-xs":"0.25rem","margin-desktop":"3rem","gutter-lg":"2rem"},fontFamily:{"metric-display-sm":["Manrope"],"headline-sm":["Manrope"],"headline-lg-mobile":["Manrope"],"metric-display":["Manrope"],"body-lg":["Inter"],"display-lg-mobile":["Manrope"],"body-sm":["Inter"],"headline-md":["Manrope"],"label-md":["Inter"],"display-lg":["Manrope"],"label-sm":["Inter"],"metric-unit":["Inter"],"headline-lg":["Manrope"],"body-md":["Inter"],"caption":["Inter"]},fontSize:{"metric-display-sm":["1.5rem",{"lineHeight":"1.75rem","letterSpacing":"-0.02em","fontWeight":"700"}],"headline-sm":["1.125rem",{"lineHeight":"1.625rem","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-lg-mobile":["1.625rem",{"lineHeight":"2.125rem","letterSpacing":"-0.015em","fontWeight":"700"}],"metric-display":["2.25rem",{"lineHeight":"2.5rem","letterSpacing":"-0.03em","fontWeight":"700"}],"body-lg":["1.125rem",{"lineHeight":"1.75rem","letterSpacing":"-0.01em","fontWeight":"400"}],"display-lg-mobile":["2.25rem",{"lineHeight":"2.75rem","letterSpacing":"-0.02em","fontWeight":"700"}],"body-sm":["0.875rem",{"lineHeight":"1.25rem","letterSpacing":"0em","fontWeight":"400"}],"headline-md":["1.5rem",{"lineHeight":"2rem","letterSpacing":"-0.015em","fontWeight":"600"}],"label-md":["0.875rem",{"lineHeight":"1.25rem","letterSpacing":"0.01em","fontWeight":"600"}],"display-lg":["3rem",{"lineHeight":"3.5rem","letterSpacing":"-0.025em","fontWeight":"700"}],"label-sm":["0.75rem",{"lineHeight":"1rem","letterSpacing":"0.02em","fontWeight":"600"}],"metric-unit":["0.875rem",{"lineHeight":"1.25rem","letterSpacing":"0em","fontWeight":"500"}],"headline-lg":["2rem",{"lineHeight":"2.5rem","letterSpacing":"-0.02em","fontWeight":"700"}],"body-md":["1rem",{"lineHeight":"1.5rem","letterSpacing":"0em","fontWeight":"400"}],"caption":["0.6875rem",{"lineHeight":"0.875rem","letterSpacing":"0.03em","fontWeight":"500"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between overflow-y-auto"><div class="flex flex-col"><div class="h-20 px-space-lg flex items-center gap-space-sm bg-surface-container-lowest"><div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-secondary"><span class="material-symbols-outlined text-[24px]">vital_signs</span></div><div><div class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">HealthMemory 360</div><div class="font-caption text-caption text-slate-subtext uppercase tracking-wider">Clinical Precision Portal</div></div></div><div class="px-space-md py-space-xs"><div class="px-space-sm py-space-xs font-caption text-caption text-slate-subtext uppercase tracking-wider">Clinical Navigation</div></div><nav class="flex flex-col gap-space-xs px-space-md" data-active-classes="bg-surface-container text-on-surface font-semibold rounded-lg shadow-sm"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span class="font-label-md text-label-md">Dashboard</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="medical-records" href="#"><span class="material-symbols-outlined text-[20px]">folder_managed</span><span class="font-label-md text-label-md">Medical Records</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="health-timeline" href="#"><span class="material-symbols-outlined text-[20px]">timeline</span><span class="font-label-md text-label-md">Health Timeline</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="report-comparison" href="#"><span class="material-symbols-outlined text-[20px]">compare_arrows</span><span class="font-label-md text-label-md">Report Comparison</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="physical-health" href="#"><span class="material-symbols-outlined text-[20px]">ecg_heart</span><span class="font-label-md text-label-md">Physical Health</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="fitness" href="#"><span class="material-symbols-outlined text-[20px]">directions_run</span><span class="font-label-md text-label-md">Fitness</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="mental-wellness" href="#"><span class="material-symbols-outlined text-[20px]">psychology</span><span class="font-label-md text-label-md">Mental Wellness</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="nutrition" href="#"><span class="material-symbols-outlined text-[20px]">restaurant</span><span class="font-label-md text-label-md">Nutrition</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="doctor-brief" href="#"><span class="material-symbols-outlined text-[20px]">clinical_notes</span><span class="font-label-md text-label-md">Doctor Brief</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-ai-purple-surface hover:text-ai-purple transition-colors" data-path="ask-healthmemory" href="#"><span class="material-symbols-outlined text-[20px] text-ai-purple">smart_toy</span><span class="font-label-md text-label-md font-semibold text-ai-purple">Ask HealthMemory</span></a></nav></div><div class="flex flex-col pb-space-lg"><div class="px-space-md py-space-xs"><div class="px-space-sm py-space-xs font-caption text-caption text-slate-subtext uppercase tracking-wider">Account &amp; Settings</div></div><nav class="flex flex-col gap-space-xs px-space-md" data-active-classes="bg-surface-container text-on-surface font-semibold rounded-lg shadow-sm"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="profile" href="#"><span class="material-symbols-outlined text-[20px]">person</span><span class="font-label-md text-label-md">Profile</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-sm transition-colors bg-surface-container text-on-surface font-semibold rounded-lg shadow-sm" data-path="privacy-and-security" href="#"><span class="material-symbols-outlined text-[20px]">lock</span><span class="font-label-md text-label-md">Privacy &amp; Security</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="preferences" href="#"><span class="material-symbols-outlined text-[20px]">tune</span><span class="font-label-md text-label-md">Preferences</span></a></nav><div class="mt-space-md mx-space-md p-space-sm rounded-lg bg-surface-container-low flex items-center gap-space-xs"><span class="material-symbols-outlined text-secondary text-[16px]">verified_user</span><span class="font-caption text-caption text-slate-subtext">HIPAA &amp; ISO-27001 Compliant</span></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-20 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center flex-1 max-w-xl"><div class="relative w-full"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-subtext text-[20px]">search</span><input class="w-full h-11 pl-10 pr-4 bg-surface-container-lowest rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-slate-subtext outline-none shadow-sm focus:ring-1 focus:ring-secondary transition-all" placeholder="Search records, biomarkers, medications... [⌘K]" type="text"/></div></div><div class="flex items-center gap-space-md"><div class="hidden xl:flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-mint-surface text-mint-wellness font-caption text-caption"><span class="material-symbols-outlined text-[14px]">health_metrics</span><span>Vitals Stream Active</span></div><button class="flex items-center gap-space-xs px-space-md h-10 rounded-lg bg-ai-purple text-on-primary font-label-md text-label-md hover:bg-opacity-95 shadow-sm transition-all" type="button"><span class="material-symbols-outlined text-[18px]">auto_awesome</span><span>Ask HealthMemory</span></button><button aria-label="Notifications" class="relative w-10 h-10 rounded-lg bg-surface-container-lowest flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface shadow-sm transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-status-urgent"></span></button><div class="flex items-center gap-space-sm px-space-sm py-1.5 rounded-lg bg-surface-container-lowest shadow-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col text-left pr-space-xs"><span class="font-label-sm text-label-sm text-on-surface font-semibold">Alex Morgan</span><span class="font-caption text-caption text-slate-subtext">Patient Portal #HM-8842</span></div></div></div></header><div class="pt-20"><div class="w-full bg-surface-container-low px-space-lg py-1.5 flex items-center justify-between text-slate-subtext font-caption text-caption shadow-[0_1px_4px_rgba(0,0,0,0.02)]"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[14px] text-secondary">shield</span><span>Clinical Notice: Diagnostic summaries and AI interpretations are supplementary references for licensed practitioner care.</span></div><div class="flex items-center gap-space-sm font-label-sm"><span>EHR Sync: Synchronized</span><span class="w-1.5 h-1.5 rounded-full bg-mint-wellness"></span></div></div><main class="w-full px-space-lg py-space-lg bg-surface"><div class="flex flex-col w-full">
+<!-- Top Context Header Area -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg pb-space-xl">
+<div class="flex flex-col gap-space-xs max-w-3xl">
+<div class="flex items-center gap-space-xs text-secondary font-label-sm text-label-sm uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px]">verified_user</span>
+<span>Cryptographic Sovereign Tier • Tenant Isolation</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Privacy, Security &amp; Data Sovereignty</h1>
+<p class="font-body-md text-body-md text-slate-subtext">Manage cryptographic encryption, AI training boundaries, third-party clinic permissions, and full longitudinal data portability with deterministic verification.</p>
+<!-- Top Trust Badges -->
+<div class="flex flex-wrap items-center gap-space-xs pt-space-xs">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-mint-surface text-mint-wellness font-caption text-caption font-semibold">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+          End-to-End Cryptographic Isolation
+        </span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container text-secondary font-caption text-caption font-semibold">
+<span class="material-symbols-outlined text-[14px]">psychology_alt</span>
+          Zero Public AI Training Boundary
+        </span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-low text-slate-subtext font-caption text-caption">
+<span class="material-symbols-outlined text-[14px]">memory</span>
+          Hardware Security Module: Enclave 0x7E
+        </span>
+</div>
+</div>
+<!-- Header Action Controls -->
+<div class="flex flex-wrap sm:flex-nowrap items-center gap-space-sm self-start lg:self-end">
+<button class="h-11 px-4 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container-low font-label-md text-label-md shadow-sm transition-all flex items-center gap-2" id="btnAuditModal" type="button">
+<span class="material-symbols-outlined text-[18px] text-slate-subtext">history_toggle_off</span>
+        Audit Access Log
+      </button>
+<button class="h-11 px-5 rounded-lg bg-secondary text-on-primary hover:bg-on-secondary-container font-label-md text-label-md shadow-sm transition-all flex items-center gap-2" id="btnQuickExport" type="button">
+<span class="material-symbols-outlined text-[18px]">cloud_download</span>
+        Export Complete Archive
+      </button>
+</div>
+</div>
+<!-- Primary Security Bento Grid -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg mb-space-xl">
+<!-- Left Hero Card: Cryptographic Architecture & AI Boundary -->
+<div class="xl:col-span-8 flex flex-col gap-space-lg">
+<!-- Vault Security Protocol Card -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container-lowest p-space-lg shadow-sm">
+<div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-secondary/5 via-teal-accent/5 to-transparent rounded-full pointer-events-none -mr-20 -mt-20"></div>
+<div class="flex items-center justify-between pb-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]">key_vertical</span>
+</div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface">Health Data Protection &amp; Encryption Architecture</div>
+<div class="font-caption text-caption text-slate-subtext">Zero-Knowledge client-side state configured with NIST AES-256-GCM primitives</div>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-mint-surface text-mint-wellness font-caption text-caption font-semibold flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-mint-wellness animate-pulse"></span>
+            Enclave Verified
+          </span>
+</div>
+<!-- Key Integrity Diagnostic Strip -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md my-space-md p-space-md rounded-xl bg-surface-container-low">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-slate-subtext">Client Private Enclave</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold pt-1 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-mint-wellness">shield_lock</span>
+              Protected on Device
+            </span>
+<span class="font-caption text-[11px] text-slate-subtext mt-1">Hardware Keystore: SecureEnclave_A17</span>
+</div>
+<div class="flex flex-col">
+<span class="font-caption text-caption text-slate-subtext">Integrity Hash Signature</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold pt-1 font-mono tracking-tight text-secondary">
+              7f4a:9bc8:...:c182
+            </span>
+<span class="font-caption text-[11px] text-slate-subtext mt-1">SHA-256 Validated 4m ago</span>
+</div>
+<div class="flex flex-col">
+<span class="font-caption text-caption text-slate-subtext">Engineers &amp; Support Access</span>
+<span class="font-label-md text-label-md text-status-urgent font-semibold pt-1 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">block</span>
+              Zero Access (Cryptographic)
+            </span>
+<span class="font-caption text-[11px] text-slate-subtext mt-1">Ciphertext unreadable server-side</span>
+</div>
+</div>
+<!-- Zero-Knowledge Statement Callout -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest text-slate-body shadow-sm mb-space-lg flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[24px] mt-0.5">enhanced_encryption</span>
+<div class="flex flex-col gap-1">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Designed with Privacy in Mind: Non-Diagnostic Clinical Boundary</span>
+<p class="font-body-sm text-body-sm text-slate-subtext">Your diagnostic history, bloodwork panels, and vital timelines are processed solely for your private retrieval. Stored records are <strong class="text-on-surface">NEVER utilized to train foundational public AI algorithms</strong>. Diagnostic summaries and algorithmic correlations are strict supplementary references for licensed care practitioners.</p>
+</div>
+</div>
+<!-- Boundary Controls / Enclave Toggles -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between p-space-md rounded-xl bg-surface-container-low">
+<div class="flex items-center gap-space-md">
+<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[20px]">security</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Strict Private Enclave Processing</span>
+<span class="font-body-sm text-body-sm text-slate-subtext">Locks queries within client memory before synthetic indexing.</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="font-caption text-caption text-slate-subtext uppercase">System Locked</span>
+<button class="w-12 h-6 rounded-full bg-secondary p-0.5 flex items-center justify-end cursor-not-allowed opacity-90" disabled="">
+<span class="w-5 h-5 rounded-full bg-on-primary shadow"></span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-between p-space-md rounded-xl bg-surface-container-low">
+<div class="flex items-center gap-space-md">
+<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[20px]">blur_on</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Synthetic Noise Obfuscation on Telemetry</span>
+<span class="font-body-sm text-body-sm text-slate-subtext">Injects mathematical differential privacy tokens into peripheral sync streams.</span>
+</div>
+</div>
+<button class="w-12 h-6 rounded-full bg-secondary p-0.5 flex items-center justify-end transition-all" id="toggleObfuscate" type="button">
+<span class="w-5 h-5 rounded-full bg-on-primary shadow transition-all" id="toggleObfuscateDot"></span>
+</button>
+</div>
+</div>
+</div>
+<!-- Live Encryption Stream Monitor Visualization -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">troubleshoot</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">Cryptographic Pipeline Heartbeat</span>
+</div>
+<span class="font-caption text-caption font-mono text-slate-subtext">TLS 1.3 / Quantum-Resistant Kyber-768 Handshake</span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-sm">
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col">
+<span class="font-caption text-caption text-slate-subtext">Active Chunks</span>
+<span class="font-metric-display-sm text-metric-display-sm text-on-surface pt-1">1,842</span>
+<span class="font-caption text-[11px] text-mint-wellness font-semibold flex items-center gap-0.5 mt-0.5">
+<span class="material-symbols-outlined text-[12px]">check_circle</span> 100% Salted
+            </span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col">
+<span class="font-caption text-caption text-slate-subtext">Key Rotation</span>
+<span class="font-metric-display-sm text-metric-display-sm text-on-surface pt-1">18 Days</span>
+<span class="font-caption text-[11px] text-slate-subtext mt-0.5">Auto-rotates monthly</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col">
+<span class="font-caption text-caption text-slate-subtext">OCR Redaction</span>
+<span class="font-metric-display-sm text-metric-display-sm text-on-surface pt-1">Level 4</span>
+<span class="font-caption text-[11px] text-secondary font-semibold mt-0.5">PII Pre-filter Active</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col">
+<span class="font-caption text-caption text-slate-subtext">Cold Backups</span>
+<span class="font-metric-display-sm text-metric-display-sm text-on-surface pt-1">Geo-Airgap</span>
+<span class="font-caption text-[11px] text-slate-subtext mt-0.5">2 Independent Enclaves</span>
+</div>
+</div>
+<!-- SVG Topology Diagram -->
+<div class="w-full h-20 rounded-lg bg-surface-container-low flex items-center justify-between px-space-md overflow-hidden relative">
+<div class="flex items-center gap-space-xs text-on-surface z-10">
+<span class="material-symbols-outlined text-[18px] text-secondary">phone_iphone</span>
+<span class="font-caption text-caption font-semibold">User Device</span>
+</div>
+<div class="flex-1 mx-4 h-8 flex items-center relative z-10">
+<svg class="w-full h-6" preserveaspectratio="none" viewbox="0 0 300 24">
+<path class="text-surface-variant" d="M 0,12 L 300,12" stroke="currentColor" stroke-dasharray="4 4" stroke-width="2"></path>
+<circle class="text-secondary animate-pulse" cx="60" cy="12" fill="currentColor" r="4"></circle>
+<circle class="text-teal-accent" cx="150" cy="12" fill="currentColor" r="5"></circle>
+<circle class="text-secondary animate-pulse" cx="240" cy="12" fill="currentColor" r="4"></circle>
+</svg>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface z-10">
+<span class="material-symbols-outlined text-[18px] text-secondary">lock</span>
+<span class="font-caption text-caption font-semibold">Decentralized Enclave</span>
+</div>
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-mint-surface/30 to-transparent"></div>
+</div>
+</div>
+</div>
+<!-- Right Sidebar Column: Granular Clinic Access & Sharing Matrix -->
+<div class="xl:col-span-4 flex flex-col gap-space-lg">
+<!-- Clinic Authorization Control Panel -->
+<div class="rounded-xl bg-surface-container-lowest p-space-lg shadow-sm flex flex-col">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[22px]">hub</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Clinic Permissions</h2>
+</div>
+<button class="text-secondary hover:text-on-secondary-container font-label-sm text-label-sm font-semibold flex items-center gap-1" id="btnGrantClinic">
+<span class="material-symbols-outlined text-[16px]">add_circle</span>
+            Authorize
+          </button>
+</div>
+<p class="font-caption text-caption text-slate-subtext pb-space-md">Granular external scopes. Revocations execute immediate credential dissociation.</p>
+<!-- Access Entities List -->
+<div class="flex flex-col gap-space-sm">
+<!-- Clinic Entry 1 -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-space-xs">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[18px]">stethoscope</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold leading-tight">Dr. Marcus Vance, MD</span>
+<span class="font-caption text-caption text-slate-subtext">Epic MyChart Integration</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-caption text-[11px] font-semibold">Active</span>
+</div>
+<div class="text-slate-subtext font-caption text-caption pl-10">
+              Scope: Full Access to Lab Trends, Doctor Briefs &amp; Biometrics
+            </div>
+<div class="flex items-center justify-between pl-10 pt-1">
+<span class="font-caption text-[11px] text-slate-subtext">Granted Oct 14, 2026</span>
+<div class="flex gap-2">
+<button class="font-caption text-caption text-secondary font-semibold hover:underline">Scope</button>
+<button class="font-caption text-caption text-status-urgent font-semibold hover:underline">Revoke</button>
+</div>
+</div>
+</div>
+<!-- Clinic Entry 2 -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-space-xs">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[18px]">cardiology</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold leading-tight">Dr. Sarah Chen, MD</span>
+<span class="font-caption text-caption text-slate-subtext">St. Jude Cardiology Unit</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-caption text-[11px] font-semibold">Limited</span>
+</div>
+<div class="text-slate-subtext font-caption text-caption pl-10">
+              Scope: Read-only Access to Lipid &amp; Fasting Glucose trajectories
+            </div>
+<div class="flex items-center justify-between pl-10 pt-1">
+<span class="font-caption text-[11px] text-slate-subtext">Granted Aug 28, 2026</span>
+<div class="flex gap-2">
+<button class="font-caption text-caption text-secondary font-semibold hover:underline">Scope</button>
+<button class="font-caption text-caption text-status-urgent font-semibold hover:underline">Revoke</button>
+</div>
+</div>
+</div>
+<!-- Connected Devices Entry -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-space-xs">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[18px]">watch</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold leading-tight">Peripheral Sync (Apple, Withings)</span>
+<span class="font-caption text-caption text-slate-subtext">Ingestion Only Pipeline</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-mint-surface text-mint-wellness font-caption text-[11px] font-semibold">Blocked Egress</span>
+</div>
+<div class="text-slate-subtext font-caption text-caption pl-10">
+              Two-way sync strictly blocked. Data writes only into personal vault.
+            </div>
+</div>
+</div>
+<!-- Temporary Ephemeral Links Sub-card -->
+<div class="mt-space-md p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-on-surface font-label-md text-label-md font-semibold">
+<span class="material-symbols-outlined text-[18px] text-status-warning">timer</span>
+              Time-Limited Secure Links
+            </div>
+<span class="font-caption text-caption font-semibold px-2 py-0.5 rounded-full bg-surface-container text-on-surface">1 Active</span>
+</div>
+<div class="p-space-xs rounded bg-surface-container-lowest flex items-center justify-between text-slate-subtext font-caption text-caption mt-1">
+<div class="flex flex-col truncate pr-2">
+<span class="font-semibold text-on-surface truncate">Doctor Brief #HM-8842 Link</span>
+<span class="text-status-warning">Expires in 36h 12m (Password Protected)</span>
+</div>
+<button class="px-2.5 py-1 rounded bg-status-urgent-surface text-status-urgent font-caption text-caption font-semibold hover:bg-status-urgent/10 shrink-0">
+              Expire Now
+            </button>
+</div>
+</div>
+</div>
+<!-- Sovereign Verification Box -->
+<div class="rounded-xl bg-surface-dark text-on-primary p-space-lg shadow-sm flex flex-col justify-between">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs text-teal-glow font-caption text-caption uppercase tracking-wider font-semibold">
+<span class="material-symbols-outlined text-[16px]">token</span>
+<span>Zero-Knowledge Proof</span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-primary font-bold">zk-SNARK Audit Token</div>
+<p class="font-caption text-caption text-inverse-primary leading-relaxed">Validate mathematically that your encrypted store was never altered or duplicated without needing to reveal your master passcode.</p>
+</div>
+<button class="mt-space-md h-10 px-4 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container-low font-label-md text-label-md font-semibold transition-all flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary">verified</span>
+          Compute Mathematical Proof
+        </button>
+</div>
+</div>
+</div>
+<!-- Audit Trail and Forensic Access Log Table -->
+<div class="rounded-xl bg-surface-container-lowest p-space-lg shadow-sm mb-space-xl">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pb-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[22px]">policy</span>
+</div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface">Access Log &amp; Audit Trail</div>
+<div class="font-caption text-caption text-slate-subtext">Real-time immutable ledger of every query, export, provider request, and sync event</div>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-subtext text-[16px]">filter_list</span>
+<select class="h-9 pl-8 pr-6 rounded-lg bg-surface-container-low text-on-surface font-caption text-caption outline-none cursor-pointer">
+<option>All Audit Channels</option>
+<option>AI Assistant Inquiries</option>
+<option>Clinic Handshakes</option>
+<option>Manual Archive Exports</option>
+</select>
+</div>
+<button class="h-9 px-3 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-caption text-caption font-semibold flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+          CSV Raw
+        </button>
+</div>
+</div>
+<!-- Audit Ledger Items -->
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead>
+<tr class="text-slate-subtext font-caption text-caption uppercase tracking-wider bg-surface-container-low rounded-lg">
+<th class="py-3 px-space-md rounded-l-lg">Timestamp</th>
+<th class="py-3 px-space-md">Origin / Actor</th>
+<th class="py-3 px-space-md">Event Classification</th>
+<th class="py-3 px-space-md">Parameters / Detail</th>
+<th class="py-3 px-space-md rounded-r-lg text-right">Integrity Verification</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-slate-body">
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-md px-space-md font-mono text-caption text-slate-subtext whitespace-nowrap">
+              Oct 15, 2026 • 10:14 AM
+            </td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-ai-purple-surface text-ai-purple flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">smart_toy</span>
+</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Ask HealthMemory</span>
+</div>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="px-2 py-0.5 rounded-full bg-ai-purple-surface text-ai-purple font-caption text-caption font-semibold">
+                Local Retrieval
+              </span>
+</td>
+<td class="py-space-md px-space-md text-slate-subtext max-w-md truncate">
+              Query: “What changed in my latest report?” (Enclave isolated context injection)
+            </td>
+<td class="py-space-md px-space-md text-right whitespace-nowrap">
+<span class="inline-flex items-center gap-1 text-mint-wellness font-caption text-caption font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                HMAC_OK
+              </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-md px-space-md font-mono text-caption text-slate-subtext whitespace-nowrap">
+              Oct 14, 2026 • 09:30 AM
+            </td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-surface-container flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[14px]">person</span>
+</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Alex Morgan</span>
+</div>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface font-caption text-caption font-semibold">
+                Manual Export
+              </span>
+</td>
+<td class="py-space-md px-space-md text-slate-subtext max-w-md truncate">
+              Doctor Brief #DOC-8842 rendered &amp; signed to encrypted PDF package
+            </td>
+<td class="py-space-md px-space-md text-right whitespace-nowrap">
+<span class="inline-flex items-center gap-1 text-mint-wellness font-caption text-caption font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                SIG_VALID
+              </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-md px-space-md font-mono text-caption text-slate-subtext whitespace-nowrap">
+              Aug 12, 2026 • 02:15 PM
+            </td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-mint-surface text-mint-wellness flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">sync_alt</span>
+</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">LabCorp HL7 Bridge</span>
+</div>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="px-2 py-0.5 rounded-full bg-mint-surface text-mint-wellness font-caption text-caption font-semibold">
+                Inbound Ingest
+              </span>
+</td>
+<td class="py-space-md px-space-md text-slate-subtext max-w-md truncate">
+              Comprehensive Metabolic Panel auto-ingested via authenticated HL7 FHIR pipe
+            </td>
+<td class="py-space-md px-space-md text-right whitespace-nowrap">
+<span class="inline-flex items-center gap-1 text-mint-wellness font-caption text-caption font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                MUTUAL_TLS
+              </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-md px-space-md font-mono text-caption text-slate-subtext whitespace-nowrap">
+              Aug 02, 2026 • 11:20 AM
+            </td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-surface-container flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[14px]">document_scanner</span>
+</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Mobile OCR Scanner</span>
+</div>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface font-caption text-caption font-semibold">
+                Client Encrypt
+              </span>
+</td>
+<td class="py-space-md px-space-md text-slate-subtext max-w-md truncate">
+              Prescription document locally scanned, converted, and encrypted into vault
+            </td>
+<td class="py-space-md px-space-md text-right whitespace-nowrap">
+<span class="inline-flex items-center gap-1 text-mint-wellness font-caption text-caption font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                AES_GCM_OK
+              </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Data Portability, Sovereign Porting & Deletion Architecture -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-space-lg">
+<!-- Complete Data Export (GDPR / HIPAA Interoperability) -->
+<div class="rounded-xl bg-surface-container-lowest p-space-lg shadow-sm flex flex-col justify-between">
+<div class="flex flex-col gap-space-xs">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-secondary mb-2">
+<span class="material-symbols-outlined text-[22px]">archive</span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface">Universal Data Portability</div>
+<p class="font-body-sm text-body-sm text-slate-subtext">Download your complete longitudinal timeline. Contains all 12 verified clinical documents, OCR raw layers, and biometric timeseries without vendor lock-in.</p>
+<div class="flex flex-wrap gap-2 pt-space-xs">
+<span class="px-2 py-1 rounded bg-surface-container-low text-on-surface font-caption text-caption font-mono">HL7 FHIR JSON</span>
+<span class="px-2 py-1 rounded bg-surface-container-low text-on-surface font-caption text-caption font-mono">CSV Timeseries</span>
+<span class="px-2 py-1 rounded bg-surface-container-low text-on-surface font-caption text-caption font-mono">PDF Diagnostic Bundle</span>
+</div>
+</div>
+<button class="mt-space-lg h-11 px-4 rounded-lg bg-secondary text-on-primary hover:bg-on-secondary-container font-label-md text-label-md font-semibold transition-all flex items-center justify-center gap-2" id="btnGenerateArchive" type="button">
+<span class="material-symbols-outlined text-[18px]">downloading</span>
+        Download Longitudinal Archive
+      </button>
+</div>
+<!-- Emergency Access Freeze -->
+<div class="rounded-xl bg-surface-container-lowest p-space-lg shadow-sm flex flex-col justify-between">
+<div class="flex flex-col gap-space-xs">
+<div class="w-10 h-10 rounded-lg bg-status-urgent-surface flex items-center justify-center text-status-warning mb-2">
+<span class="material-symbols-outlined text-[22px]">pause_circle</span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface">Emergency Account Freeze</div>
+<p class="font-body-sm text-body-sm text-slate-subtext">Instantly lock all active clinic bridges, revoke peripheral device tokens, and invalidate all share links immediately. Preserves your encrypted data safely.</p>
+<div class="p-space-sm rounded-lg bg-surface-container-low text-slate-subtext font-caption text-caption mt-space-xs">
+          Use if you suspect compromised clinic credentials or unauthorized terminal access.
+        </div>
+</div>
+<button class="mt-space-lg h-11 px-4 rounded-lg bg-surface-container text-status-urgent hover:bg-status-urgent-surface font-label-md text-label-md font-semibold transition-all flex items-center justify-center gap-2" id="btnFreezeVault" type="button">
+<span class="material-symbols-outlined text-[18px]">emergency_heat</span>
+        Freeze All Ingestion &amp; Tokens
+      </button>
+</div>
+<!-- Right to be Forgotten / Cryptographic Shredding -->
+<div class="rounded-xl bg-surface-container-lowest p-space-lg shadow-sm flex flex-col justify-between">
+<div class="flex flex-col gap-space-xs">
+<div class="w-10 h-10 rounded-lg bg-status-urgent-surface flex items-center justify-center text-status-urgent mb-2">
+<span class="material-symbols-outlined text-[22px]">delete_forever</span>
+</div>
+<div class="font-headline-sm text-headline-sm text-status-urgent">Right to Be Forgotten</div>
+<p class="font-body-sm text-body-sm text-slate-subtext">Initiate verifiable cryptographic shredding. Discards master decryption keys from hardware storage, rendering all cloud ciphertext irrevocably unrecoverable forever.</p>
+<div class="p-space-sm rounded-lg bg-status-urgent-surface text-status-urgent font-caption text-caption mt-space-xs">
+          Warning: Irreversible action adhering to GDPR Article 17 and CCPA protocols.
+        </div>
+</div>
+<button class="mt-space-lg h-11 px-4 rounded-lg bg-status-urgent-surface text-status-urgent hover:bg-status-urgent hover:text-on-primary font-label-md text-label-md font-semibold transition-all flex items-center justify-center gap-2" id="btnOpenDeleteModal" type="button">
+<span class="material-symbols-outlined text-[18px]">key_off</span>
+        Delete My Health Memory
+      </button>
+</div>
+</div>
+<!-- Deletion Confirmation Modal Overlay (Hidden by Default) -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-inverse-surface/40 backdrop-blur-md hidden transition-opacity" id="deleteModal">
+<div class="w-full max-w-lg bg-surface-container-lowest rounded-xl p-space-lg shadow-xl mx-4 flex flex-col gap-space-md">
+<div class="flex items-center gap-space-sm text-status-urgent">
+<div class="w-10 h-10 rounded-lg bg-status-urgent-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">gavel</span>
+</div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface">Irrevocable Cryptographic Shred</div>
+<div class="font-caption text-caption text-slate-subtext">Zero-Knowledge Key Nullification</div>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-slate-body">
+        This action will discard your client private encryption keys and purge all cloud partitions across all geographical nodes. Neither you nor HealthMemory engineers can recover these clinical files.
+      </p>
+<div class="p-space-md rounded-lg bg-surface-container-low flex flex-col gap-2">
+<label class="font-caption text-caption text-slate-subtext font-semibold" for="deleteConfirmInput">
+          Type <span class="font-mono text-status-urgent font-bold">PERMANENT SHRED</span> to confirm:
+        </label>
+<input class="h-10 px-3 rounded bg-surface-container-lowest text-on-surface font-body-sm text-body-sm outline-none shadow-sm focus:ring-1 focus:ring-status-urgent" id="deleteConfirmInput" placeholder="PERMANENT SHRED" type="text"/>
+</div>
+<div class="flex items-center justify-end gap-space-sm pt-space-xs">
+<button class="h-10 px-4 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md hover:bg-surface-container transition-colors" id="btnCloseDeleteModal" type="button">
+          Cancel
+        </button>
+<button class="h-10 px-5 rounded-lg bg-status-urgent text-on-primary font-label-md text-label-md font-semibold opacity-50 cursor-not-allowed transition-all flex items-center gap-2" disabled="" id="btnExecuteShred" type="button">
+<span class="material-symbols-outlined text-[18px]">delete_forever</span>
+          Execute Shred Protocol
+        </button>
+</div>
+</div>
+</div>
+<!-- Temporary Feedback Toast (Dynamic) -->
+<div class="fixed bottom-6 right-6 z-50 px-4 py-3 rounded-lg bg-surface-dark text-on-primary shadow-xl font-label-md text-label-md flex items-center gap-2 transform translate-y-20 opacity-0 transition-all pointer-events-none" id="toastNotification">
+<span class="material-symbols-outlined text-teal-glow text-[20px]">check_circle</span>
+<span id="toastMessage">Operation executed successfully.</span>
+</div>
+<!-- Client-side Interactive Governance Logic -->
+<script>
+    (function() {
+      // Toast helper
+      const toast = document.getElementById('toastNotification');
+      const toastMsg = document.getElementById('toastMessage');
+      function showToast(text) {
+        if (!toast || !toastMsg) return;
+        toastMsg.textContent = text;
+        toast.classList.remove('translate-y-20', 'opacity-0');
+        toast.classList.add('translate-y-0', 'opacity-100');
+        setTimeout(() => {
+          toast.classList.remove('translate-y-0', 'opacity-100');
+          toast.classList.add('translate-y-20', 'opacity-0');
+        }, 3200);
+      }
+
+      // Obfuscation Toggle
+      const toggleObf = document.getElementById('toggleObfuscate');
+      let obfActive = true;
+      if (toggleObf) {
+        toggleObf.addEventListener('click', () => {
+          obfActive = !obfActive;
+          if (obfActive) {
+            toggleObf.classList.remove('bg-surface-container', 'justify-start');
+            toggleObf.classList.add('bg-secondary', 'justify-end');
+            showToast('Differential Privacy obfuscation enabled.');
+          } else {
+            toggleObf.classList.remove('bg-secondary', 'justify-end');
+            toggleObf.classList.add('bg-surface-container', 'justify-start');
+            showToast('Differential Privacy obfuscation bypassed.');
+          }
+        });
+      }
+
+      // Quick export actions
+      const btnExport = document.getElementById('btnQuickExport');
+      const btnGenArchive = document.getElementById('btnGenerateArchive');
+      const handleExport = () => {
+        showToast('Packaging FHIR JSON & PDF archive with client signature...');
+      };
+      if (btnExport) btnExport.addEventListener('click', handleExport);
+      if (btnGenArchive) btnGenArchive.addEventListener('click', handleExport);
+
+      // Audit modal placeholder
+      const btnAudit = document.getElementById('btnAuditModal');
+      if (btnAudit) {
+        btnAudit.addEventListener('click', () => {
+          showToast('Generating full cryptographic audit log signature verification...');
+        });
+      }
+
+      // Freeze Vault action
+      const btnFreeze = document.getElementById('btnFreezeVault');
+      if (btnFreeze) {
+        btnFreeze.addEventListener('click', () => {
+          if (confirm('Are you sure you want to lock all EHR clinic ingress bridges and revoke active device tokens?')) {
+            showToast('Account frozen. All peripheral sync sessions invalidated.');
+          }
+        });
+      }
+
+      // Modal Controls
+      const modal = document.getElementById('deleteModal');
+      const openModalBtn = document.getElementById('btnOpenDeleteModal');
+      const closeModalBtn = document.getElementById('btnCloseDeleteModal');
+      const deleteInput = document.getElementById('deleteConfirmInput');
+      const executeShredBtn = document.getElementById('btnExecuteShred');
+
+      if (openModalBtn && modal) {
+        openModalBtn.addEventListener('click', () => {
+          modal.classList.remove('hidden');
+        });
+      }
+
+      if (closeModalBtn && modal) {
+        closeModalBtn.addEventListener('click', () => {
+          modal.classList.add('hidden');
+          if (deleteInput) deleteInput.value = '';
+          if (executeShredBtn) {
+            executeShredBtn.disabled = true;
+            executeShredBtn.classList.add('opacity-50', 'cursor-not-allowed');
+          }
+        });
+      }
+
+      if (deleteInput && executeShredBtn) {
+        deleteInput.addEventListener('input', (e) => {
+          if (e.target.value.trim() === 'PERMANENT SHRED') {
+            executeShredBtn.disabled = false;
+            executeShredBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+          } else {
+            executeShredBtn.disabled = true;
+            executeShredBtn.classList.add('opacity-50', 'cursor-not-allowed');
+          }
+        });
+
+        executeShredBtn.addEventListener('click', () => {
+          modal.classList.add('hidden');
+          deleteInput.value = '';
+          showToast('Keys shredded. Session terminating...');
+        });
+      }
+    })();
+  </script>
+</div></main></div></div></body></html>

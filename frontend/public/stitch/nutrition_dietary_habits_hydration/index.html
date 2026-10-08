@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"on-secondary":"#ffffff","surface-dim":"#cbdbf5","mint-surface":"#ECFDF5","teal-accent":"#14B8A6","secondary-fixed":"#89f5e7","on-background":"#0b1c30","status-urgent-surface":"#FEF2F2","surface-container-lowest":"#ffffff","outline-variant":"#c6c6cd","on-surface":"#0b1c30","surface-container":"#e5eeff","outline":"#76777d","error":"#ba1a1a","inverse-primary":"#bec6e0","on-primary":"#ffffff","border-dark":"#1E293B","secondary":"#006a61","border-subtle":"#E2E8F0","on-primary-fixed-variant":"#3f465c","primary":"#000000","secondary-container":"#86f2e4","on-tertiary-container":"#9466ff","tertiary":"#000000","on-error-container":"#93000a","on-tertiary-fixed-variant":"#5516be","ai-purple-border":"#DDD6FE","slate-body":"#334155","primary-fixed":"#dae2fd","surface-bright":"#f8f9ff","on-primary-fixed":"#131b2e","primary-fixed-dim":"#bec6e0","on-secondary-fixed-variant":"#005049","on-secondary-container":"#006f66","ai-purple":"#8B5CF6","inverse-surface":"#213145","canvas-light":"#F8FAFC","tertiary-container":"#23005c","surface-tint":"#565e74","tertiary-fixed":"#e9ddff","inverse-on-surface":"#eaf1ff","on-tertiary":"#ffffff","ai-purple-surface":"#F5F3FF","teal-glow":"#2DD4BF","secondary-fixed-dim":"#6bd8cb","error-container":"#ffdad6","slate-subtext":"#64748B","surface-variant":"#d3e4fe","on-primary-container":"#7c839b","status-urgent-border":"#FECACA","status-urgent":"#EF4444","on-error":"#ffffff","surface-white":"#FFFFFF","mint-border":"#A7F3D0","surface-container-low":"#eff4ff","tertiary-fixed-dim":"#d0bcff","on-secondary-fixed":"#00201d","surface-container-highest":"#d3e4fe","background":"#f8f9ff","status-warning":"#F59E0B","mint-wellness":"#10B981","surface-dark":"#0B1324","surface-container-high":"#dce9ff","surface":"#f8f9ff","on-tertiary-fixed":"#23005c","on-surface-variant":"#45464d","primary-container":"#131b2e"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"gutter-sm":"1rem","space-lg":"1.5rem","margin-desktop":"3rem","gutter":"1.5rem","space-md":"1rem","space-2xl":"3rem","margin":"2rem","margin-mobile":"1rem","space-sm":"0.5rem","gutter-lg":"2rem","space-xs":"0.25rem","space-xl":"2rem"},"fontFamily":{"metric-display-sm":["Manrope"],"display-lg":["Manrope"],"display-lg-mobile":["Manrope"],"headline-md":["Manrope"],"metric-display":["Manrope"],"body-md":["Inter"],"headline-lg":["Manrope"],"headline-lg-mobile":["Manrope"],"caption":["Inter"],"metric-unit":["Inter"],"label-md":["Inter"],"body-lg":["Inter"],"label-sm":["Inter"],"headline-sm":["Manrope"],"body-sm":["Inter"]},"fontSize":{"metric-display-sm":["1.5rem",{"lineHeight":"1.75rem","letterSpacing":"-0.02em","fontWeight":"700"}],"display-lg":["3rem",{"lineHeight":"3.5rem","letterSpacing":"-0.025em","fontWeight":"700"}],"display-lg-mobile":["2.25rem",{"lineHeight":"2.75rem","letterSpacing":"-0.02em","fontWeight":"700"}],"headline-md":["1.5rem",{"lineHeight":"2rem","letterSpacing":"-0.015em","fontWeight":"600"}],"metric-display":["2.25rem",{"lineHeight":"2.5rem","letterSpacing":"-0.03em","fontWeight":"700"}],"body-md":["1rem",{"lineHeight":"1.5rem","letterSpacing":"0em","fontWeight":"400"}],"headline-lg":["2rem",{"lineHeight":"2.5rem","letterSpacing":"-0.02em","fontWeight":"700"}],"headline-lg-mobile":["1.625rem",{"lineHeight":"2.125rem","letterSpacing":"-0.015em","fontWeight":"700"}],"caption":["0.6875rem",{"lineHeight":"0.875rem","letterSpacing":"0.03em","fontWeight":"500"}],"metric-unit":["0.875rem",{"lineHeight":"1.25rem","letterSpacing":"0em","fontWeight":"500"}],"label-md":["0.875rem",{"lineHeight":"1.25rem","letterSpacing":"0.01em","fontWeight":"600"}],"body-lg":["1.125rem",{"lineHeight":"1.75rem","letterSpacing":"-0.01em","fontWeight":"400"}],"label-sm":["0.75rem",{"lineHeight":"1rem","letterSpacing":"0.02em","fontWeight":"600"}],"headline-sm":["1.125rem",{"lineHeight":"1.625rem","letterSpacing":"-0.01em","fontWeight":"600"}],"body-sm":["0.875rem",{"lineHeight":"1.25rem","letterSpacing":"0em","fontWeight":"400"}]}}}};</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest border-r border-border-subtle z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.02)]"><div class="flex flex-col"><div class="h-20 px-space-lg flex items-center gap-space-sm border-b border-border-subtle"><div class="w-10 h-10 rounded-xl bg-teal-accent/10 flex items-center justify-center text-teal-accent"><span class="material-symbols-outlined text-[24px]">vital_signs</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight">HealthMemory</span><span class="font-caption text-caption text-teal-accent uppercase tracking-wider font-semibold">360 Clinical OS</span></div></div><div class="px-space-md py-space-sm"><div class="px-space-sm py-space-xs"><span class="font-caption text-caption text-slate-subtext uppercase tracking-wider font-semibold">Clinical Core</span></div><nav class="flex flex-col gap-space-xs" data-active-classes="bg-teal-accent/10 text-teal-accent font-semibold rounded-lg"><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-slate-body hover:bg-surface-container-low hover:text-on-surface transition-colors font-label-md text-label-md" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span>Dashboard</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-slate-body hover:bg-surface-container-low hover:text-on-surface transition-colors font-label-md text-label-md" data-path="medical-records" href="#"><span class="material-symbols-outlined text-[20px]">folder_managed</span><span>Medical Records</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-slate-body hover:bg-surface-container-low hover:text-on-surface transition-colors font-label-md text-label-md" data-path="health-timeline" href="#"><span class="material-symbols-outlined text-[20px]">timeline</span><span>Health Timeline</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-slate-body hover:bg-surface-container-low hover:text-on-surface transition-colors font-label-md text-label-md" data-path="report-comparison" href="#"><span class="material-symbols-outlined text-[20px]">compare</span><span>Report Comparison</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-slate-body hover:bg-surface-container-low hover:text-on-surface transition-colors font-label-md text-label-md" data-path="doctor-brief" href="#"><span class="material-symbols-outlined text-[20px]">clinical_notes</span><span>Doctor Brief</span></a></nav><div class="px-space-sm pt-space-md pb-space-xs"><span class="font-caption text-caption text-slate-subtext uppercase tracking-wider font-semibold">Biomarkers &amp; Care</span></div><nav class="flex flex-col gap-space-xs" data-active-classes="bg-teal-accent/10 text-teal-accent font-semibold rounded-lg"><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-slate-body hover:bg-surface-container-low hover:text-on-surface transition-colors font-label-md text-label-md" data-path="physical-health" href="#"><span class="material-symbols-outlined text-[20px]">ecg_heart</span><span>Physical Health</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-slate-body hover:bg-surface-container-low hover:text-on-surface transition-colors font-label-md text-label-md" data-path="fitness" href="#"><span class="material-symbols-outlined text-[20px]">exercise</span><span>Fitness</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-slate-body hover:bg-surface-container-low hover:text-on-surface transition-colors font-label-md text-label-md" data-path="mental-wellness" href="#"><span class="material-symbols-outlined text-[20px]">psychology</span><span>Mental Wellness</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-sm py-space-xs transition-colors bg-teal-accent/10 text-teal-accent font-semibold rounded-lg" data-path="nutrition" href="#"><span class="material-symbols-outlined text-[20px]">nutrition</span><span>Nutrition</span></a></nav></div></div><div class="p-space-md border-t border-border-subtle bg-surface-white"><div class="px-space-sm pb-space-xs"><span class="font-caption text-caption text-slate-subtext uppercase tracking-wider font-semibold">System</span></div><nav class="flex flex-col gap-space-xs" data-active-classes="bg-surface-container text-on-surface font-semibold rounded-lg"><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-slate-body hover:bg-surface-container-low hover:text-on-surface transition-colors font-label-md text-label-md" data-path="profile" href="#"><span class="material-symbols-outlined text-[18px]">badge</span><span>Profile</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-slate-body hover:bg-surface-container-low hover:text-on-surface transition-colors font-label-md text-label-md" data-path="privacy-security" href="#"><span class="material-symbols-outlined text-[18px]">shield_lock</span><span>Privacy &amp; Security</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-slate-body hover:bg-surface-container-low hover:text-on-surface transition-colors font-label-md text-label-md" data-path="preferences" href="#"><span class="material-symbols-outlined text-[18px]">tune</span><span>Preferences</span></a></nav></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-20 bg-surface-white/95 backdrop-blur-md border-b border-border-subtle z-40 flex items-center justify-between px-space-lg shadow-[0_1px_4px_rgba(15,23,42,0.03)]"><div class="flex items-center flex-1 max-w-xl"><div class="relative w-full"><span class="material-symbols-outlined absolute left-space-md top-1/2 -translate-y-1/2 text-slate-subtext text-[20px]">search</span><input class="w-full h-11 pl-11 pr-space-md bg-canvas-light border border-border-subtle rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-slate-subtext focus:outline-none focus:border-teal-accent transition-colors" placeholder="Search records, biomarkers, medications... [⌘K]" type="text"/><div class="absolute right-space-sm top-1/2 -translate-y-1/2 flex items-center pointer-events-none"><kbd class="px-1.5 py-0.5 rounded bg-surface-white border border-border-subtle text-slate-subtext font-caption text-caption">⌘K</kbd></div></div></div><div class="flex items-center gap-space-md ml-space-lg"><button class="flex items-center gap-space-xs px-space-md py-2 rounded-full bg-ai-purple-surface border border-ai-purple-border text-ai-purple font-label-sm text-label-sm hover:bg-ai-purple/10 transition-colors shadow-[0_0_12px_rgba(139,92,246,0.12)]"><span class="material-symbols-outlined text-[16px]">auto_awesome</span><span>Ask HealthMemory</span></button><button class="relative p-2 rounded-lg text-slate-body hover:bg-surface-container-low hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-status-urgent ring-2 ring-surface-white"></span></button><div class="h-8 w-px bg-border-subtle"></div><div class="flex items-center gap-space-sm pl-space-xs"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col text-left"><span class="font-label-sm text-label-sm text-on-surface font-semibold leading-tight">Alex Morgan</span><span class="font-caption text-caption text-slate-subtext leading-tight">Patient Portal • #HM-8842</span></div></div></div></header><main class="relative pt-20 w-full min-h-screen bg-canvas-light px-space-lg py-space-lg"><div class="flex flex-col w-full">
+<div class="flex flex-col gap-space-lg w-full max-w-[1440px] mx-auto pb-space-2xl">
+<!-- Top Context & Header Strip -->
+<div class="flex flex-col gap-space-md">
+<div class="flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-sm mb-1">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-teal-accent/10 text-teal-accent font-caption text-caption uppercase tracking-wider font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-teal-accent"></span>
+              Biomarker Telemetry #HM-8842
+            </span>
+<span class="text-slate-subtext font-caption text-caption">• Age 24 • Baseline Active</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Nutrition &amp; Dietary Habits</h1>
+<p class="font-body-sm text-body-sm text-slate-subtext mt-1">General dietary balance, hydration telemetry, and micronutrient intake patterns.</p>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm">
+<div class="flex p-1 bg-surface-container rounded-lg">
+<button class="px-3 py-1.5 rounded-md bg-surface-white text-on-surface font-label-sm text-label-sm shadow-sm transition-all" id="btn-period-today">Today</button>
+<button class="px-3 py-1.5 rounded-md text-slate-subtext hover:text-on-surface font-label-sm text-label-sm transition-all" id="btn-period-weekly">Weekly Average</button>
+<button class="px-3 py-1.5 rounded-md text-slate-subtext hover:text-on-surface font-label-sm text-label-sm transition-all" id="btn-period-monthly">30-Day Trends</button>
+</div>
+<button class="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-surface-container hover:bg-surface-variant text-slate-body font-label-sm text-label-sm transition-colors">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+<span>Manage Diet Goals</span>
+</button>
+<button class="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-teal-accent hover:bg-secondary text-on-primary font-label-md text-label-md shadow-sm transition-all">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span>+ Log Meal / Hydration</span>
+</button>
+</div>
+</div>
+<!-- Clinical Boundary Note -->
+<div class="flex items-start gap-3 px-4 py-2.5 rounded-xl bg-surface-container-low text-slate-body">
+<span class="material-symbols-outlined text-teal-accent text-[20px] mt-0.5">info</span>
+<div class="flex-1 font-caption text-caption text-slate-subtext leading-relaxed">
+<strong class="text-slate-body font-medium">General wellness guidance.</strong> HealthMemory 360 visualizes nutritional habits and does not issue medical dietary prescriptions. Always reconcile significant caloric or restriction adjustments with your attending physician.
+        </div>
+</div>
+</div>
+<!-- Top Row Summary Metrics (4 Cards) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- 1. Hydration Card -->
+<div class="flex flex-col justify-between p-space-md bg-surface-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-teal-accent/10 text-teal-accent flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">water_drop</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface">Hydration Intake</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-teal-accent/15 text-teal-accent font-caption text-caption font-semibold">72% Goal</span>
+</div>
+<div class="flex items-end justify-between my-2">
+<div class="flex flex-col">
+<div class="flex items-baseline gap-1">
+<span class="font-metric-display text-metric-display text-on-surface tracking-tight">1.8</span>
+<span class="font-metric-unit text-metric-unit text-slate-subtext">/ 2.5 L</span>
+</div>
+<span class="font-caption text-caption text-slate-subtext mt-0.5">Last: 350ml mineral water @ 11:30 AM</span>
+</div>
+<!-- Glass Fill Graphic -->
+<div class="relative w-9 h-14 bg-surface-container rounded-b-xl rounded-t-sm overflow-hidden p-0.5 flex flex-col justify-end">
+<div class="w-full bg-teal-accent rounded-b-lg transition-all duration-700 ease-out flex items-center justify-center" style="height: 72%;">
+<div class="w-full h-1 bg-teal-glow opacity-60 -mt-auto"></div>
+</div>
+</div>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden mt-space-xs">
+<div class="bg-teal-accent h-1.5 rounded-full transition-all duration-700" style="width: 72%"></div>
+</div>
+</div>
+<!-- 2. Protein Card -->
+<div class="flex flex-col justify-between p-space-md bg-surface-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-mint-surface text-mint-wellness flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">fitness_center</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface">Protein Target</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-mint-surface text-mint-wellness font-caption text-caption font-semibold">On Track</span>
+</div>
+<div class="flex items-end justify-between my-2">
+<div class="flex flex-col">
+<div class="flex items-baseline gap-1">
+<span class="font-metric-display text-metric-display text-on-surface tracking-tight">82</span>
+<span class="font-metric-unit text-metric-unit text-slate-subtext">/ 95 g</span>
+</div>
+<span class="font-caption text-caption text-slate-subtext mt-0.5">86% achieved • Whole food focus</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-mint-surface flex items-center justify-center text-mint-wellness">
+<span class="font-label-sm text-label-sm font-bold">86%</span>
+</div>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden mt-space-xs">
+<div class="bg-mint-wellness h-1.5 rounded-full transition-all duration-700" style="width: 86%"></div>
+</div>
+</div>
+<!-- 3. Fruit & Veg Card -->
+<div class="flex flex-col justify-between p-space-md bg-surface-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-secondary-fixed/30 text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">eco</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface">Plants &amp; Produce</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed/40 text-secondary font-caption text-caption font-semibold">Optimal Variety</span>
+</div>
+<div class="flex items-end justify-between my-2">
+<div class="flex flex-col">
+<div class="flex items-baseline gap-1">
+<span class="font-metric-display text-metric-display text-on-surface tracking-tight">4.5</span>
+<span class="font-metric-unit text-metric-unit text-slate-subtext">/ 5.0 Servings</span>
+</div>
+<span class="font-caption text-caption text-slate-subtext mt-0.5">4 distinct phytonutrient pigments</span>
+</div>
+<div class="flex gap-1 items-end">
+<span class="w-1.5 h-4 bg-mint-wellness rounded-full"></span>
+<span class="w-1.5 h-6 bg-secondary rounded-full"></span>
+<span class="w-1.5 h-7 bg-teal-accent rounded-full"></span>
+<span class="w-1.5 h-5 bg-status-warning rounded-full"></span>
+<span class="w-1.5 h-2 bg-surface-container rounded-full"></span>
+</div>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden mt-space-xs">
+<div class="bg-secondary h-1.5 rounded-full transition-all duration-700" style="width: 90%"></div>
+</div>
+</div>
+<!-- 4. Whole Food Ratio Card -->
+<div class="flex flex-col justify-between p-space-md bg-surface-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-surface-container text-on-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">pie_chart</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface">Whole Food Ratio</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-slate-body font-caption text-caption font-semibold">Target &gt;80%</span>
+</div>
+<div class="flex items-end justify-between my-2">
+<div class="flex flex-col">
+<div class="flex items-baseline gap-1">
+<span class="font-metric-display text-metric-display text-on-surface tracking-tight">84<span class="font-metric-unit text-metric-unit">%</span></span>
+<span class="font-metric-unit text-metric-unit text-slate-subtext">Whole Clean</span>
+</div>
+<span class="font-caption text-caption text-slate-subtext mt-0.5">16% lightly/ultra-processed items</span>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="font-caption text-caption text-mint-wellness font-semibold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span> +4% vs 30d
+            </span>
+</div>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden mt-space-xs flex">
+<div class="bg-mint-wellness h-1.5" style="width: 84%"></div>
+<div class="bg-surface-variant h-1.5" style="width: 16%"></div>
+</div>
+</div>
+</div>
+<!-- Main Content Grid (60% Left, 40% Right) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- LEFT COLUMN (60% -> col-span-7) -->
+<div class="lg:col-span-7 flex flex-col gap-space-lg">
+<!-- Daily Nutritional Pattern Card -->
+<div class="p-space-lg bg-surface-white rounded-2xl shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-wrap items-center justify-between gap-space-xs">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Macronutrient Distribution</h2>
+<p class="font-caption text-caption text-slate-subtext">Telemetry synchronized with nutritional meal logs</p>
+</div>
+<div class="flex items-baseline gap-1 bg-surface-container-low px-3 py-1.5 rounded-lg">
+<span class="font-metric-display-sm text-metric-display-sm text-on-surface">1,840</span>
+<span class="font-metric-unit text-metric-unit text-slate-subtext">/ 2,100 kcal target</span>
+</div>
+</div>
+<!-- Macro Bar Segment -->
+<div class="flex flex-col gap-2 pt-1">
+<div class="h-3 w-full bg-surface-container rounded-full overflow-hidden flex gap-0.5">
+<div class="bg-teal-accent h-full transition-all duration-500" style="width: 25%" title="Protein: 25%"></div>
+<div class="bg-secondary-fixed-dim h-full transition-all duration-500" style="width: 50%" title="Complex Carbohydrates: 50%"></div>
+<div class="bg-status-warning h-full transition-all duration-500" style="width: 25%" title="Healthy Fats: 25%"></div>
+</div>
+<div class="grid grid-cols-3 gap-2 pt-2">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-teal-accent flex-shrink-0"></span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface">Protein (25%)</span>
+<span class="font-caption text-caption text-slate-subtext">82g logged</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary-fixed-dim flex-shrink-0"></span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface">Carbohydrates (50%)</span>
+<span class="font-caption text-slate-subtext">185g complex</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-status-warning flex-shrink-0"></span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface">Healthy Fats (25%)</span>
+<span class="font-caption text-caption text-slate-subtext">48g unrefined</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Meal Log Accordion / Timeline -->
+<div class="flex flex-col gap-space-sm pt-2">
+<span class="font-label-md text-label-md text-slate-body">Today's Meal Progression</span>
+<!-- Breakfast Card -->
+<div class="p-3.5 bg-canvas-light rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-3 hover:bg-surface-container-low transition-colors">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-white text-secondary flex items-center justify-center flex-shrink-0 shadow-sm mt-0.5">
+<span class="material-symbols-outlined text-[20px]">bakery_dining</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface">Breakfast</span>
+<span class="font-caption text-caption text-slate-subtext">8:30 AM</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-body mt-0.5">Steel-cut oats with chia seeds, blueberries, Greek yogurt, and walnuts.</p>
+<div class="flex items-center gap-2 mt-2">
+<span class="px-2 py-0.5 rounded bg-surface-white font-caption text-caption text-slate-subtext shadow-sm">Protein 28g</span>
+<span class="px-2 py-0.5 rounded bg-surface-white font-caption text-caption text-slate-subtext shadow-sm">Fiber 11g</span>
+<span class="px-2 py-0.5 rounded bg-surface-white font-caption text-caption text-mint-wellness shadow-sm">Omega-3 rich</span>
+</div>
+</div>
+</div>
+<div class="flex md:flex-col items-center md:items-end justify-between self-end md:self-center">
+<span class="font-label-md text-label-md text-on-surface">540 kcal</span>
+<span class="font-caption text-caption text-mint-wellness font-medium">Logged ✓</span>
+</div>
+</div>
+<!-- Lunch Card with contextual photo preview -->
+<div class="p-3.5 bg-canvas-light rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-3 hover:bg-surface-container-low transition-colors">
+<div class="flex items-start gap-3">
+<div class="relative w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 shadow-sm mt-0.5">
+<img class="w-full h-full object-cover" data-alt="A clean top-down photographic view of a vibrant Mediterranean salmon quinoa bowl with fresh avocado slices, roasted green asparagus, and extra virgin olive oil drizzle in an earthy ceramic bowl on clean slate." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEbgSEY7EG-kK2ccMZaavGm_jvXvwscoOw1SLpaIoSzelkpfuhhu_6WAFMmZyayvtHwjspuYlExIaEDwsU62LVkXWnYCa5mQJW9D-SnoSbiEYsALtu6BAk-Zub8n9DY5yANhq0QUWZ8XBKpWVnxv2W4kkavLUT_uW8odkMUtuH4jj_8-rqObeSS7NCJv9VqsimlkfAdgGMdwvuN3mF-vtemhYQ5QjkUBiOAp6O2g"/>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface">Lunch</span>
+<span class="font-caption text-caption text-slate-subtext">1:15 PM</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-body mt-0.5">Grilled wild salmon bowl with quinoa, roasted asparagus, sliced avocado &amp; olive oil.</p>
+<div class="flex items-center gap-2 mt-2">
+<span class="px-2 py-0.5 rounded bg-surface-white font-caption text-caption text-slate-subtext shadow-sm">Protein 42g</span>
+<span class="px-2 py-0.5 rounded bg-surface-white font-caption text-caption text-teal-accent font-medium shadow-sm">Omega-3 2.1g</span>
+<span class="px-2 py-0.5 rounded bg-surface-white font-caption text-caption text-slate-subtext shadow-sm">Fiber 7g</span>
+</div>
+</div>
+</div>
+<div class="flex md:flex-col items-center md:items-end justify-between self-end md:self-center">
+<span class="font-label-md text-label-md text-on-surface">710 kcal</span>
+<span class="font-caption text-caption text-mint-wellness font-medium">Logged ✓</span>
+</div>
+</div>
+<!-- Snack Card -->
+<div class="p-3.5 bg-canvas-light rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-3 hover:bg-surface-container-low transition-colors">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-white text-status-warning flex items-center justify-center flex-shrink-0 shadow-sm mt-0.5">
+<span class="material-symbols-outlined text-[20px]">nutrition</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface">Afternoon Snack</span>
+<span class="font-caption text-caption text-slate-subtext">4:00 PM</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-body mt-0.5">Sliced organic Honeycrisp apple with roasted almond butter + freshly brewed green tea.</p>
+<div class="flex items-center gap-2 mt-2">
+<span class="px-2 py-0.5 rounded bg-surface-white font-caption text-caption text-slate-subtext shadow-sm">Fiber 4.5g</span>
+<span class="px-2 py-0.5 rounded bg-surface-white font-caption text-caption text-slate-subtext shadow-sm">Antioxidant catechin</span>
+</div>
+</div>
+</div>
+<div class="flex md:flex-col items-center md:items-end justify-between self-end md:self-center">
+<span class="font-label-md text-label-md text-on-surface">220 kcal</span>
+<span class="font-caption text-caption text-mint-wellness font-medium">Logged ✓</span>
+</div>
+</div>
+<!-- Dinner Scheduled Card -->
+<div class="p-3.5 bg-surface-container-lowest rounded-xl flex items-center justify-between gap-3 shadow-inner">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container text-slate-subtext flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">restaurant</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface">Dinner</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-slate-subtext font-caption text-caption">Scheduled ~7:30 PM</span>
+</div>
+<span class="font-body-sm text-body-sm text-slate-subtext">Recommended target: ~370-450 kcal (High fiber &amp; lean protein)</span>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-variant text-slate-body font-label-sm text-label-sm transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span>Log Now</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Weekly Dietary Quality Trends -->
+<div class="p-space-lg bg-surface-white rounded-2xl shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Weekly Dietary Quality Adherence</h2>
+<p class="font-caption text-caption text-slate-subtext">7-day behavioral consistency benchmarks</p>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-semibold bg-secondary-fixed/30 px-2.5 py-1 rounded-full">Score: 92/100</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Quality Metric 1 -->
+<div class="p-4 bg-canvas-light rounded-xl flex flex-col justify-between gap-3">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface">Sugary Drinks</span>
+<span class="material-symbols-outlined text-mint-wellness text-[20px]">check_circle</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-mint-wellness">0 Servings</span>
+<span class="font-caption text-caption text-slate-subtext mt-0.5">Strict zero added sugar hydration</span>
+</div>
+<div class="flex gap-1 pt-1">
+<span class="h-1.5 flex-1 rounded bg-mint-wellness"></span>
+<span class="h-1.5 flex-1 rounded bg-mint-wellness"></span>
+<span class="h-1.5 flex-1 rounded bg-mint-wellness"></span>
+<span class="h-1.5 flex-1 rounded bg-mint-wellness"></span>
+<span class="h-1.5 flex-1 rounded bg-mint-wellness"></span>
+<span class="h-1.5 flex-1 rounded bg-mint-wellness"></span>
+<span class="h-1.5 flex-1 rounded bg-mint-wellness"></span>
+</div>
+</div>
+<!-- Quality Metric 2 -->
+<div class="p-4 bg-canvas-light rounded-xl flex flex-col justify-between gap-3">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface">Sodium Balance</span>
+<span class="material-symbols-outlined text-teal-accent text-[20px]">verified</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">&lt; 2,140 mg</span>
+<span class="font-caption text-caption text-slate-subtext mt-0.5">Within ideal clinical range</span>
+</div>
+<div class="flex gap-1 pt-1">
+<span class="h-1.5 flex-1 rounded bg-teal-accent"></span>
+<span class="h-1.5 flex-1 rounded bg-teal-accent"></span>
+<span class="h-1.5 flex-1 rounded bg-teal-accent"></span>
+<span class="h-1.5 flex-1 rounded bg-teal-accent"></span>
+<span class="h-1.5 flex-1 rounded bg-teal-accent"></span>
+<span class="h-1.5 flex-1 rounded bg-teal-accent"></span>
+<span class="h-1.5 flex-1 rounded bg-teal-accent"></span>
+</div>
+</div>
+<!-- Quality Metric 3 -->
+<div class="p-4 bg-canvas-light rounded-xl flex flex-col justify-between gap-3">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface">Fiber Goal (&gt;30g)</span>
+<span class="material-symbols-outlined text-secondary text-[20px]">trending_up</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">5 of 7 Days</span>
+<span class="font-caption text-caption text-slate-subtext mt-0.5">Microbiome prebiotic intake</span>
+</div>
+<div class="flex gap-1 pt-1">
+<span class="h-1.5 flex-1 rounded bg-secondary"></span>
+<span class="h-1.5 flex-1 rounded bg-secondary"></span>
+<span class="h-1.5 flex-1 rounded bg-surface-container"></span>
+<span class="h-1.5 flex-1 rounded bg-secondary"></span>
+<span class="h-1.5 flex-1 rounded bg-secondary"></span>
+<span class="h-1.5 flex-1 rounded bg-surface-container"></span>
+<span class="h-1.5 flex-1 rounded bg-secondary"></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN (40% -> col-span-5) -->
+<div class="lg:col-span-5 flex flex-col gap-space-lg">
+<!-- Micronutrient & Supplement Adherence -->
+<div class="p-space-lg bg-surface-white rounded-2xl shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-ai-purple-surface text-ai-purple flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">medication</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Supplements &amp; Micronutrients</h2>
+</div>
+<span class="font-caption text-caption text-slate-subtext">Clinical Protocol</span>
+</div>
+<!-- Schedule Checklist -->
+<div class="flex flex-col gap-2.5">
+<!-- Item 1: Vitamin D3 -->
+<div class="p-3 bg-mint-surface/60 rounded-xl flex items-start justify-between gap-3">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-mint-wellness text-[22px] mt-0.5">check_circle</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Vitamin D3 (2,000 IU softgel)</span>
+<span class="font-caption text-caption text-slate-subtext">Logged with Breakfast • Targets Serum Biomarker 21 ng/mL</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-mint-surface text-mint-wellness font-caption text-caption font-semibold">Taken</span>
+</div>
+<!-- Item 2: Omega-3 EPA/DHA -->
+<div class="p-3 bg-mint-surface/60 rounded-xl flex items-start justify-between gap-3">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-mint-wellness text-[22px] mt-0.5">check_circle</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Omega-3 EPA/DHA (1,000 mg)</span>
+<span class="font-caption text-caption text-slate-subtext">Logged with Lunch • Cardiovascular baseline</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-mint-surface text-mint-wellness font-caption text-caption font-semibold">Taken</span>
+</div>
+<!-- Item 3: Magnesium Glycinate -->
+<div class="p-3 bg-canvas-light rounded-xl flex items-start justify-between gap-3">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-slate-subtext text-[22px] mt-0.5">schedule</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Magnesium Glycinate (400 mg)</span>
+<span class="font-caption text-caption text-slate-subtext">Scheduled for evening • Supports sleep &amp; muscle relaxation</span>
+</div>
+</div>
+<button class="px-2.5 py-1 rounded-md bg-surface-white text-slate-body hover:bg-surface-container font-caption text-caption font-semibold shadow-sm transition-colors">
+                Mark Taken
+              </button>
+</div>
+</div>
+<!-- Micronutrient Sufficiency Gauges -->
+<div class="flex flex-col gap-space-sm pt-2">
+<span class="font-label-sm text-label-sm text-slate-body uppercase tracking-wider font-semibold">Micronutrient Daily Sufficiency</span>
+<div class="flex flex-col gap-3">
+<!-- Gauge 1: Zinc -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-caption text-caption">
+<span class="text-on-surface font-medium">Zinc (11 mg)</span>
+<span class="text-teal-accent font-semibold">92% of target</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+<div class="bg-teal-accent h-1.5 rounded-full" style="width: 92%"></div>
+</div>
+</div>
+<!-- Gauge 2: Vitamin D -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-caption text-caption">
+<span class="text-on-surface font-medium">Vitamin D (Serum Target)</span>
+<span class="text-mint-wellness font-semibold">Optimal Absorption</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+<div class="bg-mint-wellness h-1.5 rounded-full" style="width: 100%"></div>
+</div>
+</div>
+<!-- Gauge 3: Iron -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-caption text-caption">
+<span class="text-on-surface font-medium">Iron (18 mg)</span>
+<span class="text-teal-accent font-semibold">95% of target</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+<div class="bg-teal-accent h-1.5 rounded-full" style="width: 95%"></div>
+</div>
+</div>
+<!-- Gauge 4: Calcium -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-caption text-caption">
+<span class="text-on-surface font-medium">Calcium (1,000 mg)</span>
+<span class="text-slate-subtext font-semibold">88% of target</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+<div class="bg-secondary-fixed-dim h-1.5 rounded-full" style="width: 88%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- AI Longitudinal Dietary Impact on Biomarkers -->
+<div class="p-space-lg bg-ai-purple-surface/70 rounded-2xl shadow-sm flex flex-col gap-space-md relative overflow-hidden">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-ai-purple text-[22px]">auto_awesome</span>
+<span class="font-headline-sm text-headline-sm text-ai-purple font-semibold">Longitudinal Clinical Insight</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-ai-purple-border/60 text-ai-purple font-caption text-caption font-semibold">AI Synthesis</span>
+</div>
+<div class="p-3.5 bg-surface-white/90 rounded-xl shadow-sm flex flex-col gap-2">
+<p class="font-body-sm text-body-sm text-on-surface leading-relaxed">
+              “Your consistent Mediterranean-style dietary pattern over the past 60 days coincides with the <strong class="text-on-surface font-semibold">18 mg/dL decrease in total cholesterol</strong> and favorable fasting glucose trend observed in your August lab panel.”
+            </p>
+<div class="flex items-center gap-2 pt-1 font-caption text-caption text-slate-subtext">
+<span class="w-2 h-2 rounded-full bg-teal-accent"></span>
+<span>Correlated with Lab Report #LR-9921 (Aug 14, 2025)</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<a class="inline-flex items-center gap-1.5 text-ai-purple hover:underline font-label-sm text-label-sm font-semibold transition-colors" data-path="report-comparison" href="#">
+<span>Compare in Report Comparison</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+<span class="font-caption text-caption text-slate-subtext">Confidence: 94.2%</span>
+</div>
+</div>
+<!-- Mini Healthy Recipe / Meal Prep Visual Card -->
+<div class="relative rounded-2xl overflow-hidden shadow-sm flex flex-col justify-end p-5 min-h-[170px]" data-alt="A clean, luminous aesthetic photograph of an organized clinical nutrition prep layout: glass containers of steamed organic edamame, freshly sliced colorful citrus, roasted almonds, and cold-pressed extra virgin olive oil under warm natural daylight." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDtPlVscU403nOP5Zt5kzTeRvTbghxvp0qAe03gRVaQrG8oKVm3Yy8K3VXaCdr_xTbDJOO4wmrGhTGhL29c0Gl6rmL_taudvF4jBlbYusf6kRSTlV5O_dytZJ-a2pEsCe_PGJ7Km6PcJmT0fbCiaoW8seq3zRQvJ4leGZwX5hZ_gLpn3EQLYmdYSrUXfcdE1bMErggwS2eRxmcjUW3alik7X_hPTc39uxSn4pqvCg')">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+<div class="relative z-10 flex flex-col gap-1">
+<span class="text-teal-glow font-caption text-caption uppercase tracking-wider font-semibold">Curated Dietary Guidance</span>
+<h3 class="text-on-primary font-headline-sm text-headline-sm">Fiber &amp; Polyphenol Density Guide</h3>
+<p class="text-canvas-light text-caption font-caption line-clamp-1">Tailored for bio-individual cholesterol modulation and gut microbiome richness.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+    // Micro-interactions for Period Selector
+    const periodButtons = ['btn-period-today', 'btn-period-weekly', 'btn-period-monthly'];
+    periodButtons.forEach(id => {
+      const btn = document.getElementById(id);
+      if (btn) {
+        btn.addEventListener('click', () => {
+          periodButtons.forEach(otherId => {
+            const otherBtn = document.getElementById(otherId);
+            if (otherBtn) {
+              otherBtn.className = 'px-3 py-1.5 rounded-md text-slate-subtext hover:text-on-surface font-label-sm text-label-sm transition-all';
+            }
+          });
+          btn.className = 'px-3 py-1.5 rounded-md bg-surface-white text-on-surface font-label-sm text-label-sm shadow-sm transition-all';
+        });
+      }
+    });
+  </script>
+</div></main></div><script src="/stitch-runtime.js"></script></body></html>

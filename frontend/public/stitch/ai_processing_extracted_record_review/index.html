@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HealthMemory 360 - Patient Dashboard</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#0F172A",
+            "teal-accent": "#14B8A6",
+            "teal-dark": "#0D9488",
+            "teal-subtle": "#F0FDFA",
+            "ai-purple": "#8B5CF6",
+            "ai-purple-surface": "#F5F3FF",
+            "ai-purple-border": "#DDD6FE",
+            "mint-wellness": "#10B981",
+            "mint-surface": "#ECFDF5",
+            "slate-body": "#334155",
+            "slate-subtext": "#64748B",
+            "border-subtle": "#E2E8F0",
+            "canvas-light": "#F8FAFC",
+            "surface-white": "#FFFFFF",
+            "status-warning": "#F59E0B"
+          },
+          fontFamily: {
+            sans: ["Inter", "sans-serif"],
+            display: ["Manrope", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    body {
+      font-family: 'Inter', sans-serif;
+      overscroll-behavior: none;
+    }
+    .font-display {
+      font-family: 'Manrope', sans-serif;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F1F5F9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 9999px;
+    }
+  </style>
+<meta content="web_dashboard" name="shell-type"/></head>
+<body class="bg-canvas-light text-slate-body antialiased flex min-h-screen">
+<!-- Left Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-screen w-72 bg-surface-white border-r border-border-subtle z-50 flex flex-col justify-between select-none">
+<div class="flex flex-col">
+<!-- Logo Header with Clinical Cross Mark -->
+<div class="h-20 flex items-center px-6 border-b border-border-subtle/60 gap-3">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-accent to-secondary flex items-center justify-center text-white shadow-sm ring-2 ring-teal-accent/20">
+<span class="material-symbols-outlined text-[24px]">local_hospital</span>
+</div>
+<div class="flex flex-col">
+<span class="font-display font-bold text-lg text-slate-900 tracking-tight leading-tight">HealthMemory <span class="text-teal-accent">360</span></span>
+<span class="text-[11px] font-medium text-slate-subtext tracking-wider uppercase">Longitudinal Health</span>
+</div>
+</div>
+<!-- Main Navigation -->
+<div class="px-4 pt-5">
+<p class="px-3 pb-2 text-[11px] font-bold text-slate-400 tracking-wider uppercase">Clinical Overview</p>
+<nav class="flex flex-col gap-1">
+<!-- Active Dashboard Pill -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl bg-slate-900 text-white font-medium text-sm shadow-sm transition-all group" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-teal-accent group-hover:scale-125 transition-transform"></span>
+<span class="material-symbols-outlined text-[20px] text-teal-accent">grid_view</span>
+<span class="flex-1">Dashboard</span>
+<span class="text-[10px] font-semibold bg-slate-800 text-slate-300 px-2 py-0.5 rounded-md">Live</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-medium text-sm transition-colors" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+<span class="material-symbols-outlined text-[20px] text-slate-400">folder_shared</span>
+<span>Medical Records</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-medium text-sm transition-colors" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+<span class="material-symbols-outlined text-[20px] text-slate-400">timeline</span>
+<span>Health Timeline</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-medium text-sm transition-colors" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+<span class="material-symbols-outlined text-[20px] text-slate-400">compare_arrows</span>
+<span>Report Comparison</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-medium text-sm transition-colors" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+<span class="material-symbols-outlined text-[20px] text-slate-400">vital_signs</span>
+<span>Physical Health</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-medium text-sm transition-colors" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+<span class="material-symbols-outlined text-[20px] text-slate-400">directions_run</span>
+<span>Fitness</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-medium text-sm transition-colors" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+<span class="material-symbols-outlined text-[20px] text-slate-400">psychology</span>
+<span>Mental Wellness</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-medium text-sm transition-colors" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+<span class="material-symbols-outlined text-[20px] text-slate-400">restaurant</span>
+<span>Nutrition</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-medium text-sm transition-colors" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+<span class="material-symbols-outlined text-[20px] text-slate-400">assignment</span>
+<span>Doctor Brief</span>
+</a>
+</nav>
+</div>
+</div>
+<!-- Bottom Settings / Preferences -->
+<div class="p-4 border-t border-border-subtle bg-slate-50/70">
+<p class="px-3 pb-2 text-[11px] font-bold text-slate-400 tracking-wider uppercase">Settings &amp; Access</p>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-white text-sm font-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px] text-slate-400">account_circle</span>
+<span>Profile</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-white text-sm font-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px] text-slate-400">shield_lock</span>
+<span>Privacy &amp; Security</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-white text-sm font-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px] text-slate-400">settings</span>
+<span>Preferences</span>
+</a>
+</nav>
+</div>
+</aside>
+<!-- Main Content Wrap -->
+<div class="pl-72 flex-1 flex flex-col min-h-screen">
+<!-- Top Bar -->
+<header class="sticky top-0 h-20 bg-surface-white/95 backdrop-blur-md border-b border-border-subtle z-40 px-8 flex items-center justify-between">
+<!-- Search with ⌘K shortcut -->
+<div class="relative w-full max-w-lg">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3.5 text-slate-400 text-[20px] pointer-events-none">search</span>
+<input class="w-full h-11 pl-11 pr-14 bg-slate-100/70 hover:bg-slate-100 text-slate-900 placeholder:text-slate-400 text-sm rounded-xl border border-transparent focus:border-teal-accent focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-accent/20 transition-all" placeholder="Search records, biomarkers, medications..." type="text"/>
+<kbd class="absolute right-3.5 px-2 py-0.5 text-[11px] font-semibold text-slate-500 bg-white border border-slate-200 rounded shadow-sm">⌘K</kbd>
+</div>
+</div>
+<!-- Right Header Actions -->
+<div class="flex items-center gap-4">
+<!-- Distinct 'Ask HealthMemory' Action Pill -->
+<a class="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-ai-purple-surface border border-ai-purple-border text-ai-purple hover:bg-ai-purple hover:text-white transition-all text-xs font-semibold shadow-xs" href="#">
+<span class="material-symbols-outlined text-[16px]">spark</span>
+<span>Ask HealthMemory</span>
+</a>
+<!-- Notification Bell -->
+<button class="relative p-2.5 rounded-xl text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition-colors" type="button">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-red-500 ring-2 ring-white"></span>
+</button>
+<div class="h-6 w-px bg-border-subtle"></div>
+<!-- Alex Morgan Avatar + Caption -->
+<div class="flex items-center gap-3 cursor-pointer p-1 rounded-xl hover:bg-slate-50 transition-colors">
+<img alt="Alex Morgan" class="w-10 h-10 rounded-full object-cover ring-2 ring-teal-accent/30 shadow-xs" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUbmr_rpFPZ6ytLhagmZveMZEVNxwcGQfXA3ifdFaK5ltw_u6PjDkyl5tcRRmd9odkIW4Xr0WPSiX_UQd1_y4bjj66gy64vMvMa0LeV7ep9G_tHh51RAeEMwV4OIpr1fCDD6Fa6NORiyiOGm7jvqgMOD6KbKUFtiFTsnXgAwu-iqwlhlvEJIaT4g3B6VChUM4KNjR2Ddyj83dd2wKfbHoTv8jTVOVlMM8qvTy5Hg"/>
+<div class="flex flex-col text-left">
+<span class="font-display font-semibold text-sm text-slate-900 leading-tight">Alex Morgan</span>
+<span class="text-[11px] font-medium text-slate-subtext">Patient Portal</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Body Container -->
+<main class="flex-1 p-8 max-w-7xl w-full mx-auto space-y-6"><div class="flex flex-col w-full gap-6">
+<!-- Top Ingestion Banner -->
+<section class="bg-surface-container-lowest rounded-xl p-6 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-5 relative overflow-hidden">
+<div class="absolute -right-16 -top-16 w-64 h-64 rounded-full bg-ai-purple/5 pointer-events-none blur-3xl"></div>
+<div class="absolute left-1/3 -bottom-20 w-52 h-52 rounded-full bg-teal-accent/5 pointer-events-none blur-2xl"></div>
+<div class="flex items-start md:items-center gap-4 z-10">
+<div class="w-12 h-12 rounded-xl bg-ai-purple-surface flex items-center justify-center text-ai-purple shadow-xs shrink-0">
+<span class="material-symbols-outlined text-[28px]">document_scanner</span>
+</div>
+<div class="flex flex-col">
+<div class="flex flex-wrap items-center gap-2.5">
+<span class="font-headline-sm text-headline-sm text-on-surface">Document Ingestion &amp; Neural Parsing Engine</span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-mint-surface text-mint-wellness font-caption text-caption shadow-2xs">
+<span class="w-1.5 h-1.5 rounded-full bg-mint-wellness animate-pulse"></span>
+            Extraction Complete • Ready for Review
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-subtext mt-0.5 flex items-center gap-2 flex-wrap">
+<span class="font-medium text-slate-body">Comprehensive_Metabolic_Panel_Aug2026.pdf</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>LabCorp Diagnostics</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>12 Aug 2026</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>2.4 MB</span>
+</p>
+</div>
+</div>
+<div class="flex items-center gap-2.5 z-10 shrink-0">
+<button class="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-slate-body font-label-md text-label-md transition-colors shadow-2xs" type="button">
+<span class="material-symbols-outlined text-[18px]">history</span>
+<span>Version History</span>
+</button>
+<button class="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-ai-purple-surface hover:bg-ai-purple/15 text-ai-purple font-label-md text-label-md transition-colors shadow-2xs" type="button">
+<span class="material-symbols-outlined text-[18px]">neurology</span>
+<span>Model v4.8 Active</span>
+</button>
+</div>
+</section>
+<!-- Split Screen Review Workspace -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- LEFT COLUMN: AI Pipeline & Document Context (5 Cols) -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<!-- Pipeline Status Module -->
+<div class="bg-surface-container-lowest rounded-xl p-5 shadow-sm flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-teal-accent text-[20px]">account_tree</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Extraction Pipeline</span>
+</div>
+<span class="font-caption text-caption text-mint-wellness bg-mint-surface px-2 py-0.5 rounded-full font-semibold">100% Parsed</span>
+</div>
+<div class="relative flex flex-col gap-3.5 pl-3 mt-1">
+<div class="absolute left-6 top-3 bottom-4 w-0.5 bg-surface-container"></div>
+<!-- Step 1 -->
+<div class="relative flex items-start gap-3.5">
+<div class="w-6 h-6 rounded-full bg-mint-wellness text-on-primary flex items-center justify-center shrink-0 z-10 shadow-xs">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<div class="flex-1 bg-surface-container-low p-2.5 rounded-lg flex items-center justify-between">
+<div>
+<p class="font-label-sm text-label-sm text-slate-body">Step 1: Reading Document</p>
+<p class="font-caption text-caption text-slate-subtext">High-res OCR &amp; Layout Analysis</p>
+</div>
+<span class="font-caption text-caption text-mint-wellness font-bold">100%</span>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="relative flex items-start gap-3.5">
+<div class="w-6 h-6 rounded-full bg-mint-wellness text-on-primary flex items-center justify-center shrink-0 z-10 shadow-xs">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<div class="flex-1 bg-surface-container-low p-2.5 rounded-lg flex items-center justify-between">
+<div>
+<p class="font-label-sm text-label-sm text-slate-body">Step 2: Medical Entities</p>
+<p class="font-caption text-caption text-slate-subtext">Entity classification &amp; NER</p>
+</div>
+<span class="font-caption text-caption text-slate-subtext">4 targets</span>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="relative flex items-start gap-3.5">
+<div class="w-6 h-6 rounded-full bg-mint-wellness text-on-primary flex items-center justify-center shrink-0 z-10 shadow-xs">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<div class="flex-1 bg-surface-container-low p-2.5 rounded-lg">
+<p class="font-label-sm text-label-sm text-slate-body">Step 3: Providers, Units &amp; Dates</p>
+<p class="font-caption text-caption text-slate-subtext">Dr. Marcus Vance, MD • Quest/LabCorp</p>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="relative flex items-start gap-3.5">
+<div class="w-6 h-6 rounded-full bg-mint-wellness text-on-primary flex items-center justify-center shrink-0 z-10 shadow-xs">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<div class="flex-1 bg-surface-container-low p-2.5 rounded-lg flex items-center justify-between">
+<div>
+<p class="font-label-sm text-label-sm text-slate-body">Step 4: Structuring Health Data</p>
+<p class="font-caption text-caption text-slate-subtext">LOINC &amp; SNOMED-CT mapped</p>
+</div>
+<span class="material-symbols-outlined text-mint-wellness text-[18px]">verified</span>
+</div>
+</div>
+<!-- Step 5 -->
+<div class="relative flex items-start gap-3.5">
+<div class="w-6 h-6 rounded-full bg-teal-accent text-on-primary flex items-center justify-center shrink-0 z-10 ring-4 ring-teal-accent/20">
+<span class="material-symbols-outlined text-[14px]">sync</span>
+</div>
+<div class="flex-1 bg-teal-subtle/50 p-2.5 rounded-lg flex items-center justify-between">
+<div>
+<p class="font-label-sm text-label-sm text-teal-dark font-semibold">Step 5: Timeline &amp; Delta Sync</p>
+<p class="font-caption text-caption text-slate-subtext">Awaiting human review commit</p>
+</div>
+<span class="font-caption text-caption text-teal-dark bg-teal-subtle px-2 py-0.5 rounded font-semibold">Ready</span>
+</div>
+</div>
+</div>
+</div>
+<!-- OCR Spatial Bounding Box Document View -->
+<div class="bg-surface-container-lowest rounded-xl p-5 shadow-sm flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-ai-purple text-[20px]">preview</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Source OCR Localization</span>
+</div>
+<span class="font-caption text-caption text-slate-subtext">Page 1 of 2</span>
+</div>
+<div class="relative bg-surface-container-low rounded-lg p-3 overflow-hidden shadow-2xs group">
+<!-- Document Simulation Canvas -->
+<div class="bg-surface-container-lowest rounded p-4 text-[11px] leading-relaxed select-none relative shadow-xs">
+<div class="flex justify-between items-center pb-2 mb-3 bg-surface-container-low/50 px-2 py-1 rounded">
+<span class="font-bold tracking-wider text-slate-subtext text-[10px]">LABCORP CLINICAL PATHOLOGY</span>
+<span class="text-slate-subtext text-[10px]">ACC: #8921-X9A</span>
+</div>
+<div class="space-y-2 text-slate-body">
+<div class="h-2 w-32 bg-surface-container rounded mb-3"></div>
+<!-- Highlighting Fasting Glucose -->
+<div class="relative p-1.5 rounded bg-amber-50/70">
+<div class="absolute -top-2 right-2 px-1.5 py-0.2 bg-status-warning text-white font-caption text-[9px] rounded font-semibold shadow-xs">
+                  AI Bound: Fasting Glucose
+                </div>
+<div class="flex justify-between font-mono">
+<span>GLUCOSE, SERUM FASTING</span>
+<span class="font-bold text-status-warning">108 mg/dL [H]</span>
+</div>
+</div>
+<!-- Normal rows representation -->
+<div class="flex justify-between text-slate-subtext font-mono px-1.5">
+<span>BUN / CREATININE RATIO</span>
+<span>14.2 Ratio</span>
+</div>
+<div class="flex justify-between text-slate-subtext font-mono px-1.5">
+<span>SODIUM / POTASSIUM</span>
+<span>141 / 4.4 mmol/L</span>
+</div>
+<!-- Highlighting Cholesterol -->
+<div class="relative p-1.5 rounded bg-amber-50/70">
+<div class="absolute -top-2 right-2 px-1.5 py-0.2 bg-status-warning text-white font-caption text-[9px] rounded font-semibold shadow-xs">
+                  AI Bound: Total Cholesterol
+                </div>
+<div class="flex justify-between font-mono">
+<span>CHOLESTEROL, TOTAL</span>
+<span class="font-bold text-status-warning">212 mg/dL [H]</span>
+</div>
+</div>
+<!-- Highlighting Hemoglobin -->
+<div class="relative p-1.5 rounded bg-teal-subtle">
+<div class="absolute -top-2 right-2 px-1.5 py-0.2 bg-mint-wellness text-white font-caption text-[9px] rounded font-semibold shadow-xs">
+                  AI Bound: Hemoglobin CBC
+                </div>
+<div class="flex justify-between font-mono">
+<span>HEMOGLOBIN (CBC PANEL)</span>
+<span class="font-bold text-mint-wellness">12.4 g/dL [OK]</span>
+</div>
+</div>
+<div class="flex justify-between text-slate-subtext font-mono px-1.5">
+<span>PLATELET COUNT</span>
+<span>245 x10E3/uL</span>
+</div>
+</div>
+</div>
+<div class="mt-2.5 flex items-center justify-between text-slate-subtext font-caption text-caption px-1">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-teal-accent">crop_free</span> 3 active anchors
+            </span>
+<button class="text-teal-dark hover:text-teal-accent transition-colors font-medium flex items-center gap-1" type="button">
+<span>Inspect Full Resolution PDF</span>
+<span class="material-symbols-outlined text-[14px]">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Security, Privacy & Integrity Footprint -->
+<div class="bg-surface-container-low rounded-xl p-4 shadow-2xs flex flex-col gap-2.5">
+<span class="font-label-sm text-label-sm text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-teal-accent">verified_user</span>
+          Clinical Privacy Architecture
+        </span>
+<div class="grid grid-cols-2 gap-2">
+<div class="bg-surface-container-lowest p-2 rounded-lg">
+<p class="font-caption text-caption text-slate-subtext">Integrity Hash</p>
+<p class="font-caption text-caption text-slate-body font-mono truncate">SHA256: 7f4a9b...c83e</p>
+</div>
+<div class="bg-surface-container-lowest p-2 rounded-lg">
+<p class="font-caption text-caption text-slate-subtext">Training Usage</p>
+<p class="font-caption text-caption text-mint-wellness font-semibold">Zero 3rd-Party Retention</p>
+</div>
+</div>
+<p class="font-caption text-caption text-slate-subtext mt-0.5">
+          Document parsed entirely in client-authorized private enclave compliant with HIPAA/GDPR clinical memory standards.
+        </p>
+</div>
+</div>
+<!-- RIGHT COLUMN: Extracted Clinical Biometric Data (7 Cols) -->
+<div class="lg:col-span-7 flex flex-col gap-6">
+<!-- Extraction Table Container -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm flex flex-col gap-5">
+<!-- Header & Top Actions -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-border-subtle/50">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Extracted Clinical Biometric Data</h2>
+<p class="font-body-sm text-body-sm text-slate-subtext">4 Key Analytes Identified with Longitudinal Baselines</p>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-slate-body font-label-sm text-label-sm transition-colors shadow-2xs" type="button">
+<span class="material-symbols-outlined text-[16px]">restart_alt</span>
+<span>Re-scan</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-teal-subtle text-teal-dark hover:bg-teal-accent hover:text-white font-label-sm text-label-sm transition-colors shadow-2xs" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span>+ Add Custom Biomarker</span>
+</button>
+</div>
+</div>
+<!-- Non-diagnostic disclaimer notice -->
+<div class="bg-surface-container-low rounded-xl p-3.5 flex items-start gap-3">
+<span class="material-symbols-outlined text-slate-subtext text-[18px] shrink-0 mt-0.5">info</span>
+<p class="font-caption text-caption text-slate-body leading-relaxed">
+            Review and edit values extracted from uploaded document before saving to your health timeline. HealthMemory 360 provides longitudinal organization, not clinical diagnostic conclusions.
+          </p>
+</div>
+<!-- Biomarkers Interactive Cards List -->
+<div class="flex flex-col gap-3.5" id="biomarkers-container">
+<!-- Card 1: Fasting Glucose -->
+<div class="bg-surface-container-low/70 hover:bg-surface-container-low transition-colors rounded-xl p-4 flex flex-col gap-3 group shadow-2xs">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-status-warning"></span>
+<span class="font-label-md text-label-md text-slate-body font-bold">Fasting Blood Glucose</span>
+<span class="font-caption text-caption bg-surface-container-lowest px-2 py-0.5 rounded text-slate-subtext">LOINC: 1558-6</span>
+</div>
+<span class="self-start sm:self-auto inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-50 text-status-warning font-label-sm text-label-sm font-semibold">
+                Slightly Elevated
+              </span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-surface-container-lowest p-3 rounded-lg items-center">
+<div>
+<p class="font-caption text-caption text-slate-subtext">Extracted Value</p>
+<div class="flex items-baseline gap-1 mt-0.5">
+<input class="font-metric-display-sm text-metric-display-sm text-on-surface bg-transparent w-16 focus:outline-none focus:bg-surface-container-low rounded px-1 -ml-1 font-bold" type="text" value="108"/>
+<span class="font-metric-unit text-metric-unit text-slate-subtext">mg/dL</span>
+</div>
+</div>
+<div>
+<p class="font-caption text-caption text-slate-subtext">Reference Range</p>
+<p class="font-body-sm text-body-sm text-slate-body font-medium mt-1">70 – 99 mg/dL</p>
+</div>
+<div>
+<p class="font-caption text-caption text-slate-subtext">Longitudinal Delta</p>
+<p class="font-label-sm text-label-sm text-mint-wellness font-semibold mt-1 flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[16px]">trending_down</span>
+                  -10 mg/dL vs 2025
+                </p>
+</div>
+<div class="flex justify-end gap-1.5">
+<button class="p-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-slate-body transition-colors" title="Edit field" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-2 rounded-lg bg-mint-surface hover:bg-mint-surface/80 text-mint-wellness transition-colors" title="Verified" type="button">
+<span class="material-symbols-outlined text-[18px]">done_all</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 2: Total Serum Cholesterol -->
+<div class="bg-surface-container-low/70 hover:bg-surface-container-low transition-colors rounded-xl p-4 flex flex-col gap-3 group shadow-2xs">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-status-warning"></span>
+<span class="font-label-md text-label-md text-slate-body font-bold">Total Serum Cholesterol</span>
+<span class="font-caption text-caption bg-surface-container-lowest px-2 py-0.5 rounded text-slate-subtext">LOINC: 2093-3</span>
+</div>
+<span class="self-start sm:self-auto inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-50 text-status-warning font-label-sm text-label-sm font-semibold">
+                Borderline High
+              </span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-surface-container-lowest p-3 rounded-lg items-center">
+<div>
+<p class="font-caption text-caption text-slate-subtext">Extracted Value</p>
+<div class="flex items-baseline gap-1 mt-0.5">
+<input class="font-metric-display-sm text-metric-display-sm text-on-surface bg-transparent w-16 focus:outline-none focus:bg-surface-container-low rounded px-1 -ml-1 font-bold" type="text" value="212"/>
+<span class="font-metric-unit text-metric-unit text-slate-subtext">mg/dL</span>
+</div>
+</div>
+<div>
+<p class="font-caption text-caption text-slate-subtext">Reference Range</p>
+<p class="font-body-sm text-body-sm text-slate-body font-medium mt-1">&lt; 200 mg/dL</p>
+</div>
+<div>
+<p class="font-caption text-caption text-slate-subtext">Longitudinal Delta</p>
+<p class="font-label-sm text-label-sm text-mint-wellness font-semibold mt-1 flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[16px]">trending_down</span>
+                  -18 mg/dL vs 2025
+                </p>
+</div>
+<div class="flex justify-end gap-1.5">
+<button class="p-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-slate-body transition-colors" title="Edit field" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-2 rounded-lg bg-mint-surface hover:bg-mint-surface/80 text-mint-wellness transition-colors" title="Verified" type="button">
+<span class="material-symbols-outlined text-[18px]">done_all</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 3: Hemoglobin (CBC Panel) -->
+<div class="bg-surface-container-low/70 hover:bg-surface-container-low transition-colors rounded-xl p-4 flex flex-col gap-3 group shadow-2xs">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-mint-wellness"></span>
+<span class="font-label-md text-label-md text-slate-body font-bold">Hemoglobin (CBC Panel)</span>
+<span class="font-caption text-caption bg-surface-container-lowest px-2 py-0.5 rounded text-slate-subtext">LOINC: 718-7</span>
+</div>
+<span class="self-start sm:self-auto inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-mint-surface text-mint-wellness font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                Optimal
+              </span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-surface-container-lowest p-3 rounded-lg items-center">
+<div>
+<p class="font-caption text-caption text-slate-subtext">Extracted Value</p>
+<div class="flex items-baseline gap-1 mt-0.5">
+<input class="font-metric-display-sm text-metric-display-sm text-on-surface bg-transparent w-16 focus:outline-none focus:bg-surface-container-low rounded px-1 -ml-1 font-bold" type="text" value="12.4"/>
+<span class="font-metric-unit text-metric-unit text-slate-subtext">g/dL</span>
+</div>
+</div>
+<div>
+<p class="font-caption text-caption text-slate-subtext">Reference Range</p>
+<p class="font-body-sm text-body-sm text-slate-body font-medium mt-1">12.0 – 15.5 g/dL</p>
+</div>
+<div>
+<p class="font-caption text-caption text-slate-subtext">Longitudinal Delta</p>
+<p class="font-label-sm text-label-sm text-teal-dark font-semibold mt-1 flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+                  +1.2 g/dL
+                </p>
+</div>
+<div class="flex justify-end gap-1.5">
+<span class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-mint-surface text-mint-wellness font-caption text-caption font-semibold">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+                  Verified
+                </span>
+</div>
+</div>
+</div>
+<!-- Card 4: Vitamin D (25-OH) -->
+<div class="bg-surface-container-low/70 hover:bg-surface-container-low transition-colors rounded-xl p-4 flex flex-col gap-3 group shadow-2xs">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-status-warning"></span>
+<span class="font-label-md text-label-md text-slate-body font-bold">Vitamin D (25-OH)</span>
+<span class="font-caption text-caption bg-surface-container-lowest px-2 py-0.5 rounded text-slate-subtext">LOINC: 62292-8</span>
+</div>
+<span class="self-start sm:self-auto inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-50 text-status-warning font-label-sm text-label-sm font-semibold">
+                Suboptimal
+              </span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-surface-container-lowest p-3 rounded-lg items-center">
+<div>
+<p class="font-caption text-caption text-slate-subtext">Extracted Value</p>
+<div class="flex items-baseline gap-1 mt-0.5">
+<input class="font-metric-display-sm text-metric-display-sm text-on-surface bg-transparent w-16 focus:outline-none focus:bg-surface-container-low rounded px-1 -ml-1 font-bold" type="text" value="21"/>
+<span class="font-metric-unit text-metric-unit text-slate-subtext">ng/mL</span>
+</div>
+</div>
+<div>
+<p class="font-caption text-caption text-slate-subtext">Reference Range</p>
+<p class="font-body-sm text-body-sm text-slate-body font-medium mt-1">30 – 50 ng/mL</p>
+</div>
+<div>
+<p class="font-caption text-caption text-slate-subtext">Longitudinal Delta</p>
+<p class="font-label-sm text-label-sm text-teal-dark font-semibold mt-1 flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+                  +3 ng/mL
+                </p>
+</div>
+<div class="flex justify-end gap-1.5">
+<button class="p-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-slate-body transition-colors" title="Edit field" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-2 rounded-lg bg-mint-surface hover:bg-mint-surface/80 text-mint-wellness transition-colors" title="Verified" type="button">
+<span class="material-symbols-outlined text-[18px]">done_all</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Extracted Clinical Summary / Doctor Note -->
+<div class="bg-ai-purple-surface/70 rounded-xl p-4 flex flex-col gap-2 mt-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-ai-purple font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">notes</span>
+              Synthesized Clinical Note Extract
+            </span>
+<span class="font-caption text-caption text-slate-subtext">Dr. Marcus Vance, MD</span>
+</div>
+<blockquote class="font-body-sm text-body-sm text-slate-body italic bg-surface-container-lowest/80 p-3 rounded-lg leading-relaxed">
+            “Patient demonstrating positive metabolic recovery. Fasting glucose down 10 mg/dL from 118 baseline. Continue lifestyle modifications, re-check lipid panel in 6 months.”
+          </blockquote>
+</div>
+<!-- Sticky Commit & Discard Action Bar -->
+<div class="pt-4 border-t border-border-subtle/50 flex flex-col sm:flex-row items-center justify-between gap-3 mt-2">
+<div class="flex items-center gap-2 w-full sm:w-auto">
+<button class="px-3.5 py-2 rounded-lg bg-status-urgent-surface hover:bg-red-100 text-status-urgent font-label-md text-label-md transition-colors w-1/2 sm:w-auto" type="button">
+              Discard Extraction
+            </button>
+<button class="px-3.5 py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-slate-body font-label-md text-label-md transition-colors w-1/2 sm:w-auto" type="button">
+              Edit Raw JSON
+            </button>
+</div>
+<button class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg bg-teal-accent hover:bg-teal-dark text-on-primary font-label-md text-label-md transition-all shadow-md hover:shadow-lg active:scale-95" id="commit-btn" type="button">
+<span>Confirm &amp; Commit to Health Timeline</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Simple interactive feedback on Commit
+  document.getElementById('commit-btn')?.addEventListener('click', function() {
+    this.innerHTML = `
+      <span class="material-symbols-outlined text-[18px] animate-spin">progress_activity</span>
+      <span>Syncing to Health Timeline...</span>
+    `;
+    this.disabled = true;
+    setTimeout(() => {
+      this.classList.remove('bg-teal-accent', 'hover:bg-teal-dark');
+      this.classList.add('bg-mint-wellness');
+      this.innerHTML = `
+        <span class="material-symbols-outlined text-[18px]">task_alt</span>
+        <span>Successfully Committed!</span>
+      `;
+    }, 1200);
+  });
+</script></main>
+</div>
+<script src="/stitch-runtime.js"></script></body></html>

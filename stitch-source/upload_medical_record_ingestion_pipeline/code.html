@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HealthMemory 360</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-dim": "#cbdbf5",
+            "inverse-surface": "#213145",
+            "outline-variant": "#c6c6cd",
+            "primary-fixed": "#dae2fd",
+            "on-secondary-fixed-variant": "#005049",
+            "surface-container-highest": "#d3e4fe",
+            "primary-fixed-dim": "#bec6e0",
+            "teal-glow": "#2DD4BF",
+            "mint-border": "#A7F3D0",
+            "status-warning": "#F59E0B",
+            "ai-purple-border": "#DDD6FE",
+            "on-tertiary-fixed-variant": "#5516be",
+            "on-primary-fixed-variant": "#3f465c",
+            "on-background": "#0b1c30",
+            "on-error-container": "#93000a",
+            "background": "#f8f9ff",
+            "surface-white": "#FFFFFF",
+            "on-tertiary": "#ffffff",
+            "secondary": "#006a61",
+            "inverse-primary": "#bec6e0",
+            "teal-accent": "#14B8A6",
+            "inverse-on-surface": "#eaf1ff",
+            "surface-tint": "#565e74",
+            "surface-container-lowest": "#ffffff",
+            "tertiary-fixed": "#e9ddff",
+            "on-primary-fixed": "#131b2e",
+            "error": "#ba1a1a",
+            "on-secondary": "#ffffff",
+            "on-tertiary-fixed": "#23005c",
+            "surface-variant": "#d3e4fe",
+            "ai-purple": "#8B5CF6",
+            "tertiary-container": "#23005c",
+            "ai-purple-surface": "#F5F3FF",
+            "border-dark": "#1E293B",
+            "on-surface": "#0b1c30",
+            "on-primary": "#ffffff",
+            "surface-bright": "#f8f9ff",
+            "error-container": "#ffdad6",
+            "slate-body": "#334155",
+            "slate-subtext": "#64748B",
+            "tertiary": "#000000",
+            "surface-container-high": "#dce9ff",
+            "on-surface-variant": "#45464d",
+            "on-secondary-container": "#006f66",
+            "canvas-light": "#F8FAFC",
+            "primary": "#000000",
+            "status-urgent-surface": "#FEF2F2",
+            "secondary-fixed": "#89f5e7",
+            "surface-container": "#e5eeff",
+            "primary-container": "#131b2e",
+            "surface-container-low": "#eff4ff",
+            "on-tertiary-container": "#9466ff",
+            "border-subtle": "#E2E8F0",
+            "status-urgent-border": "#FECACA",
+            "outline": "#76777d",
+            "surface": "#f8f9ff",
+            "on-primary-container": "#7c839b",
+            "mint-surface": "#ECFDF5",
+            "on-secondary-fixed": "#00201d",
+            "secondary-fixed-dim": "#6bd8cb",
+            "tertiary-fixed-dim": "#d0bcff",
+            "status-urgent": "#EF4444",
+            "secondary-container": "#86f2e4",
+            "on-error": "#ffffff",
+            "surface-dark": "#0B1324",
+            "mint-wellness": "#10B981"
+          },
+          borderRadius: {
+            DEFAULT: "0.25rem",
+            lg: "0.5rem",
+            xl: "0.75rem",
+            full: "9999px"
+          },
+          spacing: {
+            "space-2xl": "3rem",
+            "space-md": "1rem",
+            "space-sm": "0.5rem",
+            "margin-desktop": "3rem",
+            "margin": "2rem",
+            "space-lg": "1.5rem",
+            "gutter-sm": "1rem",
+            "gutter": "1.5rem",
+            "gutter-lg": "2rem",
+            "margin-mobile": "1rem",
+            "space-xl": "2rem",
+            "space-xs": "0.25rem"
+          },
+          fontFamily: {
+            "body-sm": ["Inter"],
+            "display-lg": ["Manrope"],
+            "display-lg-mobile": ["Manrope"],
+            "metric-display-sm": ["Manrope"],
+            "headline-sm": ["Manrope"],
+            "headline-lg": ["Manrope"],
+            "body-md": ["Inter"],
+            "metric-display": ["Manrope"],
+            "label-sm": ["Inter"],
+            "caption": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-lg-mobile": ["Manrope"],
+            "label-md": ["Inter"],
+            "metric-unit": ["Inter"],
+            "headline-md": ["Manrope"]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    @layer base {
+      body {
+        font-family: 'Inter', sans-serif;
+        overscroll-behavior: none;
+      }
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F1F5F9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 9999px;
+    }
+  </style>
+<meta content="web_dashboard" name="shell-type"/>
+</head>
+<body class="bg-canvas-light text-slate-body antialiased min-h-screen">
+<!-- Left Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-screen w-72 bg-surface-white border-r border-border-subtle z-50 flex flex-col justify-between select-none">
+<div class="flex flex-col">
+<!-- Logo Header -->
+<div class="h-20 flex items-center px-6 border-b border-border-subtle/60 gap-3">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-accent to-secondary flex items-center justify-center text-white shadow-sm ring-2 ring-teal-accent/20">
+<span class="material-symbols-outlined text-[24px]">local_hospital</span>
+</div>
+<div class="flex flex-col">
+<span class="font-display-lg font-bold text-lg text-slate-900 tracking-tight leading-tight">HealthMemory <span class="text-teal-accent">360</span></span>
+<span class="text-[11px] font-medium text-slate-subtext tracking-wider uppercase">Longitudinal Health</span>
+</div>
+</div>
+<!-- Quick Action Upload Record -->
+<div class="px-4 pt-4 pb-2">
+<a class="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-teal-accent hover:bg-teal-dark text-white font-label-md font-semibold text-sm shadow-sm transition-all" data-path="upload-medical-record" href="#">
+<span class="material-symbols-outlined text-[18px]">cloud_upload</span>
+<span>Upload Record</span>
+</a>
+</div>
+<!-- Main Navigation -->
+<div class="px-4 pt-2">
+<p class="px-3 pb-2 text-[11px] font-bold text-slate-400 tracking-wider uppercase">Clinical Overview</p>
+<nav class="flex flex-col gap-1" data-active-classes="bg-slate-900 text-white font-semibold shadow-sm">
+<a class="flex items-center px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-medium text-sm transition-colors" data-path="physical-health-biometric-tracking" href="#">
+            Physical Health - Biometric Tracking
+          </a>
+<a class="flex items-center px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-medium text-sm transition-colors" data-path="nutrition-metabolic-balance" href="#">
+            Nutrition - Metabolic Balance
+          </a>
+<a class="flex items-center px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-medium text-sm transition-colors" data-path="mental-wellness-mood-rest" href="#">
+            Mental Wellness - Mood &amp; Rest
+          </a>
+<a class="flex items-center px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-medium text-sm transition-colors" data-path="ai-processing-extracted-record-review" href="#">
+            AI Processing &amp; Extracted Record Review
+          </a>
+<a aria-current="page" class="flex items-center px-3.5 py-2.5 rounded-xl transition-colors bg-slate-900 text-white font-semibold shadow-sm" data-path="upload-medical-record" href="#">
+            Upload Medical Record
+          </a>
+</nav>
+</div>
+</div>
+<!-- Bottom Settings / Preferences -->
+<div class="p-4 border-t border-border-subtle bg-slate-50/70">
+<p class="px-3 pb-2 text-[11px] font-bold text-slate-400 tracking-wider uppercase">Settings &amp; Access</p>
+<nav class="flex flex-col gap-1" data-active-classes="bg-slate-900 text-white font-semibold shadow-sm">
+<a class="flex items-center px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-white text-sm font-medium transition-colors" data-path="landing-page" href="#">
+          Overview &amp; Features
+        </a>
+<a class="flex items-center px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-white text-sm font-medium transition-colors" data-path="login-signup" href="#">
+          Account Access
+        </a>
+</nav>
+</div>
+</aside>
+<!-- Main Content Wrap -->
+<div class="pl-72 flex flex-col min-h-screen">
+<!-- Top Bar -->
+<header class="sticky top-0 h-20 bg-surface-white/95 backdrop-blur-md border-b border-border-subtle z-40 px-8 flex items-center justify-between">
+<!-- Search with ⌘K shortcut -->
+<div class="relative w-full max-w-lg">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3.5 text-slate-400 text-[20px] pointer-events-none">search</span>
+<input class="w-full h-11 pl-11 pr-14 bg-slate-100/70 hover:bg-slate-100 text-slate-900 placeholder:text-slate-400 text-sm rounded-xl border border-transparent focus:border-teal-accent focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-accent/20 transition-all" placeholder="Search records, biomarkers, medications..." type="text"/>
+<kbd class="absolute right-3.5 px-2 py-0.5 text-[11px] font-semibold text-slate-500 bg-white border border-slate-200 rounded shadow-sm">⌘K</kbd>
+</div>
+</div>
+<!-- Right Header Actions -->
+<div class="flex items-center gap-4">
+<!-- Distinct 'Ask HealthMemory' Action Pill -->
+<a class="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-ai-purple-surface border border-ai-purple-border text-ai-purple hover:bg-ai-purple hover:text-white transition-all text-xs font-semibold shadow-xs" href="#">
+<span class="material-symbols-outlined text-[16px]">spark</span>
+<span>Ask HealthMemory</span>
+</a>
+<!-- Notification Bell -->
+<button class="relative p-2.5 rounded-xl text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition-colors" type="button">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-red-500 ring-2 ring-white"></span>
+</button>
+<div class="h-6 w-px bg-border-subtle"></div>
+<!-- Alex Morgan Avatar + Caption -->
+<div class="flex items-center gap-3 cursor-pointer p-1 rounded-xl hover:bg-slate-50 transition-colors">
+<img alt="Alex Morgan" class="w-10 h-10 rounded-full object-cover ring-2 ring-teal-accent/30 shadow-xs" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUbmr_rpFPZ6ytLhagmZveMZEVNxwcGQfXA3ifdFaK5ltw_u6PjDkyl5tcRRmd9odkIW4Xr0WPSiX_UQd1_y4bjj66gy64vMvMa0LeV7ep9G_tHh51RAeEMwV4OIpr1fCDD6Fa6NORiyiOGm7jvqgMOD6KbKUFtiFTsnXgAwu-iqwlhlvEJIaT4g3B6VChUM4KNjR2Ddyj83dd2wKfbHoTv8jTVOVlMM8qvTy5Hg"/>
+<div class="flex flex-col text-left">
+<span class="font-display-lg font-semibold text-sm text-slate-900 leading-tight">Alex Morgan</span>
+<span class="text-[11px] font-medium text-slate-subtext">Patient Portal</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Body Container -->
+<main class="flex-1 pt-20 p-8 max-w-7xl w-full mx-auto space-y-6"><div class="flex flex-col w-full">
+<!-- Top Context & Header -->
+<div class="flex flex-col gap-3 pb-8">
+<div class="flex items-center gap-2 text-slate-subtext font-caption text-caption uppercase tracking-wider">
+<span class="hover:text-secondary cursor-pointer transition-colors">Medical Records</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-secondary font-semibold">Ingestion Pipeline</span>
+<span class="ml-2 inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-mint-surface text-secondary text-[11px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-teal-accent animate-pulse"></span>
+        Vault Active
+      </span>
+</div>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div class="space-y-1">
+<h1 class="font-headline-lg text-headline-lg text-inverse-surface tracking-tight">Upload Medical Record</h1>
+<p class="font-body-md text-body-md text-slate-subtext max-w-3xl">
+          Add diagnostic lab reports, prescriptions, clinical summaries, or imaging scans to your permanent longitudinal health memory.
+        </p>
+</div>
+<div class="flex items-center gap-3 self-start md:self-auto bg-surface-container-low px-4 py-2.5 rounded-xl">
+<div class="w-8 h-8 rounded-lg bg-teal-accent/15 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[20px]">shield_person</span>
+</div>
+<div class="flex flex-col text-left">
+<span class="font-label-sm text-label-sm text-inverse-surface font-semibold">AES-256 Vault Segregation</span>
+<span class="font-caption text-caption text-slate-subtext">Zero-knowledge tenant isolation active</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Ingestion Split Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left Column: Primary Ingestion & File Staging (7 Cols) -->
+<div class="lg:col-span-7 flex flex-col gap-6">
+<!-- Drag & Drop Giant Ingestion Canvas -->
+<div class="group relative rounded-2xl bg-surface-white p-10 flex flex-col items-center text-center transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer overflow-hidden" id="drop-zone">
+<!-- Ambient Radial Gradient Backing -->
+<div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-gradient-to-br from-teal-accent/10 to-transparent blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-gradient-to-tr from-ai-purple/10 to-transparent blur-3xl pointer-events-none"></div>
+<!-- Pulsing Cloud Icon with Sensor Wave SVG -->
+<div class="relative mb-6">
+<div class="absolute inset-0 rounded-full bg-teal-accent/20 animate-ping opacity-60"></div>
+<div class="relative w-20 h-20 rounded-2xl bg-gradient-to-br from-secondary to-teal-accent flex items-center justify-center text-white shadow-lg">
+<span class="material-symbols-outlined text-[40px]">cloud_upload</span>
+</div>
+<!-- Corner Diagnostic Tag -->
+<span class="absolute -bottom-1 -right-2 bg-surface-dark text-teal-glow font-caption text-caption px-2 py-0.5 rounded-full uppercase tracking-widest font-mono">
+            OCR 4.0
+          </span>
+</div>
+<!-- Headlines -->
+<h2 class="font-headline-md text-headline-md text-inverse-surface tracking-tight mb-2">
+          Drop your medical report here or browse files
+        </h2>
+<p class="font-body-sm text-body-sm text-slate-subtext max-w-lg mb-8">
+          Supports multi-page PDF, JPG, PNG, and DICOM up to 50MB. High-resolution OCR and LOINC medical entity structuring execute automatically.
+        </p>
+<!-- Dynamic Action Buttons -->
+<div class="flex flex-wrap items-center justify-center gap-4 w-full max-w-md">
+<label class="flex-1 flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-teal-accent hover:bg-secondary text-white font-label-md text-label-md transition-all shadow-md hover:shadow-lg cursor-pointer">
+<input accept=".pdf,.jpg,.jpeg,.png,.dcm" class="hidden" id="file-selector" type="file"/>
+<span class="material-symbols-outlined text-[20px]">file_open</span>
+<span>Choose File from Computer</span>
+</label>
+<button class="flex-1 flex items-center justify-center gap-2.5 px-5 py-3.5 rounded-xl bg-surface-container-high hover:bg-surface-container-highest text-inverse-surface font-label-md text-label-md transition-all" id="btn-camera">
+<span class="material-symbols-outlined text-[20px] text-secondary">qr_code_scanner</span>
+<span>Scan with Mobile QR</span>
+</button>
+</div>
+<!-- Accepted Types Visual Badges -->
+<div class="mt-8 flex flex-wrap items-center justify-center gap-2 pt-6 w-full">
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-surface-container-low text-slate-body font-caption text-caption">
+<span class="material-symbols-outlined text-[15px] text-teal-accent">picture_as_pdf</span>
+<span>PDF Diagnostic Reports</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-surface-container-low text-slate-body font-caption text-caption">
+<span class="material-symbols-outlined text-[15px] text-ai-purple">image</span>
+<span>High-Res Scans (PNG/JPG)</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-surface-container-low text-slate-body font-caption text-caption">
+<span class="material-symbols-outlined text-[15px] text-status-warning">radiology</span>
+<span>DICOM Imaging Series</span>
+</div>
+</div>
+</div>
+<!-- Quick Upload Presets / Judge Demo Samples -->
+<div class="rounded-2xl bg-surface-white p-6 shadow-sm flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">science</span>
+<h3 class="font-headline-sm text-headline-sm text-inverse-surface">Try a sample clinical report for judge demo:</h3>
+</div>
+<span class="font-caption text-caption bg-surface-container-high px-2 py-1 rounded text-slate-subtext font-mono">1-Click Population</span>
+</div>
+<!-- Sample Cards Bento Stack -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+<!-- Sample 1: Active by Default -->
+<div class="group relative p-4 rounded-xl bg-mint-surface cursor-pointer transition-all flex flex-col justify-between h-40" id="sample-card-1" onclick="selectSample(1, 'LabCorp Comprehensive Metabolic Panel (Aug 2026)', 'LabCorp Diagnostics - San Francisco', '2026-08-14', 'Lab Report')">
+<div class="flex items-start justify-between">
+<span class="w-8 h-8 rounded-lg bg-white shadow-xs flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">biotech</span>
+</span>
+<span class="font-caption text-caption px-2 py-0.5 rounded-full bg-secondary text-white font-medium" id="badge-sample-1">Selected</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-inverse-surface line-clamp-2 leading-snug">LabCorp CMP Panel (Aug 2026)</p>
+<p class="font-caption text-caption text-secondary mt-1">14 Analytes • Fasting Glucose, eGFR</p>
+</div>
+<div class="text-[11px] font-mono text-slate-subtext">PDF • 1.4 MB</div>
+</div>
+<!-- Sample 2 -->
+<div class="group relative p-4 rounded-xl bg-surface-container-low hover:bg-surface-container cursor-pointer transition-all flex flex-col justify-between h-40" id="sample-card-2" onclick="selectSample(2, 'Quest Diagnostics Lipid &amp; Glycemic Panel (Jun 2025)', 'Quest Diagnostics Bay Area', '2025-06-21', 'Lab Report')">
+<div class="flex items-start justify-between">
+<span class="w-8 h-8 rounded-lg bg-white shadow-xs flex items-center justify-center text-slate-subtext group-hover:text-secondary">
+<span class="material-symbols-outlined text-[18px]">bloodtype</span>
+</span>
+<span class="font-caption text-caption px-2 py-0.5 rounded-full bg-transparent text-slate-subtext group-hover:text-inverse-surface" id="badge-sample-2">Click to load</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-inverse-surface line-clamp-2 leading-snug">Quest Lipid &amp; Glycemic Panel</p>
+<p class="font-caption text-caption text-slate-subtext mt-1">HbA1c 5.8% • Total Cholesterol 184</p>
+</div>
+<div class="text-[11px] font-mono text-slate-subtext">PDF • 2.1 MB</div>
+</div>
+<!-- Sample 3 -->
+<div class="group relative p-4 rounded-xl bg-surface-container-low hover:bg-surface-container cursor-pointer transition-all flex flex-col justify-between h-40" id="sample-card-3" onclick="selectSample(3, 'Pinecrest Internal Medicine Rx Authorization', 'Pinecrest Health Group', '2026-07-02', 'Prescription')">
+<div class="flex items-start justify-between">
+<span class="w-8 h-8 rounded-lg bg-white shadow-xs flex items-center justify-center text-slate-subtext group-hover:text-secondary">
+<span class="material-symbols-outlined text-[18px]">prescriptions</span>
+</span>
+<span class="font-caption text-caption px-2 py-0.5 rounded-full bg-transparent text-slate-subtext group-hover:text-inverse-surface" id="badge-sample-3">Click to load</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-inverse-surface line-clamp-2 leading-snug">Pinecrest Rx Authorization</p>
+<p class="font-caption text-caption text-slate-subtext mt-1">Atorvastatin 20mg • Metformin 500mg</p>
+</div>
+<div class="text-[11px] font-mono text-slate-subtext">DOCX/PDF • 840 KB</div>
+</div>
+</div>
+</div>
+<!-- Current Selected File Staging Card -->
+<div class="rounded-xl bg-surface-dark text-white p-5 shadow-sm flex items-center justify-between" id="file-preview-strip">
+<div class="flex items-center gap-4 min-w-0">
+<div class="w-12 h-12 rounded-xl bg-secondary/40 flex items-center justify-center text-teal-glow shrink-0">
+<span class="material-symbols-outlined text-[26px]">task</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md font-semibold text-white truncate" id="staged-file-name">LabCorp_CMP_Longitudinal_20260814.pdf</span>
+<span class="font-caption text-caption px-2 py-0.5 rounded bg-teal-accent/20 text-teal-glow font-mono shrink-0">READY</span>
+</div>
+<span class="font-caption text-caption text-slate-subtext" id="staged-file-meta">Document pre-scanned • 14 biomarkers identified • Valid checksum</span>
+</div>
+</div>
+<button class="p-2 text-slate-subtext hover:text-white rounded-lg hover:bg-white/10 transition-colors" onclick="clearSelectedFile()" title="Remove loaded file">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+</div>
+<!-- Right Column: Document Metadata & Processing Configuration Panel (5 Cols) -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<div class="rounded-2xl bg-surface-white p-7 shadow-sm flex flex-col gap-6">
+<div class="flex items-center justify-between pb-3">
+<div class="flex items-center gap-2.5">
+<span class="w-7 h-7 rounded-lg bg-ai-purple-surface flex items-center justify-center text-ai-purple">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</span>
+<h3 class="font-headline-sm text-headline-sm text-inverse-surface">Configuration &amp; Metadata</h3>
+</div>
+<span class="font-caption text-caption text-slate-subtext">Step 1 of 2</span>
+</div>
+<!-- Document Category Selector -->
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-inverse-surface font-semibold flex items-center justify-between">
+<span>Document Category</span>
+<span class="text-secondary font-normal font-caption text-caption">Auto-categorized</span>
+</label>
+<div class="grid grid-cols-2 gap-2" id="category-selector">
+<button class="cat-pill active flex items-center gap-2 p-2.5 rounded-xl bg-surface-container-high text-inverse-surface font-label-md text-label-md transition-all text-left" data-cat="Lab Report" onclick="setDocCategory('Lab Report')" type="button">
+<span class="material-symbols-outlined text-[18px] text-teal-accent">biotech</span>
+<span class="truncate">Lab Report</span>
+</button>
+<button class="cat-pill flex items-center gap-2 p-2.5 rounded-xl bg-surface-container-low hover:bg-surface-container text-slate-body font-label-md text-label-md transition-all text-left" data-cat="Prescription" onclick="setDocCategory('Prescription')" type="button">
+<span class="material-symbols-outlined text-[18px] text-ai-purple">prescriptions</span>
+<span class="truncate">Prescription</span>
+</button>
+<button class="cat-pill flex items-center gap-2 p-2.5 rounded-xl bg-surface-container-low hover:bg-surface-container text-slate-body font-label-md text-label-md transition-all text-left" data-cat="Clinic Visit Note" onclick="setDocCategory('Clinic Visit Note')" type="button">
+<span class="material-symbols-outlined text-[18px] text-status-warning">clinical_notes</span>
+<span class="truncate">Clinic Visit Note</span>
+</button>
+<button class="cat-pill flex items-center gap-2 p-2.5 rounded-xl bg-surface-container-low hover:bg-surface-container text-slate-body font-label-md text-label-md transition-all text-left" data-cat="Radiology / Scan" onclick="setDocCategory('Radiology / Scan')" type="button">
+<span class="material-symbols-outlined text-[18px] text-error">radiology</span>
+<span class="truncate">Radiology / Scan</span>
+</button>
+<button class="cat-pill col-span-2 flex items-center gap-2 p-2.5 rounded-xl bg-surface-container-low hover:bg-surface-container text-slate-body font-label-md text-label-md transition-all text-left" data-cat="Vaccination / Other" onclick="setDocCategory('Vaccination / Other')" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary">vaccines</span>
+<span class="truncate">Vaccination / Genetic / Other Summary</span>
+</button>
+</div>
+</div>
+<!-- Target Timeline Date Selector -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<label class="font-label-sm text-label-sm text-inverse-surface font-semibold" for="record-date">Target Timeline Event Date</label>
+<div class="flex items-center gap-1.5">
+<input checked="" class="rounded text-teal-accent focus:ring-0 w-3.5 h-3.5 bg-surface-container-low" id="auto-date" type="checkbox"/>
+<label class="font-caption text-caption text-slate-subtext cursor-pointer" for="auto-date">Auto-detect via OCR</label>
+</div>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-3 text-slate-subtext text-[18px]">calendar_today</span>
+<input class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-surface-container-low text-inverse-surface font-body-sm text-body-sm focus:outline-none focus:bg-surface-white transition-all" id="record-date" type="date" value="2026-08-14"/>
+</div>
+</div>
+<!-- Healthcare Provider / Facility Input -->
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-inverse-surface font-semibold" for="provider-input">Healthcare Provider / Facility</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-3 text-slate-subtext text-[18px]">domain</span>
+<input class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-surface-container-low text-inverse-surface font-body-sm text-body-sm focus:outline-none focus:bg-surface-white transition-all" id="provider-input" placeholder="e.g. Mayo Clinic, LabCorp, Kaiser..." type="text" value="LabCorp Diagnostics - San Francisco"/>
+</div>
+</div>
+<!-- AI Extraction Options -->
+<div class="flex flex-col gap-3 pt-2">
+<span class="font-label-sm text-label-sm text-inverse-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-ai-purple text-[18px]">auto_awesome</span>
+            AI Extraction Engine Directives
+          </span>
+<div class="flex flex-col gap-2.5">
+<label class="flex items-start gap-3 p-3 rounded-xl bg-surface-container-low/70 hover:bg-surface-container-low cursor-pointer transition-colors">
+<input checked="" class="mt-0.5 rounded text-teal-accent focus:ring-0 w-4 h-4 bg-surface-white" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-inverse-surface font-medium leading-tight">Auto-extract quantitative analytes to Biomarker Matrix</span>
+<span class="font-caption text-caption text-slate-subtext mt-0.5">Maps clinical values directly to LOINC and reference range bounds</span>
+</div>
+</label>
+<label class="flex items-start gap-3 p-3 rounded-xl bg-surface-container-low/70 hover:bg-surface-container-low cursor-pointer transition-colors">
+<input checked="" class="mt-0.5 rounded text-teal-accent focus:ring-0 w-4 h-4 bg-surface-white" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-inverse-surface font-medium leading-tight">Link to Longitudinal Health Timeline</span>
+<span class="font-caption text-caption text-slate-subtext mt-0.5">Places this clinical episode in chronological relation to previous panels</span>
+</div>
+</label>
+<label class="flex items-start gap-3 p-3 rounded-xl bg-surface-container-low/70 hover:bg-surface-container-low cursor-pointer transition-colors">
+<input checked="" class="mt-0.5 rounded text-teal-accent focus:ring-0 w-4 h-4 bg-surface-white" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-inverse-surface font-medium leading-tight">Generate comparative delta against prior baselines</span>
+<span class="font-caption text-caption text-slate-subtext mt-0.5">Calculates trend percentages against 2025 and earlier historic values</span>
+</div>
+</label>
+<label class="flex items-start gap-3 p-3 rounded-xl bg-surface-container-low/70 hover:bg-surface-container-low cursor-pointer transition-colors">
+<input checked="" class="mt-0.5 rounded text-teal-accent focus:ring-0 w-4 h-4 bg-surface-white" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-inverse-surface font-medium leading-tight">Include in Doctor Brief generator</span>
+<span class="font-caption text-caption text-slate-subtext mt-0.5">Indexes findings into physician synthesis export queue</span>
+</div>
+</label>
+</div>
+</div>
+</div>
+<!-- Security & Privacy Assurance Banner -->
+<div class="rounded-2xl bg-surface-container-low p-6 flex flex-col gap-3">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[22px]">verified_user</span>
+<span class="font-label-md text-label-md text-inverse-surface font-semibold">Zero-Trust Clinical Pipeline</span>
+</div>
+<div class="flex flex-col gap-2 font-caption text-caption text-slate-subtext leading-relaxed">
+<p>
+<strong class="text-inverse-surface font-medium">Security:</strong> SHA-256 integrity hash calculated in-browser prior to transfer. Client-vault segregated AES-256 storage. HIPAA compliant transit protocols.
+          </p>
+<div class="h-px bg-surface-container-highest my-1"></div>
+<p class="text-slate-subtext italic">
+<strong class="text-inverse-surface font-medium not-italic">Clinical Boundary:</strong> Non-diagnostic. HealthMemory 360 structures user-provided records for personal organization and longitudinal tracking. It does not provide clinical diagnosis or treatment alterations.
+          </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Persistent Sticky Bottom Action Footer -->
+<div class="sticky bottom-6 mt-10 rounded-2xl bg-inverse-surface text-white p-5 shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-4 z-30">
+<div class="flex items-center gap-3 w-full sm:w-auto">
+<div class="w-10 h-10 rounded-xl bg-surface-white/10 flex items-center justify-center text-teal-glow shrink-0">
+<span class="material-symbols-outlined text-[20px]">memory</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-white font-semibold">1 File Configured for Ingestion</span>
+<span class="font-caption text-caption text-surface-dim font-mono">Engine: MedLM Clinical Entity Transformer 3.2</span>
+</div>
+</div>
+<div class="flex items-center gap-3 w-full sm:w-auto justify-end">
+<a class="px-5 py-3 rounded-xl bg-surface-white/10 hover:bg-surface-white/20 text-white font-label-md text-label-md transition-colors text-center" data-path="physical-health-biometric-tracking" href="#">
+        Cancel &amp; Return to Records
+      </a>
+<a class="group flex items-center justify-center gap-2.5 px-6 py-3 rounded-xl bg-gradient-to-r from-teal-accent to-secondary text-white font-label-md text-label-md font-semibold transition-all shadow-lg hover:shadow-teal-accent/30 hover:scale-[1.02] text-center" data-path="ai-processing-extracted-record-review" href="#">
+<span>Process Record with AI Neural Engine</span>
+<span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Modal / Drawer Indicator for Mobile QR Sync -->
+<div class="fixed inset-0 bg-inverse-surface/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4" id="qr-modal">
+<div class="bg-surface-white max-w-sm w-full rounded-2xl p-6 shadow-2xl flex flex-col items-center text-center">
+<div class="w-12 h-12 rounded-xl bg-mint-surface flex items-center justify-center text-secondary mb-3">
+<span class="material-symbols-outlined text-[28px]">qr_code_2</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-inverse-surface mb-1">Scan from Patient Camera</h3>
+<p class="font-caption text-caption text-slate-subtext mb-5">Point your smartphone camera to instantly capture a document directly into this workspace.</p>
+<!-- Visual QR Code Mock -->
+<div class="p-4 bg-surface-container-low rounded-xl mb-4 flex items-center justify-center">
+<svg class="w-40 h-40 text-inverse-surface" fill="currentColor" viewbox="0 0 24 24">
+<path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5zm13-2h3v2h-3v-2zm-3 0h2v3h-2v-3zm0 5h2v3h-2v-3zm3 0h3v3h-3v-3zm-5-2h2v2h-2v-2zm0-3h2v2h-2v-2zm3 3h2v2h-2v-2z"></path>
+</svg>
+</div>
+<div class="font-mono text-[11px] text-teal-accent bg-mint-surface px-3 py-1 rounded-full mb-6">
+        Sync PIN: HM360-8492
+      </div>
+<button class="w-full py-2.5 rounded-xl bg-surface-container-high hover:bg-surface-container-highest text-inverse-surface font-label-md text-label-md transition-colors" onclick="document.getElementById('qr-modal').classList.add('hidden'); document.getElementById('qr-modal').classList.remove('flex');">
+        Dismiss
+      </button>
+</div>
+</div>
+</div>
+<script>
+  // Drag and drop visual cues
+  const dropZone = document.getElementById('drop-zone');
+  const fileSelector = document.getElementById('file-selector');
+  const btnCamera = document.getElementById('btn-camera');
+  const qrModal = document.getElementById('qr-modal');
+
+  btnCamera.addEventListener('click', () => {
+    qrModal.classList.remove('hidden');
+    qrModal.classList.add('flex');
+  });
+
+  ['dragenter', 'dragover'].forEach(eventName => {
+    dropZone.addEventListener(eventName, (e) => {
+      e.preventDefault();
+      dropZone.classList.add('bg-mint-surface');
+      dropZone.classList.remove('bg-surface-white');
+    }, false);
+  });
+
+  ['dragleave', 'drop'].forEach(eventName => {
+    dropZone.addEventListener(eventName, (e) => {
+      e.preventDefault();
+      dropZone.classList.remove('bg-mint-surface');
+      dropZone.classList.add('bg-surface-white');
+    }, false);
+  });
+
+  dropZone.addEventListener('drop', (e) => {
+    const dt = e.dataTransfer;
+    const files = dt.files;
+    if (files.length > 0) {
+      handleFiles(files[0]);
+    }
+  });
+
+  fileSelector.addEventListener('change', (e) => {
+    if (e.target.files.length > 0) {
+      handleFiles(e.target.files[0]);
+    }
+  });
+
+  function handleFiles(file) {
+    document.getElementById('staged-file-name').textContent = file.name;
+    document.getElementById('staged-file-meta').textContent = `${(file.size / (1024*1024)).toFixed(2)} MB • Uploaded via client interface • Integrity verified`;
+    document.getElementById('file-preview-strip').classList.remove('opacity-50');
+  }
+
+  // Interactive quick preset loader
+  function selectSample(id, title, provider, date, category) {
+    for (let i = 1; i <= 3; i++) {
+      const card = document.getElementById(`sample-card-1`);
+      const badge = document.getElementById(`badge-sample-1`);
+      if (document.getElementById(`sample-card-${i}`)) {
+        const c = document.getElementById(`sample-card-${i}`);
+        const b = document.getElementById(`badge-sample-${i}`);
+        c.className = 'group relative p-4 rounded-xl bg-surface-container-low hover:bg-surface-container cursor-pointer transition-all flex flex-col justify-between h-40';
+        b.className = 'font-caption text-caption px-2 py-0.5 rounded-full bg-transparent text-slate-subtext group-hover:text-inverse-surface';
+        b.textContent = 'Click to load';
+      }
+    }
+
+    const activeCard = document.getElementById(`sample-card-${id}`);
+    const activeBadge = document.getElementById(`badge-sample-${id}`);
+    if (activeCard && activeBadge) {
+      activeCard.className = 'group relative p-4 rounded-xl bg-mint-surface cursor-pointer transition-all flex flex-col justify-between h-40';
+      activeBadge.className = 'font-caption text-caption px-2 py-0.5 rounded-full bg-secondary text-white font-medium';
+      activeBadge.textContent = 'Selected';
+    }
+
+    // Populate inputs
+    document.getElementById('staged-file-name').textContent = `${title.replace(/[\s&()]/g, '_')}.pdf`;
+    document.getElementById('staged-file-meta').textContent = `Clinical Judge Preset • Ready for Neural Extraction`;
+    document.getElementById('provider-input').value = provider;
+    document.getElementById('record-date').value = date;
+    setDocCategory(category);
+  }
+
+  function clearSelectedFile() {
+    document.getElementById('staged-file-name').textContent = 'No file staged';
+    document.getElementById('staged-file-meta').textContent = 'Drop or choose a record file above';
+    document.getElementById('file-preview-strip').classList.add('opacity-50');
+  }
+
+  function setDocCategory(catName) {
+    const pills = document.querySelectorAll('.cat-pill');
+    pills.forEach(p => {
+      if (p.getAttribute('data-cat') === catName) {
+        p.classList.add('bg-surface-container-high', 'text-inverse-surface');
+        p.classList.remove('bg-surface-container-low', 'text-slate-body');
+      } else {
+        p.classList.remove('bg-surface-container-high', 'text-inverse-surface');
+        p.classList.add('bg-surface-container-low', 'text-slate-body');
+      }
+    });
+  }
+</script></main>
+</div>
+</body></html>

@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_dashboard" name="shell-type"/>
+<title>HealthMemory 360 - Report Comparison</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "ai-purple": "#8B5CF6",
+            "ai-purple-surface": "#F5F3FF",
+            "ai-purple-border": "#DDD6FE",
+            "mint-wellness": "#10B981",
+            "mint-surface": "#ECFDF5",
+            "mint-border": "#A7F3D0",
+            "teal-accent": "#14B8A6",
+            "teal-glow": "#2DD4BF",
+            "slate-subtext": "#64748B",
+            "slate-body": "#334155",
+            "border-subtle": "#E2E8F0",
+            "canvas-light": "#F8FAFC",
+            "surface-white": "#FFFFFF",
+            "surface-container": "#e5eeff",
+            "surface-container-low": "#eff4ff",
+            "surface-container-high": "#dce9ff",
+            "primary": "#000000",
+            "primary-container": "#131b2e",
+            "on-primary": "#ffffff",
+            "secondary": "#006a61",
+            "secondary-container": "#86f2e4",
+            "on-secondary": "#ffffff",
+            "on-secondary-container": "#006f66",
+            "status-warning": "#D97706",
+            "status-warning-surface": "#FFFBEB",
+            "status-urgent": "#EF4444",
+            "status-urgent-surface": "#FEF2F2",
+            "status-urgent-border": "#FECACA",
+            "surface": "#f8f9ff",
+            "on-surface": "#0b1c30",
+            "on-surface-variant": "#45464d"
+          },
+          fontFamily: {
+            sans: ["Inter", "sans-serif"],
+            display: ["Manrope", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+</head>
+<body class="bg-[#F8FAFC] font-sans text-slate-800 antialiased min-h-screen">
+<!-- Left Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-screen w-72 bg-white z-50 flex flex-col justify-between border-r border-slate-200/80 shadow-[0_1px_4px_rgba(0,0,0,0.03)]">
+<div class="flex flex-col">
+<!-- Logo Branding -->
+<div class="h-20 flex items-center gap-3 px-6 border-b border-slate-100">
+<div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#006a61] to-[#14B8A6] flex items-center justify-center text-white shadow-sm font-display font-black text-lg">
+          360
+        </div>
+<div class="flex flex-col">
+<span class="font-display font-bold text-slate-900 tracking-tight text-lg leading-tight">HealthMemory 360</span>
+<span class="text-[11px] font-semibold tracking-wider text-teal-600 uppercase">Clinical Intelligence</span>
+</div>
+</div>
+<!-- Main Navigation Menu -->
+<div class="px-3 pt-4">
+<p class="px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-slate-400">Navigation</p>
+<nav class="flex flex-col gap-1 mt-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[20px] text-slate-400">grid_view</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[20px] text-slate-400">folder_shared</span>
+<span>Medical Records</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[20px] text-slate-400">timeline</span>
+<span>Health Timeline</span>
+</a>
+<!-- Active Screen -->
+<a aria-current="page" class="flex items-center gap-3 px-3 py-2 rounded-lg bg-[#131b2e] text-white font-semibold text-sm shadow-sm" href="#">
+<span class="material-symbols-outlined text-[20px] text-teal-300">compare_arrows</span>
+<span>Report Comparison</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-purple-50 hover:text-purple-700 transition-colors text-sm font-medium group" href="#">
+<span class="material-symbols-outlined text-[20px] text-purple-600 group-hover:scale-110 transition-transform">neurology</span>
+<span class="text-purple-700 font-semibold">Ask HealthMemory</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[20px] text-slate-400">vital_signs</span>
+<span>Physical Health</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[20px] text-slate-400">directions_run</span>
+<span>Fitness</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[20px] text-slate-400">assignment</span>
+<span>Doctor Brief</span>
+</a>
+</nav>
+</div>
+</div>
+<!-- Preferences Nav Section -->
+<div class="p-3 border-t border-slate-100 bg-slate-50/60">
+<p class="px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-slate-400">Preferences</p>
+<nav class="flex flex-col gap-0.5 mt-1">
+<a class="flex items-center gap-3 px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[18px] text-slate-400">account_circle</span>
+<span>Profile</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[18px] text-slate-400">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[18px] text-slate-400">shield_lock</span>
+<span>Privacy &amp; Security</span>
+</a>
+</nav>
+</div>
+</aside>
+<!-- Content Container With Left Margin Offset -->
+<div class="pl-72 flex flex-col min-h-screen">
+<!-- Top Bar -->
+<header class="fixed top-0 left-72 right-0 h-20 bg-white/95 backdrop-blur-md z-40 border-b border-slate-200/80">
+<div class="h-20 w-full px-8 flex items-center justify-between gap-6">
+<!-- Global Search Bar -->
+<div class="flex-1 max-w-xl">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3.5 text-slate-400 pointer-events-none text-[20px]">search</span>
+<input class="w-full h-11 pl-11 pr-4 bg-slate-50 text-slate-900 placeholder:text-slate-400 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-600 transition-all shadow-sm" placeholder="Search records, biomarkers, medications..." type="text"/>
+</div>
+</div>
+<!-- Action & Profile Cluster -->
+<div class="flex items-center gap-4">
+<a class="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-purple-600 text-white text-xs font-semibold hover:bg-purple-700 transition-all shadow-sm shadow-purple-600/20" href="#">
+<span class="material-symbols-outlined text-[16px]">spark</span>
+<span>Ask HealthMemory</span>
+</a>
+<button aria-label="Notifications" class="relative p-2 rounded-lg text-slate-500 hover:bg-slate-100 hover:text-slate-800 transition-colors" type="button">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-rose-500 ring-2 ring-white"></span>
+</button>
+<div class="h-6 w-px bg-slate-200 mx-1"></div>
+<div class="flex items-center gap-3">
+<img alt="Alex Morgan" class="w-9 h-9 rounded-full object-cover ring-2 ring-slate-100 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUbmr_rpFPZ6ytLhagmZveMZEVNxwcGQfXA3ifdFaK5ltw_u6PjDkyl5tcRRmd9odkIW4Xr0WPSiX_UQd1_y4bjj66gy64vMvMa0LeV7ep9G_tHh51RAeEMwV4OIpr1fCDD6Fa6NORiyiOGm7jvqgMOD6KbKUFtiFTsnXgAwu-iqwlhlvEJIaT4g3B6VChUM4KNjR2Ddyj83dd2wKfbHoTv8jTVOVlMM8qvTy5Hg"/>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-slate-900 leading-tight">Alex Morgan</span>
+<span class="text-[11px] font-medium text-slate-400">Patient Portal</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Workspace -->
+<main class="w-full pt-20 flex-1">
+<div class="max-w-[1440px] mx-auto px-8 py-8 flex flex-col gap-8">
+<!-- Header Block -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-2 border-b border-slate-200/60">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-0.5 rounded-md bg-teal-50 border border-teal-200/80 text-[11px] font-bold text-teal-800 uppercase tracking-widest">Biomarker Delta Engine</span>
+<span class="text-slate-300">|</span>
+<span class="text-xs font-medium text-slate-500">Automated Multi-Point Reconciliation</span>
+</div>
+<h1 class="font-display font-extrabold text-2xl lg:text-3xl text-slate-900 tracking-tight">Compare Health Reports</h1>
+<p class="text-sm text-slate-500 max-w-2xl leading-relaxed">
+              Side-by-side comparison of user-provided lab metrics over time, tracking longitudinal biometric variances.
+            </p>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<button class="inline-flex items-center gap-2 h-10 px-4 rounded-lg bg-white border border-slate-200 text-slate-700 shadow-sm text-xs font-semibold hover:bg-slate-50 hover:border-slate-300 transition-all" type="button">
+<span class="material-symbols-outlined text-[18px] text-slate-500">file_download</span>
+<span>Export Comparative PDF</span>
+</button>
+<button class="inline-flex items-center gap-2 h-10 px-4 rounded-lg bg-[#006a61] text-white shadow-sm hover:bg-[#00554e] text-xs font-semibold transition-all shadow-[#006a61]/10" type="button">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span>Upload New Record</span>
+</button>
+</div>
+</div>
+<!-- Cohort Selector Bar -->
+<div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-4 lg:p-5">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+<!-- Left: Baseline Reference T1 -->
+<div class="flex-1 bg-slate-50 border border-slate-200/70 p-3.5 rounded-xl flex items-center justify-between gap-3">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-10 h-10 rounded-lg bg-white border border-slate-200 flex items-center justify-center shrink-0 shadow-sm text-teal-700">
+<span class="material-symbols-outlined text-[20px]">history</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Baseline Reference (T1)</span>
+<span class="text-[10px] font-bold bg-teal-100 text-teal-800 px-2 py-0.5 rounded-full">Primary Cohort</span>
+</div>
+<span class="text-sm font-bold text-slate-800 truncate mt-0.5">Blood Test — 14 Jun 2025</span>
+<span class="text-xs text-slate-500">St. Jude Labs · Routine Comprehensive</span>
+</div>
+</div>
+<button class="p-1.5 hover:bg-white rounded-lg text-slate-400 hover:text-slate-700 transition-colors border border-transparent hover:border-slate-200" title="Change baseline report">
+<span class="material-symbols-outlined text-[18px]">unfold_more</span>
+</button>
+</div>
+<!-- Swap Connector Button -->
+<div class="flex items-center justify-center shrink-0">
+<button class="w-10 h-10 rounded-full bg-slate-100 hover:bg-teal-50 hover:text-teal-700 border border-slate-200 flex items-center justify-center text-slate-500 transition-all shadow-sm" title="Swap comparison dates">
+<span class="material-symbols-outlined text-[20px]">compare_arrows</span>
+</button>
+</div>
+<!-- Right: Evaluation Sample T2 -->
+<div class="flex-1 bg-slate-50 border border-slate-200/70 p-3.5 rounded-xl flex items-center justify-between gap-3">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-10 h-10 rounded-lg bg-white border border-slate-200 flex items-center justify-center shrink-0 shadow-sm text-purple-600">
+<span class="material-symbols-outlined text-[20px]">fact_check</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Evaluation Sample (T2)</span>
+<span class="text-[10px] font-bold bg-purple-100 text-purple-800 px-2 py-0.5 rounded-full">Latest Extraction</span>
+</div>
+<span class="text-sm font-bold text-slate-800 truncate mt-0.5">Blood Test — 12 Aug 2026</span>
+<span class="text-xs text-slate-500">St. Jude Labs · Comprehensive Metabolic</span>
+</div>
+</div>
+<button class="p-1.5 hover:bg-white rounded-lg text-slate-400 hover:text-slate-700 transition-colors border border-transparent hover:border-slate-200" title="Change evaluation report">
+<span class="material-symbols-outlined text-[18px]">unfold_more</span>
+</button>
+</div>
+<!-- Filter Toggles -->
+<div class="flex lg:flex-col gap-1.5 shrink-0 pl-1 border-t lg:border-t-0 lg:border-l border-slate-200 pt-3 lg:pt-0 lg:pl-4 justify-center">
+<button class="px-3.5 py-1.5 rounded-lg bg-[#131b2e] text-white text-xs font-semibold text-center shadow-sm">All 14 Biomarkers</button>
+<button class="px-3.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200/80 text-slate-600 text-xs font-semibold text-center transition-colors">Out of Range Only (2)</button>
+</div>
+</div>
+</div>
+<!-- AI Synthesized Clinical Trajectory Banner (AI Purple Accent) -->
+<div class="relative bg-gradient-to-r from-[#F5F3FF] via-white to-[#F5F3FF] border border-purple-200/80 rounded-2xl shadow-sm p-6 overflow-hidden">
+<div class="absolute -right-10 -bottom-10 w-44 h-44 rounded-full bg-purple-500/5 blur-2xl pointer-events-none"></div>
+<div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-5 relative z-10">
+<div class="flex items-start gap-4">
+<div class="w-11 h-11 rounded-xl bg-purple-600 text-white flex items-center justify-center shrink-0 shadow-md shadow-purple-600/20">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="text-[11px] font-extrabold uppercase tracking-widest text-purple-700">Synthesized Clinical Trajectory</span>
+<span class="text-xs text-purple-400 font-bold">•</span>
+<span class="text-xs text-slate-500 font-medium">14-Month Interval</span>
+</div>
+<p class="text-sm text-slate-700 font-normal leading-relaxed max-w-4xl">
+                  Your latest report shows favorable trajectories across key lipid and glycemic biomarkers compared to June 2025. Total cholesterol decreased by 18 mg/dL and fasting glucose dropped by 10 mg/dL. Discuss these improvements during your next routine checkup.
+                </p>
+</div>
+</div>
+<div class="shrink-0 self-end lg:self-center">
+<a class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold shadow-sm transition-all shadow-purple-600/20" href="#">
+<span class="material-symbols-outlined text-[18px]">neurology</span>
+<span>Examine via AI</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Key Changes Detected: Priority Delta Cards -->
+<div class="flex flex-col gap-3.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="w-2.5 h-2.5 rounded-full bg-teal-500 animate-pulse"></span>
+<h2 class="font-display font-bold text-base text-slate-900">Key Changes Detected</h2>
+<span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">4 Priority Signals</span>
+</div>
+<span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Automated Baseline Variance</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Card 1: Fasting Glucose -->
+<div class="bg-white rounded-xl border border-slate-200/90 shadow-sm p-4 hover:shadow-md transition-shadow flex flex-col justify-between gap-3">
+<div>
+<div class="flex items-start justify-between">
+<span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Glycemic Health</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-bold border border-emerald-200/80">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+                    Improved
+                  </span>
+</div>
+<h3 class="text-sm font-bold text-slate-800 mt-1">Fasting Glucose</h3>
+</div>
+<div class="space-y-2">
+<div class="flex items-baseline justify-between">
+<div class="flex items-baseline gap-1.5">
+<span class="font-display font-black text-2xl text-slate-900">108</span>
+<span class="text-xs font-semibold text-slate-500">mg/dL</span>
+</div>
+<span class="text-xs text-slate-400 line-through">118 mg/dL</span>
+</div>
+<div class="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
+<div class="bg-emerald-500 h-1.5 rounded-full" style="width: 72%;"></div>
+</div>
+<div class="flex items-center justify-between text-xs pt-0.5">
+<span class="font-bold text-emerald-600 inline-flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">arrow_downward</span>
+                    -8.5% (-10 mg/dL)
+                  </span>
+<span class="text-slate-400 text-[11px]">Target: 70–99</span>
+</div>
+</div>
+<!-- Sparkline -->
+<div class="h-6 w-full pt-1">
+<svg class="w-full h-full text-emerald-500" fill="none" preserveaspectratio="none" viewbox="0 0 100 20">
+<path d="M0 4 L35 7 L65 6 L100 17" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+<circle cx="100" cy="17" fill="currentColor" r="2.5"></circle>
+</svg>
+</div>
+</div>
+<!-- Card 2: Total Cholesterol -->
+<div class="bg-white rounded-xl border border-slate-200/90 shadow-sm p-4 hover:shadow-md transition-shadow flex flex-col justify-between gap-3">
+<div>
+<div class="flex items-start justify-between">
+<span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Lipid Profile</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-teal-50 text-teal-700 text-[11px] font-bold border border-teal-200/80">
+<span class="material-symbols-outlined text-[13px]">trending_down</span>
+                    Trending Well
+                  </span>
+</div>
+<h3 class="text-sm font-bold text-slate-800 mt-1">Total Cholesterol</h3>
+</div>
+<div class="space-y-2">
+<div class="flex items-baseline justify-between">
+<div class="flex items-baseline gap-1.5">
+<span class="font-display font-black text-2xl text-slate-900">212</span>
+<span class="text-xs font-semibold text-slate-500">mg/dL</span>
+</div>
+<span class="text-xs text-slate-400 line-through">230 mg/dL</span>
+</div>
+<div class="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
+<div class="bg-teal-500 h-1.5 rounded-full" style="width: 65%;"></div>
+</div>
+<div class="flex items-center justify-between text-xs pt-0.5">
+<span class="font-bold text-teal-700 inline-flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">arrow_downward</span>
+                    -7.8% (-18 mg/dL)
+                  </span>
+<span class="text-slate-400 text-[11px]">Target: &lt;200</span>
+</div>
+</div>
+<!-- Sparkline -->
+<div class="h-6 w-full pt-1">
+<svg class="w-full h-full text-teal-500" fill="none" preserveaspectratio="none" viewbox="0 0 100 20">
+<path d="M0 3 L35 7 L70 11 L100 16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+<circle cx="100" cy="16" fill="currentColor" r="2.5"></circle>
+</svg>
+</div>
+</div>
+<!-- Card 3: Hemoglobin -->
+<div class="bg-white rounded-xl border border-slate-200/90 shadow-sm p-4 hover:shadow-md transition-shadow flex flex-col justify-between gap-3">
+<div>
+<div class="flex items-start justify-between">
+<span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Hematology</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-bold border border-emerald-200/80">
+<span class="material-symbols-outlined text-[13px]">done_all</span>
+                    Optimal
+                  </span>
+</div>
+<h3 class="text-sm font-bold text-slate-800 mt-1">Hemoglobin</h3>
+</div>
+<div class="space-y-2">
+<div class="flex items-baseline justify-between">
+<div class="flex items-baseline gap-1.5">
+<span class="font-display font-black text-2xl text-slate-900">12.4</span>
+<span class="text-xs font-semibold text-slate-500">g/dL</span>
+</div>
+<span class="text-xs text-slate-400 line-through">11.2 g/dL</span>
+</div>
+<div class="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
+<div class="bg-emerald-500 h-1.5 rounded-full" style="width: 88%;"></div>
+</div>
+<div class="flex items-center justify-between text-xs pt-0.5">
+<span class="font-bold text-emerald-600 inline-flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span>
+                    +10.7% (+1.2 g/dL)
+                  </span>
+<span class="text-slate-400 text-[11px]">Range: 12.0–15.5</span>
+</div>
+</div>
+<!-- Sparkline -->
+<div class="h-6 w-full pt-1">
+<svg class="w-full h-full text-emerald-500" fill="none" preserveaspectratio="none" viewbox="0 0 100 20">
+<path d="M0 16 L40 12 L75 8 L100 3" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+<circle cx="100" cy="3" fill="currentColor" r="2.5"></circle>
+</svg>
+</div>
+</div>
+<!-- Card 4: Vitamin D -->
+<div class="bg-white rounded-xl border border-slate-200/90 shadow-sm p-4 hover:shadow-md transition-shadow flex flex-col justify-between gap-3">
+<div>
+<div class="flex items-start justify-between">
+<span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Endocrine / Vitamins</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 text-[11px] font-bold border border-amber-200/80">
+<span class="material-symbols-outlined text-[13px]">warning</span>
+                    Subtle Alert
+                  </span>
+</div>
+<h3 class="text-sm font-bold text-slate-800 mt-1">Vitamin D (25-OH)</h3>
+</div>
+<div class="space-y-2">
+<div class="flex items-baseline justify-between">
+<div class="flex items-baseline gap-1.5">
+<span class="font-display font-black text-2xl text-slate-900">21</span>
+<span class="text-xs font-semibold text-slate-500">ng/mL</span>
+</div>
+<span class="text-xs text-slate-400 line-through">18 ng/mL</span>
+</div>
+<div class="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
+<div class="bg-amber-500 h-1.5 rounded-full" style="width: 45%;"></div>
+</div>
+<div class="flex items-center justify-between text-xs pt-0.5">
+<span class="font-bold text-amber-700 inline-flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span>
+                    +16.7% (+3 ng/mL)
+                  </span>
+<span class="text-slate-400 text-[11px]">Target: 30–50</span>
+</div>
+</div>
+<!-- Sparkline -->
+<div class="h-6 w-full pt-1">
+<svg class="w-full h-full text-amber-500" fill="none" preserveaspectratio="none" viewbox="0 0 100 20">
+<path d="M0 17 L30 15 L60 11 L100 8" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+<circle cx="100" cy="8" fill="currentColor" r="2.5"></circle>
+</svg>
+</div>
+</div>
+</div>
+</div>
+<!-- Biomarker Deep-Dive Table & Clinical Sidebar Cluster -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- Full Biomarker Reconciliation Data Table (8 Cols) -->
+<div class="lg:col-span-8 bg-white rounded-2xl border border-slate-200/90 shadow-sm overflow-hidden flex flex-col">
+<div class="p-5 border-b border-slate-100 flex flex-wrap items-center justify-between gap-3 bg-white">
+<div class="flex flex-col">
+<h2 class="font-display font-bold text-base text-slate-900">Full Biomarker Reconciliation Table</h2>
+<p class="text-xs text-slate-400">Structured biometric delta mapping across tested serum analytes</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1.5 text-xs text-slate-600 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded-md">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                  Confidence: <strong class="text-slate-800">99.4%</strong>
+</span>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50/70 border-b border-slate-200 text-slate-500 text-xs font-semibold uppercase tracking-wider">
+<th class="py-3.5 px-5">Biomarker</th>
+<th class="py-3.5 px-4 text-right">Jun 2025</th>
+<th class="py-3.5 px-4 text-right">Aug 2026</th>
+<th class="py-3.5 px-4 text-right">Delta</th>
+<th class="py-3.5 px-4">Reference Range</th>
+<th class="py-3.5 px-5">Trajectory Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 text-xs">
+<!-- Row 1: Fasting Glucose -->
+<tr class="hover:bg-slate-50/80 transition-colors">
+<td class="py-3.5 px-5">
+<div class="flex flex-col">
+<span class="font-bold text-slate-900">Fasting Blood Glucose</span>
+<span class="text-[11px] text-slate-400 font-medium">Plasma · mg/dL</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right text-slate-500 font-medium">118</td>
+<td class="py-3.5 px-4 text-right font-bold text-slate-900 text-sm">108</td>
+<td class="py-3.5 px-4 text-right">
+<span class="inline-flex items-center gap-0.5 font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded text-[11px]">
+                        ↓ -10
+                      </span>
+</td>
+<td class="py-3.5 px-4 text-slate-500 font-medium">70 – 99 mg/dL</td>
+<td class="py-3.5 px-5">
+<div class="flex items-center gap-2 w-32">
+<div class="w-16 bg-slate-100 rounded-full h-1.5 overflow-hidden">
+<div class="bg-emerald-500 h-1.5 rounded-full" style="width: 78%;"></div>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-bold bg-emerald-100 text-emerald-800">Improved</span>
+</div>
+</td>
+</tr>
+<!-- Row 2: Total Serum Cholesterol -->
+<tr class="bg-slate-50/30 hover:bg-slate-50/80 transition-colors">
+<td class="py-3.5 px-5">
+<div class="flex flex-col">
+<span class="font-bold text-slate-900">Total Serum Cholesterol</span>
+<span class="text-[11px] text-slate-400 font-medium">Lipid Panel · mg/dL</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right text-slate-500 font-medium">230</td>
+<td class="py-3.5 px-4 text-right font-bold text-slate-900 text-sm">212</td>
+<td class="py-3.5 px-4 text-right">
+<span class="inline-flex items-center gap-0.5 font-bold text-teal-700 bg-teal-50 border border-teal-200 px-2 py-0.5 rounded text-[11px]">
+                        ↓ -18
+                      </span>
+</td>
+<td class="py-3.5 px-4 text-slate-500 font-medium">&lt; 200 mg/dL</td>
+<td class="py-3.5 px-5">
+<div class="flex items-center gap-2 w-32">
+<div class="w-16 bg-slate-100 rounded-full h-1.5 overflow-hidden">
+<div class="bg-teal-500 h-1.5 rounded-full" style="width: 68%;"></div>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-bold bg-teal-100 text-teal-800">Trending Well</span>
+</div>
+</td>
+</tr>
+<!-- Row 3: LDL Cholesterol -->
+<tr class="hover:bg-slate-50/80 transition-colors">
+<td class="py-3.5 px-5">
+<div class="flex flex-col">
+<span class="font-bold text-slate-900">LDL Cholesterol</span>
+<span class="text-[11px] text-slate-400 font-medium">Calculated · mg/dL</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right text-slate-500 font-medium">142</td>
+<td class="py-3.5 px-4 text-right font-bold text-slate-900 text-sm">126</td>
+<td class="py-3.5 px-4 text-right">
+<span class="inline-flex items-center gap-0.5 font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded text-[11px]">
+                        ↓ -16
+                      </span>
+</td>
+<td class="py-3.5 px-4 text-slate-500 font-medium">&lt; 100 mg/dL</td>
+<td class="py-3.5 px-5">
+<div class="flex items-center gap-2 w-32">
+<div class="w-16 bg-slate-100 rounded-full h-1.5 overflow-hidden">
+<div class="bg-emerald-500 h-1.5 rounded-full" style="width: 60%;"></div>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-bold bg-emerald-100 text-emerald-800">Moderate</span>
+</div>
+</td>
+</tr>
+<!-- Row 4: Hemoglobin -->
+<tr class="bg-slate-50/30 hover:bg-slate-50/80 transition-colors">
+<td class="py-3.5 px-5">
+<div class="flex flex-col">
+<span class="font-bold text-slate-900">Hemoglobin</span>
+<span class="text-[11px] text-slate-400 font-medium">CBC Panel · g/dL</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right text-slate-500 font-medium">11.2</td>
+<td class="py-3.5 px-4 text-right font-bold text-slate-900 text-sm">12.4</td>
+<td class="py-3.5 px-4 text-right">
+<span class="inline-flex items-center gap-0.5 font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded text-[11px]">
+                        ↑ +1.2
+                      </span>
+</td>
+<td class="py-3.5 px-4 text-slate-500 font-medium">12.0 – 15.5 g/dL</td>
+<td class="py-3.5 px-5">
+<div class="flex items-center gap-2 w-32">
+<div class="w-16 bg-slate-100 rounded-full h-1.5 overflow-hidden">
+<div class="bg-emerald-500 h-1.5 rounded-full" style="width: 90%;"></div>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-bold bg-emerald-100 text-emerald-800">Optimal</span>
+</div>
+</td>
+</tr>
+<!-- Row 5: Vitamin D (25-OH) -->
+<tr class="hover:bg-slate-50/80 transition-colors">
+<td class="py-3.5 px-5">
+<div class="flex flex-col">
+<span class="font-bold text-slate-900">Vitamin D (25-OH)</span>
+<span class="text-[11px] text-slate-400 font-medium">Immunoassay · ng/mL</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right text-slate-500 font-medium">18</td>
+<td class="py-3.5 px-4 text-right font-bold text-slate-900 text-sm">21</td>
+<td class="py-3.5 px-4 text-right">
+<span class="inline-flex items-center gap-0.5 font-bold text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded text-[11px]">
+                        ↑ +3
+                      </span>
+</td>
+<td class="py-3.5 px-4 text-slate-500 font-medium">30 – 50 ng/mL</td>
+<td class="py-3.5 px-5">
+<div class="flex items-center gap-2 w-32">
+<div class="w-16 bg-slate-100 rounded-full h-1.5 overflow-hidden">
+<div class="bg-amber-500 h-1.5 rounded-full" style="width: 45%;"></div>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-bold bg-amber-100 text-amber-800">Suboptimal</span>
+</div>
+</td>
+</tr>
+<!-- Row 6: HbA1c -->
+<tr class="bg-slate-50/30 hover:bg-slate-50/80 transition-colors">
+<td class="py-3.5 px-5">
+<div class="flex flex-col">
+<span class="font-bold text-slate-900">Hemoglobin A1c (HbA1c)</span>
+<span class="text-[11px] text-slate-400 font-medium">HPLC Assay · %</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right text-slate-500 font-medium">5.9</td>
+<td class="py-3.5 px-4 text-right font-bold text-slate-900 text-sm">5.6</td>
+<td class="py-3.5 px-4 text-right">
+<span class="inline-flex items-center gap-0.5 font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded text-[11px]">
+                        ↓ -0.3
+                      </span>
+</td>
+<td class="py-3.5 px-4 text-slate-500 font-medium">&lt; 5.7 %</td>
+<td class="py-3.5 px-5">
+<div class="flex items-center gap-2 w-32">
+<div class="w-16 bg-slate-100 rounded-full h-1.5 overflow-hidden">
+<div class="bg-emerald-500 h-1.5 rounded-full" style="width: 82%;"></div>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-bold bg-emerald-100 text-emerald-800">Target Reached</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer -->
+<div class="p-4 bg-slate-50/80 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-teal-600">verified</span>
+<span>All biometric readings cross-validated with source laboratory scans.</span>
+</div>
+<button class="font-bold text-teal-700 hover:text-teal-800 hover:underline transition-all">
+                View 8 Additional Unchanged Markers
+              </button>
+</div>
+</div>
+<!-- Right Sidebar Summary Column (4 Cols) -->
+<div class="lg:col-span-4 flex flex-col gap-5">
+<!-- Source Record Artifacts Card -->
+<div class="bg-white rounded-2xl border border-slate-200/90 shadow-sm p-5 flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="text-sm font-bold text-slate-900">Source Record Artifacts</h3>
+<p class="text-xs text-slate-400">Validated scans &amp; pathology extracts</p>
+</div>
+<span class="text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">2 Files Linked</span>
+</div>
+<!-- Thumbnails -->
+<div class="grid grid-cols-2 gap-3">
+<div class="group cursor-pointer flex flex-col gap-1.5">
+<div class="h-28 rounded-xl overflow-hidden relative border border-slate-200 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="St Jude Labs paper report scan" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUGYruF7ZzyXXhtYC4g4guChaUUJNS2SgxftCO8PSzTqQfQeR516G0QigMcc0SzEKOza-9WMOndtu9FWsPQ-Tpha82ypDnDFTpxnGlJO7ScoGmZwSu82mMC7JtugOg84C-8VizCxk7ySkmPYbhQ3IaCADQsjYF-bCR647K-KWo_mXaYEoAieMdgSftH6wLE8hcc0RPSZoZcBljXbtlbzIR2HcOEAqtuq0nyWjsTw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
+<span class="absolute bottom-1.5 left-2 px-1.5 py-0.5 rounded bg-white/90 backdrop-blur-sm text-[10px] font-bold text-slate-800 shadow-sm">Jun '25</span>
+</div>
+<span class="text-[11px] font-medium text-slate-500 truncate group-hover:text-teal-700">St_Jude_0625.pdf</span>
+</div>
+<div class="group cursor-pointer flex flex-col gap-1.5">
+<div class="h-28 rounded-xl overflow-hidden relative border border-slate-200 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="St Jude Labs electronic health record printout" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0Lc6qFGgyol6bSP-xGxPqblBZ_irzQisjyUgLFWofegvHDrMLCFOFeHmJdy8jkAqjBTAm7vLES1wkBxdKXcXgb4yJmIav4-Q0idT58k3dyx2xS9BmZSA0mCHmtyvI63VLKmzPDtUjX8SULPdM9jc_0Y2J-ngUb7cZGNPeYOU64qxlGRfvQziOMJDjBVa6vyXux69RZ4t0YYOx7cboHwmvKyHJQBc8tJhvhck77Q"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
+<span class="absolute bottom-1.5 left-2 px-1.5 py-0.5 rounded bg-white/90 backdrop-blur-sm text-[10px] font-bold text-slate-800 shadow-sm">Aug '26</span>
+</div>
+<span class="text-[11px] font-medium text-slate-500 truncate group-hover:text-teal-700">St_Jude_0826.pdf</span>
+</div>
+</div>
+<!-- Verification Badge -->
+<div class="p-2.5 bg-slate-50 rounded-xl border border-slate-200/80 flex items-center justify-between text-xs">
+<div class="flex items-center gap-1.5 text-slate-700 font-medium">
+<span class="material-symbols-outlined text-[17px] text-teal-600">shield</span>
+<span>HIPAA &amp; SOC-2 Reconciled</span>
+</div>
+<a class="text-teal-700 font-bold hover:underline" href="#">Inspect OCR</a>
+</div>
+</div>
+<!-- Biomarker Health Balance & Radial Progress -->
+<div class="bg-white rounded-2xl border border-slate-200/90 shadow-sm p-5 flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="text-sm font-bold text-slate-900">Biomarker Health Balance</h3>
+<p class="text-xs text-slate-400">Total reconciliation score</p>
+</div>
+<span class="text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">85% In Target</span>
+</div>
+<div class="flex items-center gap-4 py-1">
+<!-- Circular Progress Ring (12/14 = 85.7%) -->
+<div class="relative w-24 h-24 shrink-0 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90" viewbox="0 0 36 36">
+<circle cx="18" cy="18" fill="none" r="15.9155" stroke="#E2E8F0" stroke-width="3.5"></circle>
+<circle cx="18" cy="18" fill="none" r="15.9155" stroke="#14B8A6" stroke-dasharray="85.7, 100" stroke-linecap="round" stroke-width="3.5"></circle>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="font-display font-extrabold text-lg text-slate-900 leading-none">12<span class="text-slate-400 font-normal text-xs">/14</span></span>
+<span class="text-[9px] font-bold text-slate-400 uppercase tracking-tighter">Normal</span>
+</div>
+</div>
+<!-- Breakdown Legend -->
+<div class="flex flex-col gap-2 text-xs">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-teal-500 shrink-0"></span>
+<span class="text-slate-700 font-medium">10 Markers Normalized</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0"></span>
+<span class="text-slate-700 font-medium">2 Markers Improving</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-amber-500 shrink-0"></span>
+<span class="text-slate-700 font-medium">2 Requiring Attention</span>
+</div>
+</div>
+</div>
+<!-- Quick Action Button -->
+<a class="w-full py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold text-center transition-all shadow-sm flex items-center justify-center gap-2" href="#">
+<span class="material-symbols-outlined text-[16px] text-teal-300">description</span>
+<span>Generate Doctor Discussion Brief</span>
+</a>
+</div>
+<!-- Clinician Note Prompt -->
+<div class="bg-gradient-to-br from-teal-50/60 to-white rounded-2xl border border-teal-200/70 shadow-sm p-4 flex flex-col gap-2">
+<div class="flex items-center gap-2 text-teal-900">
+<span class="material-symbols-outlined text-[18px] text-teal-700">rate_review</span>
+<span class="text-xs font-bold">Physician Follow-up Prompt</span>
+</div>
+<p class="text-xs text-slate-600 leading-relaxed">
+                Targeted recommendation: Request a repeat Vitamin D (25-OH) panel in 90 days following sustained 2,000 IU cholecalciferol supplementation protocol.
+              </p>
+</div>
+</div>
+</div>
+<!-- Non-Diagnostic Disclaimer Footer -->
+<div class="bg-slate-100/80 border border-slate-200 rounded-xl p-4 flex flex-col sm:flex-row items-center gap-3 justify-between text-xs text-slate-500 mt-2 mb-6">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-slate-400 shrink-0">clinical_notes</span>
+<p class="leading-normal">
+              Values extracted from uploaded records. HealthMemory 360 organizes information and does not provide medical diagnosis. Consult your healthcare professional.
+            </p>
+</div>
+<div class="flex items-center gap-4 shrink-0">
+<span class="font-mono text-[11px] text-slate-400">Record Hash: 0x98A...4F2</span>
+<button class="font-bold text-teal-700 hover:underline">Privacy Details</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+<script src="/stitch-runtime.js"></script></body></html>

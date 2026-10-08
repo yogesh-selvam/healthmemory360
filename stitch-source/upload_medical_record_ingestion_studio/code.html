@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"tertiary-container":"#23005c","surface-variant":"#d3e4fe","surface-white":"#FFFFFF","status-urgent-surface":"#FEF2F2","on-tertiary-fixed":"#23005c","on-secondary-container":"#006f66","secondary-fixed-dim":"#6bd8cb","surface-container":"#e5eeff","teal-glow":"#2DD4BF","on-tertiary-fixed-variant":"#5516be","on-surface-variant":"#45464d","tertiary-fixed-dim":"#d0bcff","outline-variant":"#c6c6cd","mint-border":"#A7F3D0","teal-accent":"#14B8A6","on-background":"#0b1c30","on-primary":"#ffffff","primary-fixed":"#dae2fd","error-container":"#ffdad6","canvas-light":"#F8FAFC","slate-body":"#334155","surface-container-lowest":"#ffffff","inverse-on-surface":"#eaf1ff","on-secondary-fixed":"#00201d","on-primary-fixed-variant":"#3f465c","border-dark":"#1E293B","outline":"#76777d","primary-container":"#131b2e","primary-fixed-dim":"#bec6e0","surface-dark":"#0B1324","ai-purple-surface":"#F5F3FF","on-error":"#ffffff","on-error-container":"#93000a","status-warning":"#F59E0B","on-surface":"#0b1c30","tertiary-fixed":"#e9ddff","on-secondary-fixed-variant":"#005049","ai-purple":"#8B5CF6","primary":"#000000","tertiary":"#000000","on-tertiary-container":"#9466ff","inverse-primary":"#bec6e0","surface-tint":"#565e74","surface-container-high":"#dce9ff","surface":"#f8f9ff","slate-subtext":"#64748B","secondary":"#006a61","surface-bright":"#f8f9ff","background":"#f8f9ff","on-secondary":"#ffffff","surface-dim":"#cbdbf5","mint-wellness":"#10B981","ai-purple-border":"#DDD6FE","mint-surface":"#ECFDF5","error":"#ba1a1a","secondary-fixed":"#89f5e7","secondary-container":"#86f2e4","status-urgent-border":"#FECACA","on-primary-container":"#7c839b","on-primary-fixed":"#131b2e","surface-container-low":"#eff4ff","border-subtle":"#E2E8F0","inverse-surface":"#213145","surface-container-highest":"#d3e4fe","status-urgent":"#EF4444","on-tertiary":"#ffffff"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-xl":"2rem","margin-mobile":"1rem","space-2xl":"3rem","gutter-lg":"2rem","margin-desktop":"3rem","space-xs":"0.25rem","space-md":"1rem","gutter-sm":"1rem","space-sm":"0.5rem","gutter":"1.5rem","margin":"2rem","space-lg":"1.5rem"},"fontFamily":{"caption":["Inter"],"display-lg":["Manrope"],"metric-display-sm":["Manrope"],"display-lg-mobile":["Manrope"],"label-sm":["Inter"],"headline-sm":["Manrope"],"metric-display":["Manrope"],"body-md":["Inter"],"headline-md":["Manrope"],"headline-lg-mobile":["Manrope"],"headline-lg":["Manrope"],"metric-unit":["Inter"],"body-sm":["Inter"],"body-lg":["Inter"],"label-md":["Inter"]},"fontSize":{"caption":["0.6875rem",{"lineHeight":"0.875rem","letterSpacing":"0.03em","fontWeight":"500"}],"display-lg":["3rem",{"lineHeight":"3.5rem","letterSpacing":"-0.025em","fontWeight":"700"}],"metric-display-sm":["1.5rem",{"lineHeight":"1.75rem","letterSpacing":"-0.02em","fontWeight":"700"}],"display-lg-mobile":["2.25rem",{"lineHeight":"2.75rem","letterSpacing":"-0.02em","fontWeight":"700"}],"label-sm":["0.75rem",{"lineHeight":"1rem","letterSpacing":"0.02em","fontWeight":"600"}],"headline-sm":["1.125rem",{"lineHeight":"1.625rem","letterSpacing":"-0.01em","fontWeight":"600"}],"metric-display":["2.25rem",{"lineHeight":"2.5rem","letterSpacing":"-0.03em","fontWeight":"700"}],"body-md":["1rem",{"lineHeight":"1.5rem","letterSpacing":"0em","fontWeight":"400"}],"headline-md":["1.5rem",{"lineHeight":"2rem","letterSpacing":"-0.015em","fontWeight":"600"}],"headline-lg-mobile":["1.625rem",{"lineHeight":"2.125rem","letterSpacing":"-0.015em","fontWeight":"700"}],"headline-lg":["2rem",{"lineHeight":"2.5rem","letterSpacing":"-0.02em","fontWeight":"700"}],"metric-unit":["0.875rem",{"lineHeight":"1.25rem","letterSpacing":"0em","fontWeight":"500"}],"body-sm":["0.875rem",{"lineHeight":"1.25rem","letterSpacing":"0em","fontWeight":"400"}],"body-lg":["1.125rem",{"lineHeight":"1.75rem","letterSpacing":"-0.01em","fontWeight":"400"}],"label-md":["0.875rem",{"lineHeight":"1.25rem","letterSpacing":"0.01em","fontWeight":"600"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-white shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between py-space-lg"><div class="flex flex-col gap-space-lg"><div class="px-space-lg flex items-center gap-space-sm"><div class="w-9 h-9 rounded-xl bg-secondary-container flex items-center justify-center text-on-secondary-container"><span class="material-symbols-outlined text-[20px]">neurology</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-on-surface leading-tight">HealthMemory</span><span class="font-caption text-caption text-secondary">360 Clinical Vault</span></div></div><nav class="flex flex-col px-space-md gap-space-xs" data-active-classes="bg-surface-container-high text-on-surface font-label-md"><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="app-dashboard" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span class="font-label-md text-label-md">Dashboard</span></a><a aria-current="page" class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg transition-all bg-surface-container-high text-on-surface font-label-md" data-path="upload-medical-record" href="#"><span class="material-symbols-outlined text-[20px]">description</span><span class="font-label-md text-label-md">Medical Records</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="timeline" href="#"><span class="material-symbols-outlined text-[20px]">history_edu</span><span class="font-label-md text-label-md">Health Timeline</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="report-comparison" href="#"><span class="material-symbols-outlined text-[20px]">compare_arrows</span><span class="font-label-md text-label-md">Report Comparison</span></a><div class="my-space-xs px-space-md pt-space-xs"><span class="font-caption text-caption text-slate-subtext uppercase tracking-wider">Domains</span></div><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="physical-health" href="#"><span class="material-symbols-outlined text-[20px]">cardiology</span><span class="font-label-md text-label-md">Physical Health</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="fitness" href="#"><span class="material-symbols-outlined text-[20px]">directions_run</span><span class="font-label-md text-label-md">Fitness</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="mental-wellness" href="#"><span class="material-symbols-outlined text-[20px]">self_improvement</span><span class="font-label-md text-label-md">Mental Wellness</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="nutrition" href="#"><span class="material-symbols-outlined text-[20px]">nutrition</span><span class="font-label-md text-label-md">Nutrition</span></a><div class="my-space-xs px-space-md pt-space-xs"><span class="font-caption text-caption text-slate-subtext uppercase tracking-wider">Care Team</span></div><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="doctor-brief" href="#"><span class="material-symbols-outlined text-[20px]">assignment_ind</span><span class="font-label-md text-label-md">Doctor Brief</span></a></nav></div><div class="px-space-md"><div class="bg-surface-container-low p-space-md rounded-xl flex flex-col gap-space-xs"><div class="flex items-center gap-space-xs text-mint-wellness"><span class="material-symbols-outlined text-[16px]">lock</span><span class="font-caption text-caption">256-bit Encrypted</span></div><p class="font-caption text-caption text-on-surface-variant">Data vault synchronized with sovereign health keys.</p></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-20 bg-surface-white/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 px-space-xl flex items-center justify-between"><div class="w-96"><div class="relative flex items-center"><span class="material-symbols-outlined text-slate-subtext absolute left-space-md text-[20px]">search</span><input class="w-full h-11 pl-11 pr-space-md rounded-lg bg-surface-container-low text-on-surface placeholder:text-slate-subtext font-body-sm text-body-sm outline-none focus:bg-surface-white focus:ring-1 focus:ring-secondary transition-all" placeholder="Search biomarkers, lab reports, diagnostics..." type="search"/></div></div><div class="flex items-center gap-space-md"><button class="flex items-center gap-space-xs px-space-md py-space-sm rounded-lg bg-ai-purple-surface text-ai-purple hover:bg-surface-container hover:text-on-surface font-label-md text-label-md transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">auto_awesome</span><span>Ask HealthMemory AI</span></button><button aria-label="Notifications" class="w-10 h-10 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors relative" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-status-urgent"></span></button><div class="flex items-center gap-space-sm pl-space-xs"><div class="flex flex-col text-right"><span class="font-label-md text-label-md text-on-surface leading-none">Alex Morgan</span><span class="font-caption text-caption text-slate-subtext">Patient Portal</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="relative pt-20 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<div class="px-space-2xl py-space-xl max-w-[1440px] mx-auto w-full flex flex-col gap-space-xl">
+<!-- Top Header & Breadcrumb Context -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs text-slate-subtext font-caption text-caption">
+<span class="hover:text-on-surface cursor-pointer transition-colors">Medical Records</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-secondary font-label-sm">Ingestion Studio</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Upload Medical Record</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+          Upload clinical laboratory results, physician visit summaries, prescriptions, or imaging scans for isolated AI parsing.
+        </p>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<button class="flex items-center gap-space-xs px-space-md py-space-sm rounded-lg bg-surface-white shadow-sm hover:bg-surface-container-low text-on-surface font-label-md text-label-md transition-all" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary">folder_managed</span>
+<span>View Document Vault (12 Synced)</span>
+</button>
+</div>
+</div>
+<!-- Main Workspace Bento Layout -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-xl items-start">
+<!-- Primary Drag-and-Drop Area (Left / Center heavy) -->
+<div class="xl:col-span-7 flex flex-col gap-space-lg">
+<!-- Large Interactive Dropzone -->
+<div class="relative group bg-canvas-light hover:bg-surface-white rounded-xl p-space-2xl transition-all duration-300 shadow-sm flex flex-col items-center justify-center text-center overflow-hidden cursor-pointer" id="dropzone">
+<!-- Subtle Backdrop Aura -->
+<div class="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-teal-glow/10 blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-20 -right-20 w-80 h-80 rounded-full bg-ai-purple/10 blur-3xl pointer-events-none"></div>
+<!-- Pulsing Animated Upload Glyph -->
+<div class="relative mb-space-lg">
+<div class="w-20 h-20 rounded-full bg-secondary-container/40 flex items-center justify-center text-on-secondary-container shadow-inner transition-transform group-hover:scale-105 duration-300">
+<span class="material-symbols-outlined text-[38px] text-teal-accent">cloud_upload</span>
+</div>
+<div class="absolute inset-0 rounded-full bg-teal-accent/20 animate-ping pointer-events-none"></div>
+</div>
+<!-- Text Guidance -->
+<h2 class="font-headline-md text-headline-md text-on-surface mb-space-xs">
+            Drop your medical report here or browse files
+          </h2>
+<p class="font-body-sm text-body-sm text-slate-subtext max-w-md mb-space-lg">
+            Drag encrypted lab reports, discharge summaries, or clinical documents into this sandbox canvas.
+          </p>
+<!-- Action Cluster -->
+<div class="flex flex-wrap items-center justify-center gap-space-md mb-space-xl z-10">
+<button class="flex items-center gap-space-xs px-space-lg py-space-sm rounded-lg bg-teal-accent hover:bg-secondary text-on-primary font-label-md text-label-md shadow-md transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span>Choose File from Computer</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-space-sm rounded-lg bg-surface-white hover:bg-surface-container-high text-on-surface font-label-md text-label-md shadow-sm transition-all" type="button">
+<span class="material-symbols-outlined text-[18px] text-slate-body">qr_code_scanner</span>
+<span>Mobile Scan via QR Sync</span>
+</button>
+</div>
+<!-- Supported File Formats Micro-Badges -->
+<div class="flex flex-wrap items-center justify-center gap-space-xs max-w-xl z-10">
+<span class="px-space-sm py-1 rounded-full bg-surface-container text-on-surface-variant font-caption text-caption flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary">picture_as_pdf</span> PDF (Multi-page)
+            </span>
+<span class="px-space-sm py-1 rounded-full bg-surface-container text-on-surface-variant font-caption text-caption flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary">image</span> JPG / PNG Scans
+            </span>
+<span class="px-space-sm py-1 rounded-full bg-surface-container text-on-surface-variant font-caption text-caption flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary">data_object</span> HL7 / FHIR JSON
+            </span>
+<span class="px-space-sm py-1 rounded-full bg-surface-container text-on-surface-variant font-caption text-caption flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary">radiology</span> DICOM Summary
+            </span>
+<span class="px-space-sm py-1 rounded-full bg-surface-container-low text-slate-subtext font-caption text-caption">
+              Max 50MB / Record
+            </span>
+</div>
+</div>
+<!-- Privacy & Healthcare Boundary Notice -->
+<div class="p-space-md rounded-xl bg-surface-white shadow-sm flex items-start gap-space-md">
+<div class="w-10 h-10 rounded-lg bg-mint-surface flex items-center justify-center text-mint-wellness shrink-0">
+<span class="material-symbols-outlined text-[22px]">verified_user</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-md text-label-md text-on-surface">Private HIPAA &amp; GDPR Sandbox Security</span>
+<p class="font-body-sm text-body-sm text-slate-subtext leading-relaxed">
+              Documents uploaded to HealthMemory 360 are parsed in an isolated private sandbox. Values are organized chronologically and never constitute an independent clinical diagnosis. Always consult with your primary physician.
+            </p>
+</div>
+</div>
+</div>
+<!-- Active Staged File Configuration & Neural Processing Controls (Right) -->
+<div class="xl:col-span-5 flex flex-col gap-space-lg">
+<!-- Staged Document Configuration Card -->
+<div class="bg-surface-white rounded-xl shadow-sm p-space-lg flex flex-col gap-space-lg relative overflow-hidden">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-ai-purple text-[20px]">psychology</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Staged Document Ingestion</h3>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-mint-surface text-mint-wellness font-caption text-caption">Ready for Ingest</span>
+</div>
+<!-- Staged File Progress Block -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-sm">
+<div class="flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-10 h-10 rounded-lg bg-status-urgent-surface text-status-urgent flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">picture_as_pdf</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface truncate">Comprehensive_Metabolic_Panel_Aug2026.pdf</span>
+<span class="font-caption text-caption text-slate-subtext">2.4 MB • 6 Pages • Hash: 8bfa9...1d4</span>
+</div>
+</div>
+<button aria-label="Remove document" class="w-8 h-8 rounded-lg flex items-center justify-center text-slate-subtext hover:text-status-urgent hover:bg-status-urgent-surface transition-colors shrink-0" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Upload Bar (100%) -->
+<div class="flex flex-col gap-1.5 pt-space-xs">
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-teal-accent h-full rounded-full w-full transition-all duration-500"></div>
+</div>
+<div class="flex items-center justify-between font-caption text-caption">
+<span class="text-mint-wellness flex items-center gap-1 font-label-sm">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Upload Complete (100%)
+                </span>
+<span class="text-ai-purple font-label-sm">Ready for Neural Extraction</span>
+</div>
+</div>
+</div>
+<!-- Clinical Classification Metadata Inputs -->
+<div class="flex flex-col gap-space-md">
+<!-- Type Selector -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-sm text-label-sm text-on-surface">Document Categorization Type</label>
+<div class="relative">
+<select class="w-full h-11 px-space-md pr-10 rounded-lg bg-surface-container-low text-on-surface font-body-sm text-body-sm outline-none focus:bg-surface-white appearance-none cursor-pointer">
+<option selected="">Laboratory Blood Test (CMP/CBC)</option>
+<option>Cardiology Requisition &amp; ECG</option>
+<option>Prescription Order / Pharmacy Manifest</option>
+<option>Clinical Consultation Summary Note</option>
+<option>Imaging Radiology Diagnostic Report</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 pointer-events-none text-slate-subtext text-[18px]">expand_more</span>
+</div>
+</div>
+<!-- Date of Service & Issuing Provider -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-sm text-label-sm text-on-surface">Date of Service</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-[18px] text-slate-subtext">calendar_today</span>
+<input class="w-full h-11 pl-10 pr-space-md rounded-lg bg-surface-container-low text-on-surface font-body-sm text-body-sm outline-none focus:bg-surface-white" type="text" value="August 12, 2026"/>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-sm text-label-sm text-on-surface">Specimen Collection</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-[18px] text-slate-subtext">schedule</span>
+<input class="w-full h-11 pl-10 pr-space-md rounded-lg bg-surface-container-low text-on-surface font-body-sm text-body-sm outline-none focus:bg-surface-white" type="text" value="07:45 AM Fasting"/>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-sm text-label-sm text-on-surface">Issuing Provider / Laboratory Facility</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-[18px] text-slate-subtext">domain</span>
+<input class="w-full h-11 pl-10 pr-space-md rounded-lg bg-surface-container-low text-on-surface font-body-sm text-body-sm outline-none focus:bg-surface-white" type="text" value="LabCorp Diagnostic Services - North Bay"/>
+</div>
+</div>
+</div>
+<!-- Protocol & Ingestion Options -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<span class="font-label-sm text-label-sm text-slate-subtext uppercase tracking-wider">Extraction Protocols</span>
+<label class="flex items-start gap-space-sm p-space-sm rounded-lg hover:bg-surface-container-low transition-colors cursor-pointer">
+<input checked="" class="mt-0.5 w-4 h-4 rounded text-secondary accent-teal-accent cursor-pointer" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface">Auto-sync extracted biomarkers to Longitudinal Timeline</span>
+<span class="font-caption text-caption text-slate-subtext">Populates glucose, eGFR, lipid panel, and electrolytes in 360 view.</span>
+</div>
+</label>
+<label class="flex items-start gap-space-sm p-space-sm rounded-lg hover:bg-surface-container-low transition-colors cursor-pointer">
+<input checked="" class="mt-0.5 w-4 h-4 rounded text-secondary accent-teal-accent cursor-pointer" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface">Cross-reference with Baseline Report (June 2025)</span>
+<span class="font-caption text-caption text-slate-subtext">Calculates historical analyte delta percentages and clinical shifts.</span>
+</div>
+</label>
+</div>
+<!-- Final Trigger Action -->
+<div class="pt-space-xs">
+<button class="w-full py-3.5 px-space-lg rounded-lg bg-teal-accent hover:bg-secondary text-on-primary font-label-md text-label-md flex items-center justify-center gap-space-xs shadow-md transition-all" id="extractButton" type="button">
+<span class="material-symbols-outlined text-[18px]">auto_awesome</span>
+<span>Start AI Extraction &amp; Review Analyte Values ➔</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Active Ingestion Live Stepper Simulation (Interactive Preview) -->
+<div class="bg-surface-white rounded-xl shadow-sm p-space-lg flex flex-col gap-space-md" id="aiStepsContainer">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-ai-purple-surface flex items-center justify-center text-ai-purple">
+<span class="material-symbols-outlined text-[18px]">neurology</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Neural Processing Pipeline Preview</h3>
+<p class="font-caption text-caption text-slate-subtext">Step-by-step telemetry of HealthMemory's sovereign OCR &amp; clinical entity extraction.</p>
+</div>
+</div>
+<span class="px-space-sm py-1 rounded-full bg-ai-purple-surface text-ai-purple font-caption text-caption">Engine: BioBERT v4.2</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md pt-space-xs">
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption text-slate-subtext">01. INGESTION</span>
+<span class="material-symbols-outlined text-mint-wellness text-[18px]">check_circle</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Document Sanitization</span>
+<span class="font-caption text-caption text-slate-subtext">PII redaction key created in hardware enclave.</span>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption text-slate-subtext">02. OCR DECOUPLING</span>
+<span class="material-symbols-outlined text-mint-wellness text-[18px]">check_circle</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Coordinate Table Extraction</span>
+<span class="font-caption text-caption text-slate-subtext">28 tabular rows parsed across 6 pages.</span>
+</div>
+<div class="p-space-md rounded-xl bg-ai-purple-surface/60 flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption text-ai-purple">03. BIO-ENTITY PARSING</span>
+<span class="material-symbols-outlined text-ai-purple text-[18px] animate-spin">sync</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Analyte Normalization</span>
+<span class="font-caption text-caption text-slate-subtext">Aligning LOINC codes with standard reference units.</span>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption text-slate-subtext">04. TIMELINE SYNC</span>
+<span class="material-symbols-outlined text-slate-subtext text-[18px]">schedule</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Reconciliation Staging</span>
+<span class="font-caption text-caption text-slate-subtext">Awaiting user confirmation of flagged deltas.</span>
+</div>
+</div>
+</div>
+<!-- Recent Uploads Quick History Mini-Table -->
+<div class="bg-surface-white rounded-xl shadow-sm p-space-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Recent Document Ingestions</h3>
+<p class="font-caption text-caption text-slate-subtext">Previously processed clinical records and timeline sync statuses.</p>
+</div>
+<button class="text-secondary hover:text-teal-accent font-label-sm text-label-sm transition-colors" type="button">
+          View Ingestion Audit Log (48 items)
+        </button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="text-slate-subtext font-caption text-caption uppercase">
+<th class="py-space-sm px-space-md">Document Name</th>
+<th class="py-space-sm px-space-md">Category</th>
+<th class="py-space-sm px-space-md">Service Date</th>
+<th class="py-space-sm px-space-md">Issuing Facility</th>
+<th class="py-space-sm px-space-md">Analytes Found</th>
+<th class="py-space-sm px-space-md">Ingestion Status</th>
+<th class="py-space-sm px-space-md text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high font-body-sm text-body-sm text-on-surface">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">bloodtype</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md leading-snug">Metabolic_Panel_Aug2026.pdf</span>
+<span class="font-caption text-caption text-slate-subtext">Uploaded Aug 12, 2026 • 1.8 MB</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="px-space-sm py-0.5 rounded-full bg-surface-container font-caption text-caption text-on-surface-variant">Lab Panel</span>
+</td>
+<td class="py-space-md px-space-md text-slate-body">Aug 12, 2026</td>
+<td class="py-space-md px-space-md text-slate-body">LabCorp Diagnostics</td>
+<td class="py-space-md px-space-md">
+<span class="font-label-sm text-label-sm text-teal-accent">14 Extracted</span>
+</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-mint-surface text-mint-wellness font-caption text-caption">
+<span class="w-1.5 h-1.5 rounded-full bg-mint-wellness"></span>
+                  Parsed &amp; Reconciled
+                </span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<button class="p-1.5 rounded-lg text-slate-subtext hover:text-on-surface hover:bg-surface-container-high transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">open_in_new</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">medication</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md leading-snug">Atorvastatin_Refill_Manifest.pdf</span>
+<span class="font-caption text-caption text-slate-subtext">Uploaded Aug 02, 2026 • 410 KB</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="px-space-sm py-0.5 rounded-full bg-surface-container font-caption text-caption text-on-surface-variant">Prescription</span>
+</td>
+<td class="py-space-md px-space-md text-slate-body">Aug 02, 2026</td>
+<td class="py-space-md px-space-md text-slate-body">CVS Health Carelink</td>
+<td class="py-space-md px-space-md">
+<span class="font-label-sm text-label-sm text-teal-accent">2 Medications</span>
+</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-mint-surface text-mint-wellness font-caption text-caption">
+<span class="w-1.5 h-1.5 rounded-full bg-mint-wellness"></span>
+                  Parsed &amp; Reconciled
+                </span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<button class="p-1.5 rounded-lg text-slate-subtext hover:text-on-surface hover:bg-surface-container-high transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">open_in_new</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">clinical_notes</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md leading-snug">Cardiology_Annual_Visit_Summary.pdf</span>
+<span class="font-caption text-caption text-slate-subtext">Uploaded Jul 14, 2026 • 3.2 MB</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="px-space-sm py-0.5 rounded-full bg-surface-container font-caption text-caption text-on-surface-variant">Clinical Note</span>
+</td>
+<td class="py-space-md px-space-md text-slate-body">Jul 14, 2026</td>
+<td class="py-space-md px-space-md text-slate-body">UCSF Health Heart Center</td>
+<td class="py-space-md px-space-md">
+<span class="font-label-sm text-label-sm text-teal-accent">8 Vitals &amp; ECG</span>
+</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-mint-surface text-mint-wellness font-caption text-caption">
+<span class="w-1.5 h-1.5 rounded-full bg-mint-wellness"></span>
+                  Parsed &amp; Reconciled
+                </span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<button class="p-1.5 rounded-lg text-slate-subtext hover:text-on-surface hover:bg-surface-container-high transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">open_in_new</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Micro-interactions Script -->
+<script>
+    (function() {
+      const dropzone = document.getElementById('dropzone');
+      const extractButton = document.getElementById('extractButton');
+      const aiContainer = document.getElementById('aiStepsContainer');
+
+      if (dropzone) {
+        ['dragenter', 'dragover'].forEach(eventName => {
+          dropzone.addEventListener(eventName, (e) => {
+            e.preventDefault();
+            dropzone.classList.add('bg-surface-container-high');
+          });
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+          dropzone.addEventListener(eventName, (e) => {
+            e.preventDefault();
+            dropzone.classList.remove('bg-surface-container-high');
+          });
+        });
+      }
+
+      if (extractButton && aiContainer) {
+        extractButton.addEventListener('click', function() {
+          extractButton.disabled = true;
+          extractButton.innerHTML = `
+            <span class="material-symbols-outlined text-[18px] animate-spin">refresh</span>
+            <span>Synthesizing LOINC Analytes...</span>
+          `;
+          aiContainer.scrollIntoView({ behavior: 'smooth' });
+
+          setTimeout(() => {
+            extractButton.disabled = false;
+            extractButton.innerHTML = `
+              <span class="material-symbols-outlined text-[18px]">check_circle</span>
+              <span>Extraction Complete &bull; Review Ready</span>
+            `;
+          }, 1800);
+        });
+      }
+    })();
+  </script>
+</div></main></div></body></html>

@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"tertiary-container":"#23005c","surface-variant":"#d3e4fe","surface-white":"#FFFFFF","status-urgent-surface":"#FEF2F2","on-tertiary-fixed":"#23005c","on-secondary-container":"#006f66","secondary-fixed-dim":"#6bd8cb","surface-container":"#e5eeff","teal-glow":"#2DD4BF","on-tertiary-fixed-variant":"#5516be","on-surface-variant":"#45464d","tertiary-fixed-dim":"#d0bcff","outline-variant":"#c6c6cd","mint-border":"#A7F3D0","teal-accent":"#14B8A6","on-background":"#0b1c30","on-primary":"#ffffff","primary-fixed":"#dae2fd","error-container":"#ffdad6","canvas-light":"#F8FAFC","slate-body":"#334155","surface-container-lowest":"#ffffff","inverse-on-surface":"#eaf1ff","on-secondary-fixed":"#00201d","on-primary-fixed-variant":"#3f465c","border-dark":"#1E293B","outline":"#76777d","primary-container":"#131b2e","primary-fixed-dim":"#bec6e0","surface-dark":"#0B1324","ai-purple-surface":"#F5F3FF","on-error":"#ffffff","on-error-container":"#93000a","status-warning":"#F59E0B","on-surface":"#0b1c30","tertiary-fixed":"#e9ddff","on-secondary-fixed-variant":"#005049","ai-purple":"#8B5CF6","primary":"#000000","tertiary":"#000000","on-tertiary-container":"#9466ff","inverse-primary":"#bec6e0","surface-tint":"#565e74","surface-container-high":"#dce9ff","surface":"#f8f9ff","slate-subtext":"#64748B","secondary":"#006a61","surface-bright":"#f8f9ff","background":"#f8f9ff","on-secondary":"#ffffff","surface-dim":"#cbdbf5","mint-wellness":"#10B981","ai-purple-border":"#DDD6FE","mint-surface":"#ECFDF5","error":"#ba1a1a","secondary-fixed":"#89f5e7","secondary-container":"#86f2e4","status-urgent-border":"#FECACA","on-primary-container":"#7c839b","on-primary-fixed":"#131b2e","surface-container-low":"#eff4ff","border-subtle":"#E2E8F0","inverse-surface":"#213145","surface-container-highest":"#d3e4fe","status-urgent":"#EF4444","on-tertiary":"#ffffff"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-xl":"2rem","margin-mobile":"1rem","space-2xl":"3rem","gutter-lg":"2rem","margin-desktop":"3rem","space-xs":"0.25rem","space-md":"1rem","gutter-sm":"1rem","space-sm":"0.5rem","gutter":"1.5rem","margin":"2rem","space-lg":"1.5rem"},"fontFamily":{"caption":["Inter"],"display-lg":["Manrope"],"metric-display-sm":["Manrope"],"display-lg-mobile":["Manrope"],"label-sm":["Inter"],"headline-sm":["Manrope"],"metric-display":["Manrope"],"body-md":["Inter"],"headline-md":["Manrope"],"headline-lg-mobile":["Manrope"],"headline-lg":["Manrope"],"metric-unit":["Inter"],"body-sm":["Inter"],"body-lg":["Inter"],"label-md":["Inter"]},"fontSize":{"caption":["0.6875rem",{"lineHeight":"0.875rem","letterSpacing":"0.03em","fontWeight":"500"}],"display-lg":["3rem",{"lineHeight":"3.5rem","letterSpacing":"-0.025em","fontWeight":"700"}],"metric-display-sm":["1.5rem",{"lineHeight":"1.75rem","letterSpacing":"-0.02em","fontWeight":"700"}],"display-lg-mobile":["2.25rem",{"lineHeight":"2.75rem","letterSpacing":"-0.02em","fontWeight":"700"}],"label-sm":["0.75rem",{"lineHeight":"1rem","letterSpacing":"0.02em","fontWeight":"600"}],"headline-sm":["1.125rem",{"lineHeight":"1.625rem","letterSpacing":"-0.01em","fontWeight":"600"}],"metric-display":["2.25rem",{"lineHeight":"2.5rem","letterSpacing":"-0.03em","fontWeight":"700"}],"body-md":["1rem",{"lineHeight":"1.5rem","letterSpacing":"0em","fontWeight":"400"}],"headline-md":["1.5rem",{"lineHeight":"2rem","letterSpacing":"-0.015em","fontWeight":"600"}],"headline-lg-mobile":["1.625rem",{"lineHeight":"2.125rem","letterSpacing":"-0.015em","fontWeight":"700"}],"headline-lg":["2rem",{"lineHeight":"2.5rem","letterSpacing":"-0.02em","fontWeight":"700"}],"metric-unit":["0.875rem",{"lineHeight":"1.25rem","letterSpacing":"0em","fontWeight":"500"}],"body-sm":["0.875rem",{"lineHeight":"1.25rem","letterSpacing":"0em","fontWeight":"400"}],"body-lg":["1.125rem",{"lineHeight":"1.75rem","letterSpacing":"-0.01em","fontWeight":"400"}],"label-md":["0.875rem",{"lineHeight":"1.25rem","letterSpacing":"0.01em","fontWeight":"600"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 w-full z-50 bg-surface-white/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-7xl mx-auto px-gutter-lg flex items-center justify-between"><a class="flex items-center gap-space-sm" data-path="landing-page" href="#"><div class="w-10 h-10 rounded-xl bg-secondary-container flex items-center justify-center text-on-secondary-container"><span class="material-symbols-outlined text-[22px]">neurology</span></div><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight">HealthMemory <span class="text-secondary font-headline-sm text-headline-sm">360</span></span></a><nav class="hidden lg:flex items-center gap-space-xl" data-active-classes="text-on-surface font-label-md text-label-md"><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="features" href="#">Features</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="how-it-works" href="#">How it Works</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="timeline" href="#">Timeline</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="security" href="#">Security</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="for-doctors" href="#">For Doctors</a></nav><div class="flex items-center gap-space-md"><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors px-space-sm py-space-xs" data-path="login" href="#">Sign In</a><a class="bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-md text-label-md px-space-lg py-space-sm rounded-lg transition-colors flex items-center justify-center" data-path="signup" href="#">Get Started</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-space-xs"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface"><div class="flex flex-col w-full">
+<!-- Top Ambient Glow -->
+<div class="relative w-full overflow-hidden">
+<div class="absolute top-12 left-1/2 -translate-x-1/2 w-[900px] h-[360px] bg-gradient-to-tr from-secondary/10 via-ai-purple/10 to-teal-glow/15 blur-3xl rounded-full pointer-events-none -z-10"></div>
+<!-- 1. HERO SECTION -->
+<section class="max-w-7xl mx-auto px-gutter-lg pt-space-xl pb-space-2xl flex flex-col items-center text-center">
+<!-- Innovation Badge -->
+<div class="inline-flex items-center gap-space-xs bg-surface-white px-space-md py-1.5 rounded-full shadow-sm mb-space-lg">
+<span class="w-2 h-2 rounded-full bg-teal-accent animate-pulse"></span>
+<span class="font-caption text-caption text-secondary tracking-wider uppercase font-semibold">HACKNOVA 2026 • AI-Powered Longitudinal Health Memory</span>
+<span class="material-symbols-outlined text-secondary text-[14px]">arrow_forward</span>
+</div>
+<!-- Hero Headline -->
+<h1 class="font-display-lg text-display-lg text-on-surface max-w-4xl tracking-tight leading-tight">
+        Your complete health journey, remembered <span class="bg-gradient-to-r from-secondary via-teal-accent to-ai-purple bg-clip-text text-transparent">intelligently.</span>
+</h1>
+<!-- Subheadline -->
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mt-space-md leading-relaxed">
+        Bring your medical records, health activity, wellness, and personal health history together in one intelligent health memory. Grounded in your personal data, non-diagnostic, and built for collaborative care.
+      </p>
+<!-- CTAs -->
+<div class="flex flex-wrap items-center justify-center gap-space-md mt-space-xl">
+<a class="h-11 px-space-lg bg-secondary hover:bg-on-secondary-container text-on-secondary font-label-md text-label-md rounded-lg flex items-center gap-space-xs shadow-sm transition-all transform active:scale-95" data-path="signup" href="#">
+<span>Get Started Free</span>
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+</a>
+<a class="h-11 px-space-lg bg-surface-white hover:bg-surface-container-low text-on-surface font-label-md text-label-md rounded-lg flex items-center gap-space-xs shadow-sm transition-all" href="#pipeline">
+<span class="material-symbols-outlined text-[18px] text-ai-purple">play_circle</span>
+<span>Explore Interactive Demo</span>
+</a>
+</div>
+<!-- Trust Badges -->
+<div class="flex flex-wrap items-center justify-center gap-x-space-xl gap-y-space-sm mt-space-xl text-on-surface-variant">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-mint-wellness text-[18px]">verified_user</span>
+<span class="font-caption text-caption font-semibold">HIPAA Compliant Data Handling</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[18px]">enhanced_encryption</span>
+<span class="font-caption text-caption font-semibold">Client-Side Zero-Knowledge Encryption</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-ai-purple text-[18px]">privacy_tip</span>
+<span class="font-caption text-caption font-semibold">Zero 3rd-Party AI Model Training</span>
+</div>
+</div>
+<!-- Visual Pipeline Diagram -->
+<div class="w-full mt-space-2xl bg-surface-white rounded-xl shadow-sm p-space-lg text-left" id="pipeline">
+<div class="flex flex-col md:flex-row items-center justify-between pb-space-md gap-space-sm">
+<div>
+<span class="font-caption text-caption text-secondary uppercase font-bold tracking-wider">Architecture Flow</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">The HealthMemory Processing Pipeline</h3>
+</div>
+<div class="flex items-center gap-space-xs bg-mint-surface px-space-sm py-1 rounded-full text-mint-wellness">
+<span class="w-2 h-2 rounded-full bg-mint-wellness"></span>
+<span class="font-caption text-caption font-semibold">Realtime Parser Active • LOINC 2.76 Standards</span>
+</div>
+</div>
+<!-- Flow Nodes Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-space-md relative mt-space-sm">
+<!-- Step 1 -->
+<div class="group bg-surface-container-low p-space-md rounded-xl hover:bg-surface-white hover:shadow-md transition-all">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-secondary font-headline-sm text-label-md">01</span>
+<span class="material-symbols-outlined text-secondary text-[20px]">upload_file</span>
+</div>
+<h4 class="font-headline-sm text-label-md text-on-surface font-semibold">Medical Records</h4>
+<p class="font-body-sm text-caption text-on-surface-variant mt-1">Multi-page PDFs, blood test camera captures, Quest/Labcorp portals &amp; EHR exports.</p>
+<div class="mt-space-md pt-space-xs flex items-center gap-space-xs text-secondary font-caption text-caption font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span>Raw Document Ingestion</span>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="group bg-surface-container-low p-space-md rounded-xl hover:bg-surface-white hover:shadow-md transition-all">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="w-8 h-8 rounded-lg bg-ai-purple-surface flex items-center justify-center text-ai-purple font-headline-sm text-label-md">02</span>
+<span class="material-symbols-outlined text-ai-purple text-[20px]">psychology</span>
+</div>
+<h4 class="font-headline-sm text-label-md text-on-surface font-semibold">Neural AI Extraction</h4>
+<p class="font-body-sm text-caption text-on-surface-variant mt-1">Multimodal vision parses reference intervals, test codes &amp; flags bounding boxes with exact source citation.</p>
+<div class="mt-space-md pt-space-xs flex items-center gap-space-xs text-ai-purple font-caption text-caption font-semibold">
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span>
+<span>Sub-second LOINC Matching</span>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="group bg-surface-container-low p-space-md rounded-xl hover:bg-surface-white hover:shadow-md transition-all">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-teal-accent font-headline-sm text-label-md">03</span>
+<span class="material-symbols-outlined text-teal-accent text-[20px]">timeline</span>
+</div>
+<h4 class="font-headline-sm text-label-md text-on-surface font-semibold">Health Timeline &amp; Trajectory</h4>
+<p class="font-body-sm text-caption text-on-surface-variant mt-1">Isolates single-point biomarkers into 5-year chronological curves. Identifies subtle systemic trends early.</p>
+<div class="mt-space-md pt-space-xs flex items-center gap-space-xs text-secondary font-caption text-caption font-semibold">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+<span>Longitudinal Delta Curves</span>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="group bg-surface-container-low p-space-md rounded-xl hover:bg-surface-white hover:shadow-md transition-all">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="w-8 h-8 rounded-lg bg-mint-surface flex items-center justify-center text-mint-wellness font-headline-sm text-label-md">04</span>
+<span class="material-symbols-outlined text-mint-wellness text-[20px]">clinical_notes</span>
+</div>
+<h4 class="font-headline-sm text-label-md text-on-surface font-semibold">Clinical Insights &amp; Brief</h4>
+<p class="font-body-sm text-caption text-on-surface-variant mt-1">Synthesizes actionable 2-page pre-visit consultation dossiers. Prepared for clinician review in 90 seconds.</p>
+<div class="mt-space-md pt-space-xs flex items-center gap-space-xs text-mint-wellness font-caption text-caption font-semibold">
+<span class="material-symbols-outlined text-[14px]">task_alt</span>
+<span>Physician-Ready Export</span>
+</div>
+</div>
+</div>
+<!-- Interactive Flow Simulation -->
+<div class="mt-space-lg bg-canvas-light p-space-md rounded-lg flex flex-col lg:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-lg bg-surface-white flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[24px]">description</span>
+</div>
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-md text-label-md text-on-surface">Metabolic_Panel_Quest_Nov2025.pdf</span>
+<span class="bg-mint-surface text-mint-wellness font-caption text-caption px-2 py-0.5 rounded-full font-semibold">Verified 100%</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant">Extracted 24 analytes (HbA1c, Fasting Glucose, eGFR, ALT, AST, Lipid Sub-fractions)</p>
+</div>
+</div>
+<div class="flex items-center gap-space-sm w-full lg:w-auto justify-end">
+<div class="text-right">
+<span class="font-caption text-caption text-on-surface-variant block">Analyte Delta</span>
+<span class="font-headline-sm text-headline-sm text-secondary font-bold">HbA1c: 5.7% → 5.4%</span>
+</div>
+<span class="inline-flex items-center gap-1 bg-mint-surface text-mint-wellness px-2.5 py-1 rounded-full text-caption font-semibold">
+<span class="material-symbols-outlined text-[14px]">south</span>
+              Improved
+            </span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- 2. THE PROBLEM VS THE SOLUTION -->
+<section class="w-full bg-surface-container-low py-space-2xl">
+<div class="max-w-7xl mx-auto px-gutter-lg">
+<div class="text-center max-w-3xl mx-auto mb-space-xl">
+<span class="font-caption text-caption text-secondary uppercase tracking-widest font-bold">Paradigm Shift</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mt-space-xs">
+          Escaping the fragmented health archive chaos
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs">
+          Healthcare data is created at isolated appointments but health happens continuously. HealthMemory 360 bridges the 10-year gaps between your portals.
+        </p>
+</div>
+<!-- Comparison Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg">
+<!-- The Problem -->
+<div class="bg-surface-white rounded-xl p-space-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-space-xs text-status-urgent mb-space-md">
+<div class="w-8 h-8 rounded-lg bg-status-urgent-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">cancel</span>
+</div>
+<span class="font-headline-sm text-headline-sm font-semibold">Fragmented Healthcare Reality</span>
+</div>
+<ul class="space-y-space-md">
+<li class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-status-urgent text-[20px] mt-0.5">folder_off</span>
+<div>
+<h5 class="font-label-md text-label-md text-on-surface font-semibold">Scattered Portal Silos</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Lab results trapped across MyChart, Quest, specialized clinic portals, and dusty paper folders at home.</p>
+</div>
+</li>
+<li class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-status-urgent text-[20px] mt-0.5">history_toggle_off</span>
+<div>
+<h5 class="font-label-md text-label-md text-on-surface font-semibold">Zero Trajectory Visibility</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Every visit treats bloodwork as an isolated snapshot. Gradual shifts across 4 years go unnoticed until pathology hits.</p>
+</div>
+</li>
+<li class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-status-urgent text-[20px] mt-0.5">timer_off</span>
+<div>
+<h5 class="font-label-md text-label-md text-on-surface font-semibold">Rushed 15-Minute Consultations</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Doctors waste 11 minutes logging into disparate systems and asking you to recall dates and dosages from memory.</p>
+</div>
+</li>
+<li class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-status-urgent text-[20px] mt-0.5">smart_toy</span>
+<div>
+<h5 class="font-label-md text-label-md text-on-surface font-semibold">Hallucinatory Generic Web AI</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Generic chatbots guess advice based on public forum tropes with zero grounding in your actual laboratory biochemistry.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="mt-space-lg p-space-md bg-status-urgent-surface rounded-lg">
+<span class="font-caption text-caption text-status-urgent font-semibold uppercase block mb-1">Resulting Outcome</span>
+<p class="font-body-sm text-caption text-on-surface">Missed early interventions, repetitive duplicative tests, high patient anxiety, and incomplete clinical histories.</p>
+</div>
+</div>
+<!-- The Solution -->
+<div class="bg-surface-white rounded-xl p-space-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-space-xs text-secondary mb-space-md">
+<div class="w-8 h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+</div>
+<span class="font-headline-sm text-headline-sm font-semibold">HealthMemory 360 Coherence</span>
+</div>
+<ul class="space-y-space-md">
+<li class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[20px] mt-0.5">folder_shared</span>
+<div>
+<h5 class="font-label-md text-label-md text-on-surface font-semibold">Sovereign Patient Health Vault</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant">All past records standardized into one cryptographic vault that travels with you, regardless of provider or insurer change.</p>
+</div>
+</li>
+<li class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[20px] mt-0.5">show_chart</span>
+<div>
+<h5 class="font-label-md text-label-md text-on-surface font-semibold">Multi-Year Biomarker Delta Tracking</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Automated delta calculations show analyte drift over months and years, revealing trends long before clinical thresholds are breached.</p>
+</div>
+</li>
+<li class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[20px] mt-0.5">summarize</span>
+<div>
+<h5 class="font-label-md text-label-md text-on-surface font-semibold">High-Yield Doctor Briefs in 1 Click</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Hand your clinician a structured overview with key changes highlighted, medication timelines, and open questions.</p>
+</div>
+</li>
+<li class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[20px] mt-0.5">verified</span>
+<div>
+<h5 class="font-label-md text-label-md text-on-surface font-semibold">Grounded AI With File Citations</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Every AI response links directly to the page and line of your official laboratory report. Zero hallucinations.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="mt-space-lg p-space-md bg-mint-surface rounded-lg">
+<span class="font-caption text-caption text-mint-wellness font-semibold uppercase block mb-1">Empowered Outcome</span>
+<p class="font-body-sm text-caption text-on-surface">Proactive longevity decisions, prepared medical consultations, and zero anxiety around forgotten past health events.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. CORE PRODUCT PILLARS (Bento Grid) -->
+<section class="max-w-7xl mx-auto px-gutter-lg py-space-2xl w-full">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-space-xl">
+<div>
+<span class="font-caption text-caption text-secondary uppercase tracking-widest font-bold">System Capabilities</span>
+<h2 class="font-display-lg text-headline-lg text-on-surface mt-space-xs">
+          Five pillars of intelligent health continuity
+        </h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mt-space-sm md:mt-0">
+        Clinical grade tools engineered for personal agency, deep security, and effortless communication with your healthcare providers.
+      </p>
+</div>
+<!-- Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+<!-- Pillar 1: Automated Document Parsing & OCR -->
+<div class="bg-surface-white rounded-xl p-space-xl shadow-sm flex flex-col justify-between group">
+<div>
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-secondary mb-space-md">
+<span class="material-symbols-outlined text-[28px]">document_scanner</span>
+</div>
+<span class="font-caption text-caption text-secondary font-semibold uppercase">Pillar 01</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mt-1">Automated Document Parsing &amp; OCR</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-sm leading-relaxed">
+            Drop any lab report, prescription, or clinical discharge scan. Multimodal vision models isolate structured LOINC analytes, normal ranges, and test dates with interactive bounding-box verification.
+          </p>
+</div>
+<div class="mt-space-lg bg-surface-container-low p-space-md rounded-lg">
+<div class="flex items-center justify-between text-caption font-caption mb-2">
+<span class="text-on-surface-variant">OCR Confidence Index</span>
+<span class="text-mint-wellness font-bold">99.8%</span>
+</div>
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-mint-wellness h-full w-[99.8%] rounded-full"></div>
+</div>
+<div class="flex items-center gap-space-xs mt-3 text-caption font-caption text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-ai-purple">crop_free</span>
+<span>Hover to cross-verify source coordinates</span>
+</div>
+</div>
+</div>
+<!-- Pillar 2: The Longitudinal Health Timeline (Spans 2 cols on desktop) -->
+<div class="md:col-span-2 bg-surface-white rounded-xl p-space-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<div class="w-12 h-12 rounded-xl bg-secondary-container flex items-center justify-center text-on-secondary-container mb-space-md">
+<span class="material-symbols-outlined text-[28px]">view_timeline</span>
+</div>
+<span class="bg-secondary-container text-on-secondary-container font-caption text-caption px-space-sm py-1 rounded-full font-semibold">Continuous Record</span>
+</div>
+<span class="font-caption text-caption text-secondary font-semibold uppercase">Pillar 02</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mt-1">The Longitudinal Health Timeline</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-sm leading-relaxed max-w-2xl">
+            A unified chronological narrative tracing every clinic visit, diagnostic blood test, vaccination, imaging study, and lifestyle milestone across decades. Say goodbye to forgotten surgeries or immunization gaps.
+          </p>
+</div>
+<!-- Interactive Timeline Preview Strip -->
+<div class="mt-space-lg bg-surface-container-low p-space-lg rounded-xl">
+<div class="relative flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md">
+<!-- Timeline Line -->
+<div class="hidden md:block absolute top-1/2 left-4 right-4 h-0.5 bg-surface-container -translate-y-1/2 z-0"></div>
+<!-- Milestone 1 -->
+<div class="relative z-10 flex md:flex-col items-center gap-space-sm text-left md:text-center w-full md:w-1/4">
+<div class="w-9 h-9 rounded-full bg-surface-white shadow-sm flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">biotech</span>
+</div>
+<div>
+<span class="font-caption text-caption text-on-surface-variant block">Oct 2022</span>
+<span class="font-label-md text-caption text-on-surface font-semibold block">Comprehensive Labs</span>
+<span class="font-caption text-caption text-mint-wellness font-semibold">Lipids Normal</span>
+</div>
+</div>
+<!-- Milestone 2 -->
+<div class="relative z-10 flex md:flex-col items-center gap-space-sm text-left md:text-center w-full md:w-1/4">
+<div class="w-9 h-9 rounded-full bg-surface-white shadow-sm flex items-center justify-center text-ai-purple">
+<span class="material-symbols-outlined text-[18px]">vaccines</span>
+</div>
+<div>
+<span class="font-caption text-caption text-on-surface-variant block">May 2023</span>
+<span class="font-label-md text-caption text-on-surface font-semibold block">Booster &amp; Titers</span>
+<span class="font-caption text-caption text-on-surface-variant">Immunity Confirmed</span>
+</div>
+</div>
+<!-- Milestone 3 -->
+<div class="relative z-10 flex md:flex-col items-center gap-space-sm text-left md:text-center w-full md:w-1/4">
+<div class="w-9 h-9 rounded-full bg-surface-white shadow-sm flex items-center justify-center text-status-warning">
+<span class="material-symbols-outlined text-[18px]">vital_signs</span>
+</div>
+<div>
+<span class="font-caption text-caption text-on-surface-variant block">Jan 2024</span>
+<span class="font-label-md text-caption text-on-surface font-semibold block">Cardiology Consult</span>
+<span class="font-caption text-caption text-status-warning font-semibold">BP 132/84 Check</span>
+</div>
+</div>
+<!-- Milestone 4 -->
+<div class="relative z-10 flex md:flex-col items-center gap-space-sm text-left md:text-center w-full md:w-1/4">
+<div class="w-9 h-9 rounded-full bg-surface-white shadow-sm flex items-center justify-center text-mint-wellness">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+</div>
+<div>
+<span class="font-caption text-caption text-on-surface-variant block">Nov 2025</span>
+<span class="font-label-md text-caption text-on-surface font-semibold block">Annual Executive Panel</span>
+<span class="font-caption text-caption text-mint-wellness font-semibold">All Optimal</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Pillar 3: Biomarker Trajectory & Delta Engine -->
+<div class="bg-surface-white rounded-xl p-space-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-teal-accent mb-space-md">
+<span class="material-symbols-outlined text-[28px]">query_stats</span>
+</div>
+<span class="font-caption text-caption text-secondary font-semibold uppercase">Pillar 03</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mt-1">Biomarker Trajectory &amp; Delta Engine</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-sm leading-relaxed">
+            Compare past and present lab panels side-by-side with clear variance tracking. Automatically normalize conflicting units across different testing laboratories.
+          </p>
+</div>
+<!-- Delta comparison visual -->
+<div class="mt-space-lg space-y-space-xs">
+<div class="p-space-sm bg-surface-container-low rounded-lg flex items-center justify-between">
+<span class="font-caption text-caption font-semibold text-on-surface">Fasting Glucose</span>
+<div class="flex items-center gap-space-xs">
+<span class="font-caption text-caption text-on-surface-variant">104 → 91 mg/dL</span>
+<span class="bg-mint-surface text-mint-wellness font-caption text-caption px-2 py-0.5 rounded-full font-bold">-12.5%</span>
+</div>
+</div>
+<div class="p-space-sm bg-surface-container-low rounded-lg flex items-center justify-between">
+<span class="font-caption text-caption font-semibold text-on-surface">LDL Cholesterol</span>
+<div class="flex items-center gap-space-xs">
+<span class="font-caption text-caption text-on-surface-variant">138 → 112 mg/dL</span>
+<span class="bg-mint-surface text-mint-wellness font-caption text-caption px-2 py-0.5 rounded-full font-bold">-18.8%</span>
+</div>
+</div>
+<div class="p-space-sm bg-surface-container-low rounded-lg flex items-center justify-between">
+<span class="font-caption text-caption font-semibold text-on-surface">Vitamin D (25-OH)</span>
+<div class="flex items-center gap-space-xs">
+<span class="font-caption text-caption text-on-surface-variant">28 → 52 ng/mL</span>
+<span class="bg-mint-surface text-mint-wellness font-caption text-caption px-2 py-0.5 rounded-full font-bold">+85.7%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Pillar 4: Grounded AI Assistant -->
+<div class="bg-surface-white rounded-xl p-space-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-xl bg-ai-purple-surface flex items-center justify-center text-ai-purple mb-space-md">
+<span class="material-symbols-outlined text-[28px]">mark_chat_read</span>
+</div>
+<span class="font-caption text-caption text-ai-purple font-semibold uppercase">Pillar 04</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mt-1">Grounded AI Assistant</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-sm leading-relaxed">
+            Ask natural language questions strictly cited against your uploaded lab files. Every assertion highlights the precise page and numeric value from your doctor's report.
+          </p>
+</div>
+<!-- Chat snippet -->
+<div class="mt-space-lg p-space-md bg-canvas-light rounded-lg space-y-space-sm">
+<div class="text-right">
+<div class="inline-block bg-primary text-on-primary font-caption text-caption py-1.5 px-3 rounded-xl rounded-tr-none text-left">
+              "How has my thyroid panel shifted over the last 3 years?"
+            </div>
+</div>
+<div class="text-left">
+<div class="inline-block bg-surface-white text-on-surface font-caption text-caption p-2.5 rounded-xl rounded-tl-none shadow-sm">
+<span class="block text-slate-subtext mb-1">HealthMemory Assistant:</span>
+              Your TSH has stabilized between 1.8 and 2.1 mIU/L since your Nov 2023 panel.
+              <div class="mt-2 flex items-center gap-1 text-ai-purple font-semibold">
+<span class="material-symbols-outlined text-[14px]">link</span>
+<span>Cited in Quest Diagnostics (Page 2, Line 14)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Pillar 5: 1-Click Doctor Brief -->
+<div class="bg-surface-white rounded-xl p-space-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-xl bg-mint-surface flex items-center justify-center text-mint-wellness mb-space-md">
+<span class="material-symbols-outlined text-[28px]">assignment_turned_in</span>
+</div>
+<span class="font-caption text-caption text-mint-wellness font-semibold uppercase">Pillar 05</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mt-1">1-Click Doctor Brief</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-sm leading-relaxed">
+            Generate clean, concise, 2-page clinical visit summaries engineered for rapid physician review. Maximize precious consult time by providing clear longitudinal context.
+          </p>
+</div>
+<div class="mt-space-lg bg-surface-container-low p-space-md rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-white flex items-center justify-center shadow-sm text-secondary">
+<span class="material-symbols-outlined text-[20px]">picture_as_pdf</span>
+</div>
+<div>
+<span class="font-label-md text-caption text-on-surface font-semibold block">Clinician_Brief_Summary.pdf</span>
+<span class="font-caption text-caption text-on-surface-variant">Ready for Dr. Marcus Evans</span>
+</div>
+</div>
+<a class="p-2 bg-secondary text-on-secondary rounded-lg hover:bg-on-secondary-container transition-colors" data-path="doctor-brief" href="#">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Visual Proof: Lifestyle and Clinical Context -->
+<section class="max-w-7xl mx-auto px-gutter-lg py-space-xl w-full">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-xl items-center bg-surface-white rounded-xl p-space-xl shadow-sm">
+<div class="relative rounded-xl overflow-hidden shadow-sm h-80">
+<img class="w-full h-full object-cover" data-alt="A clean, modern clinical consultation office with soft morning sunlight streaming through expansive windows. A calm, professional female physician reviews organized longitudinal lab charts on a high-resolution display with an engaged patient. The environment is warm, clinical, and human-centered, accented with soft navy and teal tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4punnCbTUUzy66WYpt0_S0tonWLMTSWuWMVAf9Qkd5UjWeIz-j8y09YWN99szqWGrFFFl25VzC2JwjU6toe-eQgI_jtq3tbmBMb7H6wrvDkDJjfaPDmoANUCfzQtCAdh2vE6rhvV7w4yZSJ4Vm9EwKoYowQrP0LDS1sY6OXlGzb7JggzSkRpePzUiG3sfND0v3WD4prFAH2FZ3gEcYF0-UcuKKj9rc5AqWa-l3Q"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent flex items-end p-space-lg">
+<span class="text-on-primary font-headline-sm text-label-md font-semibold">Transforming 15-minute consultations into collaborative clinical partnerships.</span>
+</div>
+</div>
+<div class="flex flex-col gap-space-md">
+<span class="font-caption text-caption text-secondary uppercase tracking-widest font-bold">Collaborative Medicine</span>
+<h3 class="font-headline-lg text-headline-lg text-on-surface leading-snug">
+          Designed for both curious patients and demanding clinicians.
+        </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Physicians spend hours sifting through disconnected electronic health record databases. HealthMemory 360 acts as a clean, structured bridge that respects clinical time and focuses directly on actionable biometric deltas.
+        </p>
+<div class="grid grid-cols-2 gap-space-md pt-space-xs">
+<div class="bg-surface-container-low p-space-md rounded-lg">
+<span class="font-metric-display-sm text-metric-display-sm text-secondary block font-bold">8.4 min</span>
+<span class="font-caption text-caption text-on-surface-variant">Average consultation review time saved</span>
+</div>
+<div class="bg-surface-container-low p-space-md rounded-lg">
+<span class="font-metric-display-sm text-metric-display-sm text-ai-purple block font-bold">100%</span>
+<span class="font-caption text-caption text-on-surface-variant">Source-cited verification across all analytes</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. NON-DIAGNOSTIC CLINICAL BOUNDARIES STATEMENT -->
+<section class="w-full bg-surface-white py-space-2xl">
+<div class="max-w-5xl mx-auto px-gutter-lg">
+<div class="bg-surface-container-low rounded-2xl p-space-xl shadow-sm flex flex-col md:flex-row items-center gap-space-xl">
+<div class="w-16 h-16 rounded-2xl bg-secondary-container flex items-center justify-center text-on-secondary-container shrink-0">
+<span class="material-symbols-outlined text-[36px]">shield_with_heart</span>
+</div>
+<div class="space-y-space-xs text-left">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">gavel</span>
+<span class="font-caption text-caption text-secondary uppercase font-bold tracking-wider">Clinical Integrity &amp; Scope</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold">
+            Non-Diagnostic Clinical Boundaries
+          </h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            "HealthMemory 360 organizes and visualizes your recorded values. We do not diagnose, prescribe, or replace professional medical assessment — we help you and your doctor understand your lifelong trajectory with precision and clarity."
+          </p>
+<div class="flex flex-wrap items-center gap-space-md pt-space-xs text-on-surface-variant font-caption text-caption">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-mint-wellness text-[16px]">check</span>
+              Empowering Patient Agency
+            </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-mint-wellness text-[16px]">check</span>
+              Unifying Laboratory Standards
+            </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-mint-wellness text-[16px]">check</span>
+              Honoring Physician Expertise
+            </span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. FINAL CALL TO ACTION & SIGNUP -->
+<section class="max-w-7xl mx-auto px-gutter-lg py-space-2xl w-full">
+<div class="relative bg-primary-container rounded-2xl p-space-2xl overflow-hidden text-center text-on-primary">
+<!-- Glow ambient -->
+<div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-secondary/30 blur-3xl rounded-full pointer-events-none"></div>
+<div class="relative z-10 max-w-2xl mx-auto space-y-space-md">
+<span class="bg-secondary/40 text-secondary-fixed font-caption text-caption px-space-md py-1 rounded-full font-semibold uppercase tracking-wider inline-block">
+          Take Sovereignty Over Your Health Story
+        </span>
+<h2 class="font-display-lg text-display-lg tracking-tight leading-tight">
+          Start organizing your complete health memory today.
+        </h2>
+<p class="font-body-md text-body-md text-primary-fixed-dim leading-relaxed">
+          Upload your first lab report or discharge summary in under 30 seconds. Your records are encrypted and protected under zero-trust protocols.
+        </p>
+<!-- Newsletter / Signup Prompt -->
+<div class="pt-space-md max-w-md mx-auto">
+<form class="flex flex-col sm:flex-row items-center gap-space-xs bg-surface-white/10 p-1.5 rounded-xl backdrop-blur-md" onsubmit="event.preventDefault(); document.getElementById('cta-success').classList.remove('hidden');">
+<input class="w-full bg-surface-white text-on-surface placeholder-on-surface-variant text-body-sm font-body-sm px-space-md py-2.5 rounded-lg focus:outline-none" placeholder="Enter your email address" required="" type="email"/>
+<button class="w-full sm:w-auto px-space-lg py-2.5 bg-secondary hover:bg-on-secondary-container text-on-secondary font-label-md text-label-md rounded-lg transition-colors whitespace-nowrap shadow-sm" type="submit">
+              Get Free Access
+            </button>
+</form>
+<p class="hidden font-caption text-caption text-teal-glow mt-space-sm" id="cta-success">
+            ✓ Invitation dispatched! Check your email to access your sovereign vault.
+          </p>
+<div class="flex items-center justify-center gap-space-lg mt-space-lg text-primary-fixed-dim font-caption text-caption">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-mint-wellness">lock</span>
+              Zero credit card required
+            </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-mint-wellness">schedule</span>
+              Instant OCR deployment
+            </span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div></main><footer class="w-full bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.04)] mt-space-2xl"><div class="max-w-7xl mx-auto px-gutter-lg py-space-2xl"><div class="grid grid-cols-1 md:grid-cols-5 gap-space-xl"><div class="md:col-span-2 flex flex-col gap-space-md"><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container"><span class="material-symbols-outlined text-[18px]">neurology</span></div><span class="font-headline-sm text-headline-sm text-on-surface">HealthMemory 360</span></div><p class="font-body-sm text-body-sm text-on-surface-variant max-w-sm">Clinical-grade longitudinal health intelligence platform. Unifying personal diagnostics, clinical encounters, and AI computational synthesis for lifelong preventive agency.</p><div class="flex items-center gap-space-sm text-on-surface-variant"><span class="material-symbols-outlined text-[18px] text-mint-wellness">verified_user</span><span class="font-caption text-caption">HIPAA Compliant &amp; SOC2 Type II Certified</span></div></div><div class="flex flex-col gap-space-sm"><h4 class="font-label-md text-label-md text-on-surface">Platform</h4><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="timeline" href="#">Health Timeline</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="features" href="#">Biomarker Engine</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="upload-medical-record" href="#">Record Extraction</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="doctor-brief" href="#">Clinical Summaries</a></div><div class="flex flex-col gap-space-sm"><h4 class="font-label-md text-label-md text-on-surface">Compliance &amp; Trust</h4><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="security" href="#">Security Architecture</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="security" href="#">Zero-Trust Data Vault</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="security" href="#">Patient Consent Directives</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="security" href="#">Institutional Audits</a></div><div class="flex flex-col gap-space-sm"><h4 class="font-label-md text-label-md text-on-surface">Clinicians</h4><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="for-doctors" href="#">Doctor Portal</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="for-doctors" href="#">EHR Interoperability</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="for-doctors" href="#">Research Collaboration</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="for-doctors" href="#">Practice Integration</a></div></div><div class="mt-space-2xl pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md"><p class="font-caption text-caption text-on-surface-variant">© 2025 HealthMemory 360 Inc. All medical records remain patient-owned and sovereign.</p><div class="flex items-center gap-space-lg"><a class="font-caption text-caption text-on-surface-variant hover:text-on-surface transition-colors" href="#">Privacy Policy</a><a class="font-caption text-caption text-on-surface-variant hover:text-on-surface transition-colors" href="#">Terms of Service</a><a class="font-caption text-caption text-on-surface-variant hover:text-on-surface transition-colors" href="#">Clinical Advisory</a></div></div></div></footer></body></html>
