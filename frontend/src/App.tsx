@@ -192,20 +192,60 @@ function StitchFrame({ dir }: { dir: string }) {
       const button = doc.querySelector('#ai-submit-button') as HTMLButtonElement | null;
       if (input && button && !button.getAttribute('data-hm-wired')) {
         button.setAttribute('data-hm-wired', '1');
+        const createBubble = (role: 'user' | 'assistant', text: string) => {
+          const wrapper = doc.createElement('div');
+          wrapper.className = role === 'user'
+            ? 'flex items-start justify-end gap-3 self-end max-w-xl'
+            : 'flex items-start gap-3.5 max-w-full';
+          wrapper.innerHTML = role === 'user'
+            ? `<div class="flex flex-col items-end gap-1"><div class="bg-primary text-on-primary px-5 py-3.5 rounded-2xl rounded-tr-xs shadow-sm"><p class="font-body-md text-body-md text-on-primary">${text.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p></div></div>`
+            : `<div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-ai-purple to-teal-accent flex items-center justify-center text-white shrink-0 shadow-sm mt-1"><span class="material-symbols-outlined text-[20px]">spark</span></div><div class="flex-1 flex flex-col gap-3 min-w-0"><div class="bg-surface-white rounded-3xl rounded-tl-xs p-6 shadow-sm flex flex-col gap-5"><div class="font-body-md text-body-md text-on-surface leading-relaxed whitespace-pre-line">${text.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div></div></div>`;
+          return wrapper;
+        };
+
         const submit = async () => {
           const prompt = input.value.trim();
           if (!prompt) return;
+          const messageContainer = doc.querySelector('main');
+          if (messageContainer) {
+            messageContainer.appendChild(createBubble('user', prompt));
+          }
           button.disabled = true;
           const old = button.innerHTML;
-          button.textContent = 'Thinking…';
+          button.textContent = 'Reviewing…';
           try {
-            const data = await api('/ai/chat', { method: 'POST', body: JSON.stringify({ prompt }) });
+            const data = await api('/ai/ask', { method: 'POST', body: JSON.stringify({ message: prompt }) });
             const text = String(data.answer || 'No answer returned.');
-            const messages = Array.from(doc.querySelectorAll('main p, main div')).filter((el: any) => /How can I help|HealthMemory/i.test(el.textContent || '')).slice(-1)[0] as HTMLElement | undefined;
-            if (messages) messages.textContent = text;
-            else alert(text);
-          } catch (err: any) { alert(err?.message || 'AI request failed'); }
-          finally { button.disabled = false; button.innerHTML = old; }
+            if (messageContainer) {
+              messageContainer.appendChild(createBubble('assistant', text));
+            }
+            if (Array.isArray(data.actions) && data.actions.length) {
+              const actionsWrap = doc.createElement('div');
+              actionsWrap.className = 'flex flex-wrap items-center gap-2 pt-2';
+              data.actions.forEach((action: any) => {
+                const btn = doc.createElement('button');
+                btn.type = 'button';
+                btn.className = 'inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-surface-container-high hover:bg-surface-container text-on-surface font-label-sm text-label-sm transition-colors';
+                btn.textContent = action.label || 'Open';
+                btn.addEventListener('click', () => {
+                  if (action.type === 'navigate' && action.target) {
+                    window.parent.location.href = action.target;
+                  }
+                  if (action.type === 'view_record' && action.target) {
+                    window.parent.location.href = action.target;
+                  }
+                });
+                actionsWrap.appendChild(btn);
+              });
+              if (messageContainer) messageContainer.appendChild(actionsWrap);
+            }
+          } catch (err: any) {
+            if (messageContainer) messageContainer.appendChild(createBubble('assistant', err?.message || 'AI request failed'));
+          } finally {
+            button.disabled = false;
+            button.innerHTML = old;
+            input.value = '';
+          }
         };
         button.addEventListener('click', submit);
         input.addEventListener('keydown', (e) => { if (e.key === 'Enter') submit(); });

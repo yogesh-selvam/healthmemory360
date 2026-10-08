@@ -310,10 +310,19 @@ app.post('/api/reports/compare', auth, async (req: AuthRequest, r) => {
   r.json({ previous: a, latest: b, changes, comparedAt: new Date().toISOString() });
 });
 
+app.post('/api/ai/ask', auth, async (req: AuthRequest, r) => {
+  const message = String(req.body?.message || req.body?.prompt || '').trim();
+  if (!message) return r.status(400).json({ message: 'Message required' });
+  try {
+    const result = await ask(uid(req), message, { conversationId: req.body?.conversationId, context: req.body?.context });
+    r.json(result);
+  } catch (e: any) { r.status(500).json({ message: e?.message || 'AI request failed' }); }
+});
+
 app.post('/api/ai/chat', auth, async (req: AuthRequest, r) => {
-  const prompt = String(req.body?.prompt || '').trim();
+  const prompt = String(req.body?.prompt || req.body?.message || '').trim();
   if (!prompt) return r.status(400).json({ message: 'Prompt required' });
-  try { r.json(await ask(uid(req), prompt)); }
+  try { r.json(await ask(uid(req), prompt, { conversationId: req.body?.conversationId, context: req.body?.context })); }
   catch (e: any) { r.status(500).json({ message: e?.message || 'AI request failed' }); }
 });
 

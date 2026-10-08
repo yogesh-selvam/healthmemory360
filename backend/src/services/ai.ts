@@ -169,6 +169,54 @@ export async function createReminderFromPrompt(userId: string, prompt: string) {
   return reminder.toObject();
 }
 
+export function inferIntent(prompt: string): string {
+  const q = normalize(prompt);
+
+  if (/what changed|compare|change.*report|delta|difference|before and after/.test(q)) return 'report_comparison';
+  if (/when.*blood test|last blood test|recent blood test|blood test.*when|when.*lab test|last lab/.test(q)) return 'record_lookup';
+  if (/show.*previous.*record|show.*records|recent records|previous records|most recent records/.test(q)) return 'record_lookup';
+  if (/next checkup|next appointment|upcoming follow|when.*checkup|when.*follow|upcoming appointment|appointment.*next/.test(q)) return 'appointment_lookup';
+  if (/why.*reminder|why.*this reminder|what.*reminder|reason.*reminder/.test(q)) return 'reminder_explanation';
+  if (/reminder|remind|follow[- ]?up.*when|do i have any upcoming reminders/.test(q)) return 'reminder_lookup';
+  if (/alert|what caused this alert|why did i get this alert|show my health alerts/.test(q)) return 'alert_lookup';
+  if (/doctor.*brief|prepare.*doctor|doctor summary|summarize.*doctor/.test(q)) return 'doctor_brief';
+  if (/open.*timeline|show.*timeline|health timeline|my journey/.test(q)) return 'navigation';
+  if (/medication|medicine|drug|prescription/.test(q)) return 'medication_lookup';
+  if (/condition|diagnosis|problem|illness/.test(q)) return 'condition_lookup';
+  if (/blood pressure|glucose|spo2|heart rate|weight|latest vitals|vital/.test(q)) return 'latest_vitals';
+  if (/history|overview|about me|what information.*you have|who am i/.test(q)) return 'health_history';
+  if (/emergency|sos|emergency information/.test(q)) return 'emergency_information';
+  if (/profile|health identity|my profile/.test(q)) return 'profile_lookup';
+  if (/what is cholesterol|cholesterol|what is .*(blood pressure|glucose)/.test(q)) return 'general_health_information';
+  if (/do i have diabetes|diagnose|prescribe|am i having|do i have .*/.test(q) && /(diabetes|disease|condition|cancer|heart attack|stroke)/.test(q)) return 'unsupported_medical_request';
+  if (/how.*work|why.*this/.test(q)) return 'general_health_information';
+  return 'general_health_information';
+}
+
+function buildActions(intent: string, ctx: HealthContext, prompt: string, firstSource?: Source) {
+  const actions: Array<{ type: string; label: string; target: string }> = [];
+  if (intent === 'navigation') {
+    const p = normalize(prompt);
+    if (/timeline|history|journey/.test(p)) actions.push({ type: 'navigate', label: 'Open Timeline', target: '/app/timeline' });
+    else if (/records|medical/.test(p)) actions.push({ type: 'navigate', label: 'View Records', target: '/app/records' });
+    else if (/alert|alerts/.test(p)) actions.push({ type: 'navigate', label: 'View Alerts', target: '/app/alerts' });
+    else if (/reminder|reminders/.test(p)) actions.push({ type: 'navigate', label: 'View Reminders', target: '/app/reminders' });
+    else if (/doctor|brief/.test(p)) actions.push({ type: 'navigate', label: 'Open Doctor Brief', target: '/app/doctor' });
+    else actions.push({ type: 'navigate', label: 'Open Timeline', target: '/app/timeline' });
+  } else if (intent === 'doctor_brief') {
+    actions.push({ type: 'open_doctor_brief', label: 'Open Doctor Brief', target: '/app/doctor' });
+  } else if (intent === 'alert_lookup' || intent === 'alert_explanation') {
+    actions.push({ type: 'view_alert', label: 'View Alerts', target: '/app/alerts' });
+  } else if (firstSource?.id) {
+    actions.push({ type: 'view_record', label: 'View Record', target: `/app/records/${firstSource.id}` });
+  }
+
+  if (!actions.length && ctx.records[0]?._id) {
+    actions.push({ type: 'view_record', label: 'View Latest Record', target: `/app/records/${String(ctx.records[0]._id)}` });
+  }
+  return actions;
+}
+
 function localAnswer(prompt: string, ctx: HealthContext): string {
   const q = normalize(prompt);
   const latest = latestRecord(ctx);
@@ -304,20 +352,38 @@ function provider(): AIProvider {
   return new MockProvider();
 }
 
-export async function ask(userId: string, prompt: string) {
+export async function ask(userId: string, prompt: string, _meta?: { conversationId?: string; context?: any }) {
   const ctx = await contextFor(userId);
   const createdReminder = await createReminderFromPrompt(userId, prompt);
+  const intent = inferIntent(prompt);
+  const sourceCandidates = buildSources(ctx);
+  const firstSource = sourceCandidates[0];
   const p = provider();
   let answer: string;
-  try { answer = await p.chat(prompt, contextText(ctx)); }
-  catch (error: any) {
+  try {
+    answer = await p.chat(prompt, contextText(ctx));
+  } catch (error: any) {
     answer = `${localAnswer(prompt, ctx)}\n\nAI provider note: ${error?.message || 'The configured AI provider was unavailable, so I used the local record-grounded assistant.'}`;
   }
   if (createdReminder) {
     const when = new Date(createdReminder.reminderDate).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' });
     answer = `Done — I created a HealthMemory reminder for **${createdReminder.title}** on ${when}.\n\n${createdReminder.note || ''}\n\nYou’ll see it in your Reminders and notification panel while this app is open.`;
   }
-  return { answer, sources: buildSources(ctx), action: createdReminder ? { type: 'reminder-created', reminder: createdReminder } : null };
+
+  const confidence = /do i have diabetes|diagnose|prescribe|what is cholesterol|what is .*blood pressure/.test(normalize(prompt)) ? 'medium' : 'high';
+  const actions = buildActions(intent, ctx, prompt, firstSource);
+  const response = {
+    answer,
+    intent,
+    confidence,
+    sources: sourceCandidates.slice(0, 5),
+    actions,
+    safetyNotice: /do i have diabetes|diagnose|prescribe/.test(normalize(prompt)) ? 'I can summarize your stored records, but I cannot diagnose or prescribe treatment. A clinician should interpret these details.' : undefined,
+    conversationId: _meta?.conversationId || undefined,
+    action: createdReminder ? { type: 'reminder-created', reminder: createdReminder } : actions[0] || null,
+  };
+
+  return response;
 }
 
 function fallbackExtract(fileName: string, hint = '') {
