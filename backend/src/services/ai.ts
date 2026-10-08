@@ -1,5 +1,6 @@
 import fs from 'fs/promises';
 import { MedicalRecord, Medication, HealthMetric, Condition, FitnessRecord, NutritionRecord, MentalWellnessRecord, Appointment, User, Reminder } from '../models';
+import { parseFollowUpFromRecord } from './healthAlerts';
 
 export type Source = { id: string; title: string; date?: string; type: string };
 
@@ -99,8 +100,9 @@ function addMonthsLocal(date: Date, months: number) {
 
 function parseReminderRequest(prompt: string, ctx: HealthContext) {
   const q = normalize(prompt);
-  if (!/(remind|reminder|schedule|set.*alert|checkup|check up|follow up|follow-up)/.test(q)) return null;
-  if (!/(remind|reminder|schedule|set.*alert)/.test(q) && !/checkup|check up|follow up|follow-up/.test(q)) return null;
+  const isQuestion = /^(when|what|which|who|where|why|how|do i|can you|show me|tell me|is there)/.test(q);
+  if (!/(remind|reminder|schedule|set.*alert|create.*reminder|checkup|check up|follow up|follow-up)/.test(q)) return null;
+  if (isQuestion && !/(remind|schedule|set.*alert|create.*reminder)/.test(q)) return null;
 
   const now = new Date();
   let date: Date | null = null;
@@ -208,6 +210,31 @@ function localAnswer(prompt: string, ctx: HealthContext): string {
   if (/medication|medicine|drug/.test(q)) {
     if (!ctx.medications.length) return 'There are no medication entries stored in your HealthMemory.';
     return `Stored medications:\n\n${ctx.medications.map(m => `• ${m.name || 'Unnamed'} — ${m.dosage || 'dose not recorded'} — ${m.frequency || 'frequency not recorded'} — ${m.status || 'status not recorded'}`).join('\n')}`;
+  }
+
+  if (/next checkup|next follow[- ]?up|upcoming follow[- ]?up|when.*checkup|when.*follow[- ]?up|checkup.*next|follow[- ]?up.*next/.test(q)) {
+    const upcomingAppointment = ctx.appointments.find((a: any) => a.appointmentDate && new Date(a.appointmentDate) >= new Date());
+    const nextReminder = ctx.reminders.find((r: any) => r.reminderDate && new Date(r.reminderDate) >= new Date());
+    const recordFollowUpEntries = ctx.records
+      .map((record) => ({ record, followUp: parseFollowUpFromRecord(record) }))
+      .filter((entry): entry is { record: any; followUp: NonNullable<ReturnType<typeof parseFollowUpFromRecord>> } => !!entry.followUp && !!entry.followUp.followUpDate && !Number.isNaN(new Date(entry.followUp.followUpDate).getTime()) && new Date(entry.followUp.followUpDate) >= new Date());
+    const recordFollowUp = recordFollowUpEntries
+      .sort((a, b) => {
+        const left = new Date(a.followUp.followUpDate!).getTime();
+        const right = new Date(b.followUp.followUpDate!).getTime();
+        return left - right;
+      })[0] || null;
+
+    if (upcomingAppointment) {
+      return `Your next scheduled appointment is on ${dateText(upcomingAppointment.appointmentDate)}. I’m grounding this in your stored appointment record, not a diagnosis.\n\nSource: ${upcomingAppointment.doctor || 'Healthcare provider'} — ${dateText(upcomingAppointment.appointmentDate)}.`;
+    }
+    if (nextReminder) {
+      return `Your next reminder is for ${nextReminder.title || 'a follow-up'} on ${dateText(nextReminder.reminderDate)}.\n\nSource: ${nextReminder.sourceRecordTitle || 'HealthMemory reminder'}${nextReminder.sourceRecordId ? ` — ${dateText(nextReminder.sourceRecordDate)}` : ''}`;
+    }
+    if (recordFollowUp) {
+      return `I found a record-derived follow-up recommendation associated with “${recordFollowUp.record.title || 'Medical record'}” dated ${dateText(recordFollowUp.record.recordDate)}. The expected follow-up date is ${dateText(recordFollowUp.followUp.followUpDate)}.\n\nThis is a record-derived estimate, not a confirmed appointment.\n\nSource: ${recordFollowUp.record.title || 'Medical record'} — ${dateText(recordFollowUp.record.recordDate)}.`;
+    }
+    return 'I could not find an upcoming appointment, reminder, or record-derived follow-up date in your current HealthMemory records.';
   }
 
   if (/reminder|remind|upcoming|due|checkup|check up/.test(q)) {

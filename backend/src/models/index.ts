@@ -194,12 +194,18 @@ export const Reminder = mongoose.model(
   'Reminder',
   new Schema(
     {
-      userId: { type: Schema.Types.ObjectId, required: true },
+      userId: { type: Schema.Types.ObjectId, required: true, index: true },
       title: { type: String, required: true },
       note: String,
       reminderDate: { type: Date, required: true },
       recurrence: { type: String, enum: ['none', 'monthly', 'quarterly', 'half-yearly', 'yearly'], default: 'none' },
       source: { type: String, default: 'user' },
+      sourceRecordId: { type: Schema.Types.ObjectId, index: true },
+      sourceRecordTitle: String,
+      sourceRecordDate: Date,
+      followUpDate: Date,
+      followUpType: { type: String, enum: ['confirmed-appointment', 'interval-estimate', 'manual', 'user-defined'], default: 'manual' },
+      leadTimeDays: { type: Number, default: 7 },
       status: { type: String, enum: ['pending', 'completed', 'dismissed'], default: 'pending' },
       lastNotifiedAt: Date,
     },
@@ -207,16 +213,26 @@ export const Reminder = mongoose.model(
   )
 );
 
-
 export const HealthAlert = mongoose.model(
   'HealthAlert',
   new Schema({
     userId: { type: Schema.Types.ObjectId, required: true, index: true },
+    patientName: String,
+    patientAge: Number,
+    alertType: { type: String, required: true, index: true },
+    severity: { type: String, enum: ['info','warning','urgent'], default: 'info' },
     title: { type: String, required: true },
     message: String,
-    severity: { type: String, enum: ['info','warning','urgent'], default: 'info' },
-    sourceRecordId: { type: Schema.Types.ObjectId },
-    sourceType: String,
+    reason: String,
+    sourceRecordId: { type: Schema.Types.ObjectId, index: true },
+    sourceRecordTitle: String,
+    sourceRecordDate: Date,
+    previousRecords: [{ title: String, recordDate: Date, summary: String }],
+    latestVitals: [{ label: String, value: String, unit: String }],
+    relevantMedication: String,
+    relevantCondition: String,
+    followUpDate: Date,
+    actionUrl: String,
     read: { type: Boolean, default: false },
     resolved: { type: Boolean, default: false },
     metadata: Schema.Types.Mixed,
@@ -227,9 +243,12 @@ export const Notification = mongoose.model(
   'Notification',
   new Schema({
     userId: { type: Schema.Types.ObjectId, required: true, index: true },
-    type: String, title: { type: String, required: true }, message: String,
+    type: String,
+    title: { type: String, required: true },
+    message: String,
     read: { type: Boolean, default: false },
-    actionUrl: String, metadata: Schema.Types.Mixed,
+    actionUrl: String,
+    metadata: Schema.Types.Mixed,
   }, timestamps)
 );
 

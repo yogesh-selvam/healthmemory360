@@ -12,6 +12,7 @@ import fs from 'fs';
 import { auth, AuthRequest } from './middleware/auth';
 import { User, MedicalRecord, HealthMetric, Medication, Condition, Appointment, FitnessRecord, NutritionRecord, MentalWellnessRecord, DoctorBrief, Reminder, HealthAlert, Notification, EmergencyProfile, EmergencyEvent, HealthSpherePost, HealthSphereComment, HealthSphereFollow } from './models';
 import { ask, extractDocument, doctorBrief } from './services/ai';
+import { generatePatientAlerts, parseFollowUpFromRecord } from './services/healthAlerts';
 
 const app = express();
 const PORT = Number(process.env.PORT || 5000);
@@ -142,13 +143,15 @@ app.post('/api/records/upload', auth, upload.single('file'), async (req: AuthReq
 
 app.get('/api/timeline', auth, async (req: AuthRequest, r) => {
   const id = uid(req);
-  const [records, meds, fitness, nutrition, wellness, appointments] = await Promise.all([
+  const [records, meds, fitness, nutrition, wellness, appointments, reminders, alerts] = await Promise.all([
     MedicalRecord.find({ userId: id }).sort({ recordDate: -1 }).lean(),
     Medication.find({ userId: id }).sort({ startDate: -1 }).lean(),
     FitnessRecord.find({ userId: id }).sort({ recordedAt: -1 }).lean(),
     NutritionRecord.find({ userId: id }).sort({ recordedAt: -1 }).lean(),
     MentalWellnessRecord.find({ userId: id }).sort({ recordedAt: -1 }).lean(),
     Appointment.find({ userId: id }).sort({ appointmentDate: -1 }).lean(),
+    Reminder.find({ userId: id, status: { $ne: 'dismissed' } }).sort({ reminderDate: -1 }).lean(),
+    HealthAlert.find({ userId: id }).sort({ createdAt: -1 }).lean(),
   ]);
   const events = [
     ...records.map(x => ({ date: x.recordDate, type: 'Medical', title: x.title, description: x.summary, source: 'Medical Record', id: String(x._id) })),
@@ -157,6 +160,8 @@ app.get('/api/timeline', auth, async (req: AuthRequest, r) => {
     ...nutrition.filter(x => x.recordedAt).map(x => ({ date: x.recordedAt, type: 'Nutrition', title: 'Nutrition entry', description: `${x.calories || 0} kcal • ${x.water || 0} L water`, source: 'Nutrition', id: String(x._id) })),
     ...wellness.filter(x => x.recordedAt).map(x => ({ date: x.recordedAt, type: 'Wellness', title: `Mood: ${x.mood || 'Check-in'}`, description: `Stress: ${x.stress || 'not recorded'}`, source: 'Mental Wellness', id: String(x._id) })),
     ...appointments.filter(x => x.appointmentDate).map(x => ({ date: x.appointmentDate, type: 'Appointment', title: `Appointment with ${x.doctor || 'provider'}`, description: x.reason || 'Scheduled visit', source: 'Appointment', id: String(x._id) })),
+    ...reminders.filter(x => x.followUpDate || x.reminderDate).map(x => ({ date: x.followUpDate || x.reminderDate, type: 'Follow-up', title: x.title, description: x.note || 'Follow-up reminder', source: x.source || 'Reminder', id: String(x._id) })),
+    ...alerts.filter(x => x.followUpDate || x.sourceRecordDate).map(x => ({ date: x.followUpDate || x.sourceRecordDate, type: 'Alert', title: x.title, description: x.message || 'Health alert', source: 'Health Alert', id: String(x._id) })),
   ].sort((a, b) => +new Date(b.date as any) - +new Date(a.date as any));
   r.json(events);
 });
@@ -201,9 +206,27 @@ app.post('/api/reminders', auth, async (req: AuthRequest, r) => {
   const reminderDate = new Date(req.body?.reminderDate);
   if (!title || Number.isNaN(reminderDate.getTime())) return r.status(400).json({ message: 'Title and valid reminder date are required' });
   const reminder = await Reminder.create({
-    userId: uid(req), title, note: String(req.body?.note || '').trim(), reminderDate,
+    userId: uid(req),
+    title,
+    note: String(req.body?.note || '').trim(),
+    reminderDate,
     recurrence: ['none','monthly','quarterly','half-yearly','yearly'].includes(req.body?.recurrence) ? req.body.recurrence : 'none',
-    source: String(req.body?.source || 'user'), status: 'pending',
+    source: String(req.body?.source || 'user'),
+    sourceRecordId: req.body?.sourceRecordId ? req.body.sourceRecordId : undefined,
+    sourceRecordTitle: req.body?.sourceRecordTitle || undefined,
+    sourceRecordDate: req.body?.sourceRecordDate ? new Date(req.body.sourceRecordDate) : undefined,
+    followUpDate: req.body?.followUpDate ? new Date(req.body.followUpDate) : undefined,
+    followUpType: req.body?.followUpType || 'manual',
+    leadTimeDays: Number(req.body?.leadTimeDays || 7),
+    status: 'pending',
+  });
+  await Notification.create({
+    userId: uid(req),
+    type: 'reminder',
+    title: 'Smart reminder created',
+    message: `${title} is scheduled for ${new Date(reminder.reminderDate).toLocaleDateString()}.`,
+    actionUrl: '/app/reminders',
+    metadata: { reminderId: String(reminder._id), sourceRecordId: reminder.sourceRecordId ? String(reminder.sourceRecordId) : null },
   });
   r.status(201).json(reminder);
 });
@@ -215,6 +238,9 @@ app.patch('/api/reminders/:id', auth, async (req: AuthRequest, r) => {
   if (req.body?.reminderDate) reminder.reminderDate = new Date(req.body.reminderDate);
   if (req.body?.title) reminder.title = String(req.body.title);
   if (req.body?.note != null) reminder.note = String(req.body.note);
+  if (req.body?.followUpDate) reminder.followUpDate = new Date(req.body.followUpDate);
+  if (req.body?.followUpType) reminder.followUpType = req.body.followUpType;
+  if (req.body?.leadTimeDays) reminder.leadTimeDays = Number(req.body.leadTimeDays);
   await reminder.save();
   r.json(reminder);
 });
@@ -226,36 +252,44 @@ app.delete('/api/reminders/:id', auth, async (req: AuthRequest, r) => {
 
 app.get('/api/alerts', auth, async (req: AuthRequest, r) => {
   const id = uid(req);
-  const [user, latestRecord, previousRecord, nextAppointment, reminders, activeConditions, activeMeds] = await Promise.all([
+  await generatePatientAlerts(id);
+  const [user, alerts, latestRecord, previousRecord] = await Promise.all([
     User.findById(id).select('name dateOfBirth bloodGroup').lean(),
+    HealthAlert.find({ userId: id }).sort({ createdAt: -1 }).lean(),
     MedicalRecord.findOne({ userId: id }).sort({ recordDate: -1 }).lean(),
     MedicalRecord.find({ userId: id }).sort({ recordDate: -1 }).skip(1).limit(1).lean(),
-    Appointment.findOne({ userId: id, appointmentDate: { $gte: new Date() }, status: { $ne: 'cancelled' } }).sort({ appointmentDate: 1 }).lean(),
-    Reminder.find({ userId: id, status: 'pending', reminderDate: { $lte: addMonths(new Date(), 12) } }).sort({ reminderDate: 1 }).limit(20).lean(),
-    Condition.find({ userId: id, status: { $ne: 'inactive' } }).sort({ diagnosedDate: -1 }).limit(10).lean(),
-    Medication.find({ userId: id, status: { $ne: 'inactive' } }).sort({ startDate: -1 }).limit(10).lean(),
   ]);
-  const age = patientAge(user?.dateOfBirth);
-  const alerts: any[] = [];
-  if (nextAppointment) alerts.push({ type: 'appointment', severity: 'info', title: 'Upcoming check-up', message: `${nextAppointment.doctor || 'Healthcare provider'} • ${new Date(nextAppointment.appointmentDate as Date).toLocaleDateString()}`, date: nextAppointment.appointmentDate });
-  if (latestRecord?.recordDate) {
-const days = Math.floor(
-  (Date.now() - new Date(latestRecord.recordDate as Date).getTime()) / 86400000
-);    if (days >= 180) alerts.push({ type: 'checkup', severity: 'warning', title: 'Routine check-up reminder', message: `Your latest stored medical record is ${days} days old. Consider scheduling a routine review if appropriate for you.`, date: latestRecord.recordDate });
-  }
-  for (const reminder of reminders) {
-    const reminderDate = new Date(reminder.reminderDate);
-    if (reminderDate <= new Date(Date.now() + 7 * 86400000)) {
-      alerts.push({ type: 'reminder', severity: 'warning', title: reminder.title, message: reminder.note || `Due ${reminderDate.toLocaleDateString()}`, date: reminder.reminderDate, reminderId: String(reminder._id) });
-    }
-    if (reminder.recurrence !== 'none' && reminderDate <= new Date()) {
-      const next = new Date(reminderDate);
-      const months = reminder.recurrence === 'monthly' ? 1 : reminder.recurrence === 'quarterly' ? 3 : reminder.recurrence === 'half-yearly' ? 6 : 12;
-      while (next <= new Date()) next.setMonth(next.getMonth() + months);
-      await Reminder.updateOne({ _id: reminder._id, userId: id }, { $set: { reminderDate: next, lastNotifiedAt: new Date() } });
-    }
-  }
-  r.json({ patient: { name: user?.name || 'Patient', age, bloodGroup: user?.bloodGroup || 'Not recorded' }, previous: previousRecord[0] ? { title: previousRecord[0].title, date: previousRecord[0].recordDate, summary: previousRecord[0].summary } : null, latest: latestRecord ? { title: latestRecord.title, date: latestRecord.recordDate, summary: latestRecord.summary } : null, activeConditions, activeMedications: activeMeds, alerts });
+  const safeAlerts = alerts.map((alert: any) => ({
+    ...alert,
+    type: alert.alertType || alert.type || 'alert',
+    date: alert.followUpDate || alert.sourceRecordDate || alert.createdAt,
+    patient: { name: alert.patientName || user?.name || 'Patient', age: alert.patientAge ?? patientAge(user?.dateOfBirth) },
+  }));
+  r.json({
+    patient: { name: user?.name || 'Patient', age: patientAge(user?.dateOfBirth), bloodGroup: user?.bloodGroup || 'Not recorded' },
+    previous: previousRecord[0] ? { title: previousRecord[0].title, date: previousRecord[0].recordDate, summary: previousRecord[0].summary } : null,
+    latest: latestRecord ? { title: latestRecord.title, date: latestRecord.recordDate, summary: latestRecord.summary } : null,
+    activeConditions: await Condition.find({ userId: id, status: { $ne: 'inactive' } }).sort({ diagnosedDate: -1 }).limit(10).lean(),
+    activeMedications: await Medication.find({ userId: id, status: { $ne: 'inactive' } }).sort({ startDate: -1 }).limit(10).lean(),
+    alerts: safeAlerts,
+  });
+});
+
+app.get('/api/alerts/:id', auth, async (req: AuthRequest, r) => {
+  const alert = await HealthAlert.findOne({ _id: req.params.id, userId: uid(req) }).lean();
+  if (!alert) return r.status(404).json({ message: 'Alert not found' });
+  r.json(alert);
+});
+
+app.patch('/api/alerts/:id/read', auth, async (req: AuthRequest, r) => {
+  const alert = await HealthAlert.findOneAndUpdate({ _id: req.params.id, userId: uid(req) }, { read: true }, { new: true }).lean();
+  if (!alert) return r.status(404).json({ message: 'Alert not found' });
+  r.json(alert);
+});
+
+app.post('/api/alerts/generate', auth, async (req: AuthRequest, r) => {
+  const alerts = await generatePatientAlerts(uid(req));
+  r.status(201).json({ alerts });
 });
 
 app.post('/api/reports/compare', auth, async (req: AuthRequest, r) => {
@@ -310,9 +344,17 @@ app.patch('/api/profile', auth, async (req: AuthRequest, r) => {
 app.get('/api/notifications', auth, async (req: AuthRequest, r) => {
   r.json(await Notification.find({ userId: uid(req) }).sort({ createdAt: -1 }).limit(50).lean());
 });
+app.patch('/api/notifications/:id/read', auth, async (req: AuthRequest, r) => {
+  const n = await Notification.findOneAndUpdate({ _id: req.params.id, userId: uid(req) }, { read: true }, { new: true }).lean();
+  n ? r.json(n) : r.status(404).json({ message: 'Notification not found' });
+});
 app.put('/api/notifications/:id/read', auth, async (req: AuthRequest, r) => {
   const n = await Notification.findOneAndUpdate({ _id: req.params.id, userId: uid(req) }, { read: true }, { new: true }).lean();
   n ? r.json(n) : r.status(404).json({ message: 'Notification not found' });
+});
+app.post('/api/notifications/read-all', auth, async (req: AuthRequest, r) => {
+  const result = await Notification.updateMany({ userId: uid(req), read: false }, { $set: { read: true } });
+  r.json({ ok: true, modified: result.modifiedCount || 0 });
 });
 
 // -------------------- Emergency --------------------
@@ -404,25 +446,44 @@ app.post('/api/community/follow/:userId', auth, async (req: AuthRequest, r) => {
 app.post('/api/reminders/from-record/:id', auth, async (req: AuthRequest, r) => {
   const record = await MedicalRecord.findOne({ _id: req.params.id, userId: uid(req) }).lean();
   if (!record) return r.status(404).json({ message: 'Record not found' });
-  const extracted: any = record.extractedData || {};
-  let followDate: Date | null = null;
-  let label = 'Record-derived estimate';
-  if (extracted.followUp?.date) {
-    const d = new Date(extracted.followUp.date); if (!Number.isNaN(d.getTime())) { followDate = d; label = 'Confirmed appointment from record'; }
-  }
-  if (!followDate && extracted.followUp?.value && extracted.followUp?.unit) {
-    const base = new Date(record.recordDate || new Date());
-    const unit = String(extracted.followUp.unit).toLowerCase();
-    const value = Number(extracted.followUp.value);
-    if (unit.startsWith('month')) followDate = addMonths(base, value);
-    else if (unit.startsWith('week')) followDate = new Date(base.getTime() + value * 7 * 86400000);
-    else if (unit.startsWith('day')) followDate = new Date(base.getTime() + value * 86400000);
-  }
-  if (!followDate) return r.status(400).json({ message: 'No follow-up date or interval was found in this record.' });
-  const reminderDate = new Date(followDate.getTime() - 7 * 86400000);new Date(record.recordDate as Date)
-  const reminder = await Reminder.create({ userId: uid(req), title: `Follow-up: ${record.title}`, note: `${label}. Source: ${record.title} (${new Date(record.recordDate as Date).toLocaleDateString()}).`, reminderDate, source: 'record-derived', status: 'pending' });
-  await Notification.create({ userId: uid(req), type: 'reminder', title: 'Smart reminder created', message: `${reminder.title} is planned for ${reminderDate.toLocaleDateString()}.`, actionUrl: '/app/reminders', metadata: { recordId: String(record._id), reminderId: String(reminder._id) } });
-  r.status(201).json({ reminder, followUpDate: followDate, label });
+
+  const match = parseFollowUpFromRecord(record);
+  if (!match || !match.followUpDate) return r.status(400).json({ message: 'No follow-up information was detected in this record.' });
+
+  const existing = await Reminder.findOne({
+    userId: uid(req),
+    sourceRecordId: record._id,
+    followUpDate: match.followUpDate,
+    status: { $ne: 'completed' },
+  });
+  if (existing) return r.status(409).json({ message: 'A reminder for this follow-up already exists.', reminder: existing });
+
+  const reminderDate = new Date(match.followUpDate.getTime() - (match.leadTimeDays || 7) * 86400000);
+  const reminder = await Reminder.create({
+    userId: uid(req),
+    title: `Follow-up: ${record.title}`,
+    note: `${match.label}. Source: ${record.title} (${new Date(record.recordDate || new Date()).toLocaleDateString()}).`,
+    reminderDate,
+    source: 'record-derived',
+    sourceRecordId: record._id,
+    sourceRecordTitle: record.title,
+    sourceRecordDate: record.recordDate,
+    followUpDate: match.followUpDate,
+    followUpType: match.followUpType,
+    leadTimeDays: match.leadTimeDays,
+    status: 'pending',
+  });
+
+  await Notification.create({
+    userId: uid(req),
+    type: 'reminder',
+    title: 'Smart reminder created',
+    message: `Your follow-up for ${record.title || 'this record'} is planned for ${new Date(match.followUpDate).toLocaleDateString()}.`,
+    actionUrl: '/app/reminders',
+    metadata: { recordId: String(record._id), reminderId: String(reminder._id), followUpType: match.followUpType },
+  });
+
+  r.status(201).json({ reminder, followUpDate: match.followUpDate, label: match.label, reminderDate });
 });
 
 app.use('/uploads', express.static(uploadDir));
