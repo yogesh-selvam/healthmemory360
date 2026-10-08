@@ -102,15 +102,24 @@ function StitchFrame({ dir }: { dir: string }) {
 
     // Login / register are the only forms that need direct API wiring.
     if (dir === 'healthmemory_360_login_authentication') {
-      const form = doc.querySelector('form');
-      const email = doc.querySelector('#email') as HTMLInputElement | null;
-      const password = doc.querySelector('#password') as HTMLInputElement | null;
-      if (form && email && password && !form.getAttribute('data-hm-wired')) {
+      const form = doc.querySelector('form#authForm') || doc.querySelector('form');
+      const email = (doc.querySelector('#emailInput') as HTMLInputElement | null)
+        || (doc.querySelector('input[type="email"]') as HTMLInputElement | null)
+        || (doc.querySelector('#email') as HTMLInputElement | null);
+      const password = (doc.querySelector('#passwordInput') as HTMLInputElement | null)
+        || (doc.querySelector('input[type="password"]') as HTMLInputElement | null)
+        || (doc.querySelector('#password') as HTMLInputElement | null);
+      const submitButton = (doc.querySelector('#submitBtn') as HTMLButtonElement | null)
+        || (doc.querySelector('#submit-cta') as HTMLButtonElement | null)
+        || (doc.querySelector('button[type="submit"]') as HTMLButtonElement | null);
+      if (form && email && password && submitButton && !form.getAttribute('data-hm-wired')) {
         form.setAttribute('data-hm-wired', '1');
         form.addEventListener('submit', async (e) => {
           e.preventDefault();
-          const button = doc.querySelector('#submit-cta') as HTMLButtonElement | null;
-          if (button) { button.disabled = true; button.textContent = 'Signing in…'; }
+          submitButton.disabled = true;
+          const label = doc.querySelector('#btnText') as HTMLElement | null;
+          if (label) label.textContent = 'Signing in…';
+          else submitButton.textContent = 'Signing in…';
           try {
             const data = await api('/auth/login', { method: 'POST', body: JSON.stringify({ email: email.value, password: password.value }) });
             localStorage.setItem('hm_token', data.token);
@@ -118,7 +127,9 @@ function StitchFrame({ dir }: { dir: string }) {
             navigate('/app');
           } catch (err: any) {
             alert(err?.message || 'Login failed');
-            if (button) { button.disabled = false; button.textContent = 'Sign In to HealthMemory 360'; }
+            submitButton.disabled = false;
+            if (label) label.textContent = 'Sign In to HealthMemory';
+            else submitButton.textContent = 'Sign In to HealthMemory 360';
           }
         });
       }
