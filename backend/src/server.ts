@@ -17,13 +17,53 @@ import { generatePatientAlerts, parseFollowUpFromRecord } from './services/healt
 const app = express();
 const PORT = Number(process.env.PORT || 5000);
 const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:5173';
-const allowedOrigins = new Set([CLIENT_URL, 'http://localhost:5173',
+const allowedOrigins = new Set([
+  CLIENT_URL,
+  'https://healthmemory360.vercel.app',
+  'http://localhost:5173',
   'http://localhost:5174',
   'http://localhost:5175',
-  'http://localhost:5176', 'http://127.0.0.1:5173', 'http://localhost:5174', 'http://127.0.0.1:5174']);
+  'http://localhost:5176',
+  'http://127.0.0.1:5173',
+  'http://127.0.0.1:5174',
+]);
+const isAllowedVercelOrigin = (origin: string) => /^https:\/\/healthmemory360(?:-[a-z0-9-]+)?\.vercel\.app$/.test(origin);
+
+let mongoConnectPromise: Promise<typeof mongoose> | null = null;
+
+export async function connectMongo() {
+  const uri = process.env.MONGODB_URI;
+  if (!uri) {
+    console.warn('MONGODB_URI is not set; database-backed routes will be unavailable until configured.');
+    return null;
+  }
+
+  if (mongoose.connection.readyState === 1) return mongoose;
+
+  if (!mongoConnectPromise) {
+    mongoConnectPromise = mongoose.connect(uri, {
+      dbName: process.env.MONGODB_DB || undefined,
+    }).then(() => mongoose);
+  }
+
+  try {
+    return await mongoConnectPromise;
+  } catch (error) {
+    mongoConnectPromise = null;
+    throw error;
+  }
+}
 
 app.use(helmet({ crossOriginResourcePolicy: false }));
-app.use(cors({ origin: (origin, callback) => { if (!origin || allowedOrigins.has(origin)) return callback(null, true); return callback(new Error('CORS origin not allowed')); }, credentials: true }));
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.has(origin) || isAllowedVercelOrigin(origin)) {
+      return callback(null, true);
+    }
+    return callback(new Error('CORS origin not allowed'));
+  },
+  credentials: true,
+}));
 app.use(express.json({ limit: '4mb' }));
 app.use(rateLimit({ windowMs: 60_000, max: 180 }));
 
@@ -496,10 +536,22 @@ app.post('/api/reminders/from-record/:id', auth, async (req: AuthRequest, r) => 
 });
 
 app.use('/uploads', express.static(uploadDir));
+app.use((err: any, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
+  console.error('Unhandled app error:', err?.message || err);
+  res.status(500).json({ message: 'Internal server error' });
+});
 app.use((_q, r) => r.status(404).json({ message: 'Route not found' }));
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/healthmemory360')
-  .then(() => app.listen(PORT, () => console.log(`HealthMemory 360 API on ${PORT} | CORS: ${CLIENT_URL} | AI: ${process.env.AI_PROVIDER || 'mock'}`)))
-  .catch(e => { console.error('MongoDB connection failed', e.message); app.listen(PORT, () => console.log(`API on ${PORT} (database unavailable)`)); });
+connectMongo().catch((error) => {
+  console.error('MongoDB connection failed:', error instanceof Error ? error.message : String(error));
+});
+
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`HealthMemory 360 API on ${PORT} | CORS: ${CLIENT_URL} | AI: ${process.env.AI_PROVIDER || 'mock'}`);
+  });
+}
+
+export default app;
 
 
